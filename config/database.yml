@@ -15,8 +15,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
-  # host: localhost  #下かどちらかを使う
-  socket: /tmp/mysql.sock
+  host: localhost  #下かどちらかを使う
+  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -52,5 +52,6 @@ test:
 production:
   <<: *default
   database: review_site_production
-  username: review_site
-  password: <%= ENV['REVIEW_SITE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
