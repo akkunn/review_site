@@ -5,9 +5,9 @@ ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.7'
-# gem 'net-smtp'
-# gem 'net-imap'
-# gem 'net-pop'
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 gem 'dotenv-rails'
 
 # Use mysql as the database for Active Record
