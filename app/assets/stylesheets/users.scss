@@ -6,6 +6,7 @@
 .user-box {
   border: solid 1px black;
   padding: 1rem;
+  // text-align: center;
 }
 
 .user-name {
@@ -31,4 +32,22 @@
   margin: 0 auto;
   display: block;
   width: 5rem;
+}
+
+// edit
+// table {
+//   margin: 0 auto;
+// }
+
+.back-button {
+  border: 1px solid;
+  background-color: #007bff;
+  text-align: center;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  margin: 0 auto;
+  display: block;
+  width: 4rem;
 }

@@ -7,7 +7,4 @@
     <%= @user.introduction %>
   </div>
 </div>
-
-<a href="#" class="button">
-  変更する
-</a>
+<%= link_to "変更する", edit_user_path(@user), class: "button" %>

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   # get 'users/edit'
   root 'searches#home'
   get '/result', to: 'searches#result'
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
 end

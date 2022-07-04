@@ -1,9 +1,18 @@
 <h1>プロフィール編集</h1>
 <div class="user-box">
-  <h1 class="user-name">
-    <%= @user.name %>
-  </h1>
-  <div class="introduction">
-    <%= @user.introduction %>
-  </div>
+  <%= form_with model: @user do |f| %>
+    <table>
+      <tr>
+        <th>アイコン</td>
+        <td>アイコン</td>
+      </tr>
+      <tr>
+        <th><%= f.label :name, "ユーザー名" %></td>
+        <td><%= f.text_field :name, placeholder: "名前を入力" %></td>
+      </tr>
+    </table>
+    <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction' %>
+    <%= f.submit "更新", class: "button" %>
+  <% end %>
+  <%= link_to "戻る", user_path(@user), class: "back-button" %>
 </div>

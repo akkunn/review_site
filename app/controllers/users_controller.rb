@@ -4,5 +4,20 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if @user = User.update(user_params)
+      redirect_to @user
+    else
+      render 'users/edit'
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :introduction)
   end
 end
