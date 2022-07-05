@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_03_235334) do
+ActiveRecord::Schema.define(version: 2022_07_05_055038) do
+
+  create_table "schools", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "style"
+    t.string "support"
+    t.string "guarantee"
+    t.text "feature"
+    t.integer "language_id"
+    t.integer "prefecture_id"
+    t.integer "cost_id"
+    t.integer "period_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
