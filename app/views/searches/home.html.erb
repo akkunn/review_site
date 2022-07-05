@@ -1,2 +1,50 @@
-<h1>Searches#home</h1>
-<p>Find me in app/views/searches/home.html.erb</p>
+<h3>検索</h3>
+<%= search_form_for @q, url: result_path do |f| %>
+  <div>
+    <%= f.label :name_cont, "スクール名" %>
+    <%= f.search_field :name_cont, placeholder: 'スクール名' %>
+  </div>
+
+  <div>
+    <%= f.label :sytle_eq, "学習形態" %>
+    <%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %>
+  </div>
+
+  <div>
+    <%= f.label :support_eq, '転職支援' %>
+    <%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %>
+  </div>
+
+  <div>
+    <%= f.label :guarantee_eq, '転職保証' %>
+    <%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %>
+  </div>
+
+  <div>
+    <%= f.label :language_id_eq, "学習言語" %>
+    <%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %>
+  </div>
+
+  <div>
+    <%= f.label :prefecture_id_eq, '都道府県' %>
+    <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %>
+  </div>
+
+  <div>
+    <%= f.label :cost_id_eq, '値段' %>
+    <%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %>
+  </div>
+  <div>
+
+    <%= f.label :period_id_eq, '学習期間' %>
+    <%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %>
+  </div>
+
+  <%#= f.collection_select :support_eq, @schools_support, :support, :support, include_blank: '指定なし' %>
+
+  <%#= f.select :prefecture, School.prefectures.keys, {} %>
+
+  <%#= f.select :support, School.supports.keys, {} %>
+  <%= f.submit '検索' %>
+<% end %>
+<%= link_to "登録", new_school_path %>

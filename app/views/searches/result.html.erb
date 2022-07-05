@@ -1,2 +1,15 @@
-<h1>Searches#result</h1>
-<p>Find me in app/views/searches/result.html.erb</p>
+<% @schools.each do |school| %>
+  <p>
+    <%= school.name %>
+    <%= school.style %>
+    <%= school.support %>
+    <%= school.guarantee %>
+    <%= school.feature %>
+    <%= school.prefecture.name %>
+    <%= school.language.name %>
+    <%= school.cost.range %>
+    <%= school.period.range %>
+
+  </p>
+<% end %>
+<%= link_to "登録", new_school_path %>
