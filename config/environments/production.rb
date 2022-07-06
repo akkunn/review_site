@@ -72,7 +72,7 @@ Rails.application.configure do
     :domain => "gmail.com",
     :port => 587,
     :user_name => ENV['SEND_MAIL'],
-    :password => ENV['GMAIL_SPECIFIC_PASSWORD'],
+    :password => ENV['GMAIL_PRODUCTION_PASSWORD'],
     :authentication => :plain,
     :enable_starttls_auto => true
   }
