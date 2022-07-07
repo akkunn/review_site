@@ -71,32 +71,13 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :domain => 'gmail.com',
     :port => 587,
-    :user_name => "853amtg@gmail.com",
-    :password => "iewhtjihnujmipqv",
+    :user_name => ENV['GMAIL_PRODUCTION_USER_NAME'],
+    :password => ENV['GMAIL_PRODUCTION_PASSWORD'],
     :authentication => :login,
     :enable_starttls_auto => true
   }
-  # :user_name => ENV['PRODUCTION_USER_NAME'],
-  # :password => ENV['PRODUCTION_EMAIL_PASSWORD'],
-  # :user_name => Rails.application.credentials.gmail[:user_name],
-    # :password => Rails.application.credentials.gmail[:password],
-
-
-  # config.action_mailer.default_url_options = { host: 'https://myreviewsite.herokuapp.com'}
 
   # config.action_mailer.perform_deliveries = true
-
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:"smtp.gmail.com",
-  #   domain: 'gmail.com',
-  #   port:587,
-  #   user_name: ENV['SEND_MAIL'],
-  #   password: ENV['GMAIL_SPECIFIC_PASSWORD'],
-  #   authentication: :login,
-  #   openssl_verify_mode: 'none',
-  #   enable_starttls_auto: true
-  # }
 
   # config.action_mailer.raise_delivery_errors = true
 
