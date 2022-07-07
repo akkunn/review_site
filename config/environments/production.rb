@@ -71,12 +71,14 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :domain => 'gmail.com',
     :port => 587,
-    :user_name => ENV['PRODUCTION_USER_NAME'],
-    :password => ENV['PRODUCTION_EMAIL_PASSWORD'],
+    :user_name => "853amtg@gmail.com",
+    :password => "iewhtjihnujmipqv",
     :authentication => :login,
     :enable_starttls_auto => true
   }
-    # :user_name => Rails.application.credentials.gmail[:user_name],
+  # :user_name => ENV['PRODUCTION_USER_NAME'],
+  # :password => ENV['PRODUCTION_EMAIL_PASSWORD'],
+  # :user_name => Rails.application.credentials.gmail[:user_name],
     # :password => Rails.application.credentials.gmail[:password],
 
 
