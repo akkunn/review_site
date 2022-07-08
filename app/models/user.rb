@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   has_many :user_schools, dependent: :destroy
   has_many :schools, through: :user_schools
+
+  accepts_nested_attributes_for :user_schools, allow_destroy: true
 end

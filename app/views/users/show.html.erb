@@ -3,6 +3,13 @@
   <h1 class="user-name">
     <%= @user.name %>
   </h1>
+  <h2>
+    <% @user.schools.each do |school| %>
+      <p>
+        <%= school.name %>
+      </p>
+    <% end %>
+  </h2>
   <div class="introduction">
     <%= @user.introduction %>
   </div>
