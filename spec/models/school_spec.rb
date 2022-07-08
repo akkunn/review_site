@@ -11,4 +11,11 @@ RSpec.describe School, type: :model do
     school.valid?
     expect(school.errors[:name]).to include("can't be blank")
   end
+
+  it "is invalid same name" do
+    other_school = School.create(name: "ポテパンキャンプ")
+    school = School.new(name: "ポテパンキャンプ")
+    school.valid?
+    expect(school.errors[:name]).to include("has already been taken")
+  end
 end
