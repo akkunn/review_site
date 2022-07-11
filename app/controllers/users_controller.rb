@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+
   def show
     @user = User.find(params[:id])
   end
@@ -13,11 +15,11 @@ class UsersController < ApplicationController
     # @user.update(user_params)
     if @user.update(user_params)
       if @user.user_schools.first.nil?
+        # binding.pry
         @user_school = UserSchool.create(user_id: params[:user][:user_school][:user_id], school_id: params[:user][:user_school][:school_id])
       else
         @user_school = @user.user_schools.first.update(user_id: params[:user][:user_school][:user_id], school_id: params[:user][:user_school][:school_id])
       end
-      # binding.pry
       redirect_to @user
     else
       render 'users/edit'
