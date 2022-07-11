@@ -58,6 +58,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'launchy'
   gem 'faker'
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'

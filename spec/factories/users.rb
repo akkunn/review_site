@@ -3,5 +3,6 @@ FactoryBot.define do
     name { "rails" }
     sequence(:email) { |n| "tester#{n}@example.com" }
     password { "password" }
+    confirmed_at { Date.today }
   end
 end
