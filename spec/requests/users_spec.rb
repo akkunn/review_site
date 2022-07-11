@@ -4,6 +4,7 @@ RSpec.describe "Users", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:school) { School.new(name: "ポテパンキャンプ") }
   let(:user_school) { UserSchool.new(user_id: user.id, school_id: school.id)}
+  let(:other_user) { FactoryBot.create(:user) }
 
   describe "#show" do
     it "returns a 200 response" do
@@ -28,6 +29,14 @@ RSpec.describe "Users", type: :request do
       end
     end
 
+    context "as a not authenticated user" do
+      it "redirects to home page" do
+        sign_in user
+        get edit_user_path(other_user)
+        expect(response).to redirect_to root_path
+      end
+    end
+
     context "as guest" do
       it "redirect to the sign_in page" do
         get edit_user_path(user)
@@ -37,7 +46,6 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "#update" do
-
     context "as an authorized user" do
       it "updates a profile" do
         sign_in user
@@ -48,8 +56,6 @@ RSpec.describe "Users", type: :request do
     end
 
     context "as an unautorized user" do
-      let(:other_user) { FactoryBot.create(:user) }
-
       before do
         sign_in user
       end
@@ -59,10 +65,10 @@ RSpec.describe "Users", type: :request do
         expect(user.reload.name).to eq "rails"
       end
 
-      # it "redirects to hemo page" do
-      #   patch user_path(other_user), params: { id: other_user.id, user: { name: "ruby", email: other_user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
-      #   expect(response).to redirect_to root_path
-      # end
+      it "redirects to home page" do
+        patch user_path(other_user), params: { id: other_user.id, user: { name: "ruby", email: other_user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
+        expect(response).to redirect_to root_path
+      end
     end
 
     context "as a guest" do
