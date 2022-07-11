@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:school) { School.new(name: "ポテパンキャンプ") }
-  let(:user_school) { UserSchool.new(user_id: user.id, school_id: school.id)}
+  let(:user_school) { UserSchool.new(user_id: user.id, school_id: school.id) }
   let(:other_user) { FactoryBot.create(:user) }
 
   describe "#show" do
@@ -20,6 +20,7 @@ RSpec.describe "Users", type: :request do
         sign_in user
         get edit_user_path(user)
       end
+
       it "returns a 200 response" do
         expect(response).to have_http_status(200)
       end
@@ -49,8 +50,13 @@ RSpec.describe "Users", type: :request do
     context "as an authorized user" do
       it "updates a profile" do
         sign_in user
-        # binding.pry
-        patch user_path(user), params: { id: user.id, user: { name: "ruby", email: user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
+        patch user_path(user), params: {
+          id: user.id, user: {
+            name: "ruby", email: user.email, user_school: {
+              user_id: user_school.user_id, school_id: user_school.school_id,
+            },
+          },
+        }
         expect(user.reload.name).to eq "ruby"
       end
     end
@@ -61,19 +67,37 @@ RSpec.describe "Users", type: :request do
       end
 
       it "does not update the profile" do
-        patch user_path(other_user), params: { id: other_user.id, user: { name: "ruby", email: other_user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
+        patch user_path(other_user), params: {
+          id: other_user.id, user: {
+            name: "ruby", email: other_user.email, user_school: {
+              user_id: user_school.user_id, school_id: user_school.school_id,
+            },
+          },
+        }
         expect(user.reload.name).to eq "rails"
       end
 
       it "redirects to home page" do
-        patch user_path(other_user), params: { id: other_user.id, user: { name: "ruby", email: other_user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
+        patch user_path(other_user), params: {
+          id: other_user.id, user: {
+            name: "ruby", email: other_user.email, user_school: {
+              user_id: user_school.user_id, school_id: user_school.school_id,
+            },
+          },
+        }
         expect(response).to redirect_to root_path
       end
     end
 
     context "as a guest" do
       it "redirects to the sign-in page" do
-        patch user_path(user), params: { id: user.id, user: { name: "ruby", email: user.email, user_school: { user_id: user_school.user_id, school_id: user_school.school_id } } }
+        patch user_path(user), params: {
+          id: user.id, user: {
+            name: "ruby", email: user.email, user_school: {
+              user_id: user_school.user_id, school_id: user_school.school_id,
+            },
+          },
+        }
         expect(response).to redirect_to new_user_session_path
       end
     end

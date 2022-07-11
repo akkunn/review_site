@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-
   before_action :search_school, only: [:home, :result]
 
   def home
@@ -14,6 +13,7 @@ class SearchesController < ApplicationController
   end
 
   private
+
   def search_school
     @q = School.ransack(params[:q])
   end
