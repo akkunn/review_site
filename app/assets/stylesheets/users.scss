@@ -105,3 +105,11 @@ label {
 .remember-me {
   margin-left: 0.5rem;
 }
+
+.link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    opacity: 0.5;
+  }
+}
