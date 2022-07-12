@@ -46,6 +46,10 @@
   margin: 0 auto;
   display: block;
   width: 4rem;
+  font-size: 0.8rem;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 // 新規登録
@@ -112,5 +116,21 @@ label {
   color: black;
   &:hover {
     opacity: 0.5;
+  }
+}
+
+// アカウント情報編集
+.under-label-text {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.delete-user {
+  text-decoration: none;
+  color: red;
+  margin-top: 1rem;
+  display: block;
+  &:hover {
+    opacity: 0.7;
   }
 }
