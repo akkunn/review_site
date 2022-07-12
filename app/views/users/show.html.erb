@@ -1,17 +1,22 @@
-<h1>プロフィール</h1>
-<div class="user-box">
-  <h1 class="user-name">
-    <%= @user.name %>
-  </h1>
-  <h2>
-    <% @user.schools.each do |school| %>
-      <p>
-        <%= school.name %>
-      </p>
-    <% end %>
-  </h2>
-  <div class="introduction">
-    <%= @user.introduction %>
+<div class="content">
+  <div class="profile">
+    <div class="box">
+      <h5 class="profile-title">プロフィール</h5>
+      <h2 class="profile-info">
+        アイコン
+      </h2>
+      <h2 class="profile-info">
+        <%= @user.name %>
+      </h2>
+      <% @user.schools.each do |school| %>
+        <h2 class="profile-info">
+          <%= school.name %>
+        </h2>
+      <% end %>
+      <div class="introduction">
+        <%= @user.introduction %>
+      </div>
+      <%= link_to "変更する", edit_user_path(@user), class: "button change-button" %>
+    </div>
   </div>
 </div>
-<%= link_to "変更する", edit_user_path(@user), class: "button" %>
