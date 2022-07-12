@@ -70,6 +70,16 @@
 .actions {
   width: 52%;
   margin: 1.5rem auto;
+  input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 }
 
 input {
@@ -84,4 +94,14 @@ input {
 
 label {
   font-size: 0.8rem;
+}
+
+// ログイン
+.remember {
+  display: flex;
+  line-height: 100%;
+}
+
+.remember-me {
+  margin-left: 0.5rem;
 }
