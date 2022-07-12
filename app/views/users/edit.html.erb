@@ -1,39 +1,56 @@
-<h1>プロフィール編集</h1>
-<div class="user-box">
-  <%= form_with model: @user, local: true do |f| %>
-    <table>
-      <tr>
-        <th>アイコン</td>
-        <td>アイコン</td>
-      </tr>
-      <tr>
-        <th><%= f.label :name, "ユーザー名" %></td>
-        <td><%= f.text_field :name, placeholder: "名前を入力" %></td>
-      </tr>
-      <%= f.fields_for :user_school do |user_school| %>
-        <tr>
-          <th><%= user_school.label :school_id, "スクール名1" %></th>
-          <td>
-            <% if @user.schools.first.nil? %>
-              <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
-            <% else %>
-              <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: @user.schools.first.name) %>
-            <% end %>
-          </td>
-          <%= user_school.hidden_field :user_id, value: @user.id %>
-        </tr>
-      <% end %>
-      <% @user.schools.each do |school| %>
-        <tr>
-          <th>スクール名</th>
-          <td><%= school.name %></td>
-        </tr>
-      <% end %>
+<div class="background">
+  <div class="edit-profile">
+    <div class="profile-box">
+      <div class="link-box">
+        <%= link_to "アカウント情報編集", edit_user_registration_path, class: "link" %>
+        <%= link_to "プロフィール編集", "#", class: "blue-link" %>
+      </div>
+      <div class="box">
+        <h2 class="profile-edit-title">プロフィール編集</h2>
+        <div class="profile-edit-form">
+          <%= form_with model: @user, local: true do |f| %>
+            <table class="profile-edit-table">
+              <tr>
+                <th>アイコン</th>
+                <td>アイコン</td>
+              </tr>
+              <tr>
+                <th><%= f.label :name, "ユーザー名" %></th>
+                <td><%= f.text_field :name, placeholder: "名前を入力" %></td>
+              </tr>
+              <% if @user.schools.second.nil? %>
+                <%= f.fields_for :user_school do |user_school| %>
+                  <tr>
+                    <th><%= user_school.label :school_id, "スクール名1" %></th>
+                    <td>
+                      <% if @user.schools.first.nil? %>
+                        <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
+                      <% else %>
+                        <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: @user.schools.first.name) %>
+                      <% end %>
+                    </td>
+                    <%= user_school.hidden_field :user_id, value: @user.id %>
+                  </tr>
+                <% end %>
+              <% end %>
+
+              <% unless @user.schools.second.nil? %>
+                <% @user.schools.each do |school| %>
+                  <tr>
+                    <th>スクール名</th>
+                    <td><%= school.name %></td>
+                  </tr>
+                <% end %>
+              <% end %>
 
 
-    </table>
-    <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction' %>
-    <%= f.submit "更新", class: "button" %>
-  <% end %>
-  <%= link_to "戻る", user_path(@user), class: "button back-button" %>
+            </table>
+            <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction' %>
+            <%= f.submit "更新", class: "submit-button" %>
+          <% end %>
+          <%= link_to "戻る", user_path(@user), class: "button" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

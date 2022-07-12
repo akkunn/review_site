@@ -7,12 +7,25 @@
   border: solid 1px rgb(91, 90, 90);
   padding: 1rem;
   border-radius: 2rem;
+  background-color: white;
 }
 
-.button {
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.button {   //aタグ
   border: 1px solid;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   border-radius: 0.25rem;
   text-decoration: none;
   margin: 0 auto;
@@ -24,14 +37,29 @@
 
 .background {
   width: 100%;
-  background-color: rgb(225, 254, 254);
+  background-color: rgb(236, 236, 236);
   padding: 5rem 0;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.blue-link {
+  color: rgb(8, 189, 255);
+  font-weight: bold;
+  &:hover {
+    opacity: 0.5;
+  }
+}
 
 // プロフィール
 
-.profile {
+.profile-box {
   width: 60%;
   margin: 0 auto;
 }
@@ -64,11 +92,56 @@
 
 // プロフィール編集
 
-.back-button {
-  background-color: #007bff;
-  color: white;
-  width: 4rem;
-  font-size: 0.8rem;
+.profile-edit-form {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  textarea {
+    width: 95%;
+    margin: 0;
+  }
+  .button {
+    width: 60%;
+    color: black;
+  }
+  .submit-button {
+    width: 60%;
+    margin: 1rem;
+  }
+}
+
+.profile-edit-table {
+  border-spacing: 0 2rem;
+  margin: 0 auto;
+  width: 100%;
+  th {
+    text-align: left;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    padding-bottom: 2rem;
+  }
+  td {
+    text-align: left;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    padding-bottom: 2rem;
+    input {
+      padding: 0.3rem;
+    }
+    select {
+      padding: 0.3rem;
+    }
+  }
+}
+
+.profile-edit-title {
+  text-align: center;
+}
+
+.link-box {
+  margin-bottom: 1rem;
+}
+
+.edit-profile .link {
+  margin-right: 1rem;
 }
 
 // devise共通(以下devise)
@@ -77,12 +150,15 @@
   text-align: center;
   width: 50%;
   margin: 0 auto;
-  background-color: rgb(251, 251, 251);
 }
 
 .field {
   margin: 1.5rem auto;
   width: 50%;
+  input {
+    padding: 0.5rem 0.2rem;
+    width: 90%;
+  }
 }
 
 .actions {
@@ -101,25 +177,11 @@
   }
 }
 
-input {
-  padding: 0.5rem 0.2rem;
-  width: 90%;
-}
-
 .label {
   text-align: left;
   padding-left: 6px;
-}
-
-label {
-  font-size: 0.8rem;
-}
-
-.link {
-  text-decoration: none;
-  color: black;
-  &:hover {
-    opacity: 0.5;
+  label {
+    font-size: 0.8rem;
   }
 }
 
@@ -149,5 +211,13 @@ label {
   display: block;
   &:hover {
     opacity: 0.7;
+  }
+}
+
+.edit-acount-info .link-box {
+  width: 50%;
+  margin: 1rem auto;
+  .blue-link {
+    margin-right: 1rem;
   }
 }
