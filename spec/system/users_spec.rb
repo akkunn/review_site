@@ -10,11 +10,11 @@ RSpec.describe "Users", type: :system do
 
     visit root_path
     click_link "新規登録"
-    fill_in "Name", with: user.name
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    fill_in "Password confirmation", with: user.password
-    click_button "Sign up"
+    fill_in "ユーザー名", with: user.name
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    fill_in "パスワード確認", with: user.password
+    click_button "新規登録する"
 
     expect(page).to have_content "Please follow the link to activate your account."
   end
@@ -24,9 +24,9 @@ RSpec.describe "Users", type: :system do
 
     visit root_path
     click_link "ログイン"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    click_button "ログイン"
     expect(page).to have_content "Signed in successfully."
   end
 
