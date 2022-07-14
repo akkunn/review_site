@@ -1,3 +1,88 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// 共通
+
+.flex {
+  display: flex;
+}
+
+// // home
+
+.home {
+  background-image: url('23973358_m.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  // width: 100%;
+  height: 100vh;
+  .box {
+    width: 60%;
+    margin: 0 auto;
+  }
+  h3 {
+    text-align: center;
+  }
+}
+
+.school_search {
+  text-align: center;
+  .submit-button {
+    width: 6rem;
+    margin: 2rem 0;
+  }
+}
+
+.home-flex-item {
+  width: 50%;
+  text-align: center;
+  ul {
+    display: flex;
+    height: 1.625rem;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(178, 178, 178);
+  }
+  li {
+    list-style: none;
+    vertical-align: middle;
+    height: 100%;
+  }
+  select {
+    width: 8rem;
+    font-size: 1rem;
+    height: 100%;
+  }
+  &:last-child {
+    border-left: 1px solid rgb(91, 90, 90);
+  }
+}
+
+.home-flex-item-left {
+  margin: 0 0 0 2rem;
+  padding: 1rem 3rem 1rem 0;
+  &:first-child {
+    border-top: 1px solid rgb(178, 178, 178);
+  }
+}
+
+.home-flex-item-right {
+  margin: 0 2rem 0 0;
+  padding: 1rem 0 1rem 3rem;
+  &:first-child {
+    border-top: 1px solid rgb(178, 178, 178);
+  }
+}
+
+.home-label {
+  border: 1px solid black;
+  display: block;
+  width: 5rem;
+  text-align: center;
+}
+
+.home-select {
+  width: 8rem;
+  font-size: 1rem;
+  height: 100%;
+}

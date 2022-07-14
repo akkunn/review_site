@@ -1,53 +1,66 @@
-<h3>検索</h3>
-<%= search_form_for @q, url: result_path do |f| %>
-  <div>
-    <%= f.label :name_cont, "スクール名" %>
-    <%= f.search_field :name_cont, placeholder: 'スクール名' %>
+<div class="home">
+  <div class="box">
+    <h3>プログラミングスクールを探す</h3>
+    <%= search_form_for @q, url: result_path do |f| %>
+      <div class="flex">
+        <div class="home-flex-item">
+          <ul class="home-flex-item-left">
+            <li><%= f.label :name_cont, "スクール名", class: "home-label" %></li>
+            <li><%= f.search_field :name_cont, placeholder: 'スクール名', class: "home-select" %></li>
+          </ul>
+
+          <ul class="home-flex-item-left">
+            <li><%= f.label :cost_id_eq, '費用', class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %></li>
+          </ul>
+
+
+          <ul class="home-flex-item-left">
+            <li><%= f.label :sytle_eq, "学習形態", class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし', class: "home-select" %></li>
+          </ul>
+
+          <ul class="home-flex-item-left">
+            <li><%= f.label :support_eq, '転職支援', class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし', class: "home-select" %></li>
+          </ul>
+        </div>
+
+        <div class="home-flex-item">
+          <ul class="home-flex-item-right">
+            <li><%= f.label :language_id_eq, "学習言語", class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul class="home-flex-item-right">
+            <li><%= f.label :period_id_eq, '学習期間', class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし', class: "home-select" %></li>
+          </ul>
+
+          <ul class="home-flex-item-right">
+            <li><%= f.label :prefecture_id_eq, '都道府県', class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし', class: "home-select" %></li>
+          </ul>
+
+          <ul class="home-flex-item-right">
+            <li><%= f.label :guarantee_eq, '転職保証', class: "home-label" %></li>
+            <li class="home-select"><%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし', class: "home-select" %></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+        <%#= f.collection_select :support_eq, @schools_support, :support, :support, include_blank: '指定なし' %>
+
+        <%#= f.select :prefecture, School.prefectures.keys, {} %>
+
+        <%#= f.select :support, School.supports.keys, {} %>
+      <%= f.submit '検索', class: "submit-button" %>
+    <% end %>
   </div>
-
-  <div>
-    <%= f.label :sytle_eq, "学習形態" %>
-    <%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %>
-  </div>
-
-  <div>
-    <%= f.label :support_eq, '転職支援' %>
-    <%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %>
-  </div>
-
-  <div>
-    <%= f.label :guarantee_eq, '転職保証' %>
-    <%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %>
-  </div>
-
-  <div>
-    <%= f.label :language_id_eq, "学習言語" %>
-    <%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %>
-  </div>
-
-  <div>
-    <%= f.label :prefecture_id_eq, '都道府県' %>
-    <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %>
-  </div>
-
-  <div>
-    <%= f.label :cost_id_eq, '値段' %>
-    <%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %>
-  </div>
-  <div>
-
-    <%= f.label :period_id_eq, '学習期間' %>
-    <%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %>
-  </div>
-
-  <%#= f.collection_select :support_eq, @schools_support, :support, :support, include_blank: '指定なし' %>
-
-  <%#= f.select :prefecture, School.prefectures.keys, {} %>
-
-  <%#= f.select :support, School.supports.keys, {} %>
-  <%= f.submit '検索' %>
-<% end %>
 <%= link_to "登録", new_school_path %>
 <%= link_to "新規登録", new_user_registration_path %>
 <%= link_to "ログイン", new_user_session_path %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+</div>

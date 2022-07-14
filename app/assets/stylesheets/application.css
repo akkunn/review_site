@@ -27,4 +27,10 @@ body {
   margin: 0 auto;
 }
 
+.notice {
+  margin: 0;
+}
 
+.alert {
+  margin: 0;
+}
