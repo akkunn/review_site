@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :search_school, only: [:home, :result]
+  # before_action :search_school, only: [:home, :result]
 
   def home
     @schools = School.all
@@ -14,9 +14,9 @@ class SearchesController < ApplicationController
 
   private
 
-  def search_school
-    @q = School.ransack(params[:q])
-  end
+  # def search_school
+  #   @q = School.ransack(params[:q])
+  # end
 
   # 重複なくカラムのデータを取り出す
   def set_style_column
