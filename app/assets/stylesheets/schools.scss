@@ -1,3 +1,36 @@
 // Place all the styles related to the schools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// スクール新規登録
+.school-new-explanation {
+  padding: 0;
+  margin: 1rem 2rem 2rem 2rem;
+  li {
+    list-style: none;
+  }
+  textarea {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.3rem;
+    font-size: 1rem;
+    height: 4rem;
+  }
+}
+
+.new-school-input {
+  width: 7.5rem;
+  font-size: 1rem;
+  height: 80%;
+}
+
+.school-new {
+  form {
+    text-align: center;
+  }
+  .submit-button {
+    width: 6rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}

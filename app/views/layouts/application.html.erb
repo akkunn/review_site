@@ -16,7 +16,7 @@
       <div class="header-left">
         <%= link_to "プロコミ！", root_path, class: "button logo" %>
         <%= search_form_for @q, url: result_path do |f| %>
-          <%= f.search_field :name_cont, placeholder: 'スクール名' %>
+          <%= f.search_field :name_cont, placeholder: 'スクール名で検索' %>
         <% end %>
       </div>
       <div class="header-right">

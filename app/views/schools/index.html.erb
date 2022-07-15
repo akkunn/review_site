@@ -1,15 +1,22 @@
-<% @schools.each do |school| %>
-  <p>
-    <%= school.name %>
-    <%= school.style %>
-    <%= school.support %>
-    <%= school.guarantee %>
-    <%= school.explanation %>
-    <%= school.prefecture.name %>
-    <%= school.language.name %>
-    <%= school.cost.range %>
-    <%= school.period.range %>
+<div class="background-blue">
+  <div class="result">
+    < <%= link_to '検索画面に戻る', root_path %>
+    <table>
+      <tr>
+        <th>登録番号</th>
+        <th>スクール名</th>
+      </tr>
 
-  </p>
-<% end %>
+      <% @schools.each.with_index(1) do |school, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td>
+            <%= school.name %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
 <%= link_to "登録", new_school_path %>
