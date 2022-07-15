@@ -18,7 +18,7 @@ RSpec.describe "Schools", type: :request do
         get new_school_path
       end
 
-      it "return http success" do
+      it "returns http success" do
         expect(response).to have_http_status(:success)
       end
 
@@ -27,7 +27,7 @@ RSpec.describe "Schools", type: :request do
       end
     end
 
-    context "as guest" do
+    context "as a guest" do
       it "redirects to login page" do
         get new_school_path
         expect(response).to redirect_to new_user_session_path
@@ -57,6 +57,30 @@ RSpec.describe "Schools", type: :request do
 
       it "redirects to login page" do
         post schools_path, params: { school: school_params }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#edit" do
+    context "as an authorized user" do
+      before do
+        sign_in user
+        get edit_school_path(user)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "exists a correct page" do
+        expect(response.body).to include("プログラミングスクールの情報を変更する")
+      end
+    end
+
+    context "as a guest" do
+      it "redirects to login page" do
+        get edit_school_path(user)
         expect(response).to redirect_to new_user_session_path
       end
     end
