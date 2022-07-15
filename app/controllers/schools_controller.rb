@@ -1,4 +1,6 @@
 class SchoolsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @schools = School.all
   end
