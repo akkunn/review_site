@@ -2,7 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 // スクール新規登録
+.school-new {
+  .box {
+    width: 60%;
+    margin: 0 auto;
+  }
+  h3 {
+    text-align: center;
+  }
+  form {
+    text-align: center;
+  }
+  .submit-button {
+    width: 6rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+
 .school-new-explanation {
   padding: 0;
   margin: 1rem 2rem 2rem 2rem;
@@ -24,13 +43,3 @@
   height: 80%;
 }
 
-.school-new {
-  form {
-    text-align: center;
-  }
-  .submit-button {
-    width: 6rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-  }
-}
