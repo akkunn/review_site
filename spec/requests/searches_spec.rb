@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Searches", type: :request do
   let(:school) { FactoryBot.create(:school) }
   let(:other_school) { FactoryBot.create(:school, name: "ランテック") }
+
   describe "#home" do
     it "returns a 200 response" do
       get root_path
@@ -40,10 +41,6 @@ RSpec.describe "Searches", type: :request do
       expect(@schools).to include(school)
       expect(@schools).to include(other_school)
     end
-
-
-
-
 
     # context 'correct parameter' do
     #   it "exists correct school" do
