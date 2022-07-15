@@ -43,3 +43,28 @@
   height: 80%;
 }
 
+
+// スクール情報編集画面
+
+.school-edit {
+  .box {
+    width: 60%;
+    margin: 0 auto;
+  }
+  h3 {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+  }
+  form {
+    text-align: center;
+  }
+  .submit-button {
+    width: 8rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  .button {
+    width: 6rem;
+    color: black;
+  }
+}
