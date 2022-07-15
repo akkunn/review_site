@@ -23,7 +23,7 @@ class SchoolsController < ApplicationController
 
   def school_params
     params.require(:school).
-      permit(:name, :name, :style, :support, :guarantee, :feature,
+      permit(:name, :name, :style, :support, :guarantee, :explanation,
             :language_id, :prefecture_id, :cost_id, :period_id)
   end
 end
