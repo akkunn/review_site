@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Schools", type: :request do
   let(:user) { FactoryBot.create(:user) }
+  let(:school) { FactoryBot.create(:school) }
   let(:school_params) { FactoryBot.attributes_for(:school) }
 
   describe "#index" do
@@ -66,7 +67,7 @@ RSpec.describe "Schools", type: :request do
     context "as an authorized user" do
       before do
         sign_in user
-        get edit_school_path(user)
+        get edit_school_path(school)
       end
 
       it "returns http success" do
@@ -75,12 +76,42 @@ RSpec.describe "Schools", type: :request do
 
       it "exists a correct page" do
         expect(response.body).to include("プログラミングスクールの情報を変更する")
+        expect(response.body).to include(school.name)
       end
     end
 
     context "as a guest" do
       it "redirects to login page" do
-        get edit_school_path(user)
+        get edit_school_path(school)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#update" do
+    context "as an authorized user" do
+      let(:school) { FactoryBot.create(:school) }
+      let(:update_params) { FactoryBot.attributes_for(:school, id: school.id, name: "ポテパン") }
+
+      before do
+        sign_in user
+      end
+
+      it "update a school information" do
+        patch school_path(school), params: { school: update_params }
+        expect(school.reload.name).to eq "ポテパン"
+      end
+    end
+
+    context "as a guest" do
+      it "doesn't a new school" do
+        expect {
+          post schools_path, params: { school: school_params }
+        }.not_to change { School.count }
+      end
+
+      it "redirects to login page" do
+        post schools_path, params: { school: school_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
