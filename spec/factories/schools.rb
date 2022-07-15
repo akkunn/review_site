@@ -4,7 +4,7 @@ FactoryBot.define do
     style { "オンライン" }
     support { "あり" }
     guarantee { "あり" }
-    feature { "難しい" }
+    explanation { "難しい" }
     language_id { 7 }
     prefecture_id { 13 }
     cost_id { 6 }
