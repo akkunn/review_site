@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// スクール一覧
+.school-index {
+  tbody {
+    width: 50%;
+  }
+  th {
+    padding: 0 0.7rem;
+  }
+  td {
+    padding: 0 0.7rem;
+  }
+  h2 {
+    text-align: center;
+  }
+  .button {
+    border-radius: 3rem;
+    background-color: #007bff;
+    width: 50%;
+    border: none;
+    color: white;
+    margin: 2rem auto;
+  }
+}
+
+
 
 // スクール新規登録
 .school-new {

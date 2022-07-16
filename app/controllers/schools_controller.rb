@@ -2,7 +2,18 @@ class SchoolsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit]
 
   def index
-    @schools = School.all
+    @params = params[:signal]
+    if @params == "review-count"
+      @schools_first_group = School.limit(30)
+      @schools_second_group = School.limit(30).offset(30)
+    else
+      @schools_first_group = School.limit(30).offset(30)
+      @schools_second_group = School.limit(30)
+    end
+    # @schools_first_group = School.limit(30)
+    # @schools_second_group = School.limit(30).offset(30)
+    # @schools = [ @schools_first_group, @schools_second_group ]
+    # binding.pry
   end
 
   def new

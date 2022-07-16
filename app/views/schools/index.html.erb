@@ -1,22 +1,57 @@
 <div class="background-blue">
-  <div class="result">
-    < <%= link_to '検索画面に戻る', root_path %>
-    <table>
-      <tr>
-        <th>登録番号</th>
-        <th>スクール名</th>
-      </tr>
+  <div class="school-index">
+    <div class="result">
+      < <%= link_to '検索画面に戻る', root_path %>
+      <table class="flex">
+        <h2>プログラミングスクール一覧</h2>
 
-      <% @schools.each.with_index(1) do |school, i| %>
-        <tr>
-          <td><%= i %></td>
-          <td>
-            <%= school.name %>
-          </td>
-        </tr>
+        <%= link_to '口コミ数順', schools_path(signal: "review-count") %>
+        |
+        <%= link_to '口コミ評価順', schools_path(signal: "review-rating") %>
+        <tbody>
+          <tr>
+            <th>順位</th>
+            <th>スクール名</th>
+            <th>口コミ評価</th>
+            <th>口コミ数</th>
+          </tr>
+
+          <% @schools_first_group.each.with_index(1) do |school, i| %>
+            <tr>
+              <td><%= i %></td>
+              <td>
+                <%= school.name %>
+              </td>
+              <td>口コミ評価</td>
+              <td>口コミ数</td>
+            </tr>
+          <% end %>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <th>順位</th>
+            <th>スクール名</th>
+            <th>口コミ評価</th>
+            <th>口コミ数</th>
+          </tr>
+
+          <% @schools_second_group.each.with_index(1) do |school, i| %>
+            <tr>
+              <td><%= i + 30 %></td>
+              <td>
+                <%= school.name %>
+              </td>
+              <td>口コミ評価</td>
+              <td>口コミ数</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to new_school_path, class: "button" do %>
+        このページに記載されていない<br />
+        プログラミングスクールを新規登録する
       <% end %>
-    </table>
+    </div>
   </div>
 </div>
-
-<%= link_to "登録", new_school_path %>

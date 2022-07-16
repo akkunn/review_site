@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="header-right">
-        <%= link_to "スクール一覧", schools_path, class: "button school-list-button" %>
+        <%= link_to "スクール一覧", schools_path(signal: "review-count"), class: "button school-list-button" %>
         <%= link_to "ログイン", new_user_session_path, class: "button login-button" %>
         <%= link_to "新規登録", new_user_registration_path, class: "button signup-button" %>
       </div>

@@ -21,7 +21,7 @@ School.create(
 15.times do |i|
   name = Faker::University.name
   School.create(
-    name: "#{name} #{ 1 + i }"
+    name: "#{name} #{ 1 + i }",
     style: "通学",
     support: "あり",
     guarantee: "なし",
@@ -36,7 +36,7 @@ end
 15.times do |i|
   name = Faker::University.name
   School.create(
-    name: "#{name} #{ 16 + i }"
+    name: "#{name} #{ 16 + i }",
     style: "オンライン",
     support: "なし",
     guarantee: "あり",
@@ -51,7 +51,7 @@ end
 15.times do |i|
   name = Faker::University.name
   School.create(
-    name: "#{name} #{ 31 + i }"
+    name: "#{name} #{ 31 + i }",
     style: "通学とオンライン",
     support: "あり",
     guarantee: "あり",
@@ -66,7 +66,7 @@ end
 14.times do |i|
   name = Faker::University.name
   School.create(
-    name: "#{name} #{ 46 + i }"
+    name: "#{name} #{ 46 + i }",
     style: "オンライン",
     support: "なし",
     guarantee: "なし",
