@@ -7,8 +7,19 @@ RSpec.describe "Schools", type: :request do
 
   describe "#index" do
     it "return http success" do
-      get schools_path
+      get schools_path(signal: "review-count")
       expect(response).to have_http_status(:success)
+    end
+
+    it "exists all schools" do
+      schools = []
+      5.times do
+        schools << FactoryBot.create(:school)
+      end
+      get schools_path(signal: "review-count")
+      schools.all? do |school|
+        expect(response.body).to include(school.name)
+      end
     end
   end
 
