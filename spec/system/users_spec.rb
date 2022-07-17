@@ -21,19 +21,13 @@ RSpec.describe "Users", type: :system do
 
   scenario "user log in" do
     user = FactoryBot.create(:user)
-
-    visit root_path
-    click_link "ログイン"
-    fill_in "メールアドレス", with: user.email
-    fill_in "パスワード", with: user.password
-    click_button "ログイン"
-    expect(page).to have_content "Signed in successfully."
+    sign_in_as(user)
   end
 
   scenario "user log out" do
     user = FactoryBot.create(:user)
 
-    sign_in(user)
+    sign_in_as(user)
     visit root_path
     click_link "ログアウト"
     expect(page).to have_content "Signed out successfully."
