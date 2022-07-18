@@ -6,8 +6,6 @@ FactoryBot.define do
     teacher { "現場の知識を教えてくれます" }
     compatibility { "両立させるには、かなりの努力が必要です" }
     thought { "難しいけど、自走力がつきます" }
-    # association :user
-    # association :school
     user_id { 1 }
     school_id { 1 }
     curriculum_star { 1.5 }

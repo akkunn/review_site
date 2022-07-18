@@ -62,7 +62,8 @@
 
   <!-- 評価javascript -->
   <script>
-    window.addEventListener('DOMContentLoaded', function(){
+    // window.addEventListener('DOMContentLoaded', function(){
+    window.onload = function(){
       $('#curriculum_star').raty({
         size     : 36,
         starOff:  '<%= asset_path('star-off.png') %>',
@@ -102,7 +103,8 @@
         scoreName: 'review[compatibility_star]',
         half: true,
       });
-    });
+    // });
+    };
   </script>
 
 <% end %>

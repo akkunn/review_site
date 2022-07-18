@@ -1,0 +1,38 @@
+<%= @school.name %>
+<%= @school.style %>
+<%= @school.language.name %>
+<%= @school.prefecture.name %>
+<%= @school.cost.range %>
+<%= @school.period.range %>
+<%= @school.support %>
+<%= @school.guarantee %>
+<%= @school.explanation %>
+
+<% @reviews.each do |review| %>
+  <p>
+    <%= review.name %>
+
+    <% review_star_ary = [review.curriculum_star, review.support_star, review.teacher_star, review.compatibility_star] %>
+    <% new_review_star_ary = review_star_ary.compact %>
+    <% unless new_review_star_ary.nil? %>
+      <% sum_star = 0 %>
+      <% new_review_star_ary.each do |star| %>
+        <% sum_star += star  %>
+      <% end %>
+      <% ave_star = sum_star / new_review_star_ary.size %>
+      <%= float_ave_star = ((ave_star * 2.0).round / 2.0).to_f %>
+    <% end %>
+    <div id='star-rate<%= review.id %>'></div>
+    <script>
+      $('#star-rate<%= review.id %>').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= float_ave_star %>,
+      });
+    </script>
+  </p>
+<% end %>

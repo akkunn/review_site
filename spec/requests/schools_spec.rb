@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Schools", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
+  let!(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
   let(:school_params) { FactoryBot.attributes_for(:school) }
 
   describe "#index" do
@@ -20,6 +21,30 @@ RSpec.describe "Schools", type: :request do
       schools.all? do |school|
         expect(response.body).to include(school.name)
       end
+    end
+  end
+
+  describe "#show" do
+    before do
+      get school_path(school)
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "displays correct school's page" do
+      expect(response.body).to include(school.name)
+      expect(response.body).to include(school.style)
+      expect(response.body).to include(school.language.name)
+      expect(response.body).to include(school.prefecture.name)
+      expect(response.body).to include(school.cost.range)
+      expect(response.body).to include(school.period.range)
+      expect(response.body).to include(school.support)
+      expect(response.body).to include(school.guarantee)
+      expect(response.body).to include(school.explanation)
+      expect(response.body).to include(review.name)
+      expect(response.body).to include('3.5')
     end
   end
 

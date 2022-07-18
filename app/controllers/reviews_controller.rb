@@ -2,7 +2,9 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @reviews = Review.all
+    # binding.pry
+    # @school = School.find(params[:id])
+    # @reviews = Review.all
   end
 
   def show
@@ -13,9 +15,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    id = params[:review][:school_id]
+    @school = School.find(id)
     @review = Review.new(review_params)
     if @review.save
-      redirect_to reviews_path
+      redirect_to school_path(@school)
     else
       render "new"
     end

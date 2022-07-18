@@ -16,6 +16,12 @@ class SchoolsController < ApplicationController
     # binding.pry
   end
 
+  def show
+    @school = School.find(params[:id])
+    @reviews = Review.where(school_id: @school.id)
+
+  end
+
   def new
     @school = School.new
   end
