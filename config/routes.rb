@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/result', to: 'searches#result'
   resources :users, only: [:show, :edit, :update]
   resources :schools
-  resources :reviews, only: [:index, :show, :new]
+  resources :reviews, only: [:index, :show, :new, :create]
 end

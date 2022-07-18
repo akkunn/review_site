@@ -4,5 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "tester#{n}@example.com" }
     password { "password" }
     confirmed_at { Date.today }
+
+    # association :review
   end
 end
