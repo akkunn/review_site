@@ -1,2 +1,30 @@
 <h1>Reviews#new</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
+
+<%= form_with model: @review  do |f| %>
+
+  <%= f.label :name, "口コミ名" %>
+  <%= f.text_field :name, placeholder: "口コミ名を入力" %>
+
+
+  <div id="star">
+    <%= f.label :curriculum_star,'評価' %>
+    <%= f.hidden_field :curriculum_star, id: :curriculum_star %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function(){
+      $('#star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+
+        curriculum_star: 'review[curriculum_star]',
+        half: true,
+      });
+    });
+  </script>
+
+<% end %>
