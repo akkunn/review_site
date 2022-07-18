@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_15_012417) do
+ActiveRecord::Schema.define(version: 2022_07_18_025413) do
+
+  create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "curriculum"
+    t.text "support"
+    t.text "teacher"
+    t.text "compatibility"
+    t.text "thought"
+    t.integer "user_id"
+    t.integer "school_id"
+    t.float "curriculum_star"
+    t.float "support_star"
+    t.float "teacher_star"
+    t.float "compatibility_star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "schools", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
