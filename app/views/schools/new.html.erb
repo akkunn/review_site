@@ -38,18 +38,18 @@
 
           <ul class="school-form-flex-item-right">
             <li><%= f.label :prefecture_id, "都道府県", class: "school-form-label" %></li>
-            <li><%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}) %>
+            <li><%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}) %></li>
           </ul>
 
           <ul class="school-form-flex-item-right">
             <li><%= f.label :guarantee, "転職保証", class: "school-form-label" %></li>
-            <li><%= f.select :guarantee, ['あり', 'なし'], { include_blank: '選択してください'} %>
+            <li><%= f.select :guarantee, ['あり', 'なし'], { include_blank: '選択してください'} %></li>
           </ul>
         </div>
       </div>
       <ul class="school-new-explanation">
         <li><%= f.label :explanation, "説明", class: "school-form-label" %></li>
-        <li><%= f.text_area :explanation, placeholder: "その他の説明を入力"%>
+        <li><%= f.text_area :explanation, placeholder: "その他の説明を入力"%></li>
       </ul>
       <%= f.submit '新規登録', class: "submit-button" %>
     <% end %>

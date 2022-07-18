@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :school do
-    # name { "ポテパンキャンプ" }
     sequence(:name) { |n| "プログラミングスクール#{n}" }
     style { "オンライン" }
     support { "あり" }
