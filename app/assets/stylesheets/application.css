@@ -35,6 +35,19 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h3 {
+  text-align: center;
+}
+
 /* ヘッダー */
 
 header {
