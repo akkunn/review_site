@@ -1,110 +1,116 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
-<h2>口コミ投稿</h2>
-<%= form_with model: @review, local: true do |f| %>
+<div class="review-new background-blue">
+  <div class="review-box">
+    <div class="review-box-content">
+      <h2>口コミ投稿</h2>
+      <%= form_with model: @review, local: true do |f| %>
 
-  <ul>
-    <li><%= f.label :school_id, "スクール名" %></li>
-    <li><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
-  </ul>
+        <ul class="flex">
+          <li><%= f.label :school_id, "スクール名" %></li>
+          <li class="review-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+        </ul>
 
-  <div>
-    <%= f.label :name, "口コミ名" %>
-    <%= f.text_field :name, placeholder: "口コミ名を入力" %>
+        <ul class="flex">
+          <li><%= f.label :name, "口コミタイトル" %></li>
+          <li><%= f.text_field :name, placeholder: "口コミタイトルを入力" %></li>
+        </ul>
+
+        <ul>
+          <%= f.hidden_field :curriculum_star, id: "curriculum-star" %>
+          <div class="flex">
+            <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
+            <li id="curriculum_star"></li>
+          </div>
+          <li><%= f.text_area :curriculum %></li>
+        </ul>
+
+        <ul>
+          <%= f.hidden_field :support_star, id: "support-star" %>
+          <div class="flex">
+            <li><%= f.label :support_star,'サポート体制' %></li>
+            <li id="support_star"></li>
+          </div>
+          <li><%= f.text_area :support %></li>
+        </ul>
+
+        <ul>
+          <%= f.hidden_field :teacher_star, id: "teacher-star" %>
+          <div class="flex">
+            <li><%= f.label :teacher_star,'講師' %></li>
+            <li id="teacher_star"></li>
+          </div>
+          <li><%= f.text_area :teacher %></li>
+        </ul>
+
+        <ul>
+          <%= f.hidden_field :compatibility_star, id: "compatibility-star" %>
+          <div class="flex">
+            <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
+            <li id="compatibility_star"></li>
+          </div>
+          <li><%= f.text_area :compatibility %></li>
+        </ul>
+
+        <ul>
+          <li><%= f.label :thought,'感想/アドバイス' %></li>
+          <li><%= f.text_area :thought %></li>
+        </ul>
+
+        <%= f.hidden_field :user_id, value: current_user.id, id: "user-id"  %>
+
+        <div class="review-new-submit">
+          <%= f.submit '投稿する', class: "submit-button" %>
+          <%= link_to "戻る", :back, class: "button" %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
+<!-- 評価javascript -->
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#curriculum_star').empty();
+    $('#support_star').empty();
+    $('#teacher_star').empty();
+    $('#compatibility_star').empty();
 
-  <div id="curriculum_star">
-    <%= f.label :curriculum_star,'カリキュラム内容' %>
-    <%= f.hidden_field :curriculum_star, id: "curriculum-star" %>
-  </div>
+    $('#curriculum_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
 
-  <div>
-    <%= f.text_area :curriculum %>
-  </div>
+      scoreName: 'review[curriculum_star]',
+      half: true,
+    });
 
-  <div id="support_star">
-    <%= f.label :support_star,'サポート体制' %>
-    <%= f.hidden_field :support_star, id: "support-star" %>
-  </div>
+    $('#support_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
 
-  <div>
-    <%= f.text_area :support %>
-  </div>
+      scoreName: 'review[support_star]',
+      half: true,
+    });
 
+    $('#teacher_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
 
-  <div id="teacher_star">
-    <%= f.label :teacher_star,'講師' %>
-    <%= f.hidden_field :teacher_star, id: "teacher-star" %>
-  </div>
+      scoreName: 'review[teacher_star]',
+      half: true,
+    });
 
-  <div>
-    <%= f.text_area :teacher %>
-  </div>
+    $('#compatibility_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
 
-  <div id="compatibility_star">
-    <%= f.label :compatibility_star,'両立しやすさ' %>
-    <%= f.hidden_field :compatibility_star, id: "compatibility-star" %>
-  </div>
-
-  <div>
-    <%= f.text_area :compatibility %>
-  </div>
-
-  <div>
-    <%= f.label :thought,'感想/アドバイス' %>
-    <%= f.text_area :thought %>
-  </div>
-
-  <%= f.hidden_field :user_id, value: current_user.id, id: "user-id"  %>
-
-
-  <%= f.submit '投稿する', class: "submit-button" %>
-
-  <!-- 評価javascript -->
-  <script>
-    // window.addEventListener('DOMContentLoaded', function(){
-    window.onload = function(){
-      $('#curriculum_star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-
-        scoreName: 'review[curriculum_star]',
-        half: true,
-      });
-
-      $('#support_star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-
-        scoreName: 'review[support_star]',
-        half: true,
-      });
-
-      $('#teacher_star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-
-        scoreName: 'review[teacher_star]',
-        half: true,
-      });
-
-      $('#compatibility_star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-
-        scoreName: 'review[compatibility_star]',
-        half: true,
-      });
-    // });
-    };
-  </script>
-
-<% end %>
+      scoreName: 'review[compatibility_star]',
+      half: true,
+    });
+  });
+</script>
