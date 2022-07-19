@@ -10,7 +10,7 @@
 
 <% @reviews.each do |review| %>
   <p>
-    <%= review.name %>
+    <%= link_to review.name, review_path(review) %>
 
     <% review_star_ary = [review.curriculum_star, review.support_star, review.teacher_star, review.compatibility_star] %>
     <% new_review_star_ary = review_star_ary.compact %>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Reviews", type: :request do
-  # let(:review) { FactoryBot.create(:review) }
+  let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
   let(:user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id) }
@@ -13,12 +13,29 @@ RSpec.describe "Reviews", type: :request do
   #   end
   # end
 
-  # describe "GET /show" do
-  #   it "returns http success" do
-  #     get "/reviews/show"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "#show" do
+    before do
+      get review_path(review)
+    end
+
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "displays correct page" do
+      expect(response.body).to include(review.name)
+      expect(response.body).to include(review.curriculum)
+      expect(response.body).to include(review.curriculum_star.to_s)
+      expect(response.body).to include(review.support)
+      expect(response.body).to include(review.support_star.to_s)
+      expect(response.body).to include(review.teacher)
+      expect(response.body).to include(review.teacher_star.to_s)
+      expect(response.body).to include(review.compatibility)
+      expect(response.body).to include(review.compatibility_star.to_s)
+      expect(response.body).to include(review.thought)
+    end
+
+  end
 
   describe "#new" do
     context "as an authenticated user" do

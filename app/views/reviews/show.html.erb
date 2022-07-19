@@ -1,2 +1,92 @@
 <h1>Reviews#show</h1>
 <p>Find me in app/views/reviews/show.html.erb</p>
+
+<ul>
+  <li><%= @review.name %></li>
+</ul>
+
+<ul>
+  <li>カリキュラム内容</li>
+  <li id="curriculum-star-rate"></li>
+  <li><%= @review.curriculum_star %></li>
+  <li><%= @review.curriculum %></li>
+</ul>
+
+<ul>
+  <li>サポート体制</li>
+  <li id="support-star-rate"></li>
+  <li><%= @review.support_star %></li>
+  <li><%= @review.support %></li>
+</ul>
+
+<ul>
+  <li>講師</li>
+  <li id="teacher-star-rate"></li>
+  <li><%= @review.teacher_star %></li>
+  <li><%= @review.teacher %></li>
+</ul>
+
+<ul>
+  <li>両立しやすさ</li>
+  <li id="compatibility-star-rate"></li>
+  <li><%= @review.compatibility_star %></li>
+  <li><%= @review.compatibility %></li>
+</ul>
+
+<ul>
+  <li>総合満足度</li>
+</ul>
+
+<ul>
+  <li>感想やアドバイス</li>
+  <li><%= @review.thought %></li>
+</ul>
+
+
+    <script>
+      $('#curriculum-star-rate').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= @review.curriculum_star %>,
+      });
+    </script>
+
+    <script>
+      $('#support-star-rate').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= @review.support_star %>,
+      });
+    </script>
+
+    <script>
+      $('#teacher-star-rate').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= @review.teacher_star %>,
+      });
+    </script>
+
+    <script>
+      $('#compatibility-star-rate').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= @review.compatibility_star %>,
+      });
+    </script>
