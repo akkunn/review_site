@@ -35,6 +35,8 @@
 
 <ul>
   <li>総合満足度</li>
+  <li id="ave-star-rate"></li>
+  <%= ave_star(@review) %>
 </ul>
 
 <ul>
@@ -51,7 +53,7 @@
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
         readOnly: true,
-        score: <%= @review.curriculum_star %>,
+        score: <%= @review.curriculum_star %>
       });
     </script>
 
@@ -63,7 +65,7 @@
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
         readOnly: true,
-        score: <%= @review.support_star %>,
+        score: <%= @review.support_star %>
       });
     </script>
 
@@ -75,7 +77,7 @@
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
         readOnly: true,
-        score: <%= @review.teacher_star %>,
+        score: <%= @review.teacher_star %>
       });
     </script>
 
@@ -87,6 +89,18 @@
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
         readOnly: true,
-        score: <%= @review.compatibility_star %>,
+        score: <%= @review.compatibility_star %>
+      });
+    </script>
+
+    <script>
+      $('#ave-star-rate').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= ave_star(@review) %>
       });
     </script>
