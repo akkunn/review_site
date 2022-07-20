@@ -21,8 +21,10 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     ave = ave_star(@review)
     @review.average_star = ave
-    # binding.pry
     if @review.save
+      all_reviews_ave_score = all_reviews_ave_star(@school)
+      @school.review_ave_score = all_reviews_ave_score
+      @school.save
       redirect_to school_path(@school)
     else
       render "new"
