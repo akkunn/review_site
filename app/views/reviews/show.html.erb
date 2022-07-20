@@ -60,7 +60,7 @@
             <li class="review-show-ave-label"><%= f.label '総合満足度' %></li>
             <div class="flex review-show-ave-box">
               <li id="ave-star-rate"></li>
-              <li class="review-show-star"><%= ave_star(@review) %>点</li>
+              <li class="review-show-star"><%= @review.average_star %>点</li>
             </div>
           </ul>
         </div>

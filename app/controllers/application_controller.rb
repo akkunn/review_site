@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :search_school
 
+  include ReviewsHelper
+
   protected
 
   def configure_permitted_parameters

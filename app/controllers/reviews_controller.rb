@@ -19,6 +19,9 @@ class ReviewsController < ApplicationController
     id = params[:review][:school_id]
     @school = School.find(id)
     @review = Review.new(review_params)
+    ave = ave_star(@review)
+    @review.average_star = ave
+    # binding.pry
     if @review.save
       redirect_to school_path(@school)
     else
@@ -30,6 +33,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).
-      permit(:name, :curriculum, :support, :teacher, :compatibility, :thought, :user_id, :school_id, :curriculum_star, :support_star, :teacher_star, :compatibility_star)
+      permit(:name, :curriculum, :support, :teacher, :compatibility, :thought, :user_id, :school_id, :curriculum_star, :support_star, :teacher_star, :compatibility_star, :average_star)
   end
 end
