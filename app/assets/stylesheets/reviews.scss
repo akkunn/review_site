@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 口コミ投稿
+// 口コミ投稿 口コミ詳細 共通
 
-.review-new {
+.review-new,.review-show {
   padding: 3rem 0;
   label {
     font-size: 1.1rem;
@@ -50,6 +50,7 @@
   .button {
     width: 50%;
     margin-top: 2rem;
+    color: black;
   }
 }
 
@@ -65,4 +66,65 @@
 .review-box-content {
   width: 80%;
   margin: 0 auto;
+}
+
+// 口コミ詳細
+
+.review-show {
+  h3 {
+    text-align: left;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    padding-bottom: 1rem;
+  }
+  .review-box-content {
+    width: 90%;
+  }
+  ul {
+    width: 85%;
+    margin: 1.3rem auto 1.5rem auto;
+  }
+  .review-show-border {
+    border-bottom: 1px solid rgb(189, 189, 189);
+  }
+  .button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    width: 40%;
+  }
+}
+
+.review-show-text {
+  border: 1px solid black;
+  display: block;
+  width: 100%;
+  height: 5rem;
+  font-size: 1rem;
+  padding: 0.3rem;
+  box-sizing: border-box;
+  margin-top: 1rem;
+}
+
+.review-school-name {
+  font-size: 1.2rem;
+}
+
+.review-show-star {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.review-show-ave-label {
+  margin: 0 auto 1rem auto;
+  text-align: center;
+  label {
+    font-size: 1.3rem;
+  }
+}
+
+.review-show-ave-box {
+  justify-content: center;
+  .review-show-star {
+    font-size: 1.4rem;
+  }
 }
