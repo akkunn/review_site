@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
     if @review.save
       all_reviews_ave_score = all_reviews_ave_star(@school)
       @school.review_ave_score = all_reviews_ave_score
+      @school.review_count = @school.reviews.count
       @school.save
       redirect_to school_path(@school)
     else

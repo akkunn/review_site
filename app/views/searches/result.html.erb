@@ -7,7 +7,7 @@
     ) %>
     |
     <%= sort_link(
-      @q, :review_ave_score, "口コミ数順"
+      @q, :review_count, "口コミ数順"
     ) %>
     <table>
       <tr>
@@ -28,7 +28,11 @@
             <td><%= school.review_ave_score %>点</td>
           <% end %>
 
-          <td><%= school.reviews.count %></td>
+          <% if school.review_count == nil %>
+            <td>0</td>
+          <% else %>
+            <td><%= school.review_count %></td>
+          <% end %>
         </tr>
       <% end %>
     </table>
