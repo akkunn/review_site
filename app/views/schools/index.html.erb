@@ -1,73 +1,49 @@
 <div class="background-blue">
   <div class="school-index">
     <div class="result">
-      < <%= link_to '検索画面に戻る', root_path %>
-      <table class="flex">
+      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
+
         <h2>プログラミングスクール一覧</h2>
 
-        <%= link_to '口コミ評価順', schools_path(signal: "review-rating") %>
+
+        <%= link_to '口コミ評価順', schools_path(signal: "review-score") %>
         |
         <%= link_to '口コミ数順', schools_path(signal: "review-count") %>
+
+      <table>
         <tbody>
-          <tr>
+          <tr class="thead">
             <th class="school-index-number"></th>
             <th class="school-index-name">スクール名</th>
             <th class="school-index-score">口コミ評価</th>
             <th class="school-index-count">口コミ数</th>
           </tr>
 
-          <% @schools_first_group.each.with_index(1) do |school, i| %>
+          <% @schools.each.with_index(1) do |school, i| %>
             <tr>
               <td class="school-index-number"><%= i %></td>
-              <td class="school-index-name">
-                <%= school.name %>
+              <td>
+                <%= link_to school.name, school_path(school) %>
               </td>
               <% if school.review_ave_score == nil %>
-                <td class="school-index-score">なし</td>
+                <td>なし</td>
               <% else %>
-                <td class="school-index-score"><%= school.review_ave_score %>点</td>
+                <td><%= school.review_ave_score %>点</td>
               <% end %>
 
               <% if school.review_count == nil %>
-                <td class="school-index-count">0</td>
+                <td>0</td>
               <% else %>
-                <td class="school-index-count"><%= school.review_count %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <th class="school-index-number"></th>
-            <th class="school-index-name">スクール名</th>
-            <th class="school-index-score">口コミ評価</th>
-            <th class="school-index-count">口コミ数</th>
-          </tr>
-
-          <% @schools_second_group.each.with_index(1) do |school, i| %>
-            <tr>
-              <td class="school-index-number"><%= i + 30 %></td>
-              <td class="school-index-name">
-                <%= school.name %>
-              </td>
-              <% if school.review_ave_score == nil %>
-                <td class="school-index-score">なし</td>
-              <% else %>
-                <td class="school-index-score"><%= school.review_ave_score %>点</td>
-              <% end %>
-
-              <% if school.review_count == nil %>
-                <td class="school-index-count">0</td>
-              <% else %>
-                <td class="school-index-count"><%= school.review_count %></td>
+                <td><%= school.review_count %></td>
               <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <div class="paginate">
+        <%= will_paginate %>
+      </div>
       <%= link_to new_school_path, class: "button" do %>
-        このページに記載されていない<br />
         プログラミングスクールを新規登録する
       <% end %>
     </div>

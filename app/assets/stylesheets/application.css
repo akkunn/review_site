@@ -48,6 +48,11 @@ h2,h3 {
   text-align: center;
 }
 
+.link-underline {
+  text-decoration: underline;
+  color: #551A8B;
+}
+
 /* ヘッダー */
 
 header {

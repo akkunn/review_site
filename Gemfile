@@ -12,6 +12,7 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'dotenv-rails'
+gem 'will_paginate'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
@@ -60,7 +61,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'launchy'
-  gem 'faker'
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
