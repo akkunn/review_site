@@ -2,6 +2,13 @@
   <div class="result">
     < <%= link_to '検索画面に戻る', root_path %>
 
+    <%= sort_link(
+      @q, :review_ave_score, "口コミ評価順"
+    ) %>
+    |
+    <%= sort_link(
+      @q, :review_ave_score, "口コミ数順"
+    ) %>
     <table>
       <tr>
         <th>順位</th>
@@ -13,14 +20,15 @@
       <% @schools.each.with_index(1) do |school, i| %>
         <tr>
           <td><%= i %></td>
+          <td><%= link_to school.name, school_path(school)  %></td>
 
-            <td>
-              <%= link_to school.name, school_path(school)  %>
+          <% if school.review_ave_score == nil %>
+            <td>なし</td>
+          <% else %>
+            <td><%= school.review_ave_score %>点</td>
+          <% end %>
 
-            </td>
-
-          <td>口コミ評価</td>
-          <td>口コミ数</td>
+          <td><%= school.reviews.count %></td>
         </tr>
       <% end %>
     </table>
