@@ -4,16 +4,15 @@ class SchoolsController < ApplicationController
   def index
     @params = params[:signal]
     if @params == "review-count"
+      @schools_first_group = School.order(review_count: :desc, review_ave_score: :desc).limit(30)
+      @schools_second_group = School.order(review_count: :desc, review_ave_score: :desc).limit(30).offset(30)
+    elsif @params == "review-rating"
+      @schools_first_group = School.order(review_ave_score: :desc, review_count: :desc).limit(30)
+      @schools_second_group = School.order(review_ave_score: :desc, review_count: :desc).limit(30).offset(30)
+    else
       @schools_first_group = School.limit(30)
       @schools_second_group = School.limit(30).offset(30)
-    else
-      @schools_first_group = School.limit(30).offset(30)
-      @schools_second_group = School.limit(30)
     end
-    # @schools_first_group = School.limit(30)
-    # @schools_second_group = School.limit(30).offset(30)
-    # @schools = [ @schools_first_group, @schools_second_group ]
-    # binding.pry
   end
 
   def show

@@ -5,45 +5,63 @@
       <table class="flex">
         <h2>プログラミングスクール一覧</h2>
 
-        <%= link_to '口コミ数順', schools_path(signal: "review-count") %>
-        |
         <%= link_to '口コミ評価順', schools_path(signal: "review-rating") %>
+        |
+        <%= link_to '口コミ数順', schools_path(signal: "review-count") %>
         <tbody>
           <tr>
-            <th>順位</th>
-            <th>スクール名</th>
-            <th>口コミ評価</th>
-            <th>口コミ数</th>
+            <th class="school-index-number"></th>
+            <th class="school-index-name">スクール名</th>
+            <th class="school-index-score">口コミ評価</th>
+            <th class="school-index-count">口コミ数</th>
           </tr>
 
           <% @schools_first_group.each.with_index(1) do |school, i| %>
             <tr>
-              <td><%= i %></td>
-              <td>
+              <td class="school-index-number"><%= i %></td>
+              <td class="school-index-name">
                 <%= school.name %>
               </td>
-              <td>口コミ評価</td>
-              <td>口コミ数</td>
+              <% if school.review_ave_score == nil %>
+                <td class="school-index-score">なし</td>
+              <% else %>
+                <td class="school-index-score"><%= school.review_ave_score %>点</td>
+              <% end %>
+
+              <% if school.review_count == nil %>
+                <td class="school-index-count">0</td>
+              <% else %>
+                <td class="school-index-count"><%= school.review_count %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
 
         <tbody>
           <tr>
-            <th>順位</th>
-            <th>スクール名</th>
-            <th>口コミ評価</th>
-            <th>口コミ数</th>
+            <th class="school-index-number"></th>
+            <th class="school-index-name">スクール名</th>
+            <th class="school-index-score">口コミ評価</th>
+            <th class="school-index-count">口コミ数</th>
           </tr>
 
           <% @schools_second_group.each.with_index(1) do |school, i| %>
             <tr>
-              <td><%= i + 30 %></td>
-              <td>
+              <td class="school-index-number"><%= i + 30 %></td>
+              <td class="school-index-name">
                 <%= school.name %>
               </td>
-              <td>口コミ評価</td>
-              <td>口コミ数</td>
+              <% if school.review_ave_score == nil %>
+                <td class="school-index-score">なし</td>
+              <% else %>
+                <td class="school-index-score"><%= school.review_ave_score %>点</td>
+              <% end %>
+
+              <% if school.review_count == nil %>
+                <td class="school-index-count">0</td>
+              <% else %>
+                <td class="school-index-count"><%= school.review_count %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
