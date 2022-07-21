@@ -92,5 +92,32 @@ RSpec.describe "Reviews", type: :request do
     end
   end
 
+  describe "#edit" do
+    context "as an authenticated user" do
+      before do
+        sign_in user
+        get edit_review_path(review)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
 
 end
+
+    #   it "exists a correct page" do
+    #     expect(response.body).to include("口コミ投稿")
+    #     expect(response.body).to include(user.id.to_s)
+    #   end
+
+    # context "as a guest" do
+    #   before do
+    #     get new_review_path
+    #   end
+
+    #   it "redirect to login page" do
+    #     expect(response).to redirect_to new_user_session_path
+    #   end
+    # end
