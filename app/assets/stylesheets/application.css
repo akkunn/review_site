@@ -51,6 +51,8 @@ h2,h3 {
 .link-underline {
   text-decoration: underline;
   color: #551A8B;
+  display: inline-block;
+  padding-top: 0.5rem;
 }
 
 /* ヘッダー */

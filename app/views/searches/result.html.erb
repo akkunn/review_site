@@ -1,41 +1,55 @@
 <div class="background-blue">
-  <div class="result">
-    < <%= link_to '検索画面に戻る', root_path %>
+  <div class="school-index">
+    <div class="result">
+      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
 
-    <%= sort_link(
-      @q, :review_ave_score, "口コミ評価順"
-    ) %>
-    |
-    <%= sort_link(
-      @q, :review_count, "口コミ数順"
-    ) %>
-    <table>
-      <tr>
-        <th>順位</th>
-        <th>スクール名</th>
-        <th>口コミ評価</th>
-        <th>口コミ数</th>
-      </tr>
+      <h2>検索結果 : <%= @schools.count %>件</h2>
 
-      <% @schools.each.with_index(1) do |school, i| %>
-        <tr>
-          <td><%= i %></td>
-          <td><%= link_to school.name, school_path(school)  %></td>
 
-          <% if school.review_ave_score == nil %>
-            <td>なし</td>
-          <% else %>
-            <td><%= school.review_ave_score %>点</td>
-          <% end %>
+      <%= sort_link(@q, :review_ave_score, "口コミ評価順") %>
+      |
+      <%= sort_link(@q, :review_count, "口コミ数順") %>
 
-          <% if school.review_count == nil %>
-            <td>0</td>
-          <% else %>
-            <td><%= school.review_count %></td>
-          <% end %>
+      <table>
+        <tr class="thead">
+          <th class="school-index-number"></th>
+          <th class="school-index-name">スクール名</th>
+          <th class="school-index-score">口コミ評価</th>
+          <th class="school-index-count">口コミ数</th>
         </tr>
+
+        <% @schools.each.with_index(1) do |school, i| %>
+          <tr>
+            <td class="school-index-number">
+              <% if (params[:page]).nil? %>
+                <%= i %>
+              <% else %>
+                <%= (params[:page].to_i - 1) * 30 + i %>
+              <% end %>
+            </td>
+            <td><%= link_to school.name, school_path(school)  %></td>
+
+            <% if school.review_ave_score == nil %>
+              <td>なし</td>
+            <% else %>
+              <td><%= school.review_ave_score %>点</td>
+            <% end %>
+
+            <% if school.review_count == nil %>
+              <td>0</td>
+            <% else %>
+              <td><%= school.review_count %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+
+      <% unless (will_paginate @schools).nil? %>
+        <div class="paginate">
+          <%= will_paginate @schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
       <% end %>
-    </table>
-    <%= link_to "登録", new_school_path %>
+      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
+    </div>
   </div>
 </div>

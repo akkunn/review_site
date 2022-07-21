@@ -9,7 +9,8 @@ class SearchesController < ApplicationController
   end
 
   def result
-    @schools = @q.result
+    # binding.pry
+    @schools = @q.result.paginate(page: params[:page])
   end
 
   private
