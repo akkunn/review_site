@@ -1,9 +1,9 @@
 <div class="background-blue">
   <div class="school-index">
-    <div class="result">
+    <div class="school-table-frame">
       < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
 
-        <h2>プログラミングスクール一覧</h2>
+        <h2>プログラミングスクール一覧 : <%= @schools.count %>件</h2>
 
 
         <%= link_to '口コミ評価順', schools_path(signal: "review-score") %>
@@ -12,19 +12,27 @@
 
       <table>
         <tbody>
-          <tr class="thead">
-            <th class="school-index-number"></th>
-            <th class="school-index-name">スクール名</th>
-            <th class="school-index-score">口コミ評価</th>
-            <th class="school-index-count">口コミ数</th>
+          <tr class="school-table-head">
+            <th class="school-table-number"></th>
+            <th class="school-table-name">スクール名</th>
+            <th class="school-table-score">口コミ評価</th>
+            <th class="school-table-count">口コミ数</th>
           </tr>
 
           <% @schools.each.with_index(1) do |school, i| %>
             <tr>
-              <td class="school-index-number"><%= i %></td>
+              <td class="school-table-number">
+                <% if (params[:page]).nil? %>
+                  <%= i %>
+                <% else %>
+                  <%= (params[:page].to_i - 1) * 30 + i %>
+                <% end %>
+              </td>
+
               <td>
                 <%= link_to school.name, school_path(school) %>
               </td>
+
               <% if school.review_ave_score == nil %>
                 <td>なし</td>
               <% else %>
@@ -41,8 +49,9 @@
         </tbody>
       </table>
       <div class="paginate">
-        <%= will_paginate %>
+        <%= will_paginate :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
       </div>
+      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
       <%= link_to new_school_path, class: "button" do %>
         プログラミングスクールを新規登録する
       <% end %>

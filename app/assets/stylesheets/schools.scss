@@ -2,17 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// スクール一覧
-.school-index {
-  padding: 0 0 2rem 0;
-  tbody {
-    a {
-      color: black;
-      &:hover {
-        opacity: 0.5;
-      }
-    }
+
+
+// 検索結果 スクール一覧 共通
+.school-table-frame {
+  width: 80%;
+  margin: 0 auto;
+  table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
   }
+  th,td {
+    border: 1px solid black;
+    text-align: center;
+  }
+}
+
+.school-index, .search-result {
+  padding: 0 0 2rem 0;
   tr {
     height: 3rem;
   }
@@ -24,37 +33,45 @@
     font-size: 1.1rem;
     padding: 0 0.4rem;
   }
+  .school-table-head {
+    height: 4rem;
+    background-color: #b5e3b5;
+  }
+  tbody {
+    a {
+      color: black;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
   .button {
     border-radius: 3rem;
     background-color: #007bff;
     width: 40%;
     border: none;
     color: white;
-    margin: 2rem auto 0 auto;
-  }
-  .thead {
-    height: 4rem;
-    background-color: #b5e3b5;
+    margin: 1rem auto 0 auto;
   }
 }
 
-.school-index-number {
+.school-table-number {
   width: 2rem;
   background-color: #b5e3b5;
 }
 
-.school-index-name {
+.school-table-name {
   width: 20rem;
 }
 
-.school-index-score, .school-index-count  {
+.school-table-score, .school-table-count  {
   width: 5rem;
 }
 
 .paginate {
   background-color: white;
   border: 1px solid black;
-  width: 18rem;
+  width: 16rem;
   text-align: center;
   margin: 1rem auto 0 auto;
   height: 2rem;
@@ -64,7 +81,7 @@
   a, em {
     color: #007bff;
     border-right: 1px solid black;
-    padding: 0.5rem 0.7rem 0.5rem 0.2rem;
+    padding: 0.5rem 0.7rem 0.5rem 0.5rem;
   }
   em {
     color: black;

@@ -85,20 +85,3 @@
   font-size: 1rem;
   height: 100%;
 }
-
-// 検索結果
-.result {
-  width: 80%;
-  margin: 0 auto;
-  table{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: white;
-  }
-  th,td {
-    border: 1px solid black;
-    text-align: center;
-  }
-}
-
