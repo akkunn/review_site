@@ -5,6 +5,7 @@ RSpec.describe "Reviews", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id) }
+  let(:update_review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id, curriculum_star: 5) }
 
   # describe "GET /index" do
   #   it "returns http success" do
@@ -102,22 +103,52 @@ RSpec.describe "Reviews", type: :request do
       it "returns http success" do
         expect(response).to have_http_status(:success)
       end
+
+      it "exists a correct page" do
+        expect(response.body).to include("口コミ編集")
+        expect(response.body).to include(school.name)
+        expect(response.body).to include(review.name)
+        expect(response.body).to include(review.curriculum)
+        expect(response.body).to include(review.support)
+        expect(response.body).to include(review.teacher)
+        expect(response.body).to include(review.compatibility)
+        expect(response.body).to include(review.thought)
+      end
+    end
+
+    context "as a guest" do
+      it "redirect to login page" do
+        get edit_review_path(review)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#create" do
+    context "as an authorized user" do
+      let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
+
+      before do
+        sign_in user
+      end
+
+      it "updates a review" do
+        patch review_path(review), params: { review: update_review_params }
+        expect(review.reload.average_star).to eq 4
+      end
+    end
+
+    context "as a guest" do
+      it "doesn't update a review" do
+        patch review_path(review), params: { review: update_review_params }
+        expect(review.reload.average_star).to eq 3.5
+      end
+
+      it "redirect to login page" do
+        patch review_path(review), params: { review: update_review_params }
+        expect(response).to redirect_to new_user_session_path
+      end
     end
   end
 
 end
-
-    #   it "exists a correct page" do
-    #     expect(response.body).to include("口コミ投稿")
-    #     expect(response.body).to include(user.id.to_s)
-    #   end
-
-    # context "as a guest" do
-    #   before do
-    #     get new_review_path
-    #   end
-
-    #   it "redirect to login page" do
-    #     expect(response).to redirect_to new_user_session_path
-    #   end
-    # end

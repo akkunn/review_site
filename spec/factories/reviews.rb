@@ -12,5 +12,6 @@ FactoryBot.define do
     support_star { 2.5 }
     teacher_star { 4 }
     compatibility_star { 5 }
+    average_star { 3.5 }
   end
 end
