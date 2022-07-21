@@ -36,7 +36,26 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  
+  def update
+    id = params[:review][:school_id]
+    @school = School.find(id)
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      ave = ave_star(@review)
+      @review.average_star = ave
+      if @review.save
+        all_reviews_ave_score = all_reviews_ave_star(@school)
+        @school.review_ave_score = all_reviews_ave_score
+        @school.review_count = @school.reviews.count
+        @school.save
+        redirect_to review_path(@review)
+      else
+        render "edit"
+      end
+    else
+      render "edit"
+    end
+  end
 
   private
 

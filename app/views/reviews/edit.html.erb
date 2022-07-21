@@ -90,7 +90,8 @@
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
       half      : true,
-      score: <%= @review.curriculum_star %>
+      score: <%= @review.curriculum_star %>,
+      scoreName: 'review[curriculum_star]'
     });
   });
 </script>
@@ -105,7 +106,8 @@
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
       half      : true,
-      score: <%= @review.support_star %>
+      score: <%= @review.support_star %>,
+      scoreName: 'review[support_star]'
     });
   });
 </script>
@@ -120,7 +122,8 @@
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
       half      : true,
-      score: <%= @review.teacher_star %>
+      score: <%= @review.teacher_star %>,
+      scoreName: 'review[teacher_star]'
     });
   });
 </script>
@@ -135,7 +138,8 @@
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
       half      : true,
-      score: <%= @review.compatibility_star %>
+      score: <%= @review.compatibility_star %>,
+      scoreName: 'review[compatibility_star]'
     });
   });
 </script>
