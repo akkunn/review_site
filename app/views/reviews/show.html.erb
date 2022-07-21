@@ -4,14 +4,14 @@
       <h3><%= @review.name %></h3>
       <%= form_with model: @review, local: true do |f| %>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul class="flex">
             <li><%= f.label :school_id, "スクール名" %></li>
             <li class="review-school-name"><%= @review.school.name %></li>
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
@@ -22,7 +22,7 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :support_star,'サポート体制' %></li>
@@ -33,7 +33,7 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :teacher_star,'講師' %></li>
@@ -44,7 +44,7 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
@@ -55,7 +55,7 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
             <li class="review-show-ave-label"><%= f.label '総合満足度' %></li>
             <div class="flex review-show-ave-box">
@@ -70,7 +70,7 @@
           <li class="review-show-text"><%= @review.thought %></li>
         </ul>
 
-        <div class="review-new-submit">
+        <div class="review-button">
           <%= link_to "戻る", school_path(@review.school), class: "button" %>
         </div>
       <% end %>
@@ -78,7 +78,6 @@
   </div>
 </div>
 <!-- 評価javascript -->
-
 
 <script>
   window.addEventListener("turbolinks:load", function(){
@@ -155,7 +154,7 @@
       starHalf: '<%= asset_path('star-half.png') %>',
       half      : true,
       readOnly: true,
-      score: <%= ave_star(@review) %>
+      score: <%= @review.average_star %>
     });
   });
 </script>

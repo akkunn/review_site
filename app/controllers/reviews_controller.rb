@@ -17,11 +17,11 @@ class ReviewsController < ApplicationController
 
   def create
     id = params[:review][:school_id]
-    @school = School.find(id)
     @review = Review.new(review_params)
     ave = ave_star(@review)
     @review.average_star = ave
     if @review.save
+      @school = School.find(id)
       all_reviews_ave_score = all_reviews_ave_star(@school)
       @school.review_ave_score = all_reviews_ave_score
       @school.review_count = @school.reviews.count
@@ -38,12 +38,12 @@ class ReviewsController < ApplicationController
 
   def update
     id = params[:review][:school_id]
-    @school = School.find(id)
     @review = Review.find(params[:id])
     if @review.update(review_params)
       ave = ave_star(@review)
       @review.average_star = ave
       if @review.save
+        @school = School.find(id)
         all_reviews_ave_score = all_reviews_ave_star(@school)
         @school.review_ave_score = all_reviews_ave_score
         @school.review_count = @school.reviews.count

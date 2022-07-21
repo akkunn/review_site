@@ -4,23 +4,23 @@
       <h2>口コミ編集</h2>
       <%= form_with model: @review, local: true do |f| %>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul class="flex">
             <li><%= f.label :school_id, "スクール名" %></li>
             <li class="review-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul class="flex">
             <li><%= f.label :name, "口コミタイトル" %></li>
             <li><%= f.text_field :name, placeholder: "口コミタイトルを入力" %></li>
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :curriculum_star, id: "curriculum-star" %>
+            <%= f.hidden_field :curriculum_star %>
             <div class="flex">
               <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
               <li id="curriculum_star"></li>
@@ -29,9 +29,9 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :support_star, id: "support-star" %>
+            <%= f.hidden_field :support_star %>
             <div class="flex">
               <li><%= f.label :support_star,'サポート体制' %></li>
               <li id="support_star"></li>
@@ -40,9 +40,9 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :teacher_star, id: "teacher-star" %>
+            <%= f.hidden_field :teacher_star %>
             <div class="flex">
               <li><%= f.label :teacher_star,'講師' %></li>
               <li id="teacher_star"></li>
@@ -51,9 +51,9 @@
           </ul>
         </div>
 
-        <div class="review-show-border">
+        <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :compatibility_star, id: "compatibility-star" %>
+            <%= f.hidden_field :compatibility_star %>
             <div class="flex">
               <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
               <li id="compatibility_star"></li>
@@ -62,16 +62,14 @@
           </ul>
         </div>
 
-
           <ul>
             <li><%= f.label :thought,'感想/アドバイス' %></li>
             <li><%= f.text_area :thought %></li>
           </ul>
 
+        <%= f.hidden_field :user_id, value: current_user.id %>
 
-        <%= f.hidden_field :user_id, value: current_user.id, id: "user-id"  %>
-
-        <div class="review-edit-submit">
+        <div class="review-button">
           <%= f.submit '変更する', class: "submit-button" %>
           <%= link_to "戻る", review_path(@review), class: "button" %>
         </div>
@@ -80,20 +78,37 @@
   </div>
 </div>
 <!-- 評価javascript -->
+
 <script>
   window.addEventListener("turbolinks:load", function(){
     $('#curriculum_star').empty();
-
     $('#curriculum_star').raty({
-      size      : 36,
-      starOff   : '<%= asset_path('star-off.png') %>',
-      starOn    : '<%= asset_path('star-on.png') %>',
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      half      : true,
-      score: <%= @review.curriculum_star %>,
-      scoreName: 'review[curriculum_star]'
+
+      scoreName: 'review[curriculum_star]',
+      half: true
     });
   });
+</script>
+
+<script>
+  if (<%= @review.curriculum_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#curriculum_star').empty();
+      $('#curriculum_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: <%= @review.curriculum_star %>,
+        scoreName: 'review[curriculum_star]'
+      })
+    })
+  }
 </script>
 
 <script>
@@ -105,11 +120,29 @@
       starOff   : '<%= asset_path('star-off.png') %>',
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      half      : true,
-      score: <%= @review.support_star %>,
-      scoreName: 'review[support_star]'
+
+      scoreName: 'review[support_star]',
+      half      : true
     });
   });
+</script>
+
+<script>
+  if (<%= @review.support_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#support_star').empty();
+
+      $('#support_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: <%= @review.support_star %>,
+        scoreName: 'review[support_star]'
+      });
+    });
+  }
 </script>
 
 <script>
@@ -121,11 +154,29 @@
       starOff   : '<%= asset_path('star-off.png') %>',
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      half      : true,
-      score: <%= @review.teacher_star %>,
-      scoreName: 'review[teacher_star]'
+
+      scoreName: 'review[teacher_star]',
+      half      : true
     });
   });
+</script>
+
+<script>
+  if (<%= @review.teacher_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#teacher_star').empty();
+
+      $('#teacher_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: <%= @review.teacher_star %>,
+        scoreName: 'review[teacher_star]'
+      });
+    });
+  }
 </script>
 
 <script>
@@ -137,9 +188,27 @@
       starOff   : '<%= asset_path('star-off.png') %>',
       starOn    : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      half      : true,
-      score: <%= @review.compatibility_star %>,
-      scoreName: 'review[compatibility_star]'
+
+      scoreName: 'review[compatibility_star]',
+      half      : true
     });
   });
+</script>
+
+<script>
+  if (<%= @review.compatibility_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#compatibility_star').empty();
+
+      $('#compatibility_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: <%= @review.compatibility_star %>,
+        scoreName: 'review[compatibility_star]'
+      });
+    });
+  }
 </script>
