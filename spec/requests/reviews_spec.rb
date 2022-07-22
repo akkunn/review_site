@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Reviews", type: :request do
   let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
   let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id) }
   let(:update_review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id, curriculum_star: 5) }
@@ -139,6 +140,17 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+        get edit_review_path(review)
+      end
+
+      it "redirects review show page" do
+        expect(response).to redirect_to review_path(review)
+      end
+    end
+
     context "as a guest" do
       it "redirects to login page" do
         get edit_review_path(review)
@@ -149,8 +161,6 @@ RSpec.describe "Reviews", type: :request do
 
   describe "#update" do
     context "as an authorized user" do
-      let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
-
       before do
         sign_in user
       end
@@ -161,14 +171,31 @@ RSpec.describe "Reviews", type: :request do
       end
     end
 
-    context "as a guest" do
-      it "doesn't update a review" do
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
         patch review_path(review), params: { review: update_review_params }
+      end
+
+      it "doesn't update a review" do
+        expect(review.reload.average_star).to eq 3.5
+      end
+
+      it "redirects review show page" do
+        expect(response).to redirect_to review_path(review)
+      end
+    end
+
+    context "as a guest" do
+      before do
+        patch review_path(review), params: { review: update_review_params }
+      end
+
+      it "doesn't update a review" do
         expect(review.reload.average_star).to eq 3.5
       end
 
       it "redirect to login page" do
-        patch review_path(review), params: { review: update_review_params }
         expect(response).to redirect_to new_user_session_path
       end
     end
