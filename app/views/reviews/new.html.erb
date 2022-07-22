@@ -20,7 +20,7 @@
 
         <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :curriculum_star %>
+            <%= f.hidden_field :curriculum_star, id: "new-curriculum-star" %>
             <div class="flex">
               <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
               <li id="curriculum_star"></li>
@@ -31,7 +31,7 @@
 
         <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :support_star %>
+            <%= f.hidden_field :support_star, id: "new-support-star" %>
             <div class="flex">
               <li><%= f.label :support_star,'サポート体制' %></li>
               <li id="support_star"></li>
@@ -42,7 +42,7 @@
 
         <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :teacher_star %>
+            <%= f.hidden_field :teacher_star, id: "new-teacher-star" %>
             <div class="flex">
               <li><%= f.label :teacher_star,'講師' %></li>
               <li id="teacher_star"></li>
@@ -53,7 +53,7 @@
 
         <div class="review-content-border">
           <ul>
-            <%= f.hidden_field :compatibility_star %>
+            <%= f.hidden_field :compatibility_star, id: "new-compatibility-star" %>
             <div class="flex">
               <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
               <li id="compatibility_star"></li>
@@ -67,7 +67,7 @@
           <li><%= f.text_area :thought %></li>
         </ul>
 
-        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :user_id, value: current_user.id, id: "user-id" %>
 
         <div class="review-button">
           <%= f.submit '投稿する', class: "submit-button" %>
