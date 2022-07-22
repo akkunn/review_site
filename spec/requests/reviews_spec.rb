@@ -15,27 +15,50 @@ RSpec.describe "Reviews", type: :request do
   # end
 
   describe "#show" do
-    before do
-      get review_path(review)
+    context "as an authenticated user" do
+      before do
+        sign_in user
+        get review_path(review)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "displays correct page" do
+        expect(response.body).to include(review.name)
+        expect(response.body).to include(review.curriculum)
+        expect(response.body).to include(review.curriculum_star.to_s)
+        expect(response.body).to include(review.support)
+        expect(response.body).to include(review.support_star.to_s)
+        expect(response.body).to include(review.teacher)
+        expect(response.body).to include(review.teacher_star.to_s)
+        expect(response.body).to include(review.compatibility)
+        expect(response.body).to include(review.compatibility_star.to_s)
+        expect(response.body).to include(review.thought)
+        expect(response.body).to include("編集する")
+      end
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
+    context "as a guest" do
+      before do
+        get review_path(review)
+      end
 
-    it "displays correct page" do
-      expect(response.body).to include(review.name)
-      expect(response.body).to include(review.curriculum)
-      expect(response.body).to include(review.curriculum_star.to_s)
-      expect(response.body).to include(review.support)
-      expect(response.body).to include(review.support_star.to_s)
-      expect(response.body).to include(review.teacher)
-      expect(response.body).to include(review.teacher_star.to_s)
-      expect(response.body).to include(review.compatibility)
-      expect(response.body).to include(review.compatibility_star.to_s)
-      expect(response.body).to include(review.thought)
+      it "displays correct page" do
+        expect(response.body).to include(review.name)
+        expect(response.body).to include(review.curriculum)
+        expect(response.body).to include(review.curriculum_star.to_s)
+        expect(response.body).to include(review.support)
+        expect(response.body).to include(review.support_star.to_s)
+        expect(response.body).to include(review.teacher)
+        expect(response.body).to include(review.teacher_star.to_s)
+        expect(response.body).to include(review.compatibility)
+        expect(response.body).to include(review.compatibility_star.to_s)
+        expect(response.body).to include(review.thought)
+        expect(response.body).not_to include("編集する")
+      end
     end
-
   end
 
   describe "#new" do
@@ -60,7 +83,7 @@ RSpec.describe "Reviews", type: :request do
         get new_review_path
       end
 
-      it "redirect to login page" do
+      it "redirects to login page" do
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -86,7 +109,7 @@ RSpec.describe "Reviews", type: :request do
         }.not_to change { Review.count }
       end
 
-      it "redirect to login page" do
+      it "redirects to login page" do
         post reviews_path, params: { review: review_params }
         expect(response).to redirect_to new_user_session_path
       end
@@ -117,14 +140,14 @@ RSpec.describe "Reviews", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to login page" do
+      it "redirects to login page" do
         get edit_review_path(review)
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
-  describe "#create" do
+  describe "#update" do
     context "as an authorized user" do
       let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
 
