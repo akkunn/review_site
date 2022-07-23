@@ -72,8 +72,4 @@ class ReviewsController < ApplicationController
               :thought, :user_id, :school_id, :curriculum_star,
               :support_star, :teacher_star, :compatibility_star, :average_star)
   end
-
-  def current_user?(user)
-    user && user == current_user
-  end
 end

@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def search_school
     @q = School.ransack(params[:q])
   end
+
+  def current_user?(user)
+    user && user == current_user
+  end
 end
