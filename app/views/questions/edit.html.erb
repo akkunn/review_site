@@ -1,2 +1,43 @@
-<h1>Questions#edit</h1>
-<p>Find me in app/views/questions/edit.html.erb</p>
+<div class="review-edit background-blue">
+  <div class="review-box">
+    <div class="review-box-content">
+      <h2>質問編集</h2>
+      <%= form_with model: @question, local: true do |f| %>
+
+        <div class="review-content-border">
+          <ul class="flex">
+            <li>アイコン</li>
+            <li class="review-name-label"><%= @question.user.name %></li>
+          </ul>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        </div>
+
+        <div class="review-content-border">
+          <ul class="flex">
+            <li><%= f.label :school_id, "スクール名" %></li>
+            <li class="review-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+          </ul>
+        </div>
+
+        <div class="review-content-border">
+          <ul>
+            <li><%= f.label :name, "質問タイトル" %></li>
+            <li><%= f.text_field :name, placeholder: "質問のタイトルを入力してください" %></li>
+          </ul>
+        </div>
+
+        <div class="review-content-border">
+          <ul>
+            <li><%= f.label :content, "質問内容" %></li>
+            <li><%= f.text_area :content, placeholder: "質問を入力してください" %></li>
+          </ul>
+        </div>
+
+        <div class="review-button">
+          <%= f.submit '変更する', class: "submit-button" %>
+          <%= link_to "戻る", question_path(@question), class: "button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

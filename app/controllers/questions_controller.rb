@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @questions = Question.all
@@ -26,6 +26,23 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
+    unless current_user?(@question.user)
+      redirect_to question_path(@question)
+    end
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if current_user?(@question.user)
+      if @question.update(question_params)
+        redirect_to questions_path
+      else
+        render "edit"
+      end
+    else
+      redirect_to question_path(@question)
+    end
   end
 
   private

@@ -6,6 +6,7 @@ RSpec.describe "Questions", type: :request do
   let(:school) { FactoryBot.create(:school) }
   let(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
   let(:question_params) { FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id) }
+  let(:update_question_params) { FactoryBot.attributes_for(:question, name: "転職活動について", user_id: user.id, school_id: school.id) }
 
   describe "#index" do
     it "returns http success" do
@@ -16,7 +17,7 @@ RSpec.describe "Questions", type: :request do
 
   describe "#show" do
     it "returns http success" do
-      get question_path(1)
+      get question_path(question)
       expect(response).to have_http_status(:success)
     end
   end
@@ -71,13 +72,97 @@ RSpec.describe "Questions", type: :request do
         expect(response).to redirect_to new_question_path
       end
     end
-  end
 
-  describe "#edit" do
-    it "returns http success" do
-      get edit_question_path(1)
-      expect(response).to have_http_status(:success)
+    context "as a guest" do
+      before do
+        post questions_path, params: { question: question_params }
+      end
+
+      it "doesn't add a new question" do
+        expect {
+          post questions_path, params: { question: question_params }
+        }.not_to change { Question.count }
+      end
+
+      it "redirects to login page" do
+        expect(response).to redirect_to new_user_session_path
+      end
     end
   end
 
+  describe "#edit" do
+    context "as an authenticated user" do
+      before do
+        sign_in user
+        get edit_question_path(question)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "displays a correct page" do
+        expect(response.body).to include(user.name)
+        expect(response.body).to include(question.name)
+        expect(response.body).to include(question.content)
+      end
+    end
+
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+        get edit_question_path(question)
+      end
+
+      it "redirects to question show page" do
+        expect(response).to redirect_to question_path(question)
+      end
+    end
+
+    context "as a guest" do
+      it "redirects to login page" do
+        get edit_question_path(question)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#update" do
+    context "as an authorized user" do
+      it "updates a question" do
+        sign_in user
+        patch question_path(question), params: { question: update_question_params }
+        expect(question.reload.name).to eq "転職活動について"
+      end
+    end
+
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+        patch question_path(question), params: { question: update_question_params }
+      end
+
+      it "doesn't update a question" do
+        expect(question.reload.name).to eq "転職できますか？"
+      end
+
+      it "redirects to question show page" do
+        expect(response).to redirect_to question_path(question)
+      end
+    end
+
+    context "as a guest" do
+      before do
+        patch question_path(question), params: { question: update_question_params }
+      end
+
+      it "doesn't update a question" do
+        expect(question.reload.name).to eq "転職できますか？"
+      end
+
+      it "redirects to login page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
 end
