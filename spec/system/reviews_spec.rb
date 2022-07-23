@@ -5,6 +5,7 @@ RSpec.describe "Reviews", type: :system do
   let!(:other_school) { FactoryBot.create(:school) }
   let(:user) { FactoryBot.create(:user) }
   let!(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
+
   before do
     driven_by(:rack_test)
   end

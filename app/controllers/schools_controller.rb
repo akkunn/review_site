@@ -4,27 +4,19 @@ class SchoolsController < ApplicationController
   def index
     @params = params[:signal]
     if @params == "review-count"
-      @schools = School.paginate(page: params[:page]).order(review_count: :desc, review_ave_score: :desc)
+      @schools = School.paginate(page: params[:page]).order(review_count: :desc,
+                                                            review_ave_score: :desc)
     elsif @params == "review-score"
-      @schools = School.paginate(page: params[:page]).order(review_ave_score: :desc, review_count: :desc)
+      @schools = School.paginate(page: params[:page]).order(review_ave_score: :desc,
+                                                            review_count: :desc)
     else
       @schools = School.paginate(page: params[:page])
     end
-    #   @schools_first_group = School.order(review_count: :desc, review_ave_score: :desc).limit(30)
-    #   @schools_second_group = School.order(review_count: :desc, review_ave_score: :desc).limit(30).offset(30)
-    # elsif @params == "review-rating"
-    #   @schools_first_group = School.order(review_ave_score: :desc, review_count: :desc).limit(30)
-    #   @schools_second_group = School.order(review_ave_score: :desc, review_count: :desc).limit(30).offset(30)
-    # else
-    #   @schools_first_group = School.limit(30)
-    #   @schools_second_group = School.limit(30).offset(30)
-    # end
   end
 
   def show
     @school = School.find(params[:id])
     @reviews = Review.where(school_id: @school.id)
-
   end
 
   def new

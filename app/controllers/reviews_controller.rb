@@ -68,7 +68,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).
-      permit(:name, :curriculum, :support, :teacher, :compatibility, :thought, :user_id, :school_id, :curriculum_star, :support_star, :teacher_star, :compatibility_star, :average_star)
+      permit(:name, :curriculum, :support, :teacher, :compatibility,
+              :thought, :user_id, :school_id, :curriculum_star,
+              :support_star, :teacher_star, :compatibility_star, :average_star)
   end
 
   def current_user?(user)

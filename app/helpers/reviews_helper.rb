@@ -1,6 +1,9 @@
 module ReviewsHelper
   def ave_star(review)
-    review_star_ary = [review.curriculum_star, review.support_star, review.teacher_star, review.compatibility_star]
+    review_star_ary = [
+      review.curriculum_star, review.support_star,
+      review.teacher_star, review.compatibility_star,
+    ]
     new_review_star_ary = review_star_ary.compact
     if new_review_star_ary.size != 0
       sum_star = 0
