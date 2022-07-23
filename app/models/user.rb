@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   has_many :user_schools, dependent: :destroy
   has_many :schools, through: :user_schools
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   accepts_nested_attributes_for :user_schools, allow_destroy: true
 
