@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :schools, through: :user_schools
   has_many :reviews, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_one_attached :image
 
   accepts_nested_attributes_for :user_schools, allow_destroy: true
 
