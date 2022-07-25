@@ -3,7 +3,7 @@
     <div class="back-link">< <%= link_to '口コミ一覧に戻る', school_path(@questions.first.school_id), class: "link-underline" %></div>
     <div class="question-index-button"><%= link_to '質問する', new_question_path, class: "button" %></div>
   </div>
-  <div class="question-index-content">
+  <div class="question-content">
     <h2><%= @questions.first.school.name %>質問一覧 : <%= @questions.count %>件</h2>
 
     <% @questions.each do |question| %>

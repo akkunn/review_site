@@ -8,8 +8,8 @@
   width: 4rem;
 }
 
-// 質問一覧
-.question-index {
+// 質問一覧 質問詳細 共通
+.question-index, .question-show {
   padding: 0 0 2rem 0;
   h2 {
     margin: 2rem 0 3rem 0;
@@ -17,14 +17,14 @@
   img {
     display: block;
   }
-  .question-index-content {
+  .question-content {
     width: 60%;
     margin: 0 auto;
   }
   .question-box {
+    margin: 2rem 0 0 0;
     border: 1px solid #CCCCCC;
     padding: 0.5rem 0.7rem;
-    margin: 2rem 0 0 0;
     background-color: white;
     border-radius: 0.25rem;
   }
@@ -34,7 +34,6 @@
   .flex {
     align-items: center;
     height: 1.9rem;
-
     li {
       &:last-child {
         margin-left: auto;
@@ -75,7 +74,6 @@
   }
 }
 
-
 // 質問一覧
 
 .question-index-head-flex {
@@ -85,8 +83,30 @@
 .question-index-button {
   margin: 2rem 4rem 0 0;
   width: 12%;
-
 }
+
+// 質問詳細
+
+.question-show {
+  .question-box {
+    margin: 0;
+  }
+  .question-name {
+    margin-bottom: 0;
+  }
+}
+
+.rotateY180 {
+  display: inline-block;     /* インラインブロック化 */
+  transform: rotateY( 180deg );
+  -moz-transform:    rotateY( 180deg );  /* Firefox用 */
+  -webkit-transform: rotateY( 180deg );  /* Chrome,Safari,新しいOpera用 */
+  -o-transform:      rotateY( 180deg );  /* 古いOpera用 */
+  -ms-transform:     rotateY( 180deg );  /* IE9用 */
+}
+
+
+
 
 // 質問新規登録 質問編集
 
