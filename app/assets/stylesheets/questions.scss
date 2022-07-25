@@ -2,17 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 新規登録
+// 共通
 
 .user-icon {
   width: 4rem;
 }
 
+// 新規登録
+
 .question-new {
   .question-school-name {
     font-size: 1.4rem;
   }
-  .review-content-border {
+  .review-and-question-content-border {
     .flex {
       li {
         &:first-child {
@@ -24,7 +26,6 @@
       }
     }
     select {
-      width: 100%;
       font-size: 1.1rem;
       height: 2rem;
     }

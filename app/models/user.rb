@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_one_attached :image
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   accepts_nested_attributes_for :user_schools, allow_destroy: true
 

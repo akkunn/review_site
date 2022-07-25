@@ -1,17 +1,17 @@
 <div class="review-show background-blue">
-  <div class="review-box">
-    <div class="review-box-content">
+  <div class="review-and-question-box">
+    <div class="review-and-question-box-content">
       <h3><%= @review.name %></h3>
       <%= form_with model: @review, local: true do |f| %>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul class="flex">
             <li><%= f.label :school_id, "スクール名" %></li>
             <li class="review-school-name"><%= @review.school.name %></li>
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
@@ -22,7 +22,7 @@
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :support_star,'サポート体制' %></li>
@@ -33,7 +33,7 @@
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :teacher_star,'講師' %></li>
@@ -44,7 +44,7 @@
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <div class="flex">
               <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
@@ -55,7 +55,7 @@
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <li class="review-show-ave-label"><%= f.label '総合満足度' %></li>
             <div class="flex review-show-ave-box">
@@ -70,7 +70,7 @@
           <li class="review-show-text"><%= @review.thought %></li>
         </ul>
 
-        <div class="review-button">
+        <div class="review-and-question-button">
           <% if user_signed_in? && (current_user == @review.user) %>
             <%= link_to "編集する", edit_review_path(@review), class: "button edit-button" %>
           <% end %>
