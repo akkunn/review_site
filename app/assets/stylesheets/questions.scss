@@ -10,7 +10,7 @@
 
 // 新規登録
 
-.question-new {
+.question-new, .question-edit {
   .question-school-name {
     font-size: 1.4rem;
   }
@@ -46,4 +46,9 @@
     font-size: 1.1rem;
     padding: 0.3rem 0.5rem;
   }
+}
+
+// 質問編集
+.question-name-label {
+  font-size: 1.4rem;
 }

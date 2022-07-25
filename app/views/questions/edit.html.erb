@@ -1,39 +1,42 @@
-<div class="review-edit background-blue">
-  <div class="review-box">
-    <div class="review-box-content">
+<div class="question-edit background-blue">
+  <div class="review-and-question-box">
+    <div class="review-and-question-box-content">
       <h2>質問編集</h2>
       <%= form_with model: @question, local: true do |f| %>
 
-        <div class="review-content-border">
-          <ul class="flex">
-            <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
-            <li class="review-name-label"><%= @question.user.name %></li>
+        <div class="review-and-question-content-border">
+          <ul class="flex ul-icon">
+            <% if @question.user.image.nil? %>
+            <% else %>
+              <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
+            <% end %>
+            <li class="question-name-label"><%= @question.user.name %></li>
           </ul>
           <%= f.hidden_field :user_id, value: current_user.id %>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul class="flex">
             <li><%= f.label :school_id, "スクール名" %></li>
-            <li class="review-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+            <li><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div class="review-and-question-content-border">
           <ul>
             <li><%= f.label :name, "質問タイトル" %></li>
             <li><%= f.text_field :name, placeholder: "質問のタイトルを入力してください" %></li>
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div>
           <ul>
             <li><%= f.label :content, "質問内容" %></li>
             <li><%= f.text_area :content, placeholder: "質問を入力してください" %></li>
           </ul>
         </div>
 
-        <div class="review-button">
+        <div class="review-and-question-button">
           <%= f.submit '変更する', class: "submit-button" %>
           <%= link_to "戻る", question_path(@question), class: "button" %>
         </div>
