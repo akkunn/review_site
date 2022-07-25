@@ -55,6 +55,14 @@ h2,h3 {
   padding-top: 0.5rem;
 }
 
+.back-link {
+  margin-left: 2rem;
+}
+
+.back-link:hover {
+  opacity: 0.7;
+}
+
 
 /* ヘッダー */
 

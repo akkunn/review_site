@@ -1,15 +1,22 @@
 <div class="question-index background-blue">
+  <div class="flex question-index-head-flex">
+    <div class="back-link">< <%= link_to '口コミ一覧に戻る', school_path(@questions.first.school_id), class: "link-underline" %></div>
+    <div class="question-index-button"><%= link_to '質問する', new_question_path, class: "button" %></div>
+  </div>
   <div class="question-index-content">
-    <h2>質問一覧</h2>
-    <h2><%= @questions.first.school.name %></h2>
+    <h2><%= @questions.first.school.name %>質問一覧 : <%= @questions.count %>件</h2>
 
     <% @questions.each do |question| %>
-      <ul>
-        <li><%= link_to question.name, question_path(question) %></li>
+      <ul class="question-box">
+        <li class="question-name"><%= link_to question.name, question_path(question) %></li>
         <div class="flex">
-          <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
-          <li><%= question.user.name %></li>
-          <li><%= question.updated_at.to_s(:datetime_jp) %></li>
+          <li>
+            <%= link_to user_path(question.user) do %>
+              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
+            <% end %>
+          </li>
+          <li class="question-user-name"><%= link_to question.user.name, user_path(question.user) %></li>
+          <li class="question-time"><%= question.updated_at.to_s(:datetime_jp) %></li>
         </div>
       </ul>
     <% end %>

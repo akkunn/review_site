@@ -10,13 +10,85 @@
 
 // 質問一覧
 .question-index {
+  padding: 0 0 2rem 0;
+  h2 {
+    margin: 2rem 0 3rem 0;
+  }
+  img {
+    display: block;
+  }
   .question-index-content {
     width: 60%;
     margin: 0 auto;
   }
+  .question-box {
+    border: 1px solid #CCCCCC;
+    padding: 0.5rem 0.7rem;
+    margin: 2rem 0 0 0;
+    background-color: white;
+    border-radius: 0.25rem;
+  }
+  .user-icon {
+    width: 2rem;
+  }
+  .flex {
+    align-items: center;
+    height: 1.9rem;
+
+    li {
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+  .question-name {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    a {
+      color: black;
+      &:hover {
+        color: #3399FF;
+        opacity: 0.7;
+      }
+    }
+  }
+  .question-user-name {
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+    a {
+      color: black;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  .question-time {
+    font-size: 0.8rem;
+  }
+  .back-link {
+    width: 30%;
+  }
+  .button {
+    border-radius: 10rem;
+    background-color: rgb(249, 150, 73);
+    color: #fff;
+  }
 }
 
-// 新規登録
+
+// 質問一覧
+
+.question-index-head-flex {
+  justify-content: space-between;
+}
+
+.question-index-button {
+  margin: 2rem 4rem 0 0;
+  width: 12%;
+
+}
+
+// 質問新規登録 質問編集
 
 .question-new, .question-edit {
   .question-school-name {
@@ -57,6 +129,6 @@
 }
 
 // 質問編集
-.question-name-label {
+.question-edit .question-name-label {
   font-size: 1.4rem;
 }
