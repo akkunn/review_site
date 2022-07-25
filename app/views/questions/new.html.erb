@@ -1,13 +1,13 @@
-<div class="review-new background-blue">
+<div class="question-new background-blue">
   <div class="review-box">
     <div class="review-box-content">
       <h2>質問投稿</h2>
       <%= form_with model: @question, local: true do |f| %>
 
         <div class="review-content-border">
-          <ul class="flex">
-            <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
-            <li class="review-school-name"><%= current_user.name %></li>
+          <ul class="flex ul-icon">
+            <li class="question-user-icon"><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
+            <li class="question-school-name"><%= current_user.name %></li>
           </ul>
           <%= f.hidden_field :user_id, value: current_user.id %>
         </div>
@@ -26,7 +26,7 @@
           </ul>
         </div>
 
-        <div class="review-content-border">
+        <div>
           <ul>
             <li><%= f.label :content, "質問内容" %></li>
             <li><%= f.text_area :content, placeholder: "質問を記入してください" %></li>

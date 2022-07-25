@@ -5,7 +5,7 @@
 
 // 口コミ投稿 口コミ詳細  口コミ編集 共通
 
-.review-new, .review-show, .review-edit {
+.review-new, .review-show, .review-edit, .question-new {
   padding: 3rem 0;
   label {
     font-size: 1.1rem;
@@ -16,20 +16,18 @@
       &:first-child {
         width: 35%;
       }
-      &*:last-child {
-        width: 65%;
-      }
     }
   }
   select {
     height: 1.7rem;
     font-size: 1rem;
-    width: 21.7rem;
+    width: 100%;
   }
   input {
     font-size: 1rem;
     padding: 0.2rem;
-    width: 21rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   ul {
     width: 85%;
@@ -75,6 +73,18 @@
     border-radius: 0.25rem;
     background-color: white;
     padding: 1rem 0 2rem 0;
+  }
+}
+
+// 口コミ投稿 口コミ編集
+
+.review-new, .review-edit {
+  .flex {
+    li {
+      &:last-child {
+        width: 65%;
+      }
+    }
   }
 }
 
@@ -129,6 +139,6 @@
 
 // 口コミ編集
 
-.review-new h2, .review-edit h2 {
+.review-new h2, .review-edit h2, .question-new h2 {
   margin-bottom: 2rem;
 }
