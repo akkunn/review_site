@@ -1,13 +1,17 @@
-<h1>質問一覧</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<div class="question-index background-blue">
+  <div class="question-index-content">
+    <h2>質問一覧</h2>
+    <h2><%= @questions.first.school.name %></h2>
 
-
-<% @questions.each do |question| %>
-  <%= link_to question_path(question) do %>
-    <div>
-      <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
-      <%= question.user.name %>
-      <%= question.name %>
-    </div>
-  <% end %>
-<% end %>
+    <% @questions.each do |question| %>
+      <ul>
+        <li><%= link_to question.name, question_path(question) %></li>
+        <div class="flex">
+          <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
+          <li><%= question.user.name %></li>
+          <li><%= question.updated_at.to_s(:datetime_jp) %></li>
+        </div>
+      </ul>
+    <% end %>
+  </div>
+</div>
