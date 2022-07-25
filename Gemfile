@@ -13,6 +13,7 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'dotenv-rails'
 gem 'will_paginate'
+gem 'carrierwave'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'

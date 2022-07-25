@@ -5,6 +5,7 @@
 <% @questions.each do |question| %>
   <%= link_to question_path(question) do %>
     <div>
+      <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
       <%= question.user.name %>
       <%= question.name %>
     </div>

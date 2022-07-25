@@ -6,7 +6,7 @@
 
         <div class="review-content-border">
           <ul class="flex">
-            <li>アイコン</li>
+            <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
             <li class="review-name-label"><%= @question.user.name %></li>
           </ul>
           <%= f.hidden_field :user_id, value: current_user.id %>
