@@ -34,11 +34,6 @@
   .flex {
     align-items: center;
     height: 1.9rem;
-    li {
-      &:last-child {
-        margin-left: auto;
-      }
-    }
   }
   .question-name {
     font-size: 1.3rem;
@@ -75,6 +70,15 @@
 }
 
 // 質問一覧
+.question-index {
+  .flex {
+    li {
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+}
 
 .question-index-head-flex {
   justify-content: space-between;
@@ -88,11 +92,24 @@
 // 質問詳細
 
 .question-show {
+  padding: 3rem 0;
   .question-box {
     margin: 0;
+    padding: 2rem;
+  }
+  .flex {
+    border-bottom: 1px solid #CCCCCC;
   }
   .question-name {
-    margin-bottom: 0;
+    margin: 1rem 0 0 0;
+  }
+  .question-show-text {
+    height: 12rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .question-time {
+    text-align: right;
   }
 }
 

@@ -48,6 +48,12 @@ h2,h3 {
   text-align: center;
 }
 
+textarea {
+  font-family: "Hiragino Kaku Gothic ProN";
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .link-underline {
   text-decoration: underline;
   color: #551A8B;

@@ -1,8 +1,6 @@
 <div class="question-show background-blue">
   <div class="question-content">
     <ul class="question-box">
-      <li class="question-name"><%= @question.name %></li>
-      <li><%= @question.content %></li>
       <div class="flex">
         <li>
           <%= link_to user_path(@question.user) do %>
@@ -10,8 +8,13 @@
           <% end %>
         </li>
         <li class="question-user-name"><%= link_to @question.user.name, user_path(@question.user) %></li>
-        <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
       </div>
+      <li class="question-name"><%= @question.name %></li>
+      <li class="review-show-text question-show-text"><%= @question.content %></li>
+      <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
+      <% if user_signed_in? && (current_user == @question.user) %>
+        <%= link_to "編集する", edit_question_path(@question), class: "edit-button" %>
+      <% end %>
     </ul>
     <span class="rotateY180">&#8629;</span>
     <span>回答</span>
