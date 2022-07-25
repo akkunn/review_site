@@ -28,18 +28,43 @@ RSpec.describe "Questions", type: :request do
   end
 
   describe "#show" do
-    before do
-      get question_path(question)
+    context "as an authenticated user" do
+      before do
+        sign_in user
+        get question_path(question)
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "displays correct page" do
+        expect(response.body).to include(question.user.name)
+        expect(response.body).to include(question.name)
+        expect(response.body).to include(question.content)
+        expect(response.body).to include("編集する")
+      end
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
+    context "as an unauthorized user" do
+      it "displays correct page" do
+        sign_in other_user
+        get question_path(question)
+        expect(response.body).to include(question.user.name)
+        expect(response.body).to include(question.name)
+        expect(response.body).to include(question.content)
+        expect(response.body).not_to include("編集する")
+      end
     end
 
-    it "displays correct page" do
-      expect(response.body).to include(question.user.name)
-      expect(response.body).to include(question.name)
-      expect(response.body).to include(question.content)
+    context "as a guest" do
+      it "displays correct page" do
+        get question_path(question)
+        expect(response.body).to include(question.user.name)
+        expect(response.body).to include(question.name)
+        expect(response.body).to include(question.content)
+        expect(response.body).not_to include("編集する")
+      end
     end
   end
 
