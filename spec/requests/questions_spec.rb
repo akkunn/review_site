@@ -27,9 +27,18 @@ RSpec.describe "Questions", type: :request do
   end
 
   describe "#show" do
-    it "returns http success" do
+    before do
       get question_path(question)
+    end
+
+    it "returns http success" do
       expect(response).to have_http_status(:success)
+    end
+
+    it "displays correct page" do
+      expect(response.body).to include(question.user.name)
+      expect(response.body).to include(question.name)
+      expect(response.body).to include(question.content)
     end
   end
 
