@@ -22,6 +22,7 @@ RSpec.describe "Questions", type: :request do
     it "displays correct page" do
       expect(response.body).to include(question.name)
       expect(response.body).to include(question.user.name)
+      expect(response.body).to include(question.updated_at.to_s(:datetime_jp))
       expect(response.body).not_to include(other_school_question.name)
     end
   end
