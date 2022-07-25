@@ -1,7 +1,12 @@
 <h1>質問一覧</h1>
 <p>Find me in app/views/questions/index.html.erb</p>
 
+
 <% @questions.each do |question| %>
-  <%= question.user.name %>
-  <%= question.name %>
+  <%= link_to question_path(question) do %>
+    <div>
+      <%= question.user.name %>
+      <%= question.name %>
+    </div>
+  <% end %>
 <% end %>

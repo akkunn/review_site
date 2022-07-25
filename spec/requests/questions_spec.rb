@@ -4,14 +4,25 @@ RSpec.describe "Questions", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
+  let!(:other_school) { FactoryBot.create(:school) }
   let(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
+  let(:other_school_question) { FactoryBot.create(:question, name: "難易度について", user_id: user.id, school_id: other_school.id) }
   let(:question_params) { FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id) }
   let(:update_question_params) { FactoryBot.attributes_for(:question, name: "転職活動について", user_id: user.id, school_id: school.id) }
 
   describe "#index" do
+    before do
+      get questions_path(school_id: question.school_id)
+    end
+
     it "returns http success" do
-      get questions_path
       expect(response).to have_http_status(:success)
+    end
+
+    it "displays correct page" do
+      expect(response.body).to include(question.name)
+      expect(response.body).to include(question.user.name)
+      expect(response.body).not_to include(other_school_question.name)
     end
   end
 

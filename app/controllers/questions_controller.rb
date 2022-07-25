@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
-    @questions = Question.all
+    @questions = Question.where(school_id: params[:school_id])
+
   end
 
   def show
@@ -16,7 +17,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if current_user?(@question.user)
       if @question.save
-        redirect_to questions_path
+        redirect_to questions_path(school_id: @question.school_id)
       else
         render "new"
       end
@@ -36,7 +37,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if current_user?(@question.user)
       if @question.update(question_params)
-        redirect_to questions_path
+        redirect_to questions_path(school_id: @question.school_id)
       else
         render "edit"
       end

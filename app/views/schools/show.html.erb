@@ -57,6 +57,7 @@
   <div class="school-show-edit-link-box">
     <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school) %>
   </div>
+    <%= link_to "質問一覧", questions_path(school_id: @school.id) %>
 </div>
 
 <section id="school-show-review">
