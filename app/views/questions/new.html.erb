@@ -3,7 +3,7 @@
     <div class="review-and-question-box-content">
       <h2>質問投稿</h2>
       <%= form_with model: @question, local: true do |f| %>
-
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
           <ul class="flex ul-icon">
             <li class="question-user-icon"><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>

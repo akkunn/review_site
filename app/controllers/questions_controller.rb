@@ -20,11 +20,11 @@ class QuestionsController < ApplicationController
         flash[:success] = "質問を作成しました"
         redirect_to questions_path(school_id: @question.school_id)
       else
-        flash[:danger] = "質問を作成できませんでした"
+        flash[:failure] = "質問を作成できませんでした"
         render "new"
       end
     else
-      flash[:danger] = "質問を作成できませんでした"
+      flash[:failure] = "質問を作成できませんでした"
       redirect_to new_question_path
     end
   end
@@ -43,11 +43,11 @@ class QuestionsController < ApplicationController
         flash[:success] = "質問を変更しました"
         redirect_to questions_path(school_id: @question.school_id)
       else
-        flash[:danger] = "質問を変更できませんでした"
+        flash[:failure] = "質問を変更できませんでした"
         render "edit"
       end
     else
-      flash[:danger] = "質問を変更できませんでした"
+      flash[:failure] = "質問を変更できませんでした"
       redirect_to question_path(@question)
     end
   end
@@ -59,7 +59,7 @@ class QuestionsController < ApplicationController
     flash[:success] = "質問を削除しました"
     redirect_to questions_path(school_id: @question_shcool_id)
     else
-      flash[:danger] = "質問を削除できませんでした"
+      flash[:failure] = "質問を削除できませんでした"
       render "show"
     end
   end
