@@ -31,7 +31,7 @@
 
 // 質問一覧 質問詳細 共通
 .question-index, .question-show {
-  padding: 0 0 2rem 0;
+  padding: 0 0 3rem 0;
   h2 {
     margin: 0 0 3rem 0;
   }
@@ -40,7 +40,7 @@
   }
   .question-content {
     width: 60%;
-    margin: 5rem auto 1rem auto;
+    margin: 5rem auto 0 auto;
   }
   .question-box {
     margin: 2rem 0 0 0;
@@ -113,7 +113,9 @@
 // 質問詳細
 
 .question-show {
-  padding: 3rem 0;
+  .question-content {
+    margin: 3rem auto;
+  }
   .question-box {
     margin: 0;
     padding: 2rem;

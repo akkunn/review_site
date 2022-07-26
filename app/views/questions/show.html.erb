@@ -1,4 +1,9 @@
 <div class="question-show background-blue">
+  <div class="header-image">
+    <div class="header-image-box">
+      <h2>質問&回答</h2>
+    </div>
+  </div>
   <div class="question-content">
     <ul class="question-box">
       <div class="flex">
@@ -14,6 +19,7 @@
       <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
       <% if user_signed_in? && (current_user == @question.user) %>
         <%= link_to "編集する", edit_question_path(@question), class: "edit-button" %>
+        <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "edit-button" %>
       <% end %>
     </ul>
     <span class="rotateY180">&#8629;</span>

@@ -3,7 +3,6 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.where(school_id: params[:school_id]).order(updated_at: :desc)
-
   end
 
   def show
@@ -44,6 +43,17 @@ class QuestionsController < ApplicationController
       end
     else
       redirect_to question_path(@question)
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question_shcool_id = @question.school_id
+    if @question.destroy
+    flash[:success] = "Question deleted"
+    redirect_to questions_path(school_id: @question_shcool_id)
+    else
+      render "show"
     end
   end
 
