@@ -3,10 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-// 口コミ投稿 口コミ詳細  口コミ編集 共通
+// 口コミ投稿 口コミ詳細  口コミ編集 質問新規追加 質問編集 共通
 
 .review-new, .review-show, .review-edit, .question-new, .question-edit {
-  padding: 3rem 0;
   label {
     font-size: 1.1rem;
   }
@@ -66,12 +65,20 @@
   .review-and-question-box {
     border: 1px solid #CCCCCC;
     width: 70%;
-    margin: 0 auto;
+    margin: 5rem auto 0 auto;
     border-radius: 0.25rem;
     background-color: white;
     padding: 1rem 0 2rem 0;
   }
 }
+
+.review-new, .review-show, .review-edit {
+  padding: 3rem 0;
+  .review-and-question-box {
+    margin: 0 auto;
+  }
+}
+
 
 // 口コミ投稿 口コミ編集
 

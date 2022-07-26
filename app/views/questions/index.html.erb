@@ -6,7 +6,7 @@
   </div>
   <div class="flex question-index-head-flex">
     <div class="back-link">< <%= link_to '口コミ一覧に戻る', school_path(@school), class: "link-underline" %></div>
-    <div class="question-index-button"><%= link_to '質問する', new_question_path, class: "button" %></div>
+    <div class="question-index-button"><%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %></div>
   </div>
   <div class="question-content">
     <% @questions.each do |question| %>
