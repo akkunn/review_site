@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :schools, through: :user_schools
   has_many :reviews, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
   has_one_attached :image
 
   # mount_uploader :image, ImageUploader
