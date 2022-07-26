@@ -17,14 +17,14 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if current_user?(@question.user)
       if @question.save
-        flash[:success] = "質問を作成しました"
+        flash[:success] = "質問を投稿しました"
         redirect_to questions_path(school_id: @question.school_id)
       else
-        flash[:failure] = "質問を作成できませんでした"
+        flash[:failure] = "質問を投稿できませんでした"
         render "new"
       end
     else
-      flash[:failure] = "質問を作成できませんでした"
+      flash[:failure] = "他のユーザーで質問は投稿できません"
       redirect_to new_question_path
     end
   end
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
         render "edit"
       end
     else
-      flash[:failure] = "質問を変更できませんでした"
+      flash[:failure] = "他のユーザーの質問は変更できません"
       redirect_to question_path(@question)
     end
   end

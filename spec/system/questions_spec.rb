@@ -23,6 +23,7 @@ RSpec.describe "Questions", type: :system do
     expect(current_path).to eq questions_path
     expect(page).to have_content(user.name)
     expect(page).to have_content("railsを学びたいです")
+    expect(page).to have_content("質問を投稿しました")
   end
 
   scenario "user updates a question" do
@@ -35,5 +36,6 @@ RSpec.describe "Questions", type: :system do
     expect(current_path).to eq questions_path
     expect(page).to have_content(user.name)
     expect(page).to have_content("難易度について")
+    expect(page).to have_content("質問を変更しました")
   end
 end
