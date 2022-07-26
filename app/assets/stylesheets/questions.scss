@@ -4,22 +4,43 @@
 
 // 共通
 
+
 .user-icon {
   width: 4rem;
 }
+
+.question-index, .question-show, .question-new, .question-edit {
+  .header-image {
+    background-image: url('QA.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 13rem;
+    .header-image-box {
+      background-color: rgba(255, 255, 255, 0.5);
+      line-height: 13rem;
+      h2 {
+        color: #000080;
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "ヒラギノ丸ゴ ProN";
+      }
+    }
+  }
+}
+
 
 // 質問一覧 質問詳細 共通
 .question-index, .question-show {
   padding: 0 0 2rem 0;
   h2 {
-    margin: 2rem 0 3rem 0;
+    margin: 0 0 3rem 0;
   }
   img {
     display: block;
   }
   .question-content {
     width: 60%;
-    margin: 0 auto;
+    margin: 5rem auto 1rem auto;
   }
   .question-box {
     margin: 2rem 0 0 0;

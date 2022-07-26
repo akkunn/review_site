@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
-    @questions = Question.where(school_id: params[:school_id])
+    @questions = Question.where(school_id: params[:school_id]).order(updated_at: :desc)
 
   end
 
