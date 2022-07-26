@@ -38,4 +38,13 @@ RSpec.describe "Questions", type: :system do
     expect(page).to have_content("難易度について")
     expect(page).to have_content("質問を変更しました")
   end
+
+  scenario "user deletes a question" do
+    sign_in_as(user)
+    visit questions_path(school_id: question.school_id)
+    click_link question.name
+    expect(current_path).to eq question_path(question)
+    click_link "削除する"
+    expect(page).not_to have_content(question.name)
+  end
 end

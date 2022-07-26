@@ -5,7 +5,7 @@ RSpec.describe "Questions", type: :request do
   let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let!(:other_school) { FactoryBot.create(:school) }
-  let(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
+  let!(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
   let(:other_school_question) { FactoryBot.create(:question, name: "難易度について", user_id: user.id, school_id: other_school.id) }
   let(:question_params) { FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id) }
   let(:update_question_params) { FactoryBot.attributes_for(:question, name: "転職活動について", user_id: user.id, school_id: school.id) }
@@ -210,5 +210,47 @@ RSpec.describe "Questions", type: :request do
         expect(response).to redirect_to new_user_session_path
       end
     end
+  end
+
+  describe "#destroy" do
+    context "as an authorized user" do
+      it "deletes a question" do
+        sign_in user
+        expect {
+          delete question_path(question)
+        }.to change { Question.count }.by(-1)
+      end
+    end
+
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+      end
+
+      it "doesn't delete a question" do
+        expect {
+          delete question_path(question)
+        }.not_to change { Question.count }
+      end
+
+      it "redirects to question show page" do
+        delete question_path(question)
+        expect(response).to redirect_to question_path(question)
+      end
+    end
+
+    # context "as a guest" do
+    #   before do
+    #     patch question_path(question), params: { question: update_question_params }
+    #   end
+
+    #   it "doesn't update a question" do
+    #     expect(question.reload.name).to eq "転職できますか？"
+    #   end
+
+    #   it "redirects to login page" do
+    #     expect(response).to redirect_to new_user_session_path
+    #   end
+    # end
   end
 end

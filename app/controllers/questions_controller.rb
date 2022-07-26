@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
-    @questions = Question.where(school_id: params[:school_id]).order(updated_at: :desc)
+    @school = School.find(params[:school_id])
+    @questions = Question.where(school_id: @school.id).order(updated_at: :desc)
   end
 
   def show
@@ -55,12 +56,17 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question_shcool_id = @question.school_id
-    if @question.destroy
-    flash[:success] = "質問を削除しました"
-    redirect_to questions_path(school_id: @question_shcool_id)
+    if current_user?(@question.user)
+      if @question.destroy
+      flash[:success] = "質問を削除しました"
+      redirect_to questions_path(school_id: @question_shcool_id)
+      else
+        flash[:failure] = "質問を削除できませんでした"
+        render "show"
+      end
     else
-      flash[:failure] = "質問を削除できませんでした"
-      render "show"
+      flash[:failure] = "他のユーザーの質問は削除できません"
+      redirect_to question_path(@question)
     end
   end
 
