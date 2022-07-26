@@ -1,7 +1,11 @@
 <div class="question-edit background-blue">
+  <div class="header-image">
+    <div class="header-image-box">
+      <h2>質問編集</h2>
+    </div>
+  </div>
   <div class="review-and-question-box">
     <div class="review-and-question-box-content">
-      <h2>質問編集</h2>
       <%= form_with model: @question, local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
@@ -17,21 +21,21 @@
 
         <div class="review-and-question-content-border">
           <ul class="flex">
-            <li><%= f.label :school_id, "スクール名" %></li>
+            <li><%= f.label :school_id, "スクール名" %><span class="badge">必須</span></li>
             <li><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
           </ul>
         </div>
 
         <div class="review-and-question-content-border">
           <ul>
-            <li><%= f.label :name, "質問タイトル" %></li>
+            <li><%= f.label :name, "質問タイトル" %><span class="badge">必須</span></li>
             <li><%= f.text_field :name, placeholder: "質問のタイトルを入力してください" %></li>
           </ul>
         </div>
 
         <div>
           <ul>
-            <li><%= f.label :content, "質問内容" %></li>
+            <li><%= f.label :content, "質問内容" %><span class="badge">必須</span></li>
             <li><%= f.text_area :content, placeholder: "質問を入力してください" %></li>
           </ul>
         </div>
