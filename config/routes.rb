@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :schools
   resources :reviews
   resources :questions
+  resources :answers, only: [:create, :edit, :update, :destroy]
 end
