@@ -37,6 +37,8 @@
           </ul>
         </div>
 
+        <%= hidden_field_tag :school_id, @school.id %>
+
         <div class="review-and-question-button">
           <%= f.submit '投稿する', class: "submit-button" %>
           <%= link_to "戻る", questions_path(school_id: @school.id), class: "button" %>

@@ -6,7 +6,9 @@ RSpec.describe "Reviews", type: :request do
   let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id) }
-  let(:update_review_params) { FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id, curriculum_star: 5) }
+  let(:update_review_params) {
+    FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id, curriculum_star: 5)
+  }
 
   # describe "GET /index" do
   #   it "returns http success" do

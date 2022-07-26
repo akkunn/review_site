@@ -12,3 +12,7 @@ AllCops:
     - 'Gemfile'
     - 'spec/spec_helper.rb'
     - 'node_modules/**/*'
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'

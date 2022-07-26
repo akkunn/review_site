@@ -16,7 +16,7 @@ RSpec.describe Question, type: :model do
       expect(question_nil_name.errors[:name]).to include("can't be blank")
     end
 
-    it "is invalid without a name" do
+    it "is invalid without a content" do
       question_nil_content = FactoryBot.build(:question, content: nil)
       question_nil_content.valid?
       expect(question_nil_content.errors[:content]).to include("can't be blank")

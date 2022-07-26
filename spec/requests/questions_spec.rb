@@ -6,9 +6,15 @@ RSpec.describe "Questions", type: :request do
   let(:school) { FactoryBot.create(:school) }
   let!(:other_school) { FactoryBot.create(:school) }
   let!(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
-  let(:other_school_question) { FactoryBot.create(:question, name: "難易度について", user_id: user.id, school_id: other_school.id) }
-  let(:question_params) { FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id) }
-  let(:update_question_params) { FactoryBot.attributes_for(:question, name: "転職活動について", user_id: user.id, school_id: school.id) }
+  let(:other_school_question) {
+    FactoryBot.create(:question, name: "難易度について", user_id: user.id, school_id: other_school.id)
+  }
+  let(:question_params) {
+    FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id)
+  }
+  let(:update_question_params) {
+    FactoryBot.attributes_for(:question, name: "転職活動について", user_id: user.id, school_id: school.id)
+  }
 
   describe "#index" do
     before do
@@ -72,8 +78,9 @@ RSpec.describe "Questions", type: :request do
     context "as an authenticated user" do
       before do
         sign_in user
-        get new_question_path
+        get new_question_path(school_id: school.id)
       end
+
       it "returns http success" do
         expect(response).to have_http_status(:success)
       end

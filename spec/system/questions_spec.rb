@@ -6,14 +6,13 @@ RSpec.describe "Questions", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
 
-
   before do
     driven_by(:rack_test)
   end
 
   scenario "user adds a new question" do
     sign_in_as(user)
-    visit new_question_path
+    visit new_question_path(school_id: school.id)
     expect {
       select school.name, from: "question_school_id"
       fill_in "question_name", with: "railsを学びたいです"
