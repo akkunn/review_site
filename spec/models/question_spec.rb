@@ -33,5 +33,12 @@ RSpec.describe Question, type: :model do
       question_nil_school_id.valid?
       expect(question_nil_school_id.errors[:school_id]).to include("can't be blank")
     end
+
+    it "is invalid 60 characters or more name" do
+      question_long_name = FactoryBot.build(:question, name: "a" * 61)
+      question_long_name.valid?
+      expect(question_long_name.errors[:name]).
+        to include("is too long (maximum is 60 characters)")
+    end
   end
 end
