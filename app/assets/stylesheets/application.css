@@ -69,6 +69,18 @@ textarea {
   opacity: 0.7;
 }
 
+.alert {
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #66FF66;
+}
+
+.alert-failure {
+  background-color: #FF3300;
+}
+
 
 /* ヘッダー */
 
