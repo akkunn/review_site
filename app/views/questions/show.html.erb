@@ -24,8 +24,20 @@
     </ul>
     <span class="rotateY180">&#8629;</span>
     <span>回答</span>
+    <% @answers.each do |answer|%>
+      <div class="review-show-text question-show-text"><%= answer.content %></div>
+    <% end %>
 
-    <div>回答欄</div>
-    <div>回答場所</div>
+    <% if user_signed_in? %>
+      <%= form_with model: @answer, url: answers_path, local: true do |f| %>
+        <%= f.label :content, "回答欄" %>
+        <%= f.text_area :content, placeholder: "回答を記入してください" %>
+
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :question_id, value: @question.id %>
+
+        <%= f.submit '回答する', class: "submit-button" %>
+      <% end %>
+    <% end %>
   </div>
 </div>

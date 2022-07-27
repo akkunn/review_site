@@ -9,6 +9,10 @@ RSpec.describe "Questions", type: :request do
   let(:other_school_question) {
     FactoryBot.create(:question, name: "難易度について", user_id: user.id, school_id: other_school.id)
   }
+  let(:other_user_question) {
+    FactoryBot.create(:question, name: "カリキュラムについて", user_id: other_user.id, school_id: school.id)
+  }
+  let!(:answer) { FactoryBot.create(:answer, user_id: other_user.id, question_id: question.id) }
   let(:question_params) {
     FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id)
   }
@@ -25,7 +29,7 @@ RSpec.describe "Questions", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it "displays correct page" do
+    it "displays a correct page" do
       expect(response.body).to include(question.name)
       expect(response.body).to include(question.user.name)
       expect(response.body).to include(question.updated_at.to_s(:datetime_jp))
@@ -44,32 +48,38 @@ RSpec.describe "Questions", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it "displays correct page" do
+      it "displays a correct page" do
         expect(response.body).to include(question.user.name)
         expect(response.body).to include(question.name)
         expect(response.body).to include(question.content)
         expect(response.body).to include("編集する")
+        expect(response.body).to include(answer.content)
+        expect(response.body).to include("回答する")
       end
     end
 
     context "as an unauthorized user" do
-      it "displays correct page" do
+      it "displays a correct page" do
         sign_in other_user
         get question_path(question)
         expect(response.body).to include(question.user.name)
         expect(response.body).to include(question.name)
         expect(response.body).to include(question.content)
         expect(response.body).not_to include("編集する")
+        expect(response.body).to include(answer.content)
+        expect(response.body).to include("回答する")
       end
     end
 
     context "as a guest" do
-      it "displays correct page" do
+      it "displays a correct page" do
         get question_path(question)
         expect(response.body).to include(question.user.name)
         expect(response.body).to include(question.name)
         expect(response.body).to include(question.content)
         expect(response.body).not_to include("編集する")
+        expect(response.body).to include(answer.content)
+        expect(response.body).not_to include("回答する")
       end
     end
   end
@@ -85,7 +95,7 @@ RSpec.describe "Questions", type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it "exists a correct page" do
+      it "displays a correct page" do
         expect(response.body).to include("質問投稿")
         expect(response.body).to include(user.name)
       end
