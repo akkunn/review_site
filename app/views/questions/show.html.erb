@@ -29,7 +29,7 @@
       <% if user_signed_in? && (current_user == answer.user) %>
         <%#= link_to "編集する", edit_answer_path(answer), class: "edit-button" %>
         <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
-        <%= link_to "削除する", question_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
+        <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
       <% end %>
     <% end %>
 

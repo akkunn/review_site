@@ -258,18 +258,20 @@ RSpec.describe "Questions", type: :request do
       end
     end
 
-    # context "as a guest" do
-    #   before do
-    #     patch question_path(question), params: { question: update_question_params }
-    #   end
+    context "as a guest" do
+      before do
+        delete question_path(question)
+      end
 
-    #   it "doesn't update a question" do
-    #     expect(question.reload.name).to eq "転職できますか？"
-    #   end
+      it "doesn't delete a question" do
+        expect {
+          delete question_path(question)
+        }.not_to change { Question.count }
+      end
 
-    #   it "redirects to login page" do
-    #     expect(response).to redirect_to new_user_session_path
-    #   end
-    # end
+      it "redirects to login page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe "Answers", type: :request do
   let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:question) { FactoryBot.create(:question, user_id: other_user.id, school_id: school.id) }
-  let(:answer) { FactoryBot.create(:answer, user_id: user.id, question_id: question.id) }
+  let!(:answer) { FactoryBot.create(:answer, user_id: user.id, question_id: question.id) }
   let(:answer_params) {
     FactoryBot.attributes_for(:answer, user_id: user.id, question_id: question.id)
   }
@@ -128,6 +128,50 @@ RSpec.describe "Answers", type: :request do
 
       it "doesn't update a answer" do
         expect(answer.reload.content).to eq "面接対策をしてくれます"
+      end
+
+      it "redirects to login page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#destroy" do
+    context "as an authorized user" do
+      it "deletes a answer" do
+        sign_in user
+        expect {
+          delete answer_path(answer)
+        }.to change { Answer.count }.by(-1)
+      end
+    end
+
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+      end
+
+      it "doesn't delete a answer" do
+        expect {
+          delete answer_path(answer)
+        }.not_to change { Answer.count }
+      end
+
+      it "redirects to question show page" do
+        delete answer_path(answer)
+        expect(response).to redirect_to question_path(question)
+      end
+    end
+
+    context "as a guest" do
+      before do
+        delete answer_path(answer)
+      end
+
+      it "doesn't delete a answer" do
+        expect {
+          delete answer_path(answer)
+        }.not_to change { Answer.count }
       end
 
       it "redirects to login page" do

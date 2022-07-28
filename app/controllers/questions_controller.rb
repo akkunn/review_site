@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @school = School.find(params[:school_id])
@@ -7,9 +7,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    @answers = Answer.where(question_id: @question.id)
-    @answer = Answer.new
+    if Question.exists?(params[:id])
+      @question = Question.find(params[:id])
+      @answers = Answer.where(question_id: @question.id)
+      @answer = Answer.new
+    else
+      flash[:failure] = "質問は削除されています"
+      redirect_to root_path
+    end
   end
 
   def new
