@@ -79,6 +79,43 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def solved
+    @question = Question.find(params[:question_id])
+    if current_user?(@question.user)
+      if (@question.solution == 2) && (@question.answers.count == 0)
+        @question.solution = 0
+        if @question.save
+          flash[:success] = "未回答に変更しました"
+          redirect_to questions_path(school_id: @question.school_id)
+        else
+          flash.now[:failure] = "変更できませんでした"
+          render "show"
+        end
+      elsif @question.solution == 0 || @question.solution == 1
+        @question.solution = 2
+        if @question.save
+          flash[:success] = "解決済みに変更しました"
+          redirect_to questions_path(school_id: @question.school_id)
+        else
+          flash.now[:failure] = "変更できませんでした"
+          render "show"
+        end
+      else
+        @question.solution = 1
+        if @question.save
+          flash[:success] = "回答済みに変更しました"
+          redirect_to questions_path(school_id: @question.school_id)
+        else
+          flash.now[:failure] = "変更できませんでした"
+          render "show"
+        end
+      end
+    else
+      flash[:failure] = "他のユーザーの質問は変更できません"
+      redirect_to question_path(@question)
+    end
+  end
+
   private
 
   def question_params

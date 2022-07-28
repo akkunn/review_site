@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="question-content">
+    <%= solve(@question.solution) %>
     <ul class="question-box">
       <div class="flex">
         <li>
@@ -44,6 +45,8 @@
 
         <%= f.submit '回答する', class: "submit-button" %>
       <% end %>
+      <%= link_to "解決した", solved_path(question_id: @question.id)%>
     <% end %>
+    <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
   </div>
 </div>

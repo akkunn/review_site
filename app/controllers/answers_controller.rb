@@ -5,6 +5,9 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     if current_user?(@answer.user)
       if @answer.save
+        @question = @answer.question
+        @question.solution = 1
+        @question.save
         flash[:success] = "回答を投稿しました"
         redirect_to question_path(@answer.question)
       else
@@ -48,8 +51,13 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer = Answer.find(params[:id])
+    @question = @answer.question
     if current_user?(@answer.user)
       if @answer.destroy
+        if @question.answers.count == 0
+          @question.solution = 0
+          @question.save
+        end
         flash[:success] = "回答を削除しました"
         redirect_to question_path(@answer.question)
       else

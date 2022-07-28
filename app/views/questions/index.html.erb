@@ -12,6 +12,7 @@
     <% @questions.each do |question| %>
       <ul class="question-box">
         <li class="question-name"><%= link_to question.name, question_path(question) %></li>
+        <li><%= solve(question.solution) %></li>
         <div class="flex">
           <li>
             <%= link_to user_path(question.user) do %>
