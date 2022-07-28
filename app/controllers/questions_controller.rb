@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
         redirect_to questions_path(school_id: @question.school_id)
       else
         @school = School.find(params[:school_id])
-        flash[:failure] = "質問を投稿できませんでした"
+        flash.now[:failure] = "質問を投稿できませんでした"
         render "new"
       end
     else
@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
         flash[:success] = "質問を変更しました"
         redirect_to questions_path(school_id: @question.school_id)
       else
-        flash[:failure] = "質問を変更できませんでした"
+        flash.now[:failure] = "質問を変更できませんでした"
         render "edit"
       end
     else
@@ -70,7 +70,7 @@ class QuestionsController < ApplicationController
         flash[:success] = "質問を削除しました"
         redirect_to questions_path(school_id: @question_shcool_id)
       else
-        flash[:failure] = "質問を削除できませんでした"
+        flash.now[:failure] = "質問を削除できませんでした"
         render "show"
       end
     else

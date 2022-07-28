@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
       else
         @question = @answer.question
         @answers = Answer.where(question_id: @question.id)
-        flash[:failure] = "回答を投稿できませんでした"
+        flash.now[:failure] = "回答を投稿できませんでした"
         render "questions/show"
       end
     else
@@ -37,7 +37,7 @@ class AnswersController < ApplicationController
         flash[:success] = "回答を変更しました"
         redirect_to question_path(@answer.question)
       else
-        flash[:failure] = "回答を変更できませんでした"
+        flash.now[:failure] = "回答を変更できませんでした"
         render "questions/show"
       end
     else
@@ -53,7 +53,7 @@ class AnswersController < ApplicationController
         flash[:success] = "回答を削除しました"
         redirect_to question_path(@answer.question)
       else
-        flash[:failure] = "回答を削除できませんでした"
+        flash.now[:failure] = "回答を削除できませんでした"
         render "questions/show"
       end
     else
