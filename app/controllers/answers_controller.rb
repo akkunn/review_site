@@ -8,6 +8,8 @@ class AnswersController < ApplicationController
         flash[:success] = "回答を投稿しました"
         redirect_to question_path(@answer.question)
       else
+        @question = @answer.question
+        @answers = Answer.where(question_id: @question.id)
         flash[:failure] = "回答を投稿できませんでした"
         render "questions/show"
       end
