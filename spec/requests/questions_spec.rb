@@ -65,7 +65,9 @@ RSpec.describe "Questions", type: :request do
         expect(response.body).to include(question.user.name)
         expect(response.body).to include(question.name)
         expect(response.body).to include(question.content)
-        expect(response.body).not_to include("編集する")
+        within ".question-box" do
+          expect(response.body).not_to include("編集する")
+        end
         expect(response.body).to include(answer.content)
         expect(response.body).to include("回答する")
       end

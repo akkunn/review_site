@@ -25,7 +25,12 @@
     <span class="rotateY180">&#8629;</span>
     <span>回答</span>
     <% @answers.each do |answer|%>
-      <div class="review-show-text question-show-text"><%= answer.content %></div>
+      <div class="review-show-text question-show-text" id='<%= answer.id %>'><%= answer.content %></div>
+      <% if user_signed_in? && (current_user == answer.user) %>
+        <%#= link_to "編集する", edit_answer_path(answer), class: "edit-button" %>
+        <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
+        <%= link_to "削除する", question_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
+      <% end %>
     <% end %>
 
     <% if user_signed_in? %>
