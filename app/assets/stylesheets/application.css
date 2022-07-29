@@ -59,6 +59,15 @@ textarea {
   font-size: 1rem;
 }
 
+.user-icon {
+  border-radius: 50%;
+  border: 1px solid rgb(212, 212, 212);
+}
+
+.user-icon-default {
+  width: 7rem;
+}
+
 .link-underline {
   text-decoration: underline;
   color: #551A8B;

@@ -13,7 +13,7 @@
               <% if @user.image.attached? %>
                 <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon" %>
               <% else %>
-                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
               <% end %>
             <table class="profile-edit-table">
               <tr>
