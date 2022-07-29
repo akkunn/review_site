@@ -11,8 +11,22 @@
   <div class="question-content">
     <% @questions.each do |question| %>
       <ul class="question-box">
+        <li>
+          <% if question.solution == 0 %>
+            <div class="solution solution-red">
+              未回答
+            </div>
+          <% elsif question.solution == 1 %>
+            <div class="solution solution-orange">
+              未解決
+            </div>
+          <% else %>
+            <div class="solution solution-green">
+              解決済み
+            </div>
+          <% end %>
+        </li>
         <li class="question-name"><%= link_to question.name, question_path(question) %></li>
-        <li><%= solve(question.solution) %></li>
         <div class="flex">
           <li>
             <%= link_to user_path(question.user) do %>

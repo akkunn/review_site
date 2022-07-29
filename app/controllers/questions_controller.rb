@@ -103,7 +103,7 @@ class QuestionsController < ApplicationController
       else
         @question.solution = 1
         if @question.save
-          flash[:success] = "回答済みに変更しました"
+          flash[:success] = "未解決に変更しました"
           redirect_to questions_path(school_id: @question.school_id)
         else
           flash.now[:failure] = "変更できませんでした"

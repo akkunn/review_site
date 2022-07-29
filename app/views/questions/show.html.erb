@@ -4,8 +4,23 @@
       <h2>質問&回答</h2>
     </div>
   </div>
+  <div class="back-link">
+    < <%= link_to "#{@question.school.name}質問一覧に戻る", questions_path(school_id: @question.school), class: "link-underline" %>
+  </div>
   <div class="question-content">
-    <%= solve(@question.solution) %>
+    <% if @question.solution == 0 %>
+      <div class="solution solution-red">
+        未回答
+      </div>
+    <% elsif @question.solution == 1 %>
+      <div class="solution solution-orange">
+        未解決
+      </div>
+    <% else %>
+      <div class="solution solution-green">
+        解決済み
+      </div>
+    <% end %>
     <ul class="question-box">
       <div class="flex">
         <li>
@@ -23,29 +38,61 @@
         <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "edit-button" %>
       <% end %>
     </ul>
-    <span class="rotateY180">&#8629;</span>
-    <span>回答</span>
+
+    <% unless @answers.size == 0 %>
+      <span class="rotateY180">&#8629;</span>
+      <span class="span-answer">回答</span>
+    <% end %>
+
     <% @answers.each do |answer|%>
-      <div class="review-show-text question-show-text" id='<%= answer.id %>'><%= answer.content %></div>
-      <% if user_signed_in? && (current_user == answer.user) %>
-        <%#= link_to "編集する", edit_answer_path(answer), class: "edit-button" %>
-        <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
-        <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
-      <% end %>
+      <ul class="question-box answer-box">
+        <div class="flex">
+          <li>
+            <%= link_to user_path(@question.user) do %>
+              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
+            <% end %>
+          </li>
+          <li class="question-user-name"><%= answer.user.name %></li>
+        </div>
+        <div id='<%= answer.id %>'>
+          <li class="review-show-text question-show-text" >
+            <%= answer.content %>
+          </li>
+          <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
+          <% if user_signed_in? && (current_user == answer.user) %>
+            <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
+            <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
+          <% end %>
+        </div>
+      </ul>
     <% end %>
 
     <% if user_signed_in? %>
-      <%= form_with model: @answer, url: answers_path, local: true do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :content, "回答欄" %>
-        <%= f.text_area :content, placeholder: "回答を記入してください" %>
+      <%= label :content, "回答欄", class: "label-answer" %>
+      <div class="question-box answer-textarea-box">
+        <%= form_with model: @answer, url: answers_path, local: true do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <%= f.text_area :content, placeholder: "回答を記入してください" %>
 
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :question_id, value: @question.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :question_id, value: @question.id %>
 
-        <%= f.submit '回答する', class: "submit-button" %>
+          <%= f.submit '回答する', class: "submit-button" %>
+        <% end %>
+      </div>
+      <% if current_user == @question.user %>
+        <% if @question.solution == 0 || @question.solution == 1 %>
+          <div class="question-box solution-box">
+            <p>質問が解決したらボタンを押してください</p>
+            <%= link_to "解決した", solved_path(question_id: @question.id), class: "button" %>
+          </div>
+        <% else %>
+          <div class="question-box solution-box">
+            <p>追加の質問がある場合にはボタンを押してください</p>
+            <%= link_to "解決済み", solved_path(question_id: @question.id), class: "button unsolution" %>
+          </div>
+        <% end %>
       <% end %>
-      <%= link_to "解決した", solved_path(question_id: @question.id)%>
     <% end %>
     <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
   </div>

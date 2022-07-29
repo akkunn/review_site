@@ -4,7 +4,7 @@ module QuestionsHelper
     when 0
       "未回答"
     when 1
-      "回答済み"
+      "未解決"
     when 2
       "解決済み"
     end

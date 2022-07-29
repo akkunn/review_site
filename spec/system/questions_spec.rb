@@ -71,7 +71,7 @@ RSpec.describe "Questions", type: :system do
     sign_in_as(user)
     visit questions_path(school_id: school.id)
     click_link solved_question_noanswer.name
-    click_link "解決した"
+    click_link "解決済み"
     expect(solved_question_noanswer.reload.solution).to eq 0
     expect(page).to have_content("未回答")
     expect(page).to have_content("未回答に変更しました")
@@ -81,9 +81,9 @@ RSpec.describe "Questions", type: :system do
     sign_in_as(user)
     visit questions_path(school_id: school.id)
     click_link solved_question.name
-    click_link "解決した"
+    click_link "解決済み"
     expect(solved_question.reload.solution).to eq 1
-    expect(page).to have_content("回答済み")
-    expect(page).to have_content("回答済みに変更しました")
+    expect(page).to have_content("未解決")
+    expect(page).to have_content("未解決に変更しました")
   end
 end

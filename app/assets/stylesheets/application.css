@@ -48,10 +48,15 @@ h2,h3 {
   text-align: center;
 }
 
+input, select {
+  font-size: 1rem;
+}
+
 textarea {
   font-family: "Hiragino Kaku Gothic ProN";
   width: 100%;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 .link-underline {
@@ -113,6 +118,7 @@ header {
   background-color: #A4C6FF;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 
 header .button {

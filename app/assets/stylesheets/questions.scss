@@ -2,8 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 共通
+// 全共通
+.solution {
+  border: 1px solid #000000;
+  border-radius: 10rem;
+  width: 5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.1rem 0;
+}
 
+.solution-red {
+  color: #ec0202;
+  border-color: #ec0202;
+}
+
+.solution-orange {
+  color: rgb(249, 150, 73);
+  border-color: rgb(249, 150, 73);
+}
+
+.solution-green {
+  color: #00DD00;
+  border-color: #00DD00;
+}
 
 .user-icon {
   width: 4rem;
@@ -38,6 +60,9 @@
   img {
     display: block;
   }
+  .back-link {
+    width: 20rem;
+  }
   .question-content {
     width: 60%;
     margin: 5rem auto 0 auto;
@@ -45,8 +70,8 @@
   .question-box {
     margin: 2rem 0 0 0;
     border: 1px solid #CCCCCC;
-    padding: 0.5rem 0.7rem;
-    background-color: white;
+    padding: 1rem;
+    background-color: #fff;
     border-radius: 0.25rem;
   }
   .user-icon {
@@ -58,9 +83,9 @@
   }
   .question-name {
     font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    margin: 1rem 0 1rem 0 ;
     a {
-      color: black;
+      color: #000000;
       &:hover {
         color: #3399FF;
         opacity: 0.7;
@@ -71,7 +96,7 @@
     font-size: 1.1rem;
     margin-left: 0.5rem;
     a {
-      color: black;
+      color: #000000;
       &:hover {
         opacity: 0.7;
       }
@@ -80,18 +105,18 @@
   .question-time {
     font-size: 0.8rem;
   }
-  .back-link {
-    width: 30%;
-  }
-  .button {
-    border-radius: 10rem;
-    background-color: rgb(249, 150, 73);
-    color: #fff;
+  .solution {
+    margin-bottom: 0.5rem;
   }
 }
 
 // 質問一覧
 .question-index {
+  .button {
+    border-radius: 10rem;
+    background-color: rgb(249, 150, 73);
+    color: #fff;
+  }
   .flex {
     li {
       &:last-child {
@@ -114,10 +139,10 @@
 
 .question-show {
   .question-content {
-    margin: 3rem auto;
+    margin: 4rem auto 0 auto;
   }
   .question-box {
-    margin: 0;
+    margin: 0 0 2rem 0;
     padding: 2rem;
   }
   .flex {
@@ -127,12 +152,57 @@
     margin: 1rem 0 0 0;
   }
   .question-show-text {
-    height: 12rem;
+    min-height: 5rem;
+    height: auto;
     padding: 0.5rem;
     margin-bottom: 1rem;
   }
   .question-time {
     text-align: right;
+  }
+  .answer-box {
+    margin: 1rem 0 2rem 0;
+  }
+  .answer-textarea-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .submit-button {
+    width: 30%;
+    margin-bottom: 1rem;
+  }
+  textarea {
+    padding: 0.3rem 0.5rem;
+    height: 10rem;
+    margin: 1rem 0;
+  }
+  .solution-box {
+    text-align: center;
+    margin: 3rem 0 3rem 0;
+    padding: 1rem;
+    color: #525252;
+    p {
+      font-size: 1.1rem;
+      margin: 0 0 1rem 0;
+    }
+    .button {
+      width: 30%;
+      border-radius: 10rem;
+      background-color: rgb(249, 150, 73);
+      color: #fff;
+    }
+    .unsolution {
+      background-color: #b3b1b1;
+    }
+  }
+  .button {
+    width: 30%;
+    background-color: #fff;
+    color: #000000;
+  }
+  .newanswer {
+    text-align: center;
   }
 }
 
@@ -143,6 +213,19 @@
   -webkit-transform: rotateY( 180deg );  /* Chrome,Safari,新しいOpera用 */
   -o-transform:      rotateY( 180deg );  /* 古いOpera用 */
   -ms-transform:     rotateY( 180deg );  /* IE9用 */
+  font-size: 2rem;
+  color: #0000FF;
+  z-index: -1;
+}
+
+.span-answer {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
+}
+
+.label-answer {
+  font-size: 1.3rem;
+  padding: 1rem 0;
 }
 
 
@@ -167,13 +250,11 @@
       }
     }
     select {
-      font-size: 1.1rem;
       height: 2rem;
     }
     input {
       margin-top: 1rem ;
       height: 2rem;
-      font-size: 1.1rem;
     }
     ul {
       margin: 1.7rem auto;
@@ -184,7 +265,6 @@
   }
   form textarea {
     height: 12rem;
-    font-size: 1.1rem;
     padding: 0.3rem 0.5rem;
   }
   h2 {
