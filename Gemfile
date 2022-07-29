@@ -15,6 +15,7 @@ gem 'dotenv-rails'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'aws-sdk-s3'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
