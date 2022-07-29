@@ -9,10 +9,15 @@
         <h2 class="profile-edit-title">プロフィール編集</h2>
         <div class="profile-edit-form">
           <%= form_with model: @user, local: true do |f| %>
+              <% if @user.image.attached? %>
+                <%= image_tag @user.image, class: "user-icon" %>
+              <% else %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
+              <% end %>
             <table class="profile-edit-table">
               <tr>
                 <th>アイコン</th>
-                <td>アイコン</td>
+                <td><%= f.file_field :image %></td>
               </tr>
               <tr>
                 <th><%= f.label :name, "ユーザー名" %></th>
