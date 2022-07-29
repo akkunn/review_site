@@ -10,9 +10,10 @@
         <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
           <ul class="flex ul-icon">
-            <% if @question.user.image.nil? %>
+            <% if current_user.image.attached? %>
+              <li><%= image_tag current_user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %></li>
             <% else %>
-              <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
+              <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %></li>
             <% end %>
             <li class="question-name-label"><%= @question.user.name %></li>
           </ul>

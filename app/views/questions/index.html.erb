@@ -30,7 +30,11 @@
         <div class="flex">
           <li>
             <%= link_to user_path(question.user) do %>
-              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
+              <% if question.user.image.attached? %>
+                <%= image_tag question.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+              <% else %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+              <% end %>
             <% end %>
           </li>
           <li class="question-user-name"><%= link_to question.user.name, user_path(question.user) %></li>

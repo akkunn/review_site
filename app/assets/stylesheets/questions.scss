@@ -70,7 +70,7 @@
     background-color: #fff;
     border-radius: 0.25rem;
   }
-  .user-icon {
+  .user-icon-default {
     width: 2rem;
   }
   .flex {
@@ -90,7 +90,7 @@
   }
   .question-user-name {
     font-size: 1.1rem;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     a {
       color: #000000;
       &:hover {
@@ -143,6 +143,7 @@
   }
   .flex {
     border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 0.5rem;
   }
   .question-name {
     margin: 1rem 0 0 0;
@@ -231,6 +232,9 @@
 
 .question-new, .question-edit {
   padding: 0 0 3rem 0;
+  img  {
+    display: block;
+  }
   .question-school-name {
     font-size: 1.4rem;
   }
@@ -265,6 +269,9 @@
   }
   h2 {
     margin: 0;
+  }
+  .user-icon-default {
+    width: 3rem;
   }
 }
 

@@ -10,7 +10,13 @@
         <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
           <ul class="flex ul-icon">
-            <li class="question-user-icon"><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %></li>
+            <li class="question-user-icon">
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+              <% else %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+              <% end %>
+            </li>
             <li class="question-school-name"><%= current_user.name %></li>
           </ul>
           <%= f.hidden_field :user_id, value: current_user.id %>
