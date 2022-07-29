@@ -14,6 +14,7 @@ gem 'net-pop'
 gem 'dotenv-rails'
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'

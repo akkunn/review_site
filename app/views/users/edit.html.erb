@@ -3,6 +3,7 @@
     <div class="profile-box">
       <div class="link-box">
         <%= link_to "アカウント情報編集", edit_user_registration_path, class: "link" %>
+        |
         <%= link_to "プロフィール編集", "#", class: "blue-link" %>
       </div>
       <div class="box">
@@ -10,7 +11,7 @@
         <div class="profile-edit-form">
           <%= form_with model: @user, local: true do |f| %>
               <% if @user.image.attached? %>
-                <%= image_tag @user.image, class: "user-icon" %>
+                <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon" %>
               <% else %>
                 <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon", alt: "ユーザーアイコン" %>
               <% end %>

@@ -104,15 +104,16 @@
   .button {
     width: 60%;
     color: black;
+    margin-bottom: 1rem;
   }
   .submit-button {
     width: 60%;
-    margin: 1rem;
+    margin: 1rem 0 2rem 0;
     font-size: 1rem;
   }
   .user-icon {
-    width: 6rem;
     border-radius: 50%;
+    border: 1px solid rgb(212, 212, 212);
   }
 }
 
@@ -139,15 +140,11 @@
 }
 
 .profile-edit-title {
-  text-align: center;
+  margin-bottom: 1.8rem;
 }
 
 .link-box {
   margin-bottom: 1rem;
-}
-
-.edit-profile .link {
-  margin-right: 1rem;
 }
 
 // devise共通(以下devise)
