@@ -2,6 +2,13 @@
   <div class="school-show-back-link">< <%= link_to '検索結果一覧に戻る', :back %></div>
   <div class="box">
     <h3><%= @school.name %></h3>
+
+    <% if @school.image.attached? %>
+      <%= image_tag @school.image.variant(resize: '100x100!'), class: "school-icon", alt: "スクールアイコン" %>
+    <% else %>
+      <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+    <% end %>
+
     <%= form_with model: @school, local: true do |f| %>
       <div class="flex">
         <div class="school-form-flex-item">

@@ -39,7 +39,7 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     if @school.update(school_params)
-      redirect_to schools_path
+      redirect_to school_path(@school)
     else
       render "edit"
     end
@@ -50,6 +50,7 @@ class SchoolsController < ApplicationController
   def school_params
     params.require(:school).
       permit(:name, :style, :support, :guarantee, :explanation,
-            :language_id, :prefecture_id, :cost_id, :period_id, :review_ave_score, :review_count)
+            :language_id, :prefecture_id, :cost_id, :period_id,
+            :review_ave_score, :review_count, :image)
   end
 end

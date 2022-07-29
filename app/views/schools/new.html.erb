@@ -47,6 +47,11 @@
           </ul>
         </div>
       </div>
+      <ul class="school-new-explanation flex">
+        <li><%= f.label :image, "アイコン", class: "school-form-label" %></li>
+        <li><%= f.file_field :image %></li>
+      </ul>
+
       <ul class="school-new-explanation">
         <li><%= f.label :explanation, "説明", class: "school-form-label" %></li>
         <li><%= f.text_area :explanation, placeholder: "その他の説明を入力"%></li>

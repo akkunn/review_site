@@ -14,6 +14,7 @@
         <tbody>
           <tr class="school-table-head">
             <th class="school-table-number"></th>
+            <th class="school-table-name">アイコン</th>
             <th class="school-table-name">スクール名</th>
             <th class="school-table-score">口コミ評価</th>
             <th class="school-table-count">口コミ数</th>
@@ -26,6 +27,14 @@
                   <%= i %>
                 <% else %>
                   <%= (params[:page].to_i - 1) * 30 + i %>
+                <% end %>
+              </td>
+
+              <td class="school-table-name">
+                <% if school.image.attached? %>
+                  <%= image_tag school.image.variant(resize: '100x100!'), class: "school-icon", alt: "スクールアイコン" %>
+                <% else %>
+                  <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
                 <% end %>
               </td>
 
