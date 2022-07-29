@@ -35,7 +35,7 @@
         <li class="question-user-name"><%= link_to @question.user.name, user_path(@question.user) %></li>
       </div>
       <li class="question-name"><%= @question.name %></li>
-      <li class="review-show-text question-show-text"><%= @question.content.gsub(/\n|\r|\r\n/, "<br>").html_safe %></li>
+      <textarea class="review-show-text question-show-text auto-adjust" disabled><%= @question.content %></textarea>
       <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
       <% if user_signed_in? && (current_user == @question.user) %>
         <%= link_to "編集する", edit_question_path(@question), class: "edit-button" %>
@@ -63,10 +63,9 @@
           <li class="question-user-name"><%= answer.user.name %></li>
         </div>
         <div id='<%= answer.id %>'>
-          <li class="review-show-text question-show-text" >
-            <%= answer.content.gsub(/\n|\r|\r\n/, "<br>").html_safe %>
-            <%#= simple_format(answer.content, {}, wrapper_tag: "div") %>
-          </li>
+
+          <textarea class="review-show-text question-show-text auto-adjust" disabled><%= answer.content %></textarea>
+
           <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
           <% if user_signed_in? && (current_user == answer.user) %>
             <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
@@ -106,3 +105,12 @@
     <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
   </div>
 </div>
+
+<%# <script>
+    document.querySelectorAll(".auto-adjust").forEach(function(){
+        this.addEventListener('keyup',function(e){
+            e.srcElement.style.height = 0
+            e.srcElement.style.height = e.srcElement.scrollHeight+"px"
+        })
+    })
+</script> %>
