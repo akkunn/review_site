@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 /* 共通 */
@@ -21,6 +22,7 @@ html {
 
 body {
   margin: 0;
+  color: #333;
 }
 
 .content {

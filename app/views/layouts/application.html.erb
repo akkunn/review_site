@@ -32,6 +32,11 @@
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <%= yield %>
+      <%= link_to "登録", new_school_path %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% if user_signed_in? %>
+        <%= link_to "プロフィール", user_path(current_user) %>
+      <% end %>
     </div>
 
     <footer>

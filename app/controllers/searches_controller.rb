@@ -3,6 +3,8 @@ class SearchesController < ApplicationController
 
   def home
     @schools = School.all
+    @reviews = Review.all
+    @questions = Question.all
     set_style_column
     set_support_column
     set_guarantee_column
