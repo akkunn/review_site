@@ -1,65 +1,98 @@
 <div class="background-blue">
   <div class="search-result">
-    <div class="school-table-frame">
-      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
+    <div class="page-link">
+      <ul class="flex">
+        <li><%= link_to 'HOME', root_path, class: "" %></li>
+        <li>＞</li>
+        <li><%= link_to '検索', "#", class: "link-underline" %></li>
+      </ul>
+    </div>
 
-      <h2>検索結果 : <%= @schools.count %>件</h2>
+    <div class="search-result-content">
+      <div class="flex">
+        <div class="display-results"><%= @schools.count %>件中
+          <% if (params[:page].nil?) || (params[:page] == "1")  %>
+            <%= 1 %>
+          <% else %>
+            <%= (params[:page].to_i - 1) * 30 + 1 %>
+          <% end %>
+          -
+          <% if (params[:page].nil?) || (params[:page] == "1")  %>
+            <% if @schools.count.to_i < 30 %>
+              <%= @schools.count %>件表示
+            <% else %>
+              30件表示
+            <% end %>
+          <% elsif @schools.count.to_i < (params[:page].to_i * 30) %>
+            <%= @schools.count %>件表示
+          <% else %>
+            <%= (params[:page]).to_i * 30 %>件表示
+          <% end %>
+        </div>
+        <div class="sort">
+          <%= sort_link(@q, :review_ave_score, "口コミ評価順") %>
+          |
+          <%= sort_link(@q, :review_count, "口コミ数順") %>
+        </div>
+      </div>
 
-
-      <%= sort_link(@q, :review_ave_score, "口コミ評価順") %>
-      |
-      <%= sort_link(@q, :review_count, "口コミ数順") %>
-
-      <table>
-        <tr class="school-table-head">
-          <th class="school-table-number"></th>
-          <th class="school-table-name">アイコン</th>
-          <th class="school-table-name">スクール名</th>
-          <th class="school-table-score">口コミ評価</th>
-          <th class="school-table-count">口コミ数</th>
-        </tr>
-
-        <% @schools.each.with_index(1) do |school, i| %>
-          <tr>
-            <td class="school-table-number">
-              <% if (params[:page]).nil? %>
-                <%= i %>
-              <% else %>
-                <%= (params[:page].to_i - 1) * 30 + i %>
-              <% end %>
-            </td>
-
-            <td class="school-table-name">
+      <div class="schools-box">
+        <% @schools.each do |school| %>
+          <ul class="flex one-school-box">
+            <li class="school-image-box flex">
               <% if school.image.attached? %>
-                <%= image_tag school.image.variant(resize: '100x100!'), class: "school-icon", alt: "スクールアイコン" %>
+                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school) %>
               <% else %>
-                <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school) %>
               <% end %>
-            </td>
+            </li>
 
-            <td><%= link_to school.name, school_path(school)  %></td>
+            <div class="school-name-explanation-box">
+              <li><%= link_to school.name, school_path(school)  %></li>
+              <li><%= simple_format(school.explanation.truncate(40)) %></li>
+            </div>
 
-            <% if school.review_ave_score == nil %>
-              <td>なし</td>
-            <% else %>
-              <td><%= school.review_ave_score %>点</td>
-            <% end %>
+            <li class="school-evaluation-box flex">
+              <ul>
+                <li id='search-result-star-<%= school.id %>' class="stars"></li>
+                <li><%= school.review_ave_score %></li>
+                <% if school.review_count.nil? %>
+                  <li>
+                    <%= link_to "口コミ: 0件", new_review_path %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school) %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+          <script>
+            window.addEventListener("turbolinks:load", function(){
+              $('#search-result-star-<%= school.id %>').empty();
 
-            <% if school.review_count == nil %>
-              <td>0</td>
-            <% else %>
-              <td><%= school.review_count %></td>
-            <% end %>
-          </tr>
+              $('#search-result-star-<%= school.id %>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half      : true,
+                readOnly: true,
+                score: <%= school.review_ave_score %>
+              });
+            });
+          </script>
         <% end %>
-      </table>
+      </div>
+    </div>
+
+
 
       <% unless (will_paginate @schools).nil? %>
         <div class="paginate">
           <%= will_paginate @schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         </div>
       <% end %>
-      < <%= link_to '検索画面に戻る', root_path, class: "link-underline" %>
-    </div>
   </div>
 </div>

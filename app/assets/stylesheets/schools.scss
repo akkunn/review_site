@@ -7,6 +7,112 @@
   width: 10rem;
 }
 
+.stars {
+  img {
+    display: inline-block;
+  }
+}
+
+.page-link {
+  background-color: #f9cc46;
+  height: 3rem;
+  padding-left: 3rem;
+  ul {
+    line-height: 3rem;
+    margin: 0;
+    li {
+      margin-right: 0.5rem;
+    }
+  }
+  a {
+    color: #1a3153;
+  }
+  .link-underline {
+    font-weight: 600;
+  }
+}
+
+
+// 新検索結果
+.search-result {
+  padding: 0 0 3rem 0;
+  .search-result-content {
+    width: 70%;
+    margin: 3rem auto 0 auto;
+    .flex {
+      justify-content: space-between;
+      .sort {
+        font-size: 1.1rem;
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .schools-box {
+      border-radius: 0.25rem;
+      border: none;
+      .one-school-box {
+        border: 1px solid #dddddd;
+        padding: 1rem;
+        margin: 1rem;
+        a {
+          color: #1a3153;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .school-image-box {
+          padding-right: 2rem;
+          width: 35%;
+          a {
+            margin: auto 0;
+          }
+          img {
+            width: 100%;
+            max-height: 11rem;
+          }
+          .school-icon-default {
+            object-fit: cover;
+          }
+        }
+        .school-name-explanation-box {
+          width: 40%;
+          padding: 1rem 1rem 0 0;
+          li {
+            &:last-child {
+              width: 80%;
+              color: #1a3153;
+            }
+          }
+          a {
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+        }
+        .school-evaluation-box {
+          padding: 0 1.5rem 0 0;
+          width: 25%;
+          ul {
+            margin: auto 0;
+            width: 100%;
+          }
+          li {
+            text-align: right;
+            &:nth-child(2) {
+              font-size: 1.4rem;
+              font-weight: 700;
+              color: #d82752;
+              margin: 0.5rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 // 検索結果 スクール一覧 共通
 .school-table-frame {
   width: 80%;
@@ -23,7 +129,7 @@
   }
 }
 
-.school-index, .search-result {
+.school-index {
   padding: 0 0 2rem 0;
   tr {
     height: 3rem;
@@ -76,7 +182,7 @@
   border: 1px solid black;
   width: 16rem;
   text-align: center;
-  margin: 1rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   height: 2rem;
   .pagination {
     line-height: 2rem;
