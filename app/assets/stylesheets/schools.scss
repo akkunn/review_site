@@ -24,6 +24,9 @@
       margin-right: 0.5rem;
       a {
         color: #1a3153;
+        &:hover {
+          opacity: 0.7;
+        }
       }
       .link-underline {
         font-weight: 600;
@@ -32,11 +35,41 @@
   }
 }
 
+.paginate {
+  background-color: white;
+  border: 1px solid black;
+  width: 16rem;
+  text-align: center;
+  margin: 2rem auto 0 auto;
+  height: 2rem;
+  .pagination {
+    line-height: 2rem;
+  }
+  a, em {
+    color: #007bff;
+    border-right: 1px solid black;
+    padding: 0.5rem 0.7rem 0.5rem 0.5rem;
+  }
+  em {
+    color: black;
+  }
+  a:last-child {
+    border-right: none;
+  }
+  .previous_page {
+    border-right: 1px solid black;
+    padding: 0.5rem;
+  }
+  .next_page {
+    padding: 0.5rem;
+  }
+}
 
-// 新検索結果
-.search-result {
+// 新検索結果 スクール一覧 共通
+
+.search-result, .school-index {
   padding: 3rem 0;
-  .search-result-content {
+  .search-result-content, .school-index-content {
     width: 75%;
     margin: 0 4rem 0 0;
     .flex {
@@ -62,7 +95,6 @@
           }
         }
         .school-image-box {
-          padding-right: 2rem;
           width: 35%;
           a {
             margin: auto 0;
@@ -112,100 +144,17 @@
 }
 
 
-
-// 検索結果 スクール一覧 共通
-.school-table-frame {
-  width: 80%;
-  margin: 0 auto;
-  table{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: white;
-  }
-  th,td {
-    border: 1px solid black;
-    text-align: center;
-  }
-}
-
+// スクール一覧
 .school-index {
-  padding: 0 0 2rem 0;
-  tr {
-    height: 3rem;
-  }
-  th {
-    padding: 0 0.4rem;
-    font-size: 1.2rem;
-  }
-  td {
-    font-size: 1.1rem;
-    padding: 0 0.4rem;
-  }
-  .school-table-head {
-    height: 4rem;
-    background-color: #b5e3b5;
-  }
-  tbody {
-    a {
-      color: black;
-      &:hover {
-        opacity: 0.5;
-      }
+  .school-index-content {
+    width: 70%;
+    margin: 0 auto;
+    .school-image-box {
+      padding-left: 0.5rem;
     }
   }
-  .button {
-    border-radius: 3rem;
-    background-color: #007bff;
-    width: 40%;
-    border: none;
-    color: white;
-    margin: 1rem auto 0 auto;
-  }
 }
 
-.school-table-number {
-  width: 2rem;
-  background-color: #b5e3b5;
-}
-
-.school-table-name {
-  width: 20rem;
-}
-
-.school-table-score, .school-table-count  {
-  width: 5rem;
-}
-
-.paginate {
-  background-color: white;
-  border: 1px solid black;
-  width: 16rem;
-  text-align: center;
-  margin: 2rem auto 0 auto;
-  height: 2rem;
-  .pagination {
-    line-height: 2rem;
-  }
-  a, em {
-    color: #007bff;
-    border-right: 1px solid black;
-    padding: 0.5rem 0.7rem 0.5rem 0.5rem;
-  }
-  em {
-    color: black;
-  }
-  a:last-child {
-    border-right: none;
-  }
-  .previous_page {
-    border-right: 1px solid black;
-    padding: 0.5rem;
-  }
-  .next_page {
-    padding: 0.5rem;
-  }
-}
 
 // スクール詳細画面
 .school-show {
