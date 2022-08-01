@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 共通
+// 全共通
 
 .flex {
   display: flex;
@@ -12,7 +12,7 @@
   background-color: #eef3f7;
 }
 
-.school-box, .schools-box, .school-search-box {
+.schools-box, .school-search-box {
   border: solid 1px #dddddd;
   padding: 1rem;
   background-color: #fff;
@@ -67,7 +67,7 @@
   }
   #search {
     padding: 6rem 0;
-    .school-box {
+    .school-search-box {
       width: 60%;
       h2 {
         margin: 1rem 0 2rem 0;
