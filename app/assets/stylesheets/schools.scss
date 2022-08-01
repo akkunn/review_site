@@ -146,11 +146,27 @@
 
 // スクール一覧
 .school-index {
+  padding: 1rem 0 3rem 0;
+  .button {
+    border-radius: 10rem;
+    background-color: #007bff;
+    color: #fff;
+    width: 11%;
+    margin: 0 2rem 2rem auto;
+  }
   .school-index-content {
     width: 70%;
     margin: 0 auto;
     .school-image-box {
       padding-left: 0.5rem;
+    }
+    .paginate {
+      margin: 1rem 0 0 auto;
+    }
+    .button {
+      width: 30%;
+      margin: 2rem auto 0 auto;
+      padding: 1rem 0;
     }
   }
 }
