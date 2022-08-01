@@ -1,14 +1,64 @@
 <div class="background-blue">
-  <div class="search-result">
-    <div class="page-link">
-      <ul class="flex">
-        <li><%= link_to 'HOME', root_path, class: "" %></li>
-        <li>＞</li>
-        <li><%= link_to '検索', "#", class: "link-underline" %></li>
-      </ul>
-    </div>
+  <div class="page-link">
+    <ul class="flex">
+      <li><%= link_to 'HOME', root_path, class: "" %></li>
+      <li>＞</li>
+      <li><%= link_to '検索', "#", class: "link-underline" %></li>
+    </ul>
+  </div>
 
-    <div class="search-result-content">
+  <div class="search-result flex">
+    <section class="search-result-search-box">
+      <div class="school-search-box">
+        <h2>絞り込み検索</h2>
+        <%= search_form_for @q, url: result_path do |f| %>
+          <ul>
+            <li><%= f.label :name_cont, "スクール名", class: "school-form-label" %></li>
+            <li><%= f.search_field :name_cont, placeholder: 'スクール名を入力', class: "school-form-select" %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :language_id_eq, "学習言語", class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :cost_id_eq, '費用', class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :period_id_eq, '学習期間', class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :sytle_eq, "学習形態", class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :prefecture_id_eq, '都道府県', class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :support_eq, '転職支援', class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %></li>
+          </ul>
+
+          <ul>
+            <li><%= f.label :guarantee_eq, '転職保証', class: "school-form-label" %></li>
+            <li class="school-form-select"><%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %></li>
+          </ul>
+
+          <%= f.submit '検索', class: "submit-button" %>
+        <% end %>
+      </div>
+    </section>
+
+
+    <section class="search-result-content">
       <div class="flex">
         <div class="display-results"><%= @schools.count %>件中
           <% if (params[:page].nil?) || (params[:page] == "1")  %>
@@ -79,20 +129,17 @@
                 starHalf: '<%= asset_path('star-half.png') %>',
                 half      : true,
                 readOnly: true,
-                score: <%= school.review_ave_score %>
+                score: '<%= school.review_ave_score %>'
               });
             });
           </script>
         <% end %>
       </div>
-    </div>
-
-
-
       <% unless (will_paginate @schools).nil? %>
         <div class="paginate">
           <%= will_paginate @schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         </div>
       <% end %>
+    </section>
   </div>
 </div>

@@ -12,7 +12,7 @@
   background-color: #eef3f7;
 }
 
-.school-box, .schools-box {
+.school-box, .schools-box, .school-search-box {
   border: solid 1px #dddddd;
   padding: 1rem;
   background-color: #fff;
@@ -169,4 +169,41 @@
 .school-form-select {
   font-size: 1rem;
   height: 100%;
+}
+
+// result
+.search-result {
+  .search-result-search-box {
+    width: 25%;
+    margin: 1.6rem 3rem 0 3rem;
+    .school-search-box {
+      padding: 0;
+      border-radius: 0.25rem;
+      h2 {
+        margin: 0;
+        padding: 1rem 0;
+        background-color: #1a3153;
+        color: #fff;
+        border-radius: 0.25rem 0.25rem 0 0;
+      }
+      .school_search {
+        padding: 0 2.5rem 1rem 2.5rem;
+        ul {
+          margin: 1.3rem 0;
+          input, select {
+            height: 2rem;
+          }
+          .school-form-label {
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.25rem;
+          }
+        }
+        .submit-button {
+          margin: 1rem 0;
+          width: 80%;
+        }
+      }
+    }
+  }
 }

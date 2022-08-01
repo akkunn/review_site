@@ -13,6 +13,9 @@ class SearchesController < ApplicationController
   def result
     # binding.pry
     @schools = @q.result.paginate(page: params[:page])
+    set_style_column
+    set_support_column
+    set_guarantee_column
   end
 
   private

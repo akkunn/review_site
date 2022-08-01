@@ -22,23 +22,23 @@
     margin: 0;
     li {
       margin-right: 0.5rem;
+      a {
+        color: #1a3153;
+      }
+      .link-underline {
+        font-weight: 600;
+      }
     }
-  }
-  a {
-    color: #1a3153;
-  }
-  .link-underline {
-    font-weight: 600;
   }
 }
 
 
 // 新検索結果
 .search-result {
-  padding: 0 0 3rem 0;
+  padding: 3rem 0;
   .search-result-content {
-    width: 70%;
-    margin: 3rem auto 0 auto;
+    width: 75%;
+    margin: 0 4rem 0 0;
     .flex {
       justify-content: space-between;
       .sort {
