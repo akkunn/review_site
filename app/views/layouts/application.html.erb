@@ -10,37 +10,60 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
   <body>
-    <header>
-      <div class="header-left">
-        <%= link_to "プロコミ！", root_path, class: "button logo" %>
-        <%= search_form_for @q, url: result_path do |f| %>
-          <%= f.search_field :name_cont, placeholder: 'スクール名で検索' %>
-        <% end %>
-      </div>
-      <div class="header-right">
-        <%= link_to "スクール一覧", schools_path, class: "button school-list-button" %>
-        <%= link_to "ログイン", new_user_session_path, class: "button login-button" %>
-        <%= link_to "新規登録", new_user_registration_path, class: "button signup-button" %>
-      </div>
-    </header>
     <div class="content">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-      <%= link_to "登録", new_school_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% if user_signed_in? %>
-        <%= link_to "プロフィール", user_path(current_user) %>
-      <% end %>
-    </div>
+      <header>
+        <div class="header-left">
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', class: "logo" %>
+          <% end %>
+          <%= search_form_for @q, url: result_path do |f| %>
+            <%= f.search_field :name_cont, placeholder: 'スクール名で検索' %>
+          <% end %>
+        </div>
+        <% if user_signed_in? && current_user.image.attached? %>
+          <div class="header-right">
+            <%= link_to "HOME", root_path %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to "登録", new_school_path %>
+            <%= link_to "スクール一覧", schools_path %>
+            <%= link_to "口コミ投稿", new_review_path %>
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="header-right">
+            <%= link_to "スクール一覧", schools_path %>
+            <%= link_to "ログイン", new_user_session_path %>
+            <%= link_to "新規登録", new_user_registration_path %>
+            <% if user_signed_in? %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <%= link_to user_path(current_user) do %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path do %>
+                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </header>
 
-    <footer>
-      <p>&copy; 2022 Prokomi.</p>
-    </footer>
+      <div class="main-content">
+        <%# <p class="notice">= notice</p> %>
+        <%# <p class="alert">= alert</p> %>
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+
+      </div>
+
+      <footer>
+        <p>&copy; 2022 プロコミ.</p>
+      </footer>
+    </div>
   </body>
 </html>

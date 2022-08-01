@@ -26,6 +26,14 @@ body {
 }
 
 .content {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 6.25rem;
+  box-sizing: border-box;
+  background-color: #eef3f7;
+}
+
+.main-content {
   padding-top: 5rem;
 }
 
@@ -126,21 +134,20 @@ header {
   display: flex;
   justify-content: space-between;
   height: 5rem;
-  background-color: #A4C6FF;
+  background-color: #1c385e;
   position: fixed;
   width: 100%;
   z-index: 1;
 }
 
-header .button {
-  margin: 0 3rem 0 0;
-  padding: 0.5rem;
-  height: 2rem;
-  line-height: 2rem;
+header .user-icon-default {
+  width: 3.5rem;
+  display: block;
 }
 
-header .button:first-child {
-  margin-left: 3rem;
+header .user-icon {
+  width: 3rem;
+  display: block;
 }
 
 .header-left {
@@ -153,44 +160,41 @@ header .button:first-child {
   align-items: center;
 }
 
+.header-right a {
+  color: #fff;
+  font-weight: 500;
+  margin-right: 3rem;
+}
+
+.header-right a:hover {
+  color: #66FF66;
+}
+
 header input {
   padding: 0.3rem;
-  width: 9rem;
-  font-size: 1rem;
+  width: 9.6rem;
   height: 2rem;
 }
 
 .logo {
-  color: #0000FF;
-  border: none;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.school-list-button {
-  background-color: #005FFF;
-  color: white;
-  border-color: #005FFF;
-}
-
-.login-button {
-  background-color: #0000FF;
-  color: white;
-  border-color: #0000FF;
-}
-
-.signup-button {
-  background-color: #00ECFF;
-  color: black;
+  width: 7rem;
+  display: block;
+  margin: 0 2rem;
+  padding-bottom: 1rem;
 }
 
 /* フッター */
 
 footer {
+  position: absolute;
+  bottom: 0;
   text-align: center;
-  height: 4rem;
-  background-color: #A4C6FF;
-  line-height: 4rem;
+  height: 6.25rem;
+  background-color: #1c385e;
+  line-height: 6.25rem;
+  color: #fff;
+  font-size: smaller;
+  width: 100%;
 }
 
 footer p {
