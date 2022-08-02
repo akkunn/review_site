@@ -1,8 +1,16 @@
 <div class="school-new">
   <div class="page-link">
-    <ul>
-      <li><%= link_to 'スクール追加', "#", class: "link-underline" %></li>
-    </ul>
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to 'スクール追加', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><%= link_to 'スクール追加', "#", class: "link-underline" %></li>
+      </ul>
+    <% end %>
   </div>
   <div class="school-search-box">
     <h2>プログラミングスクールの追加</h2>
@@ -53,7 +61,7 @@
         </div>
       </div>
       <ul class="school-new-image flex">
-        <li><%= f.label :image, "アイコン", class: "school-form-label" %></li>
+        <li><%= f.label :image, "スクール画像", class: "school-form-label" %></li>
         <li><%= f.file_field :image %></li>
       </ul>
 

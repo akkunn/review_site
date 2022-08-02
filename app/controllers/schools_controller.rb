@@ -20,6 +20,7 @@ class SchoolsController < ApplicationController
   end
 
   def new
+    @params = params[:school_index_params]
     @school = School.new
   end
 
