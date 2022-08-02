@@ -302,11 +302,11 @@
           }
         }
       }
-      .new-school-input {
+      .school-name-input {
         height: 100%;
         box-sizing: border-box;
       }
-      .school-new-image, .school-new-url {
+      .school-form-image, .school-form-url {
         justify-content: space-between;
         margin: 0 2rem;
         padding: 1.5rem 0;
@@ -320,14 +320,14 @@
           }
         }
       }
-      .school-new-url {
+      .school-form-url {
         textarea {
           overflow: auto;
           height: 2.3rem;
           margin: 1rem 0;
         }
       }
-      .school-new-explanation {
+      .school-form-explanation {
         padding: 0;
         margin: 1rem 2rem 2rem 2rem;
         li {

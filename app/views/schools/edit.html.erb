@@ -34,7 +34,7 @@
         <div class="school-form-flex-item">
           <ul class="school-form-flex-item-left span-badge">
             <li><%= f.label :name, "スクール名", class: "school-form-label" %><span class="badge">必須</span></li>
-            <li><%= f.text_field :name, placeholder: "スクール名を入力", class: "new-school-input" %></li>
+            <li><%= f.text_field :name, placeholder: "スクール名を入力", class: "school-name-input" %></li>
           </ul>
 
           <ul class="school-form-flex-item-left">
@@ -75,17 +75,17 @@
           </ul>
         </div>
       </div>
-      <ul class="school-new-image flex">
+      <ul class="school-form-image flex">
         <li><%= f.label :image, "スクール画像", class: "school-form-label" %></li>
         <li><%= f.file_field :image %></li>
       </ul>
 
-      <ul class="school-new-url flex">
+      <ul class="school-form-url flex">
         <li><%= f.label :url, "公式サイトのURL", class: "school-form-label" %></li>
         <li><%= f.text_area :url %></li>
       </ul>
 
-      <ul class="school-new-explanation">
+      <ul class="school-form-explanation">
         <li><%= f.label :explanation, "特徴", class: "school-form-label" %></li>
         <li><%= f.text_area :explanation, placeholder: "その他の特徴を入力"%>
       </ul>
