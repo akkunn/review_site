@@ -9,6 +9,8 @@ class SchoolsController < ApplicationController
     elsif @params == "review-score"
       @schools = School.paginate(page: params[:page]).order(review_ave_score: :desc,
                                                             review_count: :desc)
+    elsif @params == "new"
+      @schools = School.paginate(page: params[:page]).order(id: :desc)
     else
       @schools = School.paginate(page: params[:page])
     end
@@ -27,7 +29,7 @@ class SchoolsController < ApplicationController
   def create
     @school = School.new(school_params)
     if @school.save
-      redirect_to schools_path
+      redirect_to schools_path(signal: "new")
     else
       render "new"
     end

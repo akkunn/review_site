@@ -85,6 +85,11 @@
       justify-content: space-between;
       .sort {
         font-size: 1.1rem;
+        select {
+          padding: 0.2rem;
+          margin-bottom: 0.3rem;
+          color: #1a3153;
+        }
         a:hover {
           text-decoration: underline;
         }

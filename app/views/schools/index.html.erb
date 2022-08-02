@@ -28,9 +28,13 @@
           <% end %>
         </div>
         <div class="sort">
-          <%= link_to '口コミ評価順', schools_path(signal: "review-score") %>
-          |
-          <%= link_to '口コミ数順', schools_path(signal: "review-count") %>
+          <%= form_with url: schools_path, method: :get, id: "form1", local: true do |f| %>
+            <%= select_tag :signal, options_for_select([ ['新しい順', 'new'],
+                                    ['口コミ評価順', 'review-score'],
+                                    ['口コミ数順', 'review-count'],
+                                    ['古い順']
+                                  ]), include_blank: "並び替え", id: 'select' %>
+          <% end %>
         </div>
       </div>
 
@@ -97,3 +101,13 @@
     </a>
   </span>
 </div>
+
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $(document).ready(function(){
+      $("#select").change(function(){
+        $('#form1').submit();
+      });
+    });
+  });
+</script>
