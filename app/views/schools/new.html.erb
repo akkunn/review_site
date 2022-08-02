@@ -57,6 +57,11 @@
         <li><%= f.file_field :image %></li>
       </ul>
 
+      <ul class="school-new-url flex">
+        <li><%= f.label :url, "公式サイトのURL", class: "school-form-label" %></li>
+        <li><%= f.text_area :url %></li>
+      </ul>
+
       <ul class="school-new-explanation">
         <li><%= f.label :explanation, "特徴", class: "school-form-label" %></li>
         <li><%= f.text_area :explanation, placeholder: "その他の特徴を入力"%></li>

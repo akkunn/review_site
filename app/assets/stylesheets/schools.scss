@@ -301,7 +301,7 @@
         height: 100%;
         box-sizing: border-box;
       }
-      .school-new-image {
+      .school-new-image, .school-new-url {
         justify-content: space-between;
         margin: 0 2rem;
         padding: 1.5rem 0;
@@ -315,9 +315,16 @@
           }
         }
       }
+      .school-new-url {
+        textarea {
+          overflow: auto;
+          height: 2.3rem;
+          margin: 1rem 0;
+        }
+      }
       .school-new-explanation {
         padding: 0;
-        margin: 1.5rem 2rem;
+        margin: 1rem 2rem 2rem 2rem;
         li {
           list-style: none;
           &:first-child {
