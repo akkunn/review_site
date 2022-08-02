@@ -5,7 +5,7 @@
     </ul>
   </div>
   <div class="school-index">
-    <%= link_to "スクール追加", new_school_path(school_index_params: "school_index"), class: "button" %>
+    <%= link_to "スクール追加", new_school_path(school_new_params: "school_index"), class: "button" %>
     <div class="school-index-content">
       <div class="flex">
         <div class="display-results"><%= @schools.count %>件中
@@ -43,14 +43,14 @@
           <ul class="flex one-school-box">
             <li class="school-image-box flex">
               <% if school.image.attached? %>
-                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school) %>
+                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school, school_show_params: "school_index") %>
               <% else %>
-                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school) %>
+                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school, school_show_params: "school_index") %>
               <% end %>
             </li>
 
             <div class="school-name-explanation-box">
-              <li><%= link_to school.name, school_path(school)  %></li>
+              <li><%= link_to school.name, school_path(school, school_show_params: "school_index")  %></li>
               <li><%= simple_format(school.explanation.truncate(40)) %></li>
             </div>
 
@@ -64,7 +64,7 @@
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school) %>
+                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "school_index") %>
                   </li>
                 <% end %>
               </ul>
@@ -92,7 +92,7 @@
           <%= will_paginate @schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         </div>
       <% end %>
-      <%= link_to "プログラミングスクールを追加する", new_school_path(school_index_params: "school_index"), class: "button" %>
+      <%= link_to "プログラミングスクールを追加する", new_school_path(school_new_params: "school_index"), class: "button" %>
     </div>
   </div>
   <span id="top-btn">

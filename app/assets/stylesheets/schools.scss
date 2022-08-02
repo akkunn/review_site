@@ -284,7 +284,7 @@
 }
 
 // スクール新規登録
-.school-new {
+.school-new, .school-edit {
   .school-search-box {
     width: 60%;
     margin: 4rem auto;
@@ -342,7 +342,7 @@
         textarea {
           margin-top: 0.5rem;
           padding: 0.3rem;
-          height: 7rem;
+          height: 10rem;
         }
       }
       .submit-button {
@@ -358,23 +358,24 @@
 // スクール情報編集画面
 
 .school-edit {
-  .box {
-    width: 60%;
-    margin: 0 auto;
+  h2 {
+    margin: 2rem 0;
   }
-  h3 {
-    margin: 2rem 0 3rem 0;
-  }
-  form {
-    text-align: center;
+  .image-box {
+    margin: 0 auto 2rem auto;
+    width: 50%;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
   }
   .submit-button {
-    width: 8rem;
     margin-bottom: 2rem;
     font-size: 1rem;
   }
   .button {
-    width: 6rem;
+    width: 30%;
     color: black;
+    margin: 1rem auto;
   }
 }

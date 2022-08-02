@@ -17,12 +17,13 @@ class SchoolsController < ApplicationController
   end
 
   def show
+    @params = params[:school_show_params]
     @school = School.find(params[:id])
     @reviews = Review.where(school_id: @school.id)
   end
 
   def new
-    @params = params[:school_index_params]
+    @params = params[:school_new_params]
     @school = School.new
   end
 
@@ -36,6 +37,7 @@ class SchoolsController < ApplicationController
   end
 
   def edit
+    @params = params[:school_edit_params]
     @school = School.find(params[:id])
   end
 

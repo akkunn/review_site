@@ -1,11 +1,39 @@
 <div class="school-edit background-blue">
-  <div class="box">
-    <h3>プログラミングスクールの情報を変更する</h3>
+  <div class="page-link">
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul class="flex">
+        <li><%= link_to 'HOME', root_path %></li>
+        <li>＞</li>
+        <li><%= link_to '検索', result_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="school-search-box">
+    <h2><%= @school.name %>の情報の変更</h2>
     <%= form_with model: @school, local: true do |f| %>
+      <div class="image-box">
+        <% if @school.image.attached? %>
+          <%= image_tag @school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>
+        <% else %>
+          <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+        <% end %>
+      </div>
       <div class="flex">
         <div class="school-form-flex-item">
-          <ul class="school-form-flex-item-left">
-            <li><%= f.label :name, "スクール名", class: "school-form-label" %></li>
+          <ul class="school-form-flex-item-left span-badge">
+            <li><%= f.label :name, "スクール名", class: "school-form-label" %><span class="badge">必須</span></li>
             <li><%= f.text_field :name, placeholder: "スクール名を入力", class: "new-school-input" %></li>
           </ul>
 
@@ -47,18 +75,22 @@
           </ul>
         </div>
       </div>
-      <ul class="school-new-explanation flex">
-        <li><%= f.label :image, "アイコン", class: "school-form-label" %></li>
+      <ul class="school-new-image flex">
+        <li><%= f.label :image, "スクール画像", class: "school-form-label" %></li>
         <li><%= f.file_field :image %></li>
       </ul>
 
+      <ul class="school-new-url flex">
+        <li><%= f.label :url, "公式サイトのURL", class: "school-form-label" %></li>
+        <li><%= f.text_area :url %></li>
+      </ul>
+
       <ul class="school-new-explanation">
-        <li><%= f.label :explanation, "説明", class: "school-form-label" %></li>
-        <li><%= f.text_area :explanation, placeholder: "その他の説明を入力"%>
+        <li><%= f.label :explanation, "特徴", class: "school-form-label" %></li>
+        <li><%= f.text_area :explanation, placeholder: "その他の特徴を入力"%>
       </ul>
       <%= f.submit '変更する', class: "submit-button" %>
     <% end %>
     <%= link_to "戻る", schools_path, class: "button" %>
   </div>
-  <%= link_to "検索", root_path %>
 </div>
