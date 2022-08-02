@@ -26,6 +26,75 @@
   }
 }
 
+// home result スクール新規登録 共通
+
+.school-form-label {
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+// home result 共通
+
+.school_search {
+  text-align: center;
+  .submit-button {
+    width: 30%;
+    margin: 3rem 0 2rem 0;
+    color: #fff;
+  }
+}
+
+.school-form-select {
+  font-size: 1rem;
+  height: 100%;
+}
+
+// home スクール新規登録 共通
+
+.school-form-flex-item {
+  width: 50%;
+  text-align: center;
+  &:last-child {
+    border-left: 1px solid #dddddd;
+  }
+  ul {
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #dddddd;
+    select {
+      height: 100%;
+    }
+    li {
+      list-style: none;
+      vertical-align: middle;
+      height: 100%;
+      &:first-child {
+        width: 35%;
+      }
+      &:last-child {
+        width: 60%;
+      }
+    }
+  }
+  .school-form-flex-item-left {
+    margin: 0 0 0 2rem;
+    padding: 1.5rem 3rem 1.5rem 0;
+    &:first-child {
+      border-top: 1px solid #dddddd;
+    }
+  }
+  .school-form-flex-item-right {
+    margin: 0 2rem 0 0;
+    padding: 1.5rem 2rem 1.5rem 1rem;
+    &:first-child {
+      border-top: 1px solid #dddddd;
+    }
+  }
+}
+
 // // home
 
 .home {
@@ -104,71 +173,6 @@
       }
     }
   }
-}
-
-.school_search {
-  text-align: center;
-  .submit-button {
-    width: 30%;
-    margin: 3rem 0 2rem 0;
-    color: #fff;
-  }
-}
-
-.school-form-flex-item {
-  width: 50%;
-  text-align: center;
-  ul {
-    display: flex;
-    height: 2rem;
-    justify-content: space-between;
-    border-bottom: 1px solid #dddddd;
-    li {
-      list-style: none;
-      vertical-align: middle;
-      height: 100%;
-      &:first-child {
-        width: 35%;
-      }
-      &:last-child {
-        width: 60%;
-      }
-    }
-  }
-  select {
-    height: 100%;
-  }
-  &:last-child {
-    border-left: 1px solid #dddddd;
-  }
-}
-
-.school-form-flex-item-left {
-  margin: 0 0 0 2rem;
-  padding: 1.5rem 3rem 1.5rem 0;
-  &:first-child {
-    border-top: 1px solid #dddddd;
-  }
-}
-
-.school-form-flex-item-right {
-  margin: 0 2rem 0 0;
-  padding: 1.5rem 2rem 1.5rem 1rem;
-  &:first-child {
-    border-top: 1px solid #dddddd;
-  }
-}
-
-.school-form-label {
-  display: block;
-  text-align: center;
-  font-weight: 700;
-  line-height: 2rem;
-}
-
-.school-form-select {
-  font-size: 1rem;
-  height: 100%;
 }
 
 // result
