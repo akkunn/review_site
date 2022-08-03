@@ -116,8 +116,12 @@ textarea {
   width: 16rem;
   margin: 0 auto;
   border: 5px solid #FF0000;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
   background-color: #FFABCE;
+}
+
+#error_explanation ul {
+  margin: 0.5rem auto 0 auto;
 }
 
 .alert li {
