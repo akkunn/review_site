@@ -20,9 +20,11 @@
       </ul>
     <% end %>
   </div>
+  <%= render 'shared/flash_message' %>
   <div class="school-search-box">
     <h2><%= @school.name %>の情報の変更</h2>
     <%= form_with model: @school, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="image-box">
         <% if @school.image.attached? %>
           <%= image_tag @school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>

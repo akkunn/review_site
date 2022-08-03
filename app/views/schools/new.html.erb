@@ -12,9 +12,11 @@
       </ul>
     <% end %>
   </div>
+  <%= render 'shared/flash_message' %>
   <div class="school-search-box">
     <h2>プログラミングスクールの追加</h2>
     <%= form_with model: @school, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="flex">
         <div class="school-form-flex-item">
           <ul class="school-form-flex-item-left span-badge">

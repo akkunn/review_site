@@ -290,6 +290,9 @@
     margin: 4rem auto;
     form {
       text-align: center;
+      #error_explanation {
+        margin-bottom: 1rem;
+      }
       .span-badge {
         li {
           .badge {
