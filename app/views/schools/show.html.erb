@@ -1,5 +1,6 @@
 <div class="school-show background-blue">
   <div class="school-show-back-link">< <%= link_to '検索結果一覧に戻る', :back %></div>
+  <%= render 'shared/flash_message' %>
   <div class="box">
     <h3><%= @school.name %></h3>
 

@@ -12,7 +12,7 @@ RSpec.describe "Schools", type: :system do
     sign_in_as(user)
     visit new_school_path
     expect {
-      within '.box' do
+      within '.school-search-box' do
         fill_in "school_name", with: "ポテパンキャンプ"
         select "Ruby", from: "school_language_id"
         select "41~50万円", from: "school_cost_id"
@@ -22,16 +22,17 @@ RSpec.describe "Schools", type: :system do
         select "あり", from: "school_support"
         select "あり", from: "school_guarantee"
         fill_in "school_explanation", with: "難しい"
-        click_button "新規登録"
+        click_button "追加する"
       end
     }.to change(School, :count).by(1)
+    expect(page).to have_content("スクールを追加しました")
     expect(page).to have_content("ポテパンキャンプ")
   end
 
   scenario "user updates school" do
     sign_in_as(user)
     visit edit_school_path(@school)
-    within '.box' do
+    within '.school-search-box' do
       fill_in "school_name", with: "ポテパンキャンプ"
       select "PHP", from: "school_language_id"
       select "31~40万円", from: "school_cost_id"
@@ -43,6 +44,7 @@ RSpec.describe "Schools", type: :system do
       fill_in "school_explanation", with: "難しいけど、頑張れる"
       click_button "変更する"
     end
+    expect(page).to have_content("スクール情報を変更しました")
     expect(page).to have_content("ポテパンキャンプ")
     expect(@school.reload.language_id).to eq 6
     expect(@school.reload.cost_id).to eq 5

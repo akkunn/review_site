@@ -4,6 +4,7 @@
       <li><%= link_to 'スクール一覧', "#", class: "link-underline" %></li>
     </ul>
   </div>
+  <%= render 'shared/flash_message' %>
   <div class="school-index">
     <%= link_to "スクール追加", new_school_path(school_new_params: "school_index"), class: "button" %>
     <div class="school-index-content">
