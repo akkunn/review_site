@@ -30,8 +30,10 @@ class SchoolsController < ApplicationController
   def create
     @school = School.new(school_params)
     if @school.save
+      flash[:success] = "スクールを追加しました"
       redirect_to schools_path(signal: "new")
     else
+      flash.now[:failure] = "スクールを追加できませんでした"
       render "new"
     end
   end
@@ -44,8 +46,10 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     if @school.update(school_params)
+      flash[:success] = "スクール情報を変更しました"
       redirect_to school_path(@school)
     else
+      flash.now[:failure] = "スクール情報を変更できませんでした"
       render "edit"
     end
   end
