@@ -1,100 +1,171 @@
 <div class="school-show background-blue">
-  <div class="school-show-back-link">< <%= link_to '検索結果一覧に戻る', :back %></div>
-  <%= render 'shared/flash_message' %>
-  <div class="box">
-    <h3><%= @school.name %></h3>
-
-    <% if @school.image.attached? %>
-      <%= image_tag @school.image.variant(resize: '100x100!'), class: "school-icon", alt: "スクールアイコン" %>
-    <% else %>
-      <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
-    <% end %>
-
-    <%= form_with model: @school, local: true do |f| %>
-      <div class="flex">
-        <div class="school-form-flex-item">
-          <ul class="school-form-flex-item-left">
-            <li><%= f.label :name, "スクール名", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.name %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-left">
-            <li><%= f.label :cost_id, "費用", class: "school-form-label"  %></li>
-            <li class="school-show-info"><%= @school.cost.range %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-left">
-            <li><%= f.label :sytle, "学習形態", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.style %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-left">
-            <li><%= f.label :support, "転職支援", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.support %></li>
-          </ul>
-        </div>
-
-        <div class="school-form-flex-item">
-          <ul class="school-form-flex-item-right">
-            <li><%= f.label :language_id, "学習言語", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.language.name %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-right">
-            <li><%= f.label :period_id, "学習期間", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.period.range %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-right">
-            <li><%= f.label :prefecture_id, "都道府県", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.prefecture.name %></li>
-          </ul>
-
-          <ul class="school-form-flex-item-right">
-            <li><%= f.label :guarantee, "転職保証", class: "school-form-label" %></li>
-            <li class="school-show-info"><%= @school.guarantee %></li>
-          </ul>
-        </div>
-      </div>
-      <ul class="school-new-explanation">
-        <li><%= f.label :explanation, "説明", class: "school-form-label" %></li>
-        <li class="explanation"><%= @school.explanation %></li>
+  <div class="page-link">
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params ==  "review_create" %>
+      <ul class="flex">
+        <li><%= link_to '口コミ投稿', new_review_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% else  %>
+      <ul class="flex">
+        <li><%= link_to 'HOME', root_path %></li>
+        <li>＞</li>
+        <li><%= link_to '検索', result_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
       </ul>
     <% end %>
   </div>
-  <div class="school-show-edit-link-box">
-    <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school, school_edit_params: @params) %>
-  </div>
-    <%= link_to "質問一覧", questions_path(school_id: @school.id) %>
-</div>
+  <%= render 'shared/flash_message' %>
+  <section class="school-header">
+    <div class="school-header-content flex">
+      <div class="school-image-box">
+        <% if @school.image.attached? %>
+          <%= image_tag @school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>
+        <% else %>
+          <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+        <% end %>
+      </div>
+      <div class="school-name-explanation-box">
+        <p class="school-header-name"><%= @school.name %></p>
+        <div class="school-header-explanation">
+          <%= simple_format(@school.explanation) %>
+        </div>
+      </div>
+      <div class="school-evaluation-box">
+        <ul>
+          <% unless @school.review_ave_score.nil? %>
+            <li id='school-show-header-star-<%= @school.id %>' class="stars"></li>
+            <li class="ave"><%= @school.review_ave_score %></li>
+          <% end %>
+          <% if @school.review_count.nil? %>
+            <li>口コミ: 0件</li>
+            <%= link_to "口コミを書く", new_review_path, class: "button blue" %>
+          <% else %>
+            <li><%= "口コミ: #{ @school.review_count }件" %></li>
+          <% end %>
+          <% unless @school.url.blank? %>
+            <li>
+              <%= link_to "公式サイトへ", "#{@school.url}", class: "button" %>
+            </li>
+          <% end %>
+        </ul>
+        <script>
+          window.addEventListener("turbolinks:load", function(){
+            $('#school-show-header-star-<%= @school.id %>').empty();
 
-<section id="school-show-review">
-  <div class="school-show-review">
-    <h3>口コミ一覧</h3>
-    <div class="flex">
-      <% @reviews.each do |review| %>
-        <div class="school-show-review-box">
-          <div><%= link_to review.name, review_path(review), class: "school-show-review-name" %></div>
-
-          <ul>
-            <li id='star-rate<%= review.id %>'></li>
-            <li class="school-show-review-ave"><%= review.average_star %>点</li>
-          </ul>
-
-          <script>
-            $('#star-rate<%= review.id %>').raty({
+            $('#school-show-header-star-<%= @school.id %>').raty({
               size      : 36,
               starOff   : '<%= asset_path('star-off.png') %>',
               starOn    : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
               half      : true,
               readOnly: true,
-              score: <%= ave_star(review) %>
+              score: '<%= @school.review_ave_score %>'
             });
-          </script>
-        </div>
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+  <section class="school-detail">
+    <div class="review-and-question-link">
+      <%= link_to "口コミ一覧", { anchor: "review" } %>
+      <%= link_to "質問一覧", questions_path(school_id: @school.id) %>
+    </div>
+    <h2><%= @school.name %>の情報</h2>
+    <div class="school-show-school-box schools-box">
+      <table>
+        <tbody>
+          <tr>
+            <th><i class="fa fa-pencil" aria-hidden="true"></i>学習言語</th>
+            <td><%= @school.language.name %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-money" aria-hidden="true"></i>費用</th>
+            <td><%= @school.cost.range %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-calendar" aria-hidden="true"></i>学習期間</th>
+            <td><%= @school.period.range %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-television" aria-hidden="true"></i>学習形態</th>
+            <td><%= @school.style %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-map-marker" aria-hidden="true"></i>都道府県</th>
+            <td><%= @school.prefecture.name %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-user-o" aria-hidden="true"></i>転職支援</th>
+            <td><%= @school.support %></td>
+          </tr>
+          <tr>
+            <th><i class="fa fa-handshake-o" aria-hidden="true"></i>転職保証</th>
+            <td><%= @school.guarantee %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% unless @school.url.blank? %>
+        <%= link_to "公式サイトへ", "#{@school.url}", class: "button" %>
       <% end %>
     </div>
-  <%= link_to "口コミを投稿する", new_review_path, class: "button" %>
-  </div>
-</section>
+    <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school, school_edit_params: @params), class: "school-show-edit-link hover-underline" %>
+
+    <div class="school-show-review">
+      <h2 id ="review"><%= @school.name %>の口コミ</h2>
+      <div class="flex">
+        <% @reviews.each do |review| %>
+          <div class="school-show-review-box schools-box">
+            <%= link_to review_path(review) do %>
+              <div class="school-show-review-name hover-underline">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                <%= review.name %>
+              </div>
+
+              <% unless review.average_star.nil? %>
+                <ul>
+                  <li id='school-show-review-star-<%= review.id %>'></li>
+                  <li class="school-show-review-ave ave"><%= review.average_star %></li>
+                </ul>
+              <% end %>
+
+              <div class="school-show-review-thought">
+                <%= simple_format(review.thought.truncate(40)) %>
+              </div>
+
+              <script>
+                window.addEventListener("turbolinks:load", function(){
+                  $('#school-show-review-star-<%= review.id %>').empty();
+                  $('#school-show-review-star-<%= review.id %>').raty({
+                    size      : 36,
+                    starOff   : '<%= asset_path('star-off.png') %>',
+                    starOn    : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half      : true,
+                    readOnly: true,
+                    score: '<%= ave_star(review) %>'
+                  });
+                });
+              </script>
+            <% end %>
+            <p class="school-show-review-time"><%= review.updated_at.to_s(:datetime_jp) %></p>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to "口コミを投稿する", new_review_path, class: "button" %>
+    </div>
+  </section>
+  <span id="top-btn">
+    <a href="#">
+      <%= image_tag asset_path('top_btn.png'), class: 'top-btn' %>
+    </a>
+  </span>
+<div>

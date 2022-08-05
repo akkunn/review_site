@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
       @school.review_ave_score = all_reviews_ave_score
       @school.review_count = @school.reviews.count
       @school.save
-      redirect_to school_path(@school)
+      redirect_to school_path(@school, school_show_params: "review_create")
     else
       render "new"
     end
