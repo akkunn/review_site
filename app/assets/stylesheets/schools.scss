@@ -359,6 +359,9 @@
 }
 
 
+
+
+
 // スクール新規登録
 .school-new, .school-edit {
   .school-search-box {
@@ -456,5 +459,190 @@
     width: 30%;
     color: black;
     margin: 1rem auto;
+  }
+}
+
+// レスポンシブ対応
+
+@media screen and (max-width: 960px) {
+
+  // スクール詳細
+
+  .school-show {
+    .school-header {
+      .school-header-content {
+        width: 90%;
+        margin: 0 auto;
+        min-height: 6rem;
+        .school-name-explanation-box {
+          padding: 0 0 0 1rem;
+          .school-header-name {
+            font-size: 1.2rem;
+          }
+          .school-header-explanation {
+            font-size: 80%;
+          }
+        }
+        .school-evaluation-box {
+          ul {
+            img {
+              width: 1.1rem;
+            }
+            .ave {
+              font-size: 1.2rem;
+              margin: 0;
+            }
+            .button {
+              width: 6.5rem;
+              font-size: smaller;
+              margin: 0.5rem 0 0 auto;
+            }
+          }
+        }
+      }
+    }
+    .school-detail {
+      .school-show-school-box {
+        table {
+          th {
+            width: 41%;
+          }
+          td {
+            width: 59%;
+          }
+        }
+      }
+      .school-show-review {
+        .button {
+          background-color: #007bff;
+          color: #fff;
+          width: 10rem;
+          border-radius: 10rem;
+          margin-top: 1rem;
+        }
+        .flex {
+          .school-show-review-box {
+            width: 41%;
+            ul {
+              img {
+                width: 1.1rem;
+              }
+              .ave {
+                font-size: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 520px) {
+
+// 共通
+
+.page-link {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+  ul {
+    padding-top: 1rem;
+    line-height: 1rem;
+    li {
+      margin-right: 0.2rem;
+    }
+  }
+}
+
+  // スクール詳細
+
+  .school-show {
+    .school-header {
+      padding-bottom: 0.5rem;
+      .school-header-content {
+        display: block;
+        width: 80%;
+        .school-image-box {
+          width: 100%;
+          img {
+            max-height: 14rem;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+        .school-name-explanation-box {
+          padding: 0;
+          width: 100%;
+          .school-header-name {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+          }
+          .school-header-explanation {
+            font-size: 1rem;
+          }
+        }
+        .school-evaluation-box {
+          width: 100%;
+          ul {
+            text-align: left;
+            img {
+              width: 1.5rem;
+            }
+            .ave {
+              font-size: 1.5rem;
+              margin: 0.5rem 0;
+            }
+            .button {
+              width: 10rem;
+              font-size: 1rem;
+              margin: 0.5rem auto 0 auto;
+            }
+          }
+        }
+      }
+    }
+    .school-detail {
+      padding: 1rem 1rem 2rem 1rem;
+      .review-and-question-link {
+        a {
+          padding: 0.5rem;
+        }
+      }
+      .school-show-school-box {
+        padding: 2rem 1rem 1rem 1rem;
+        table {
+          td {
+            padding-left: 1.5rem;
+          }
+        }
+        .button {
+          width: 10rem;
+          margin-top: 1rem;
+        }
+      }
+      .school-show-review {
+        .button {
+          margin-top: 2rem;
+        }
+        .flex {
+          display: block;
+          .school-show-review-box {
+            width: 100%;
+            box-sizing: border-box;
+            ul {
+              img {
+                width: 1.3rem;
+              }
+              .ave {
+                font-size: 1.2rem;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
