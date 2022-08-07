@@ -90,7 +90,7 @@
 .search-result, .school-index {
   padding: 3rem 0;
   .search-result-content, .school-index-content {
-    width: 75%;
+    max-width: 960px;
     margin: 0 4rem 0 0;
     .flex {
       justify-content: space-between;
@@ -101,21 +101,24 @@
           margin-bottom: 0.3rem;
           color: #1a3153;
         }
-        a:hover {
-          text-decoration: underline;
-        }
       }
     }
     .schools-box {
       border-radius: 0.25rem;
       border: none;
       .one-school-box {
+        max-height: 12rem;
+        overflow: hidden;
         border: 1px solid #dddddd;
         padding: 1rem;
         margin: 1rem;
+        a {
+          color: #1a3153;
+        }
         .school-name-explanation-box {
-          width: 40%;
-          padding: 1rem 1rem 0 0;
+          width: 43%;
+          padding: 0 1rem 0 1.5rem;
+          overflow: hidden;
           li {
             &:last-child {
               width: 80%;
@@ -133,21 +136,18 @@
           ul {
             margin: auto 0;
             width: 100%;
-          }
-          li {
-            text-align: right;
-            &:nth-child(2) {
-              font-size: 1.4rem;
-              font-weight: 700;
-              color: #d82752;
+            li {
+              text-align: right;
+              // &:nth-child(2) {
+              //   font-size: 1.4rem;
+              //   font-weight: 700;
+              //   color: #d82752;
+              //   margin: 0.5rem 0;
+              // }
+            }
+            .ave {
               margin: 0.5rem 0;
             }
-          }
-        }
-        a {
-          color: #1a3153;
-          &:hover {
-            text-decoration: underline;
           }
         }
       }
@@ -158,7 +158,8 @@
 // result スクール一覧 スクール詳細 共通
 
 .school-image-box {
-  width: 35%;
+  width: 32%;
+  // padding-right: 1rem;
   a {
     margin: auto 0;
   }
@@ -184,7 +185,7 @@
     margin: 0 2rem 2rem auto;
   }
   .school-index-content {
-    width: 70%;
+    // width: 70%;
     margin: 0 auto;
     .school-image-box {
       padding-left: 0.5rem;
@@ -214,7 +215,7 @@
     height: auto;
     .school-header-content {
       background-color: #fff;
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
       min-height: 12rem;
       .school-image-box {
@@ -256,7 +257,7 @@
   .school-detail {
     padding: 1rem 3rem 2rem 3rem;
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: 960px;
     background-color: #fff;
     margin: 3rem auto;
     .review-and-question-link a {
@@ -466,6 +467,72 @@
 
 @media screen and (max-width: 960px) {
 
+  // スクール一覧 result 共通
+
+  .search-result, .school-index {
+    .search-result-content, .school-index-content {
+      .button {
+        width: 18rem;
+      }
+      width: 90%;
+      margin: 0 auto;
+      .schools-box {
+        padding: 1rem 0;
+        .one-school-box {
+          max-height: 11rem;
+          .school-image-box {
+            width: 40%;
+            padding: 0 1rem 0 0;
+            img {
+              width: 100%;
+              max-height: 11rem;
+            }
+            .school-icon-default {
+              object-fit: cover;
+            }
+          }
+          .school-name-explanation-box {
+            padding: 0;
+            li {
+              &:last-child {
+                width: 100%;
+                font-size: 0.9rem;
+              }
+            }
+            a {
+              font-size: 1.2rem;
+            }
+          }
+          .school-evaluation-box {
+            padding: 0;
+            width: 25%;
+            ul {
+              margin: auto 0;
+              li {
+                font-size: 0.9rem;
+              }
+              .ave {
+                font-size: 1.2rem;
+              }
+              img {
+                width: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // スクール一覧
+  .school-index {
+    .button {
+      width: 8rem;
+      margin: 0 1rem 2rem auto;
+    }
+  }
+
+
   // スクール詳細
 
   .school-show {
@@ -480,7 +547,7 @@
             font-size: 1.2rem;
           }
           .school-header-explanation {
-            font-size: 80%;
+            font-size: 0.9rem;
           }
         }
         .school-evaluation-box {
@@ -540,21 +607,111 @@
 
 
 
+
 @media screen and (max-width: 520px) {
 
-// 共通
+  // 共通
 
-.page-link {
-  padding-left: 1rem;
-  font-size: 0.8rem;
-  ul {
-    padding-top: 1rem;
-    line-height: 1rem;
-    li {
-      margin-right: 0.2rem;
+  .page-link {
+    padding-left: 1rem;
+    font-size: 0.8rem;
+    ul {
+      padding-top: 1rem;
+      line-height: 1rem;
+      li {
+        margin-right: 0.2rem;
+      }
     }
   }
-}
+
+  // スクール一覧 result 共通
+
+  .search-result, .school-index {
+    .search-result-content, .school-index-content {
+      .flex {
+        align-items: baseline;
+      }
+      .display-results {
+        font-size: 0.85rem;
+      }
+      .sort {
+        select {
+          font-size: 0.9rem;
+          width: 5.5rem;
+        }
+      }
+      .button {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.9rem;
+        width: 11rem;
+      }
+      .paginate {
+        font-size: small;
+        width: 13.5rem;
+        margin: 1rem auto 0 auto;
+      }
+      .schools-box {
+        .one-school-box {
+          max-height: 31rem;
+          display: block;
+          .school-image-box {
+            display: block;
+            width: 100%;
+            padding: 0;
+            img {
+              width: 100%;
+              max-height: 14rem;
+            }
+          }
+          .school-name-explanation-box {
+            width: 100%;
+            margin-top: 1rem;
+            max-height: 14rem;
+            li {
+              &:last-child {
+                max-height: 9rem;
+                overflow: hidden;
+                font-size: 1rem;
+              }
+            }
+            a {
+              font-size: 1.4rem;
+            }
+          }
+          .school-evaluation-box {
+            display: block;
+            width: 100%;
+            ul {
+              li {
+                font-size: 1rem;
+                text-align: left;
+              }
+              .responsive-flex {
+                display: flex;
+                align-items: center;
+                .ave {
+                  font-size: 1.4rem;
+                  margin: 0 0 0 1.5rem;
+                }
+                img {
+                  width: 1.5rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // スクール一覧
+  .school-index {
+    .button {
+      padding: 0.5rem;
+      width: 5.5rem;
+      font-size: 0.9rem;
+    }
+  }
 
   // スクール詳細
 

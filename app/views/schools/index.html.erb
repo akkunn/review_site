@@ -51,21 +51,27 @@
             </li>
 
             <div class="school-name-explanation-box">
-              <li><%= link_to school.name, school_path(school, school_show_params: "school_index")  %></li>
+              <li>
+                <%= link_to school.name, school_path(school, school_show_params: "school_index"), class: "hover-underline"  %>
+              </li>
               <li><%= simple_format(school.explanation.truncate(40)) %></li>
             </div>
 
             <li class="school-evaluation-box flex">
               <ul>
-                <li id='school-index-star-<%= school.id %>' class="stars"></li>
-                <li><%= school.review_ave_score %></li>
+                <div class="responsive-flex">
+                  <% unless school.review_ave_score.nil? %>
+                    <li id='school-index-star-<%= school.id %>' class="stars"></li>
+                    <li class="ave"><%= school.review_ave_score %></li>
+                  <% end %>
+                </div>
                 <% if school.review_count.nil? %>
                   <li>
-                    <%= link_to "口コミ: 0件", new_review_path %>
+                    <%= link_to "口コミ: 0件", new_review_path, class: "hover-underline" %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "school_index") %>
+                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "school_index"), class: "hover-underline" %>
                   </li>
                 <% end %>
               </ul>
