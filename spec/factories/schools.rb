@@ -9,6 +9,5 @@ FactoryBot.define do
     prefecture_id { 13 }
     cost_id { 6 }
     period_id { 3 }
-    # association :review
   end
 end
