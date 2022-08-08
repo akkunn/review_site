@@ -43,6 +43,7 @@ RSpec.describe "Schools", type: :request do
       expect(response.body).to include(school.support)
       expect(response.body).to include(school.guarantee)
       expect(response.body).to include(school.explanation)
+      expect(response.body).to include(school.url)
       expect(response.body).to include(review.name)
       expect(response.body).to include('3.5')
     end
@@ -60,7 +61,7 @@ RSpec.describe "Schools", type: :request do
       end
 
       it "exists a correct page" do
-        expect(response.body).to include("プログラミングスクールを登録する")
+        expect(response.body).to include("プログラミングスクールの追加")
       end
     end
 
@@ -111,8 +112,7 @@ RSpec.describe "Schools", type: :request do
       end
 
       it "exists a correct page" do
-        expect(response.body).to include("プログラミングスクールの情報を変更する")
-        expect(response.body).to include(school.name)
+        expect(response.body).to include("#{school.name}の情報の変更")
       end
     end
 
