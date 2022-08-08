@@ -12,12 +12,16 @@
         <li>＞</li>
         <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
       </ul>
-    <% else  %>
+    <% elsif @params == "result" %>
       <ul class="flex">
         <li><%= link_to 'HOME', root_path %></li>
         <li>＞</li>
         <li><%= link_to '検索', result_path %></li>
         <li>＞</li>
+        <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul class="flex">
         <li><%= link_to '口コミ一覧', "#", class: "link-underline" %></li>
       </ul>
     <% end %>
