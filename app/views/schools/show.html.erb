@@ -54,9 +54,9 @@
           <% else %>
             <li><%= "口コミ: #{ @school.review_count }件" %></li>
           <% end %>
-          <% unless @school.url.blank? %>
+          <% unless @school.site_address.blank? %>
             <li>
-              <%= link_to "公式サイトへ", "#{@school.url}", class: "button" %>
+              <%= link_to "公式サイトへ", "#{@school.site_address}", class: "button" %>
             </li>
           <% end %>
         </ul>
@@ -135,8 +135,8 @@
           </tr>
         </tbody>
       </table>
-      <% unless @school.url.blank? %>
-        <%= link_to "公式サイトへ", "#{@school.url}", class: "button" %>
+      <% unless @school.site_address.blank? %>
+        <%= link_to "公式サイトへ", "#{@school.site_address}", class: "button" %>
       <% end %>
     </div>
     <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school, school_edit_params: @params), class: "school-show-edit-link" %>
