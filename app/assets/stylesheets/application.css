@@ -128,7 +128,7 @@ textarea {
   text-align: left;
 }
 
-.alert-success {
+.alert-success, .alert-notice {
   background-color: #66FF66;
 }
 
