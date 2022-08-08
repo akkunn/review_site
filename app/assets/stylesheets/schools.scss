@@ -159,7 +159,6 @@
 
 .school-image-box {
   width: 32%;
-  // padding-right: 1rem;
   a {
     margin: auto 0;
   }
@@ -183,7 +182,6 @@
     margin: 0 2rem 2rem auto;
   }
   .school-index-content {
-    // width: 70%;
     margin: 0 auto;
     .school-image-box {
       padding-left: 0.5rem;
@@ -303,6 +301,11 @@
       margin-top: 1rem;
       text-align: center;
       display: block;
+      text-decoration: underline;
+      font-size: 1.1rem;
+      &:hover {
+        color: #007bff;
+      }
     }
     .school-show-review {
       width: 100%;

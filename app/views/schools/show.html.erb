@@ -117,7 +117,7 @@
         <%= link_to "公式サイトへ", "#{@school.url}", class: "button" %>
       <% end %>
     </div>
-    <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school, school_edit_params: @params), class: "school-show-edit-link hover-underline" %>
+    <%= link_to "#{@school.name}の情報を変更する", edit_school_path(@school, school_edit_params: @params), class: "school-show-edit-link" %>
 
     <div class="school-show-review">
       <h2 id ="review"><%= @school.name %>の口コミ</h2>
