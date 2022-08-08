@@ -359,7 +359,6 @@
 // スクール新規登録
 .school-new, .school-edit {
   .school-search-box {
-    // width: 60%;
     width: 830px;
     margin: 4rem auto;
     h2 {
@@ -604,7 +603,8 @@
     }
   }
 
-  // スクール新規登録
+  // スクール新規登録 スクール情報編集 共通
+
   .school-new, .school-edit {
     .school-search-box {
       width: 80%;
@@ -676,8 +676,25 @@
         }
         .submit-button {
           width: 35%;
-          min-width: 10rem;
+          min-width: 13rem;
         }
+      }
+    }
+  }
+
+  // スクール情報編集画面
+
+  .school-edit {
+    .school-search-box {
+      form {
+        .image-box {
+          width: 50%;
+          min-width: 18rem;
+        }
+      }
+      .button {
+        width: 35%;
+        min-width: 13rem;
       }
     }
   }
@@ -882,65 +899,28 @@
   }
 
 
-  // スクール新規追加
+  // スクール新規登録 スクール情報編集 共通
 
   .school-new, .school-edit {
     .school-search-box {
       width: 80%;
-      // width: 830px;
-      // margin: 4rem auto;
       h2 {
         font-size: 1.35rem;
       }
-      // .badge {
-      //   margin: 0.2rem 0 0.1rem 0;
-      //   box-sizing: border-box;
-      //   font-size: 0.7rem;
-      //   line-height: 1.7;
-      // }
       form {
-        // text-align: center;
-        // #error_explanation {
-        //   margin-bottom: 1rem;
-        // }
         .flex {
           display: block;
           .school-form-flex-item {
             width: 100%;
-            // margin: 0 1rem;
-            // text-align: center;
             &:last-child {
               border: none;
             }
-            // ul {
-            //   display: flex;
-            //   height: 2rem;
-            //   justify-content: space-between;
-            //   border-bottom: 1px solid #dddddd;
-            //   select {
-            //     height: 100%;
-            //   }
-            //   li {
-            //     list-style: none;
-            //     vertical-align: middle;
-            //     height: 100%;
-            //     &:first-child {
-            //       width: 35%;
-            //     }
-            //     &:last-child {
-            //       width: 60%;
-            //     }
-            //   }
-            // }
             .school-form-flex-item-left {
               margin: 0 1rem;
               padding: 1rem 1.5rem;
               input, select {
                 max-width: none;
               }
-              // &:first-child {
-              //   border-top: 1px solid #dddddd;
-              // }
             }
             .school-form-flex-item-right {
               margin: 0 1rem;
@@ -959,27 +939,16 @@
                 text-align: center;
                 width: 2.5rem;
                 margin: 0.2rem 0 0.1rem 0.2rem;
-                // box-sizing: border-box;
               }
-              // &:first-child {
-              //   width: 6rem;
-              //   display: flex;
-              // }
             }
           }
-          // .school-name-input {
-          //   height: 100%;
-          //   box-sizing: border-box;
-          // }
         }
         .school-form-image, .school-form-url {
-          // justify-content: space-between;
           margin: 0 1rem;
           padding: 1rem;
           input {
             font-size: 0.8rem;
           }
-          // border-bottom: 1px solid #dddddd;
           li {
             &:first-child {
               width: 100%;
@@ -989,37 +958,34 @@
             }
           }
         }
-        // .school-form-url {
-        //   textarea {
-        //     overflow: auto;
-        //     height: 2.3rem;
-        //     margin: 1rem 0;
-        //   }
-        // }
         .school-form-explanation {
           padding: 1rem;
           margin: 0 1rem 0.5rem 1rem;
-          // li {
-          //   list-style: none;
-          //   &:first-child {
-          //     display: flex;
-          //     .school-form-label {
-          //       margin: 0 0.5rem 0 1rem;
-          //     }
-          //   }
-          // }
           textarea {
-            // margin-top: 0.5rem;
-            // padding: 0.3rem;
             height: 7rem;
           }
         }
         .submit-button {
-          // width: 35%;
-          min-width: 6rem;
-          // margin-bottom: 1rem;
-          // color: #fff;
+          min-width: 8rem;
+          width: 50%;
         }
+      }
+    }
+  }
+
+  // スクール情報編集画面
+
+  .school-edit {
+    .school-search-box {
+      form {
+        .image-box {
+          width: 70%;
+          min-width: 11.5rem;
+        }
+      }
+      .button {
+        width: 50%;
+        min-width: 8rem;
       }
     }
   }

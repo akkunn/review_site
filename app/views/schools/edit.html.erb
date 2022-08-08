@@ -8,12 +8,18 @@
         <li>＞</li>
         <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
       </ul>
-    <% else %>
+    <% elsif @params == "result" %>
       <ul class="flex">
         <li><%= link_to 'HOME', root_path %></li>
         <li>＞</li>
         <li><%= link_to '検索', result_path %></li>
         <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul class="flex">
         <li><%= link_to '口コミ一覧', school_path(@school) %></li>
         <li>＞</li>
         <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
@@ -88,11 +94,14 @@
       </ul>
 
       <ul class="school-form-explanation">
-        <li><%= f.label :explanation, "特徴", class: "school-form-label" %></li>
+        <li>
+          <%= f.label :explanation, "特徴", class: "school-form-label" %>
+          <span class="badge">必須</span>
+        </li>
         <li><%= f.text_area :explanation, placeholder: "その他の特徴を入力"%>
       </ul>
       <%= f.submit '変更する', class: "submit-button" %>
     <% end %>
-    <%= link_to "戻る", schools_path, class: "button" %>
+    <%= link_to "戻る", school_path(@school), class: "button" %>
   </div>
 </div>
