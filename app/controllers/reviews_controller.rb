@@ -13,6 +13,9 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    unless params[:school_id].nil?
+      @school = School.find(params[:school_id])
+    end
     @params = params[:review_new_params]
     @review = Review.new
   end
