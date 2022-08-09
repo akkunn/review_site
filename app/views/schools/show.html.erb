@@ -146,7 +146,7 @@
       <div class="flex">
         <% @reviews.each do |review| %>
           <div class="school-show-review-box schools-box">
-            <%= link_to review_path(review) do %>
+            <%= link_to review_path(review, review_show_params: @params) do %>
               <div class="school-show-review-name hover-underline">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
                 <%= review.name %>

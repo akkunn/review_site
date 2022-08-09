@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @params = params[:review_show_params]
     @review = Review.find(params[:id])
   end
 
