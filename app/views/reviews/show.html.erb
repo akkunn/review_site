@@ -48,7 +48,7 @@
 
         <div class="review-and-question-content-border">
           <ul class="flex">
-            <li>
+            <li class="review-and-question-label">
               <i class="fa fa-university" aria-hidden="true"></i>
               <%= f.label :school_id, "スクール名" %>
             </li>
@@ -60,7 +60,7 @@
           <div class="review-and-question-content-border">
             <ul>
               <div class="flex">
-                <li>
+                <li class="review-and-question-label">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   <%= f.label :curriculum_star,'カリキュラム内容' %>
                 </li>
@@ -80,7 +80,7 @@
           <div class="review-and-question-content-border">
             <ul>
               <div class="flex">
-                <li>
+                <li class="review-and-question-label">
                   <i class="fa fa-phone" aria-hidden="true"></i>
                   <%= f.label :support_star,'サポート体制' %>
                 </li>
@@ -100,7 +100,7 @@
           <div class="review-and-question-content-border">
             <ul>
               <div class="flex">
-                <li>
+                <li class="review-and-question-label">
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <%= f.label :teacher_star,'講師' %>
                 </li>
@@ -120,7 +120,7 @@
           <div class="review-and-question-content-border">
             <ul>
               <div class="flex">
-                <li>
+                <li class="review-and-question-label">
                   <i class="fa fa-tasks" aria-hidden="true"></i>
                   <%= f.label :compatibility_star, '両立しやすさ' %>
                 </li>
@@ -149,7 +149,7 @@
         <% end %>
 
         <ul class="review-thought">
-          <li>
+          <li class="review-and-question-label">
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
             <%= f.label :thought,'感想/アドバイス' %>
           </li>

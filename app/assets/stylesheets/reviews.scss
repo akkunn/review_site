@@ -140,6 +140,7 @@
     }
   }
   .review-show-ave-label {
+    font-weight: 600;
     margin: 0 auto 1rem auto;
     text-align: center;
     label {
@@ -235,13 +236,17 @@
         ul {
           width: 88%;
           // margin: 1.5rem auto;
-          li {
-            &:first-child {
-              width: 44%;
-              font-size: 1rem;
-              // font-weight: 600;
-            }
+          .review-and-question-label {
+            width: 44%;
+            font-size: 1rem;
           }
+          // li {
+          //   &:first-child {
+          //     width: 44%;
+          //     font-size: 1rem;
+          //     // font-weight: 600;
+          //   }
+          // }
         }
         .review-thought {
           li {
@@ -365,14 +370,18 @@
           // display: block;
           width: 90%;
           // margin: 1.5rem auto;
-          li {
-            &:first-child {
-              width: 100%;
-              margin-bottom: 0.5rem;
-              // font-size: 1rem;
-              // font-weight: 600;
-            }
+          .review-and-question-label {
+            width: 100%;
+            margin-bottom: 1rem;
           }
+          // li {
+          //   &:first-child {
+          //     width: 100%;
+          //     margin-bottom: 0.5rem;
+          //     // font-size: 1rem;
+          //     // font-weight: 600;
+          //   }
+          // }
         }
         // .review-thought {
         //   li {
