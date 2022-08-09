@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @params = params[:review_new_params]
     @review = Review.new
   end
 
