@@ -28,6 +28,8 @@
       </ul>
     <% else %>
       <ul class="flex">
+        <li><%= link_to '口コミ一覧', school_path(@review.school) %></li>
+        <li>＞</li>
         <li><%= link_to '口コミ詳細', "#", class: "link-underline" %></li>
       </ul>
     <% end %>
@@ -146,7 +148,7 @@
           </div>
         <% end %>
 
-        <ul>
+        <ul class="review-thought">
           <li>
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
             <%= f.label :thought,'感想/アドバイス' %>

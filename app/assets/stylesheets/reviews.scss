@@ -32,14 +32,14 @@
   .button {
     width: 40%;
     margin-top: 2rem;
-    color: black;
+    color: #000;
   }
   .review-and-question-box {
     border: 1px solid #dddddd;
     width: 830px;
     margin: 5rem auto 0 auto;
     border-radius: 0.25rem;
-    background-color: white;
+    background-color: #fff;
     padding: 2rem 0;
     .review-and-question-box-content {
       // width: 90%;
@@ -74,7 +74,6 @@
       }
     }
   }
-
 }
 
 .review-new, .review-show, .review-edit {
@@ -154,27 +153,269 @@
     }
   }
   .button {
-    color: black;
+    color: #000;
   }
   .edit-button {
     background-color: #007bff;
     border: none;
-    color: white;
+    color: #fff;
     padding: 0.6rem 0;
     margin-top: 2.5rem;
   }
 }
 
-
-
-
-
-
-
-
-
 // 口コミ編集
 
 .review-new h2, .review-edit h2, .question-new h2 {
   margin-bottom: 2rem;
+}
+
+
+// レスポンシブ対応
+
+@media screen and (max-width: 960px) {
+
+  // 口コミ投稿 口コミ詳細  口コミ編集 質問新規追加 質問編集 共通
+
+  .review-show, .review-new, .review-edit, .question-new, .question-edit {
+    // select {
+    //   height: 1.7rem;
+    //   font-size: 1rem;
+    //   width: 100%;
+    // }
+    // input {
+    //   font-size: 1rem;
+    //   padding: 0.2rem;
+    //   width: 100%;
+    //   box-sizing: border-box;
+    // }
+    // textarea {
+    //   margin-top: 1rem;
+    //   padding: 0.3rem;
+    //   height: 5rem;
+    //   // height: auto;
+    //   // max-height: 10rem;
+    // }
+    // .submit-button {
+    //   padding: 0.5rem;
+    //   width: 40%;
+    // }
+    .button {
+      width: 35%;
+      min-width: 13rem;
+      // margin-top: 2rem;
+      // color: black;
+    }
+    .review-and-question-box {
+      // border: 1px solid #dddddd;
+      width: 85%;
+      // margin: 5rem auto 0 auto;
+      // border-radius: 0.25rem;
+      // background-color: white;
+      // padding: 2rem 0;
+      .review-and-question-box-content {
+        // width: 90%;
+        // margin: 0 3rem;
+        h3 {
+          font-size: 1.1rem;
+          // text-align: left;
+          // padding: 1.5rem 0 1.5rem 0;
+          // font-weight: 500;
+          // width: 85%;
+          // margin: 0 auto;
+        }
+        ul {
+          width: 88%;
+          // margin: 1.5rem auto;
+          li {
+            &:first-child {
+              width: 44%;
+              font-size: 1rem;
+              // font-weight: 600;
+            }
+          }
+        }
+        .review-thought {
+          li {
+            &:first-child {
+              width: 100%;
+            }
+          }
+        }
+      //   .review-and-question-content-border {
+      //     border-bottom: 1px solid #dddddd;
+      //     position: relative;
+      //     .flex {
+      //       align-items: center;
+      //     }
+      //   }
+      //   .review-and-question-button {
+      //     text-align: center;
+      //   }
+      }
+    }
+  }
+
+
+  // 口コミ詳細
+
+  .review-show {
+    .review-show-review-time {
+      font-size: 0.7rem;
+    }
+    .review-school-name {
+      font-size: 1rem;
+    }
+    .flex {
+      li {
+        img {
+          width: 1.2rem;
+        }
+      }
+      .review-show-star {
+        font-size: 1.1rem;
+      }
+    }
+    .review-show-ave-label {
+      label {
+        font-size: 1.2rem;
+      }
+    }
+    .review-show-ave-box {
+      justify-content: center;
+      #ave-star-rate {
+        margin-left: 0;
+        text-align: right;
+        width: 46%;
+        img {
+          width: 1.4rem;
+        }
+      }
+      .review-show-star {
+        font-size: 1.3rem;
+        margin-left: 8%;
+        margin-right: 8%;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 520px) {
+
+  // 口コミ投稿 口コミ詳細  口コミ編集 質問新規追加 質問編集 共通
+
+  .review-show, .review-new, .review-edit, .question-new, .question-edit {
+    // select {
+    //   height: 1.7rem;
+    //   font-size: 1rem;
+    //   width: 100%;
+    // }
+    // input {
+    //   font-size: 1rem;
+    //   padding: 0.2rem;
+    //   width: 100%;
+    //   box-sizing: border-box;
+    // }
+    // textarea {
+    //   margin-top: 1rem;
+    //   padding: 0.3rem;
+    //   height: 5rem;
+    //   // height: auto;
+    //   // max-height: 10rem;
+    // }
+    // .submit-button {
+    //   padding: 0.5rem;
+    //   width: 40%;
+    // }
+    .button {
+      width: 50%;
+      min-width: 8rem;
+      // margin-top: 2rem;
+      // color: black;
+    }
+    .review-and-question-box {
+      // border: 1px solid #dddddd;
+      // width: 85%;
+      // margin: 5rem auto 0 auto;
+      // border-radius: 0.25rem;
+      // background-color: white;
+      // padding: 2rem 0;
+      .review-and-question-box-content {
+        // width: 90%;
+        margin: 0 2rem;
+        // h3 {
+          // font-size: 1.1rem;
+          // text-align: left;
+          // padding: 1.5rem 0 1.5rem 0;
+          // font-weight: 500;
+          // width: 85%;
+          // margin: 0 auto;
+        // }
+        ul {
+          // display: block;
+          width: 90%;
+          // margin: 1.5rem auto;
+          li {
+            &:first-child {
+              width: 100%;
+              margin-bottom: 0.5rem;
+              // font-size: 1rem;
+              // font-weight: 600;
+            }
+          }
+        }
+        // .review-thought {
+        //   li {
+        //     &:first-child {
+        //       width: 100%;
+        //     }
+        //   }
+        // }
+      //   .review-and-question-content-border {
+      //     border-bottom: 1px solid #dddddd;
+      //     position: relative;
+      //     .flex {
+      //       align-items: center;
+      //     }
+      //   }
+      //   .review-and-question-button {
+      //     text-align: center;
+      //   }
+      }
+    }
+  }
+
+
+  // 口コミ詳細
+
+  .review-show {
+    .flex {
+      flex-wrap: wrap;
+      li {
+        img {
+          width: 1.2rem;
+        }
+      }
+    }
+    .review-show-text {
+      max-height: 20rem;
+    }
+    .review-show-ave-box {
+      #ave-star-rate {
+        margin-bottom: 0;
+        text-align: center;
+        width: 75%;
+        img {
+          width: 1.3rem;
+        }
+      }
+      .review-show-star {
+        font-size: 1.2rem;
+        margin-right: 0.8rem;
+        margin-left: 0;
+      }
+    }
+  }
 }
