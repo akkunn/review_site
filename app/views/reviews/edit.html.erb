@@ -1,20 +1,25 @@
 <div class="review-edit background-blue">
+  <%= render 'shared/flash_message' %>
   <div class="review-and-question-box">
     <div class="review-and-question-box-content">
       <h2>口コミ編集</h2>
       <%= form_with model: @review, local: true do |f| %>
-
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
-          <ul class="flex">
-            <li><%= f.label :school_id, "スクール名" %></li>
-            <li class="review-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+          <ul class="flex school-name-flex">
+            <li class="review-and-question-label">
+              <%= f.label :school_id, "スクール名" %><span class="badge">必須</span>
+            </li>
+            <li class="review-name-label review-and-question-input-field"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
           </ul>
         </div>
 
         <div class="review-and-question-content-border">
-          <ul class="flex">
-            <li><%= f.label :name, "口コミタイトル" %></li>
-            <li><%= f.text_field :name, placeholder: "口コミタイトルを入力" %></li>
+          <ul class="flex review-name-flex">
+            <li class="review-and-question-label">
+              <%= f.label :name, "口コミタイトル" %><span class="badge">必須</span>
+            </li>
+            <li class="review-and-question-input-field"><%= f.text_field :name, placeholder: "口コミタイトルを入力" %></li>
           </ul>
         </div>
 
@@ -22,8 +27,8 @@
           <ul>
             <%= f.hidden_field :curriculum_star, id: "edit-curriculum-star" %>
             <div class="flex">
-              <li><%= f.label :curriculum_star,'カリキュラム内容' %></li>
-              <li id="curriculum_star"></li>
+              <li class="review-and-question-label"><%= f.label :curriculum_star,'カリキュラム内容' %></li>
+              <li id="curriculum_star" class="review-and-question-input-field"></li>
             </div>
             <li><%= f.text_area :curriculum %></li>
           </ul>
@@ -33,8 +38,8 @@
           <ul>
             <%= f.hidden_field :support_star, id: "edit-support-star" %>
             <div class="flex">
-              <li><%= f.label :support_star,'サポート体制' %></li>
-              <li id="support_star"></li>
+              <li class="review-and-question-label"><%= f.label :support_star,'サポート体制' %></li>
+              <li id="support_star" class="review-and-question-input-field"></li>
             </div>
             <li><%= f.text_area :support %></li>
           </ul>
@@ -44,8 +49,8 @@
           <ul>
             <%= f.hidden_field :teacher_star, id: "edit-teacher-star" %>
             <div class="flex">
-              <li><%= f.label :teacher_star,'講師' %></li>
-              <li id="teacher_star"></li>
+              <li class="review-and-question-label"><%= f.label :teacher_star,'講師' %></li>
+              <li id="teacher_star" class="review-and-question-input-field"></li>
             </div>
             <li><%= f.text_area :teacher %></li>
           </ul>
@@ -55,15 +60,17 @@
           <ul>
             <%= f.hidden_field :compatibility_star, id: "edit-compatibility-star" %>
             <div class="flex">
-              <li><%= f.label :compatibility_star, '両立しやすさ' %></li>
-              <li id="compatibility_star"></li>
+              <li class="review-and-question-label"><%= f.label :compatibility_star, '両立しやすさ' %></li>
+              <li id="compatibility_star" class="review-and-question-input-field"></li>
             </div>
             <li><%= f.text_area :compatibility %></li>
           </ul>
         </div>
 
-          <ul>
-            <li><%= f.label :thought,'感想/アドバイス' %></li>
+          <ul class="review-thought">
+            <li class="review-and-question-label">
+              <%= f.label :thought,'感想/アドバイス' %><span class="badge">必須</span>
+            </li>
             <li><%= f.text_area :thought %></li>
           </ul>
 
@@ -104,7 +111,7 @@
         starOn    : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
-        score: <%= @review.curriculum_star %>,
+        score: '<%= @review.curriculum_star %>',
         scoreName: 'review[curriculum_star]'
       })
     })
@@ -138,7 +145,7 @@
         starOn    : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
-        score: <%= @review.support_star %>,
+        score: '<%= @review.support_star %>',
         scoreName: 'review[support_star]'
       });
     });
@@ -172,7 +179,7 @@
         starOn    : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
-        score: <%= @review.teacher_star %>,
+        score: '<%= @review.teacher_star %>',
         scoreName: 'review[teacher_star]'
       });
     });
@@ -206,7 +213,7 @@
         starOn    : '<%= asset_path('star-on.png') %>',
         starHalf: '<%= asset_path('star-half.png') %>',
         half      : true,
-        score: <%= @review.compatibility_star %>,
+        score: '<%= @review.compatibility_star %>',
         scoreName: 'review[compatibility_star]'
       });
     });
