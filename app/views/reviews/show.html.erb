@@ -158,7 +158,7 @@
 
         <div class="review-and-question-button">
           <% if user_signed_in? && (current_user == @review.user) %>
-            <%= link_to "編集する", edit_review_path(@review), class: "button edit-button" %>
+            <%= link_to "編集する", edit_review_path(@review, review_edit_params: @params), class: "button edit-button" %>
           <% end %>
           <%= link_to "戻る", school_path(@review.school), class: "button" %>
         </div>
