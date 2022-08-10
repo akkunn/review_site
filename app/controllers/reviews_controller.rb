@@ -38,6 +38,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @params = params[:review_edit_params]
     @review = Review.find(params[:id])
     unless current_user?(@review.user)
       redirect_to review_path(@review)
