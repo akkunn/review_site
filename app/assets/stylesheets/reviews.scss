@@ -96,13 +96,21 @@
 
 .review-new, .review-edit {
   .flex {
-    li {
-      &:last-child {
-        width: 65%;
-      }
+    .review-and-question-input-field {
+      width: 65%;
     }
   }
 }
+
+// .review-new, .review-edit {
+//   .flex {
+//     li {
+//       &:last-child {
+//         width: 65%;
+//       }
+//     }
+//   }
+// }
 
 
 // 口コミ詳細
@@ -205,13 +213,12 @@
     //   // height: auto;
     //   // max-height: 10rem;
     // }
-    // .submit-button {
-    //   padding: 0.5rem;
-    //   width: 40%;
-    // }
+    .submit-button {
+      min-width: 15rem;
+    }
     .button {
-      width: 35%;
-      min-width: 13rem;
+      width: 40%;
+      min-width: 15rem;
       // margin-top: 2rem;
       // color: black;
     }
@@ -237,7 +244,7 @@
           width: 88%;
           // margin: 1.5rem auto;
           .review-and-question-label {
-            width: 44%;
+            // width: 44%;
             font-size: 1rem;
           }
           // li {
@@ -273,41 +280,89 @@
   // 口コミ詳細
 
   .review-show {
-    .review-show-review-time {
-      font-size: 0.7rem;
-    }
-    .review-school-name {
-      font-size: 1rem;
-    }
-    .flex {
-      li {
-        img {
-          width: 1.2rem;
+    .review-and-question-box {
+      .review-and-question-box-content {
+        ul {
+          .review-and-question-label {
+            width: 44%;
+          }
+          .review-school-name {
+            font-size: 1rem;
+          }
+        }
+        .review-show-review-time {
+          font-size: 0.7rem;
+        }
+        .flex {
+          li {
+            img {
+              width: 1.2rem;
+            }
+          }
+          .review-show-star {
+            font-size: 1.1rem;
+          }
+        }
+        .review-show-ave-label {
+          label {
+            font-size: 1.2rem;
+          }
+        }
+        .review-show-ave-box {
+          justify-content: center;
+          #ave-star-rate {
+            margin-left: 0;
+            text-align: right;
+            width: 46%;
+            img {
+              width: 1.4rem;
+            }
+          }
+          .review-show-star {
+            font-size: 1.3rem;
+            margin-left: 8%;
+            margin-right: 8%;
+          }
         }
       }
-      .review-show-star {
-        font-size: 1.1rem;
-      }
     }
-    .review-show-ave-label {
-      label {
-        font-size: 1.2rem;
-      }
-    }
-    .review-show-ave-box {
-      justify-content: center;
-      #ave-star-rate {
-        margin-left: 0;
-        text-align: right;
-        width: 46%;
-        img {
-          width: 1.4rem;
+  }
+
+  // 口コミ新規登録
+
+  .review-new {
+    .review-and-question-box {
+      .review-and-question-box-content {
+        ul {
+          .review-and-question-label {
+            width: 45%;
+          }
+          .review-and-question-input-field {
+            width: 60%;
+          }
         }
-      }
-      .review-show-star {
-        font-size: 1.3rem;
-        margin-left: 8%;
-        margin-right: 8%;
+        .school-name-flex, .review-name-flex {
+          display: block;
+          .review-and-question-label {
+            width: 100%;
+            margin-bottom: 1rem;
+          }
+        }
+        .school-name-flex {
+          .review-and-question-input-field {
+            min-width: 18.4rem;
+          }
+        }
+        .review-name-flex {
+          .review-and-question-input-field {
+            width: 100%;
+          }
+        }
+        .review-thought {
+          .review-and-question-label {
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -338,12 +393,14 @@
     //   // height: auto;
     //   // max-height: 10rem;
     // }
-    // .submit-button {
-    //   padding: 0.5rem;
-    //   width: 40%;
-    // }
+    .submit-button {
+      width: 80%;
+      min-width: 8rem;
+    }
     .button {
-      width: 50%;
+      // width: 50%;
+      width: 80%;
+      // min-width: 8rem;
       min-width: 8rem;
       // margin-top: 2rem;
       // color: black;
@@ -358,6 +415,9 @@
       .review-and-question-box-content {
         // width: 90%;
         margin: 0 2rem;
+        .flex {
+          flex-wrap: wrap;
+        }
         // h3 {
           // font-size: 1.1rem;
           // text-align: left;
@@ -408,30 +468,54 @@
   // 口コミ詳細
 
   .review-show {
-    .flex {
-      flex-wrap: wrap;
-      li {
-        img {
-          width: 1.2rem;
+    .review-and-question-box {
+      .review-and-question-box-content {
+        // .flex {
+        //   flex-wrap: wrap;
+        // }
+        .review-show-text {
+          max-height: 20rem;
+        }
+        .review-show-ave-box {
+          #ave-star-rate {
+            margin-bottom: 0;
+            text-align: center;
+            width: 75%;
+            img {
+              width: 1.3rem;
+            }
+          }
+          .review-show-star {
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            margin-left: 0;
+          }
         }
       }
     }
-    .review-show-text {
-      max-height: 20rem;
-    }
-    .review-show-ave-box {
-      #ave-star-rate {
-        margin-bottom: 0;
-        text-align: center;
-        width: 75%;
-        img {
-          width: 1.3rem;
+  }
+
+  // 口コミ新規登録
+
+  .review-new {
+    .review-and-question-box {
+      .review-and-question-box-content {
+        ul {
+          .review-and-question-input-field {
+            width: 100%;
+          }
         }
-      }
-      .review-show-star {
-        font-size: 1.2rem;
-        margin-right: 0.8rem;
-        margin-left: 0;
+        .school-name-flex {
+          .review-and-question-input-field {
+            width: 100%;
+            min-width: auto;
+          }
+        }
+        .review-thought {
+          .review-and-question-label {
+            margin-bottom: 0;
+          }
+        }
       }
     }
   }
