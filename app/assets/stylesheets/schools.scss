@@ -742,9 +742,10 @@
         }
       }
       .button {
-        padding: 0.5rem 0.5rem;
-        font-size: 0.9rem;
-        width: 11rem;
+        padding: 1rem 0.5rem;
+        font-size: 1rem;
+        width: 70%;
+        min-width: 8rem;
       }
       .paginate {
         font-size: small;
