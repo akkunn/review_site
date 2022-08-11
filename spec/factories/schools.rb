@@ -9,6 +9,6 @@ FactoryBot.define do
     prefecture_id { 13 }
     cost_id { 6 }
     period_id { 3 }
-    url { "a" }
+    site_address { "a" }
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe Review, type: :model do
     let(:user) { FactoryBot.create(:user) }
     let(:review) { FactoryBot.build(:review, user_id: user.id, school_id: school.id) }
 
-    it "is valid with a name" do
+    it "is valid with a name, thought" do
       expect(review).to be_valid
     end
 
@@ -14,6 +14,12 @@ RSpec.describe Review, type: :model do
       review = FactoryBot.build(:review, name: nil)
       review.valid?
       expect(review.errors[:name]).to include("can't be blank")
+    end
+
+    it "is invalid without a thought" do
+      review = FactoryBot.build(:review, thought: nil)
+      review.valid?
+      expect(review.errors[:thought]).to include("can't be blank")
     end
 
     it "is invalid without user_id" do
