@@ -107,7 +107,9 @@
 
         <div class="review-and-question-button">
           <%= f.submit '投稿する', class: "submit-button" %>
-          <%= link_to "戻る", :back, class: "button" %>
+          <% unless @params.nil? %>
+            <%= link_to "戻る", :back, class: "button" %>
+          <% end %>
         </div>
       <% end %>
     </div>
