@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @params = params[:question_index_params]
     @school = School.find(params[:school_id])
     @questions = Question.where(school_id: @school.id).order(updated_at: :desc)
   end
