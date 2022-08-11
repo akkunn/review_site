@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
-  def index
-    # binding.pry
-    # @school = School.find(params[:id])
-    # @reviews = Review.all
-  end
+  # def index
+  #   binding.pry
+  #   @school = School.find(params[:id])
+  #   @reviews = Review.all
+  # end
 
   def show
     @params = params[:review_show_params]
@@ -31,8 +31,10 @@ class ReviewsController < ApplicationController
       @school.review_ave_score = all_reviews_ave_score
       @school.review_count = @school.reviews.count
       @school.save
+      flash[:success] = "口コミを投稿しました"
       redirect_to school_path(@school, school_show_params: "review_create")
     else
+      flash.now[:failure] = "口コミを投稿できませんでした"
       render "new"
     end
   end
@@ -41,6 +43,7 @@ class ReviewsController < ApplicationController
     @params = params[:review_edit_params]
     @review = Review.find(params[:id])
     unless current_user?(@review.user)
+      flash.now[:failure] = "自分の口コミしか編集できません"
       redirect_to review_path(@review)
     end
   end
@@ -58,14 +61,18 @@ class ReviewsController < ApplicationController
           @school.review_ave_score = all_reviews_ave_score
           @school.review_count = @school.reviews.count
           @school.save
+          flash[:success] = "口コミを変更しました"
           redirect_to review_path(@review)
         else
+          flash.now[:failure] = "口コミを変更できませんでした"
           render "edit"
         end
       else
+        flash.now[:failure] = "口コミを変更できませんでした"
         render "edit"
       end
     else
+      flash.now[:failure] = "自分の口コミしか変更できません"
       redirect_to review_path(@review)
     end
   end
