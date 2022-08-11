@@ -49,87 +49,127 @@
 
 // 質問一覧 質問詳細 共通
 .question-index, .question-show {
-  padding: 0 0 3rem 0;
-  h2 {
-    margin: 0 0 3rem 0;
-  }
-  img {
-    display: block;
-  }
-  .back-link {
-    width: 20rem;
-  }
-  .question-content {
-    width: 60%;
-    margin: 5rem auto 0 auto;
-  }
-  .question-box {
-    margin: 2rem 0 0 0;
-    border: 1px solid #CCCCCC;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 0.25rem;
-  }
-  .user-icon-default {
-    width: 2rem;
-  }
-  .flex {
-    align-items: center;
-    height: 1.9rem;
-  }
-  .question-name {
-    font-size: 1.3rem;
-    margin: 1rem 0 1rem 0 ;
-    a {
-      color: #000000;
-      &:hover {
-        color: #3399FF;
-        opacity: 0.7;
+  color: #1a3153;
+  .question-index-field {
+    padding: 0 0 3rem 0;
+    // h2 {
+    //   margin: 0 0 3rem 0;
+    // }
+    img {
+      display: block;
+    }
+    .back-link {
+      width: 20rem;
+    }
+    .question-content {
+      width: 60%;
+      margin: 5rem auto 0 auto;
+    }
+    .question-box {
+      margin: 2rem 0 0 0;
+      border: 1px solid #dddddd;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 0.25rem;
+    }
+    .user-icon-default {
+      width: 2.5rem;
+    }
+    .flex {
+      align-items: center;
+      height: 1.9rem;
+    }
+    .question-name {
+      font-size: 1.3rem;
+      margin: 1rem 0 1rem 0 ;
+      a {
+        color: #000000;
+        &:hover {
+          color: #3399FF;
+          opacity: 0.7;
+        }
       }
     }
-  }
-  .question-user-name {
-    font-size: 1.1rem;
-    margin-left: 1rem;
-    a {
-      color: #000000;
-      &:hover {
-        opacity: 0.7;
+    .question-user-name {
+      font-size: 1.1rem;
+      margin-left: 1rem;
+      a {
+        color: #000000;
+        &:hover {
+          opacity: 0.7;
+        }
       }
     }
-  }
-  .question-time {
-    font-size: 0.8rem;
-  }
-  .solution {
-    margin-bottom: 0.5rem;
+    .question-time {
+      font-size: 0.8rem;
+    }
+    .solution {
+      margin-bottom: 0.5rem;
+    }
   }
 }
 
 // 質問一覧
 .question-index {
-  .button {
-    border-radius: 10rem;
-    background-color: rgb(249, 150, 73);
-    color: #fff;
-  }
-  .flex {
-    li {
-      &:last-child {
-        margin-left: auto;
+  .question-index-field {
+    .button {
+      border-radius: 10rem;
+      background-color: rgb(249, 150, 73);
+      border: rgb(249, 150, 73);
+      color: #fff;
+    }
+    .question-index-button {
+      margin: 2rem 2rem 0 auto;
+      width: 8rem;
+    }
+    .question-content {
+      max-width: 960px;
+      width: auto;
+      box-sizing: border-box;
+      background-color: #fff;
+      margin: 2rem auto 1rem auto;
+      padding: 1rem 3rem 2rem 3rem;
+      .review-and-question-link a {
+        &:last-child {
+          border-bottom: #1a3153 medium solid;
+        }
+      }
+      h2 {
+        background-color: #1a3153;
+        color: #fff;
+        padding: 1rem 0;
+        margin-top: 4rem;
+      }
+      .question-box-flex {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .question-box {
+          width: 45%;
+          position: relative;
+          .question-name {
+            margin: 0.5rem 0 2rem 0;
+          }
+          .flex {
+            position: absolute;
+            bottom: 0.3rem;
+            width: 90%;
+            margin-top: 1rem;
+            .question-time {
+              margin-left: auto;
+            }
+          }
+        }
+      }
+      .button {
+        width: 35%;
+        margin-top: 2rem;
+        padding: 0.8rem 0;
       }
     }
   }
 }
 
-.question-index-head-flex {
-  justify-content: space-between;
-}
-
-.question-index-button {
-  margin: 2rem 4rem 0 0;
-  width: 12%;
-}
 
 // 質問詳細
 

@@ -197,9 +197,9 @@
   }
 }
 
-// スクール詳細画面
+// スクール詳細画面 (質問一覧のヘッダー)
 
-.school-show {
+.school-show, .question-index {
   color: #1a3153;
   a {
     color: #1a3153;
@@ -540,7 +540,7 @@
 
   // スクール詳細
 
-  .school-show {
+  .school-show, .question-index {
     .school-header {
       .school-header-content {
         width: 90%;
@@ -818,7 +818,7 @@
 
   // スクール詳細
 
-  .school-show {
+  .school-show, .question-index {
     .school-header {
       padding-bottom: 0.5rem;
       .school-header-content {

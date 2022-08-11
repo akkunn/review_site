@@ -1,46 +1,138 @@
 <div class="question-index background-blue">
-  <div class="header-image">
-    <div class="header-image-box">
-      <h2><%= @school.name %>質問一覧 : <%= @questions.count %>件</h2>
-    </div>
-  </div>
-  <div class="flex question-index-head-flex">
-    <div class="back-link">< <%= link_to '口コミ一覧に戻る', school_path(@school), class: "link-underline" %></div>
-    <div class="question-index-button"><%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %></div>
-  </div>
-  <div class="question-content">
-    <% @questions.each do |question| %>
-      <ul class="question-box">
-        <li>
-          <% if question.solution == 0 %>
-            <div class="solution solution-red">
-              未回答
-            </div>
-          <% elsif question.solution == 1 %>
-            <div class="solution solution-orange">
-              未解決
-            </div>
-          <% else %>
-            <div class="solution solution-green">
-              解決済み
-            </div>
-          <% end %>
-        </li>
-        <li class="question-name"><%= link_to question.name, question_path(question) %></li>
-        <div class="flex">
-          <li>
-            <%= link_to user_path(question.user) do %>
-              <% if question.user.image.attached? %>
-                <%= image_tag question.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
-              <% else %>
-                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
-              <% end %>
-            <% end %>
-          </li>
-          <li class="question-user-name"><%= link_to question.user.name, user_path(question.user) %></li>
-          <li class="question-time"><%= question.updated_at.to_s(:datetime_jp) %></li>
-        </div>
+  <div class="page-link">
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params ==  "review_create" %>
+      <ul class="flex">
+        <li><%= link_to '口コミ投稿', new_review_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params == "result" %>
+      <ul class="flex">
+        <li><%= link_to 'HOME', root_path %></li>
+        <li>＞</li>
+        <li><%= link_to '検索', result_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul class="flex">
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', "#", class: "link-underline" %></li>
       </ul>
     <% end %>
   </div>
+  <section class="school-header">
+    <div class="school-header-content flex">
+      <div class="school-image-box">
+        <% if @school.image.attached? %>
+          <%= image_tag @school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>
+        <% else %>
+          <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+        <% end %>
+      </div>
+      <div class="school-name-explanation-box">
+        <p class="school-header-name"><%= @school.name %></p>
+        <div class="school-header-explanation">
+          <%= simple_format(@school.explanation) %>
+        </div>
+      </div>
+      <div class="school-evaluation-box">
+        <ul>
+          <% unless @school.review_ave_score.nil? %>
+            <li id='review-index-header-star-<%= @school.id %>' class="stars"></li>
+            <li class="ave"><%= @school.review_ave_score %></li>
+          <% end %>
+          <% if @school.review_count.nil? %>
+            <li>口コミ: 0件</li>
+            <%= link_to "口コミを書く", new_review_path, class: "button blue" %>
+          <% else %>
+            <li><%= "口コミ: #{ @school.review_count }件" %></li>
+          <% end %>
+          <% unless @school.site_address.blank? %>
+            <li>
+              <%= link_to "公式サイトへ", "#{@school.site_address}", target: :_blank, rel: "noopener noreferrer", class: "button" %>
+            </li>
+          <% end %>
+        </ul>
+        <script>
+          window.addEventListener("turbolinks:load", function(){
+            $('#review-index-header-star-<%= @school.id %>').empty();
+
+            $('#review-index-header-star-<%= @school.id %>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half      : true,
+              readOnly: true,
+              score: '<%= @school.review_ave_score %>'
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <section class="question-index-field">
+    <div class="question-index-button">
+      <%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %>
+    </div>
+    <div class="question-content">
+      <div class="review-and-question-link">
+        <%= link_to "口コミ一覧", school_path(@school) %>
+        <%= link_to "質問一覧", "#" %>
+      </div>
+      <h2><%= @school.name %>の質問</h2>
+      <div class="question-box-flex">
+        <% @questions.each do |question| %>
+          <ul class="question-box">
+            <%= link_to question_path(question) do %>
+
+              <li>
+                <% if question.solution == 0 %>
+                  <div class="solution solution-red">
+                    未回答
+                  </div>
+                <% elsif question.solution == 1 %>
+                  <div class="solution solution-orange">
+                    未解決
+                  </div>
+                <% else %>
+                  <div class="solution solution-green">
+                    解決済み
+                  </div>
+                <% end %>
+              </li>
+              <li class="question-name hover-underline"><%= question.name %></li>
+              <div class="flex">
+                <li>
+                  <% if question.user.image.attached? %>
+                    <%= image_tag question.user.image.variant(resize: '35x35!'), class: "user-icon", alt: "ユーザーアイコン" %>
+                  <% else %>
+                    <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+                  <% end %>
+                </li>
+                <li class="question-user-name"><%= question.user.name %></li>
+                <li class="question-time"><%= question.updated_at.to_s(:datetime_jp) %></li>
+              </div>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %>
+    </div>
+  </section>
 </div>
