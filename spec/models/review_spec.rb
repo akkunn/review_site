@@ -33,5 +33,12 @@ RSpec.describe Review, type: :model do
       review.valid?
       expect(review.errors[:school_id]).to include("can't be blank")
     end
+
+    it "is invalid 60 characters or more name" do
+      review = FactoryBot.build(:review, name: "a" * 61)
+      review.valid?
+      expect(review.errors[:name]).
+        to include("is too long (maximum is 60 characters)")
+    end
   end
 end
