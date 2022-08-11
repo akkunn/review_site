@@ -1,12 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
-  # def index
-  #   binding.pry
-  #   @school = School.find(params[:id])
-  #   @reviews = Review.all
-  # end
-
   def show
     @params = params[:review_show_params]
     @review = Review.find(params[:id])
