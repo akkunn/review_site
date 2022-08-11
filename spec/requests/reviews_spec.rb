@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Reviews", type: :request do
-  let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
+  let!(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
@@ -9,13 +9,6 @@ RSpec.describe "Reviews", type: :request do
   let(:update_review_params) {
     FactoryBot.attributes_for(:review, user_id: user.id, school_id: school.id, curriculum_star: 5)
   }
-
-  # describe "GET /index" do
-  #   it "returns http success" do
-  #     get "/reviews/index"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
 
   describe "#show" do
     context "as an authenticated user" do
@@ -139,6 +132,7 @@ RSpec.describe "Reviews", type: :request do
         expect(response.body).to include(review.teacher)
         expect(response.body).to include(review.compatibility)
         expect(response.body).to include(review.thought)
+        expect(response.body).to include("削除する")
       end
     end
 
@@ -198,6 +192,50 @@ RSpec.describe "Reviews", type: :request do
       end
 
       it "redirect to login page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "#destroy" do
+    context "as an authorized user" do
+      it "deletes a review" do
+        sign_in user
+        expect {
+          delete review_path(review)
+        }.to change { Review.count }.by(-1)
+      end
+    end
+
+    context "as an unauthorized user" do
+      before do
+        sign_in other_user
+      end
+
+      it "doesn't delete a review" do
+        expect {
+          delete review_path(review)
+        }.not_to change { Review.count }
+      end
+
+      it "redirects to review show page" do
+        delete review_path(review)
+        expect(response).to redirect_to review_path(review)
+      end
+    end
+
+    context "as a guest" do
+      before do
+        delete review_path(review)
+      end
+
+      it "doesn't delete a review" do
+        expect {
+          delete review_path(review)
+        }.not_to change { Review.count }
+      end
+
+      it "redirects to login page" do
         expect(response).to redirect_to new_user_session_path
       end
     end

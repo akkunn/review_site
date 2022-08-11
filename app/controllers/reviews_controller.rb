@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @params = params[:review_show_params]
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
     @params = params[:review_edit_params]
     @review = Review.find(params[:id])
     unless current_user?(@review.user)
-      flash.now[:failure] = "自分の口コミしか編集できません"
+      flash[:failure] = "自分の口コミしか編集できません"
       redirect_to review_path(@review)
     end
   end
@@ -66,7 +66,23 @@ class ReviewsController < ApplicationController
         render "edit"
       end
     else
-      flash.now[:failure] = "自分の口コミしか変更できません"
+      flash[:failure] = "自分の口コミしか変更できません"
+      redirect_to review_path(@review)
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    if current_user?(@review.user)
+      if @review.destroy
+        flash[:success] = "口コミを削除しました"
+        redirect_to school_path(@review.school)
+      else
+        flash.now[:failure] = "口コミを削除できませんでした"
+        render "edit"
+      end
+    else
+      flash[:failure] = "他のユーザーの口コミは削除できません"
       redirect_to review_path(@review)
     end
   end

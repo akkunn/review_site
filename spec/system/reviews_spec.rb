@@ -12,7 +12,8 @@ RSpec.describe "Reviews", type: :system do
 
   scenario "user adds new review" do
     sign_in_as(user)
-    visit new_review_path
+    visit school_path(school)
+    click_link "口コミを投稿する"
     expect {
       select school.name, from: "review_school_id"
       fill_in "review_name", with: "おすすめです"
@@ -29,12 +30,14 @@ RSpec.describe "Reviews", type: :system do
       click_button "投稿する"
     }.to change(Review, :count).by(1)
     expect(page).to have_content("おすすめです")
-    expect(page).to have_content("3.5点")
+    expect(page).to have_content("3.5")
   end
 
   scenario "user updates a review" do
     sign_in_as(user)
-    visit edit_review_path(review)
+    visit school_path(school)
+    click_link review.name
+    click_link "編集する"
     expect(review.name).to eq("転職したいならおすすめです")
 
     select other_school.name, from: "review_school_id"
@@ -57,6 +60,15 @@ RSpec.describe "Reviews", type: :system do
     expect(page).to have_content("的確なアドバイスがもらえます")
     expect(page).to have_content("厳しい")
     expect(page).to have_content("やり切りましょう")
-    expect(page).to have_content("3.0点")
+    expect(page).to have_content("3.0")
+  end
+
+  scenario "user deletes a review" do
+    sign_in_as(user)
+    visit school_path(school)
+    click_link review.name
+    click_link "編集する"
+    click_link "削除する"
+    expect(page).not_to have_content(review.name)
   end
 end

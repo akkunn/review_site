@@ -122,6 +122,7 @@
         <div class="review-and-question-button">
           <%= f.submit '変更する', class: "submit-button" %>
           <%= link_to "戻る", review_path(@review), class: "button" %>
+          <%= link_to "削除する", review_path(@review), method: :delete, data: {confirm: "口コミを削除しますか？"}, class: "delete-button hover-underline" %>
         </div>
       <% end %>
     </div>

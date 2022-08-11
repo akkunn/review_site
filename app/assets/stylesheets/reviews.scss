@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// 全共通
+.delete-button {
+  color: #FF0000;
+}
 
 // 口コミ投稿 口コミ詳細  口コミ編集 質問新規追加 質問編集 共通
 
@@ -91,8 +95,14 @@
   }
 }
 
+// 口コミ投稿 口コミ編集 質問投稿 共通
 
-// 口コミ投稿 口コミ編集
+.review-new h2, .review-edit h2, .question-new h2 {
+  margin-bottom: 2rem;
+}
+
+
+// 口コミ投稿 口コミ編集 共通
 
 .review-new, .review-edit {
   .flex {
@@ -100,18 +110,25 @@
       width: 65%;
     }
   }
+  .review-and-question-box {
+    .review-and-question-box-content {
+      .review-thought {
+        margin-bottom: 2rem;
+      }
+    }
+  }
 }
 
-// .review-new, .review-edit {
-//   .flex {
-//     li {
-//       &:last-child {
-//         width: 65%;
-//       }
-//     }
-//   }
-// }
+// 口コミ投稿
 
+.review-new {
+  .submit-button {
+    margin-bottom: 0.5rem;
+  }
+  .button {
+    margin-top: 1.5rem;
+  }
+}
 
 // 口コミ詳細
 
@@ -183,10 +200,11 @@
 
 // 口コミ編集
 
-.review-new h2, .review-edit h2, .question-new h2 {
-  margin-bottom: 2rem;
+.review-edit {
+  .button {
+    margin-bottom: 1.5rem;
+  }
 }
-
 
 // レスポンシブ対応
 
