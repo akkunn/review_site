@@ -127,7 +127,7 @@
       width: auto;
       box-sizing: border-box;
       background-color: #fff;
-      margin: 2rem auto 1rem auto;
+      margin: 2rem auto 0 auto;
       padding: 1rem 3rem 2rem 3rem;
       .review-and-question-link a {
         &:last-child {
@@ -138,7 +138,7 @@
         background-color: #1a3153;
         color: #fff;
         padding: 1rem 0;
-        margin-top: 4rem;
+        margin: 4rem 0 0 0;
       }
       .question-box-flex {
         display: flex;
@@ -148,7 +148,7 @@
           width: 45%;
           position: relative;
           .question-name {
-            margin: 0.5rem 0 2rem 0;
+            margin: 1rem 0 2.5rem 0;
           }
           .flex {
             position: absolute;
@@ -267,8 +267,6 @@
 }
 
 
-
-
 // 質問新規登録 質問編集
 
 .question-new, .question-edit {
@@ -319,4 +317,55 @@
 // 質問編集
 .question-edit .question-name-label {
   font-size: 1.4rem;
+}
+
+// レスポンシブ対応
+
+@media screen and (max-width: 960px) {
+
+  // 質問一覧
+
+  .question-index {
+    .question-index-field {
+      .question-content {
+        .question-box-flex {
+          .question-box {
+            width: 41%;
+          }
+        }
+        .button {
+          min-width: 15rem;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 520px) {
+
+  // 質問一覧
+
+  .question-index {
+    .question-index-field {
+      .question-content {
+        padding: 1rem 1rem 2rem 1rem;
+        .review-and-question-link {
+          a {
+            padding: 1rem 0.5rem 1rem 0.5rem;
+          }
+        }
+        .question-box-flex {
+          .question-box {
+            width: 100%;
+          }
+        }
+        .button {
+          width: 70%;
+          min-width: 8rem;
+        }
+      }
+    }
+  }
+
 }
