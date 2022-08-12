@@ -132,7 +132,7 @@
         <div class="question-box answer-textarea-box">
           <%= form_with model: @answer, url: answers_path, local: true do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
-            <%= f.text_area :content, placeholder: "回答を記入してください", class: "resize" %>
+            <%= f.text_area :content, placeholder: "回答を記入してください", class: "resize10" %>
 
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :question_id, value: @question.id %>
@@ -158,15 +158,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  window.addEventListener("turbolinks:load", function(){
-    $('textarea.resize').on('keydown', function(){
-      var textarea = this;
-      setTimeout(function(){
-        textarea.style.cssText = 'height : 10.1rem;';
-        textarea.style.cssText = 'height : ' + textarea.scrollHeight + 'px;';
-      },0);
-    });
-  });
-</script>
