@@ -88,6 +88,11 @@
             <% end %>
             <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "question-show-delete-button button" %>
           </div>
+          <div class="question-show-hidden-point hidden-point-question-<%= @question.id %>"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+          <div class="question-show-hidden-menu fade-out hidden-menu-question-<%= @question.id %>">
+            <%= link_to "編集", edit_question_path(@question), class: "hover-underline" %>
+            <%= link_to "削除", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "hover-underline delete-button" %>
+          </div>
         <% end %>
       </ul>
 
@@ -122,9 +127,24 @@
                 <% end %>
                 <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "question-show-delete-button button" %>
               </div>
+              <div class="question-show-hidden-point hidden-point-<%= answer.id %>"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+              <div class="question-show-hidden-menu fade-out hidden-menu-<%= answer.id %>">
+                <%= link_to "編集", edit_question_path(@question), class: "hover-underline" %>
+                <%= link_to "削除", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "hover-underline delete-button" %>
+              </div>
             <% end %>
           </div>
         </ul>
+        <script>
+          window.addEventListener("turbolinks:load", function(){
+            $(function() {
+              $('.hidden-point-<%= answer.id %>').on('click', function() {
+                $('.hidden-menu-<%= answer.id %>').toggleClass('fade-in');
+                $('.hidden-menu-<%= answer.id %>').toggleClass('fade-out');
+              });
+            });
+          });
+        </script>
       <% end %>
 
       <% if user_signed_in? %>
@@ -158,3 +178,13 @@
     </div>
   </div>
 </div>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $(function() {
+      $('.hidden-point-question-<%= @question.id %>').on('click', function() {
+        $('.hidden-menu-question-<%= @question.id %>').toggleClass('fade-in');
+        $('.hidden-menu-question-<%= @question.id %>').toggleClass('fade-out');
+      });
+    });
+  });
+</script>

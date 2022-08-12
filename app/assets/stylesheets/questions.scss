@@ -214,7 +214,7 @@
         }
         .question-time {
           position: absolute;
-          right: 2rem;
+          right: 2.5rem;
           top: 0.7rem;
         }
         .question-show-buttons {
@@ -222,15 +222,15 @@
           justify-content: right;
           margin-top: 2rem;
           .question-show-edit-button {
-          background-color: rgb(249, 150, 73);
-          color: #fff;
-          border: rgb(249, 150, 73) 1px solid;
-          border-radius: 10rem;
-          width: 8rem;
-          margin: 0 1rem 0 0;
-          span {
-            margin-left: 0.5rem;
-          }
+            background-color: rgb(249, 150, 73);
+            color: #fff;
+            border: rgb(249, 150, 73) 1px solid;
+            border-radius: 10rem;
+            width: 8rem;
+            margin: 0 1rem 0 0;
+            span {
+              margin-left: 0.5rem;
+            }
           }
           .question-show-delete-button {
             color: rgb(249, 150, 73);
@@ -239,6 +239,49 @@
             width: 6rem;
             margin: 0;
           }
+        }
+        .question-show-hidden-point {
+          display: none;
+          padding: 0.15rem 1rem;
+          position: absolute;
+          top: 0.4rem;
+          right: 0.2rem;
+          font-size: 1.3rem;
+          color: #525252;
+          transition: 0.5s;
+          cursor: pointer;
+          border-radius: 50%;
+          &:hover {
+            background-color: #f2f2f2;
+          }
+        }
+        .question-show-hidden-menu {
+          user-select: none;
+          display: flex;
+          flex-flow: column;
+          position: absolute;
+          top: 2.5rem;
+          right: 0;
+          border: 1px solid #dddddd;
+          padding: 1rem 1rem;
+          background-color: #fff;
+          box-shadow: 0 0 1rem 0.1rem rgba(0,0,0,0.2);
+          a {
+            &:first-child {
+              color: #1a3153;
+              margin-bottom: 0.5rem;
+            }
+          }
+        }
+        .fade-in {
+          opacity: 1;
+          visibility: visible;
+          transition: 0.5s;
+        }
+        .fade-out {
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.5s;
         }
       }
       .answer-box {
@@ -263,6 +306,12 @@
         }
         .question-time {
           top: 1rem;
+        }
+        .question-show-hidden-point {
+          top: 0.7rem;
+        }
+        .question-show-hidden-menu {
+          top: 2.8rem;
         }
       }
       .answer-textarea-box {
@@ -480,14 +529,10 @@
         }
         .question-box {
           .question-show-buttons {
-            .question-show-edit-button {
-              min-width: auto;
-              width: 8rem;
-            }
-            .question-show-delete-button {
-              min-width: auto;
-              width: 6rem;
-            }
+            display: none;
+          }
+          .question-show-hidden-point {
+            display: block;
           }
         }
         .answer-box {
