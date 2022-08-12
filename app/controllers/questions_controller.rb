@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
     if current_user?(@question.user)
       if @question.update(question_params)
         flash[:success] = "質問を変更しました"
-        redirect_to questions_path(school_id: @question.school_id)
+        redirect_to question_path(@question)
       else
         flash.now[:failure] = "質問を変更できませんでした"
         render "edit"
