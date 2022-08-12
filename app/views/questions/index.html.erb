@@ -106,7 +106,7 @@
       <div class="question-box-flex">
         <% @questions.each do |question| %>
           <ul class="question-box">
-            <%= link_to question_path(question) do %>
+            <%= link_to question_path(question, question_show_params: @params) do %>
 
               <li>
                 <% if question.solution == 0 %>

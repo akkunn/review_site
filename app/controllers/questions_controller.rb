@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
   def show
     if Question.exists?(params[:id])
+      @params = params[:question_show_params]
       @question = Question.find(params[:id])
       @answers = Answer.where(question_id: @question.id)
       @answer = Answer.new
