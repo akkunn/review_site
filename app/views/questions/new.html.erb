@@ -1,45 +1,89 @@
 <div class="question-new background-blue">
-  <div class="header-image">
-    <div class="header-image-box">
-      <h2>質問投稿</h2>
-    </div>
+  <div class="page-link">
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @school.id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問投稿', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params ==  "review_create" %>
+      <ul class="flex">
+        <li><%= link_to '口コミ投稿', new_review_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @school.id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問投稿', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params == "result" %>
+      <ul class="flex">
+        <li><%= link_to '検索', result_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @school.id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問投稿', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params == "question_create" %>
+      <ul class="flex">
+        <li><%= link_to '質問一覧', questions_path(school_id: @school.id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問投稿', "#", class: "link-underline" %></li>
+      </ul>
+    <% else %>
+      <ul class="flex">
+        <li><%= link_to '口コミ一覧', school_path(@school) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @school.id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問投稿', "#", class: "link-underline" %></li>
+      </ul>
+    <% end %>
   </div>
+  <%= render 'shared/flash_message' %>
   <div class="review-and-question-box">
     <div class="review-and-question-box-content">
+      <h2>質問投稿</h2>
       <%= form_with model: @question, local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="review-and-question-content-border">
-          <ul class="flex ul-icon">
+          <ul class="flex question-form-user">
             <li class="question-user-icon">
               <% if current_user.image.attached? %>
-                <%= image_tag current_user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+                <%= image_tag current_user.image.variant(resize: '40x40!'), class: "user-icon", alt: "ユーザーアイコン" %>
               <% else %>
                 <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
               <% end %>
             </li>
-            <li class="question-school-name"><%= current_user.name %></li>
+            <li class="question-form-user-name"><%= current_user.name %></li>
           </ul>
           <%= f.hidden_field :user_id, value: current_user.id %>
         </div>
 
         <div class="review-and-question-content-border">
-          <ul class="flex">
-            <li><%= f.label :school_id, "スクール名" %><span class="badge">必須</span></li>
-            <li class="review-and-question-name-label"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+          <ul class="flex question-form-school">
+            <li class="review-and-question-label"><%= f.label :school_id, "スクール名" %><span class="badge">必須</span></li>
+            <li class=""><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
           </ul>
         </div>
 
         <div class="review-and-question-content-border">
           <ul>
-            <li><%= f.label :name, "質問タイトル" %><span class="badge">必須</span></li>
-            <li><%= f.text_field :name, placeholder: "質問のタイトルを記入してください" %></li>
+            <li class="review-and-question-label"><%= f.label :name, "質問タイトル" %><span class="badge">必須</span></li>
+            <li><%= f.text_field :name, placeholder: "質問のタイトルを入力してください" %></li>
           </ul>
         </div>
 
         <div>
           <ul>
-            <li><%= f.label :content, "質問内容" %><span class="badge">必須</span></li>
-            <li><%= f.text_area :content, placeholder: "質問を記入してください" %></li>
+            <li class="review-and-question-label"><%= f.label :content, "質問内容" %><span class="badge">必須</span></li>
+            <li><%= f.text_area :content, placeholder: "質問を入力してください", class: "resize10" %></li>
           </ul>
         </div>
 
