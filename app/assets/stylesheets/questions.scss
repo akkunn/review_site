@@ -182,8 +182,6 @@
         padding: 1.5rem 2rem 1.5rem 2rem;
         position: relative;
         .flex {
-          // border-bottom: 1px solid #dddddd;
-          // padding-bottom: 0.5rem;
           .question-user-name {
             a {
               color: #1a3153;
@@ -196,7 +194,6 @@
         }
         .question-show-text {
           margin: 1rem 0;
-          // border: 1px solid #dddddd;
           display: block;
           width: 100%;
           height: auto;
@@ -383,13 +380,9 @@
 // 質問新規登録 質問編集
 
 .question-new, .question-edit {
-  // padding: 0 0 3rem 0;
   .review-and-question-box {
     margin: 4rem auto !important;
     .review-and-question-box-content {
-      h2 {
-        margin-top: 1rem;
-      }
       .review-and-question-content-border {
         .question-form-user {
           margin-bottom: 1rem;
