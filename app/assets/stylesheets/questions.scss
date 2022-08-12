@@ -403,6 +403,43 @@
       }
     }
   }
+
+
+  // 質問詳細
+
+  .question-show {
+    .question-show-field {
+      .question-content {
+        .question-box {
+          .question-show-buttons {
+            .question-show-edit-button {
+              min-width: auto;
+              width: 8rem;
+            }
+            .question-show-delete-button {
+              min-width: auto;
+              width: 6rem;
+            }
+          }
+        }
+        .answer-box {
+          .newanswer {
+            .submit-button {
+              min-width: 15rem;
+            }
+          }
+        }
+        .answer-textarea-box {
+          .submit-button {
+            min-width: 15rem;
+          }
+        }
+        .button {
+          min-width: 15rem;
+        }
+      }
+    }
+  }
 }
 
 
@@ -432,4 +469,55 @@
     }
   }
 
+  // 質問詳細
+
+  .question-show {
+    .question-show-field {
+      .question-content {
+        padding: 1rem 2rem 2rem 2rem;
+        h2 {
+          padding: 1rem;
+        }
+        .question-box {
+          .question-show-buttons {
+            .question-show-edit-button {
+              min-width: auto;
+              width: 8rem;
+            }
+            .question-show-delete-button {
+              min-width: auto;
+              width: 6rem;
+            }
+          }
+        }
+        .answer-box {
+          .newanswer {
+            .submit-button {
+              min-width: 8rem;
+              width: 75%;
+            }
+            .button {
+              min-width: 8rem;
+              width: 75%;
+            }
+          }
+        }
+        .answer-textarea-box {
+          .submit-button {
+            min-width: 8rem;
+            width: 70%;
+          }
+        }
+        .solution-box {
+          .button {
+            width: 70%;
+          }
+        }
+        .button {
+          min-width: 8rem;
+          width: 63%;
+        }
+      }
+    }
+  }
 }
