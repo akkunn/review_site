@@ -1,1 +1,9 @@
-$('#<%= @answer.id %>').html('<%= form_tag("/answers/#{@answer.id}", method: :patch) do %><div class="form newanswer"><textarea name="answer[content]" id="answer-edit-textarea"><%= @answer.content.gsub(/(\r\n|\r|\n)/, "\\n") %></textarea><input type="submit" value="変更" class="submit-button"><a class="button" href="/questions/<%= @answer.question.id %>">戻る</a></div><% end %>')
+$('#<%= @answer.id %>').html('<%= form_tag("/answers/#{@answer.id}", method: :patch) do %><div class="form newanswer"><textarea name="answer[content]" id="answer-edit-textarea" class="resize"><%= @answer.content.gsub(/(\r\n|\r|\n)/, "\\n") %></textarea><input type="submit" value="変更する" class="submit-button"><a class="button" href="/questions/<%= @answer.question.id %>">戻る</a></div><% end %>')
+
+$('textarea.resize').on('keydown', function(){
+  var textarea = this;
+  setTimeout(function(){
+    textarea.style.cssText = 'height : 10.1rem;';
+    textarea.style.cssText = 'height : ' + textarea.scrollHeight + 'px;';
+  },0);
+});

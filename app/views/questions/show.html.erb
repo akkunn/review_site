@@ -1,116 +1,172 @@
 <div class="question-show background-blue">
-  <div class="header-image">
-    <div class="header-image-box">
-      <h2>質問&回答</h2>
-    </div>
-  </div>
-  <div class="back-link">
-    < <%= link_to "#{@question.school.name}質問一覧に戻る", questions_path(school_id: @question.school), class: "link-underline" %>
-  </div>
-  <div class="question-content">
-    <% if @question.solution == 0 %>
-      <div class="solution solution-red">
-        未回答
-      </div>
-    <% elsif @question.solution == 1 %>
-      <div class="solution solution-orange">
-        未解決
-      </div>
+  <div class="page-link">
+    <% if @params == "school_index" %>
+      <ul class="flex">
+        <li><%= link_to 'スクール一覧', schools_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params ==  "review_create" %>
+      <ul class="flex">
+        <li><%= link_to '口コミ投稿', new_review_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params == "result" %>
+      <ul class="flex">
+        <li><%= link_to '検索', result_path %></li>
+        <li>＞</li>
+        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
+      </ul>
+    <% elsif @params == "question_create" %>
+      <ul class="flex">
+        <li><%= link_to '質問投稿', new_question_path %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
+      </ul>
     <% else %>
-      <div class="solution solution-green">
-        解決済み
-      </div>
+      <ul class="flex">
+        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
+        <li>＞</li>
+        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
+      </ul>
     <% end %>
-    <ul class="question-box">
-      <div class="flex">
-        <li>
-          <%= link_to user_path(@question.user) do %>
-            <% if @question.user.image.attached? %>
-              <%= image_tag @question.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
-            <% else %>
-              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
-            <% end %>
-          <% end %>
-        </li>
-        <li class="question-user-name"><%= link_to @question.user.name, user_path(@question.user) %></li>
-      </div>
-      <li class="question-name"><%= @question.name %></li>
-      <textarea class="review-show-text question-show-text auto-adjust" disabled><%= @question.content %></textarea>
-      <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
-      <% if user_signed_in? && (current_user == @question.user) %>
-        <%= link_to "編集する", edit_question_path(@question), class: "edit-button" %>
-        <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "edit-button" %>
+  </div>
+  <%= render 'shared/flash_message' %>
+  <div class="question-show-field">
+    <div class="question-content">
+      <h2><%= @question.school.name %>についての質問と回答</h2>
+      <% if @question.solution == 0 %>
+        <div class="solution solution-red">
+          未回答
+        </div>
+      <% elsif @question.solution == 1 %>
+        <div class="solution solution-orange">
+          未解決
+        </div>
+      <% else %>
+        <div class="solution solution-green">
+          解決済み
+        </div>
       <% end %>
-    </ul>
-
-    <% unless @answers.size == 0 %>
-      <span class="rotateY180">&#8629;</span>
-      <span class="span-answer">回答</span>
-    <% end %>
-
-    <% @answers.each do |answer|%>
-      <ul class="question-box answer-box">
+      <ul class="question-box">
         <div class="flex">
           <li>
-            <%= link_to user_path(answer.user) do %>
-              <% if answer.user.image.attached? %>
-                <%= image_tag answer.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+            <%= link_to user_path(@question.user) do %>
+              <% if @question.user.image.attached? %>
+                <%= image_tag @question.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
               <% else %>
                 <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
               <% end %>
             <% end %>
           </li>
-          <li class="question-user-name"><%= answer.user.name %></li>
+          <li class="question-user-name"><%= link_to @question.user.name, user_path(@question.user) %></li>
         </div>
-        <div id='<%= answer.id %>'>
+        <li class="question-name"><%= @question.name %></li>
+        <li class="question-show-text auto-adjust"><%= simple_format(@question.content) %></li>
+        <li class="question-time"><%= @question.updated_at.to_s(:datetime_jp) %></li>
+        <% if user_signed_in? && (current_user == @question.user) %>
+          <div class="question-show-buttons">
+            <%= link_to edit_question_path(@question), class: "question-show-edit-button button" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i><span>編集する</span>
+            <% end %>
+            <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "question-show-delete-button button" %>
+          </div>
+        <% end %>
+      </ul>
 
-          <textarea class="review-show-text question-show-text auto-adjust" disabled><%= answer.content %></textarea>
+      <% unless @answers.size == 0 %>
+        <span class="rotateY180">&#8629;</span>
+        <span class="span-answer">回答</span>
+      <% end %>
 
-          <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
-          <% if user_signed_in? && (current_user == answer.user) %>
-            <%= link_to "編集する", "/answers/#{answer.id}/edit", method: :get, remote: true, class: "edit-button" %>
-            <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "edit-button" %>
+      <% @answers.each do |answer|%>
+        <ul class="question-box answer-box">
+          <div class="flex">
+            <li>
+              <%= link_to user_path(answer.user) do %>
+                <% if answer.user.image.attached? %>
+                  <%= image_tag answer.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+                <% else %>
+                  <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+                <% end %>
+              <% end %>
+            </li>
+            <li class="question-user-name"><%= answer.user.name %></li>
+          </div>
+          <div id='<%= answer.id %>'>
+
+            <li class="question-show-text auto-adjust answer-text"><%= simple_format(answer.content) %></li>
+
+            <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
+            <% if user_signed_in? && (current_user == answer.user) %>
+              <div class="question-show-buttons">
+                <%= link_to "/answers/#{answer.id}/edit", method: :get, remote: true, class: "question-show-edit-button button" do %>
+                  <i class="fa fa-pencil" aria-hidden="true"></i><span>編集する</span>
+                <% end %>
+                <%= link_to "削除する", answer_path(answer), method: :delete, data: {confirm: "回答を削除しますか？"}, class: "question-show-delete-button button" %>
+              </div>
+            <% end %>
+          </div>
+        </ul>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= label :content, "回答欄", class: "label-answer" %>
+        <div class="question-box answer-textarea-box">
+          <%= form_with model: @answer, url: answers_path, local: true do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.text_area :content, placeholder: "回答を記入してください", class: "resize" %>
+
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :question_id, value: @question.id %>
+
+            <%= f.submit '回答する', class: "submit-button" %>
           <% end %>
         </div>
-      </ul>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <%= label :content, "回答欄", class: "label-answer" %>
-      <div class="question-box answer-textarea-box">
-        <%= form_with model: @answer, url: answers_path, local: true do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <%= f.text_area :content, placeholder: "回答を記入してください" %>
-
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :question_id, value: @question.id %>
-
-          <%= f.submit '回答する', class: "submit-button" %>
-        <% end %>
-      </div>
-      <% if current_user == @question.user %>
-        <% if @question.solution == 0 || @question.solution == 1 %>
-          <div class="question-box solution-box">
-            <p>質問が解決したらボタンを押してください</p>
-            <%= link_to "解決した", solved_path(question_id: @question.id), class: "button" %>
-          </div>
-        <% else %>
-          <div class="question-box solution-box">
-            <p>追加の質問がある場合にはボタンを押してください</p>
-            <%= link_to "解決済み", solved_path(question_id: @question.id), class: "button unsolution" %>
-          </div>
+        <% if current_user == @question.user %>
+          <% if @question.solution == 0 || @question.solution == 1 %>
+            <div class="question-box solution-box">
+              <p>質問が解決したらボタンを押してください</p>
+              <%= link_to "解決した", solved_path(question_id: @question.id), class: "button" %>
+            </div>
+          <% else %>
+            <div class="question-box solution-box">
+              <p>追加の質問がある場合にはボタンを押してください</p>
+              <%= link_to "解決済み", solved_path(question_id: @question.id), class: "button unsolution" %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
+      <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
+    </div>
   </div>
 </div>
 
-<%# <script>
-    document.querySelectorAll(".auto-adjust").forEach(function(){
-        this.addEventListener('keyup',function(e){
-            e.srcElement.style.height = 0
-            e.srcElement.style.height = e.srcElement.scrollHeight+"px"
-        })
-    })
-</script> %>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('textarea.resize').on('keydown', function(){
+      var textarea = this;
+      setTimeout(function(){
+        textarea.style.cssText = 'height : 10.1rem;';
+        textarea.style.cssText = 'height : ' + textarea.scrollHeight + 'px;';
+      },0);
+    });
+  });
+</script>
