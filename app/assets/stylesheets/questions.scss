@@ -495,6 +495,38 @@
       }
     }
   }
+
+  // 質問新規登録 質問編集
+
+  .question-new, .question-edit {
+    .review-and-question-box {
+      .review-and-question-box-content {
+        .review-and-question-content-border {
+          .review-and-question-label {
+            width: 100%;
+          }
+          .question-form-school {
+            display: block;
+            li {
+              &:first-child {
+                width: 100%;
+              }
+              &:last-child {
+                margin-top: 1rem;
+                width: 100%;
+                max-width: 25rem;
+              }
+            }
+          }
+        }
+        .question-form-content {
+          .review-and-question-label {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -569,6 +601,25 @@
         .button {
           min-width: 8rem;
           width: 63%;
+        }
+      }
+    }
+  }
+
+  // 質問新規登録 質問編集
+
+  .question-new, .question-edit {
+    .review-and-question-box {
+      .review-and-question-box-content {
+        .review-and-question-content-border {
+          .review-and-question-label {
+            margin-bottom: 0;
+          }
+        }
+        .question-form-content {
+          .review-and-question-label {
+            margin-bottom: 0;
+          }
         }
       }
     }
