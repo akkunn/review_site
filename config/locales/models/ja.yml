@@ -1,0 +1,56 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      school: スクール
+      user_school: ユーザースクール
+      review: 口コミ
+      question: 質問
+      answer: 回答
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        introduction: 自己紹介
+      school:
+        name: スクール名
+        style: 学習形態
+        support: 転職支援
+        guarantee: 転職保証
+        explanation: 特徴
+        languaged_id: 学習言語
+        prefecture_id: 都道府県
+        cost_id: 費用
+        period_id: 期間
+        review_ave_score: 口コミ評価
+        review_count: 口コミ数
+        site_address: URL
+      user_school:
+        user_id: ユーザー
+        school_id: スクール
+      review:
+        name: 口コミタイトル
+        curriculum: カリキュラム
+        support: サポート体制
+        teacher: 講師
+        compatibility: 両立しやすさ
+        thought: 感想/アドバイス
+        user_id: ユーザーID
+        school_id: スクール名
+        curriculum_star: カリキュラムの評価
+        support_star: サポート体制の評価
+        teacher_star: 講師の評価
+        compatibility_star: 両立しやすさの評価
+        average_star: 総合評価
+        school: スクール名
+      question:
+        name: 質問タイトル
+        content: 質問内容
+        user_id: ユーザーID
+        school_id: スクール名
+        solution: 解決度
+        school: スクール名
+      answer:
+        content: 回答内容
+        user_id: ユーザーID
+        question_id: 質問ID
