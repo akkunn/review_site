@@ -73,7 +73,7 @@
               <li class="review-and-question-label"><%= f.label :curriculum_star,'カリキュラム内容' %></li>
               <li id="curriculum_star" class="review-and-question-input-field"></li>
             </div>
-            <li><%= f.text_area :curriculum %></li>
+            <li><%= f.text_area :curriculum, class: "resize7" %></li>
           </ul>
         </div>
 
@@ -84,7 +84,7 @@
               <li class="review-and-question-label"><%= f.label :support_star,'サポート体制' %></li>
               <li id="support_star" class="review-and-question-input-field"></li>
             </div>
-            <li><%= f.text_area :support %></li>
+            <li><%= f.text_area :support, class: "resize7" %></li>
           </ul>
         </div>
 
@@ -95,7 +95,7 @@
               <li class="review-and-question-label"><%= f.label :teacher_star,'講師' %></li>
               <li id="teacher_star" class="review-and-question-input-field"></li>
             </div>
-            <li><%= f.text_area :teacher %></li>
+            <li><%= f.text_area :teacher, class: "resize7" %></li>
           </ul>
         </div>
 
@@ -106,7 +106,7 @@
               <li class="review-and-question-label"><%= f.label :compatibility_star, '両立しやすさ' %></li>
               <li id="compatibility_star" class="review-and-question-input-field"></li>
             </div>
-            <li><%= f.text_area :compatibility %></li>
+            <li><%= f.text_area :compatibility, class: "resize7" %></li>
           </ul>
         </div>
 
@@ -114,7 +114,7 @@
             <li class="review-and-question-label">
               <%= f.label :thought,'感想/アドバイス' %><span class="badge">必須</span>
             </li>
-            <li><%= f.text_area :thought %></li>
+            <li><%= f.text_area :thought, class: "resize7" %></li>
           </ul>
 
         <%= f.hidden_field :user_id, value: current_user.id %>
