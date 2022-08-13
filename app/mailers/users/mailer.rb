@@ -11,10 +11,7 @@ class Users::Mailer < Devise::Mailer
   end
 
   def reset_password_instructions(record, token, opts={})
-    # headers["Custom-header"] = "Bar"
-    # opts[:from] = 'プロコミ<853amtg@gmail.com>'
-    # opts[:reply_to] = '853amtg@gmail.com'
-    opts[:subject] = "【●●●アプリ】会員登録完了"
+    opts[:subject] = "パスワードの再設定について"
     super
   end
 end
