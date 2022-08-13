@@ -150,14 +150,16 @@
     width: 100%;
     height: auto;
     min-height: 4rem;
-    max-height: 10rem;
     overflow: auto;
     font-size: 1rem;
     padding: 0.5rem;
     box-sizing: border-box;
     margin-top: 1rem;
     p {
-      margin: 0;
+      margin-top: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   .review-show-ave-label {
@@ -370,9 +372,6 @@
   .review-show {
     .review-and-question-box {
       .review-and-question-box-content {
-        .review-show-text {
-          max-height: 20rem;
-        }
         .review-show-ave-box {
           #ave-star-rate {
             margin-bottom: 0;
