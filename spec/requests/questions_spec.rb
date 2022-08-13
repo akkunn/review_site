@@ -19,7 +19,9 @@ RSpec.describe "Questions", type: :request do
     FactoryBot.create(:question, name: "カリキュラムについて", user_id: other_user.id, school_id: school.id)
   }
   let!(:answer) { FactoryBot.create(:answer, user_id: other_user.id, question_id: question.id) }
-  let!(:answer_solved_question) { FactoryBot.create(:answer, user_id: other_user.id, question_id: solved_question.id) }
+  let!(:answer_solved_question) {
+    FactoryBot.create(:answer, user_id: other_user.id, question_id: solved_question.id)
+  }
   let(:question_params) {
     FactoryBot.attributes_for(:question, user_id: user.id, school_id: school.id)
   }
@@ -333,5 +335,4 @@ RSpec.describe "Questions", type: :request do
       end
     end
   end
-
 end

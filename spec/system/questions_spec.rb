@@ -6,12 +6,16 @@ RSpec.describe "Questions", type: :system do
   let(:user) { FactoryBot.create(:user) }
   let!(:question) { FactoryBot.create(:question, user_id: user.id, school_id: school.id) }
   let!(:solved_question_noanswer) {
-    FactoryBot.create(:question, name: "カリキュラムについて", user_id: user.id, school_id: school.id, solution: 2)
+    FactoryBot.create(:question, name: "カリキュラムについて", user_id: user.id,
+                                 school_id: school.id, solution: 2)
   }
   let(:solved_question) {
-    FactoryBot.create(:question, name: "学習期間について", user_id: user.id, school_id: school.id, solution: 2)
+    FactoryBot.create(:question, name: "学習期間について", user_id: user.id,
+                                 school_id: school.id, solution: 2)
   }
-  let!(:answer_solved_question) { FactoryBot.create(:answer, user_id: user.id, question_id: solved_question.id) }
+  let!(:answer_solved_question) {
+    FactoryBot.create(:answer, user_id: user.id, question_id: solved_question.id)
+  }
 
   before do
     driven_by(:rack_test)

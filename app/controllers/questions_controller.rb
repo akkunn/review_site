@@ -30,7 +30,8 @@ class QuestionsController < ApplicationController
     if current_user?(@question.user)
       if @question.save
         flash[:success] = "質問を投稿しました"
-        redirect_to questions_path(school_id: @question.school_id, question_index_params: "question_create")
+        redirect_to questions_path(school_id: @question.school_id,
+                                   question_index_params: "question_create")
       else
         @school = School.find(params[:school_id])
         flash.now[:failure] = "質問を投稿できませんでした"
