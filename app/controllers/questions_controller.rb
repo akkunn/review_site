@@ -42,6 +42,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @params = params[:question_edit_params]
     @question = Question.find(params[:id])
     unless current_user?(@question.user)
       redirect_to question_path(@question)
