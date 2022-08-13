@@ -24,7 +24,9 @@ RSpec.describe "Questions", type: :system do
   scenario "user adds a new question" do
     sign_in_as(user)
     visit questions_path(school_id: school.id)
-    click_link "質問する"
+    within ".question-content" do
+      click_link "質問する"
+    end
     expect {
       select school.name, from: "question_school_id"
       fill_in "question_name", with: "railsを学びたいです"
