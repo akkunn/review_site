@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @params = params[:question_new_params]
     @school = School.find(params[:school_id])
     @question = Question.new
   end

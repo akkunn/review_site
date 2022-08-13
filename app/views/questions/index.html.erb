@@ -95,7 +95,7 @@
 
   <section class="question-index-field">
     <div class="question-index-button">
-      <%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %>
+      <%= link_to '質問する', new_question_path(school_id: @school.id, question_new_params: @params), class: "button" %>
     </div>
     <div class="question-content">
       <div class="review-and-question-link">
@@ -139,7 +139,7 @@
           </ul>
         <% end %>
       </div>
-      <%= link_to '質問する', new_question_path(school_id: @school.id), class: "button" %>
+      <%= link_to '質問する', new_question_path(school_id: @school.id, question_new_params: @params), class: "button" %>
     </div>
   </section>
 </div>
