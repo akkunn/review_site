@@ -69,12 +69,12 @@
 
       <ul class="school-form-url flex">
         <li><%= f.label :site_address, "公式サイトのURL", class: "school-form-label" %></li>
-        <li><%= f.text_area :site_address %></li>
+        <li><%= f.text_area :site_address, class: "resize2" %></li>
       </ul>
 
       <ul class="school-form-explanation">
         <li><%= f.label :explanation, "特徴", class: "school-form-label" %><span class="badge">必須</span></li>
-        <li><%= f.text_area :explanation, placeholder: "特徴を入力"%></li>
+        <li><%= f.text_area :explanation, placeholder: "特徴を入力してください", class: "resize10" %></li>
       </ul>
       <%= f.submit '追加する', class: "submit-button" %>
     <% end %>
