@@ -472,6 +472,14 @@
 
 @media screen and (max-width: 960px) {
 
+  // 全共通
+
+  .page-link {
+    .five-links {
+      font-size: 0.9rem;
+    }
+  }
+
   // スクール一覧 result 共通
 
   .search-result, .school-index {
@@ -723,6 +731,9 @@
       li {
         margin-right: 0.2rem;
       }
+    }
+    .five-links {
+      font-size: 0.8rem;
     }
   }
 
