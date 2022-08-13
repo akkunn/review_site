@@ -43,7 +43,7 @@ RSpec.describe "Schools", type: :request do
       expect(response.body).to include(school.support)
       expect(response.body).to include(school.guarantee)
       expect(response.body).to include(school.explanation)
-      expect(response.body).to include(school.url)
+      expect(response.body).to include(school.site_address)
       expect(response.body).to include(review.name)
       expect(response.body).to include('3.5')
     end

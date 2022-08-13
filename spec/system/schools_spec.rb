@@ -21,7 +21,7 @@ RSpec.describe "Schools", type: :system do
         select "東京都", from: "school_prefecture_id"
         select "あり", from: "school_support"
         select "あり", from: "school_guarantee"
-        fill_in "school_url", with: "school-url"
+        fill_in "school_site_address", with: "school-url"
         fill_in "school_explanation", with: "難しい"
         click_button "追加する"
       end
@@ -42,7 +42,7 @@ RSpec.describe "Schools", type: :system do
       select "埼玉県", from: "school_prefecture_id"
       select "なし", from: "school_support"
       select "なし", from: "school_guarantee"
-      fill_in "school_url", with: "other-school-url"
+      fill_in "school_site_address", with: "other-school-url"
       fill_in "school_explanation", with: "難しいけど、頑張れる"
       click_button "変更する"
     end
@@ -55,7 +55,7 @@ RSpec.describe "Schools", type: :system do
     expect(@school.reload.prefecture_id).to eq 11
     expect(@school.reload.support).to eq "なし"
     expect(@school.reload.guarantee).to eq "なし"
-    expect(@school.reload.url).to eq "other-school-url"
+    expect(@school.reload.site_address).to eq "other-school-url"
     expect(@school.reload.explanation).to eq "難しいけど、頑張れる"
   end
 end
