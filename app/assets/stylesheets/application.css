@@ -113,15 +113,24 @@ textarea {
 }
 
 #error_explanation {
-  width: 16rem;
+  width: 20rem;
   margin: 0 auto;
-  border: 5px solid #FF0000;
-  padding: 0.5rem;
-  background-color: #FFABCE;
+  border: 1px solid #f5c2c7;
+  padding: 1rem 0.5rem;
+  background-color: #f8d7da;
+  color: #842029;
+  border-radius: 0.5rem;
 }
 
 #error_explanation ul {
   margin: 0.5rem auto 0 auto;
+  width: 90%;
+}
+
+#error_explanation p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .alert li {
