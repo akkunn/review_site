@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "./search"
 import "./resize"
+import "./alert"
 
 Rails.start()
 Turbolinks.start()
