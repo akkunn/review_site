@@ -197,6 +197,17 @@
   }
 }
 
+// 新規登録
+.sign-up {
+  #error_explanation {
+    ul {
+      width: 95%;
+      li {
+        text-align: left;
+      }
+    }
+  }
+}
 
 // ログイン
 
@@ -247,6 +258,9 @@
   #error_explanation {
     ul {
       width: 95%;
+      li {
+        text-align: left;
+      }
     }
   }
   .button {
