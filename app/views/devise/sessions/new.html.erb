@@ -1,15 +1,15 @@
-<div class="background">
+<div class="background sign-in">
   <div class="box devise-user-box">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h2>ログイン</h2>
       <div class="field">
         <div class="label"><%= f.label :email, "メールアドレス" %></div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
       </div>
 
       <div class="field">
         <div class="label"><%= f.label :password, "パスワード" %></div>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
