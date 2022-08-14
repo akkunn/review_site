@@ -58,7 +58,7 @@
 }
 
 .blue-link {
-  color: rgb(8, 189, 255);
+  color: #007bff;
   font-weight: bold;
   &:hover {
     opacity: 0.5;
@@ -222,6 +222,34 @@
 }
 
 // アカウント情報編集
+
+.edit-acount-info {
+  display: flex;
+  .link-box {
+    border-right: 1px solid #dddd;
+    background-color: #fff;
+    width: 15rem;
+    margin: 0;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    li {
+      padding: 1rem 1.5rem 1rem 1rem;
+      text-align: right;
+      a:hover {
+        color: #007bff;
+        opacity: 1;
+      }
+    }
+    .current-page {
+      border-right: 3px solid #007bff;
+    }
+  }
+  .button {
+    color: #000;
+    width: 60%;
+  }
+}
+
 .under-label-text {
   font-size: 0.8rem;
   margin: 0;
@@ -231,19 +259,19 @@
   text-decoration: none;
   color: red;
   margin-top: 1rem;
-  display: block;
+  display: inline-block;
   &:hover {
-    opacity: 0.7;
+    text-decoration: underline;
   }
 }
 
-.edit-acount-info .link-box {
-  width: 50%;
-  margin: 1rem auto;
-  .blue-link {
-    margin-right: 1rem;
-  }
-}
+// .edit-acount-info .link-box {
+//   width: 50%;
+//   margin: 1rem auto;
+//   .blue-link {
+//     margin-right: 1rem;
+//   }
+// }
 
 // レスポンシブデザイン
 
