@@ -152,7 +152,6 @@
 
 .devise-user-box {
   text-align: center;
-  // width: 50%;
   width: 500px;
   margin: 0 auto;
   color: #1a3153;
@@ -229,5 +228,31 @@
   margin: 1rem auto;
   .blue-link {
     margin-right: 1rem;
+  }
+}
+
+// レスポンシブデザイン
+
+@media screen and (max-width: 960px) {
+
+  // アカウント登録
+
+  .devise-user-box {
+    width: 80%;
+    max-width: 500px;
+  }
+
+}
+
+@media screen and (max-width: 520px) {
+
+  // アカウント登録
+
+  .field {
+    width: 80%;
+  }
+
+  .actions {
+    width: 80%;
   }
 }
