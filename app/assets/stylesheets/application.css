@@ -218,3 +218,13 @@ footer {
 footer p {
   margin: 0;
 }
+
+
+/* レスポンシブデザイン */
+
+@media screen and (max-width: 520px) {
+  #error_explanation {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
