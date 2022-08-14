@@ -284,6 +284,25 @@
     max-width: 500px;
   }
 
+  // アカウント情報編集
+
+  .edit-acount-info {
+    display: block;
+    .link-box {
+      padding-left: 1rem;
+      border-right: none;
+      border-bottom: 1px solid #dddd;
+      width: 100%;
+      display: flex;
+      li {
+        padding: 1rem;
+      }
+      .current-page {
+        border-right: none;
+        border-bottom: 3px solid #007bff;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -297,4 +316,20 @@
   .actions {
     width: 80%;
   }
+
+    // アカウント情報編集
+
+    .edit-acount-info {
+      .link-box {
+        padding-top: 0;
+        padding-left: 0;
+        font-size: 0.9rem;
+        li {
+          text-align: center;
+        }
+      }
+      .button {
+        width: 80%;
+      }
+    }
 }
