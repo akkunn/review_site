@@ -6,25 +6,25 @@
 
       <div class="field">
         <div class="label"><%= f.label :name, "ユーザー名" %></div>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザー名" %>
       </div>
 
       <div class="field">
         <div class="label"><%= f.label :email, "メールアドレス" %></div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
       </div>
 
       <div class="field">
-        <div class="label"><%= f.label :password, "パスワード" %></div>
+        <div class="label"><%= f.label :password, "パスワード(6文字以上)" %></div>
         <%# if @minimum_password_length %>
         <%# <em>(= @minimum_password_length 文字以上)</em> %>
         <%# end %>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード" %>
       </div>
 
       <div class="field">
         <div class="label"><%= f.label :password_confirmation, "パスワード確認" %></div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認" %>
       </div>
 
       <div class="actions">
