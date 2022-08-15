@@ -26,7 +26,7 @@
 
         <% unless @user.introduction.blank? %>
           <div class="introduction">
-            <%= @user.introduction %>
+            <%= simple_format(@user.introduction) %>
           </div>
         <% end %>
 
