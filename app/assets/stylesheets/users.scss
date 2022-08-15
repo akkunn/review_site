@@ -110,7 +110,6 @@
         margin: 0.5rem 0 2rem 0;
       }
       .profile-edit-form {
-        // width: 70%;
         margin: 0 2rem;
         text-align: center;
         img {
@@ -180,36 +179,6 @@
       }
     }
   }
-}
-
-
-.profile-edit-table {
-  border-spacing: 0 2rem;
-  margin: 0 auto;
-  width: 100%;
-  // tr {
-  //   // padding: 0 1rem;
-  //   // display: flex;
-  //   // flex-direction: column;
-  // }
-  th {
-    text-align: left;
-    border-bottom: 1px solid rgb(212, 212, 212);
-    padding-bottom: 2rem;
-    padding-left: 1rem;
-  }
-  td {
-    text-align: left;
-    border-bottom: 1px solid rgb(212, 212, 212);
-    padding-bottom: 2rem;
-
-  }
-}
-
-
-
-.link-box {
-  margin-bottom: 1rem;
 }
 
 // devise共通(以下devise)
@@ -349,14 +318,6 @@
   }
 }
 
-// .edit-acount-info .link-box {
-//   width: 50%;
-//   margin: 1rem auto;
-//   .blue-link {
-//     margin-right: 1rem;
-//   }
-// }
-
 // レスポンシブデザイン
 
 @media screen and (max-width: 960px) {
@@ -370,7 +331,7 @@
 
   // アカウント情報編集
 
-  .edit-acount-info {
+  .edit-acount-info, .edit-profile {
     display: block;
     .link-box {
       padding-left: 1rem;
@@ -384,6 +345,48 @@
       .current-page {
         border-right: none;
         border-bottom: 3px solid #007bff;
+      }
+    }
+  }
+
+  // プロフィール編集
+  .edit-profile {
+    .profile-box {
+      max-width: 600px;
+      width: 80%;
+      .box {
+        .profile-edit-form {
+          .profile-item {
+            display: block;
+            .profile-item-label {
+              margin-bottom: 1rem;
+              width: 100%;
+            }
+            .profile-item-content {
+              width: 100%;
+              max-width: 20rem;
+            }
+          }
+          .profile-edit-school {
+            display: flex;
+            flex-wrap: wrap;
+            .profile-item-label {
+              width: 100%;
+            }
+            .profile-edit-change-school {
+              width: 85%;
+            }
+            .profile-edit-school-delete {
+              width: 15%;
+            }
+          }
+          .submit-button {
+            min-width: 15rem;
+          }
+          .button {
+            min-width: 15rem;
+          }
+        }
       }
     }
   }
@@ -403,17 +406,46 @@
 
     // アカウント情報編集
 
-    .edit-acount-info {
-      .link-box {
-        padding-top: 0;
-        padding-left: 0;
-        font-size: 0.9rem;
-        li {
-          text-align: center;
-        }
-      }
-      .button {
-        width: 80%;
+  .edit-acount-info, .edit-profile {
+    .link-box {
+      padding-top: 0;
+      padding-left: 0;
+      font-size: 0.9rem;
+      li {
+        text-align: center;
       }
     }
+    .button {
+      width: 80%;
+    }
+  }
+
+  // プロフィール編集
+  .edit-profile {
+    .profile-box {
+      width: 85%;
+      .box {
+        .profile-edit-form {
+          margin: 0 1rem;
+          img {
+            margin-bottom: 0rem;
+          }
+          .profile-item {
+            padding: 1.5rem 0.5rem;
+          }
+          .profile-textarea {
+            padding: 1.5rem 0.5rem;
+          }
+          .submit-button {
+            min-width: 8rem;
+            width: 80%;
+          }
+          .button {
+            min-width: 8rem;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
 }

@@ -31,7 +31,7 @@
 
             <% if @user.schools.second.nil? %>
               <%= f.fields_for :user_school do |user_school| %>
-                <ul class="profile-item">
+                <ul class="profile-item profile-edit-school">
                   <li class="profile-item-label"><%= user_school.label :school_id, "スクール名" %></li>
 
                   <% if @user.schools.first.nil? %>
