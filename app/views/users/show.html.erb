@@ -1,26 +1,39 @@
-<div class="background">
+<%= render 'shared/flash_message' %>
+<div class="background profile-show">
   <div class="profile-box">
     <div class="box">
-      <h5 class="profile-title">プロフィール</h5>
-      <div class="profile-info">
-        <% if @user.image.attached? %>
-          <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon", alt: "ユーザーアイコン" %>
-        <% else %>
-          <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+      <div class="profile-content">
+        <div class="profile-title">プロフィール</div>
+        <div class="profile-item-icon">
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon", alt: "ユーザーアイコン" %>
+          <% else %>
+            <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+          <% end %>
+        </div>
+
+        <ul class="profile-item">
+          <li class="profile-item-label">ユーザー名</li>
+          <li class="profile-item-content"><%= @user.name %></li>
+        </ul>
+
+        <% unless @user.user_schools.first.nil? %>
+          <ul class="profile-item">
+            <li class="profile-item-label">スクール名</li>
+            <li class="profile-item-content"><%= @user.schools.first.name %></li>
+          </ul>
+        <% end %>
+
+        <% unless @user.introduction.blank? %>
+          <div class="introduction">
+            <%= @user.introduction %>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? && (current_user == @user) %>
+          <%= link_to "変更する", edit_user_path(@user), class: "button" %>
         <% end %>
       </div>
-      <h2 class="profile-info">
-        <%= @user.name %>
-      </h2>
-      <% @user.schools.each do |school| %>
-        <h2 class="profile-info">
-          <%= school.name %>
-        </h2>
-      <% end %>
-      <div class="introduction">
-        <%= @user.introduction %>
-      </div>
-      <%= link_to "変更する", edit_user_path(@user), class: "button change-button" %>
     </div>
   </div>
 </div>
