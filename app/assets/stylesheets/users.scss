@@ -197,14 +197,6 @@
   }
 }
 
-// .profile-info {
-//   text-align: center;
-//   border-bottom: 1px solid rgb(212, 212, 212);
-//   margin: 0;
-//   padding: 1.3rem 0;
-// }
-
-
 .change-button {
   background-color: #007bff;
   color: white;
@@ -425,6 +417,35 @@
       }
     }
   }
+
+  // プロフィール
+  .profile-show {
+    .profile-box {
+      max-width: 600px;
+      width: 80%;
+      .box {
+        .profile-content {
+          .profile-item-icon {
+            margin: 2rem 0 0 0;
+          }
+          .profile-item {
+            display: block;
+            .profile-item-label {
+              position: initial;
+              margin-bottom: 1rem;
+              width: 100%;
+            }
+            .profile-item-content {
+              width: 100%;
+            }
+          }
+          .button {
+            min-width: 15rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -471,6 +492,28 @@
           .submit-button {
             min-width: 8rem;
             width: 80%;
+          }
+          .button {
+            min-width: 8rem;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  // プロフィール
+  .profile-show {
+    .profile-box {
+      width: 85%;
+      .box {
+        .profile-content {
+          margin: 0 1rem;
+          .profile-item {
+            padding: 1.5rem 1rem;
+          }
+          .introduction {
+            margin: 2rem 1rem 0 1rem;
           }
           .button {
             min-width: 8rem;
