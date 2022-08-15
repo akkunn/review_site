@@ -27,12 +27,15 @@ class UsersController < ApplicationController
             update(user_id: params[:user][:user_school][:user_id],
                    school_id: params[:user][:user_school][:school_id])
         end
+        flash[:success] = "プロフィールを変更しました"
         redirect_to @user
       else
+        flash.now[:failure] = "プロフィールを変更できませんでした"
         render 'users/edit'
       end
     else
-      redirect_to root_path
+      flash[:failure] = "自分のプロフィールしか変更できません"
+      redirect_to @user
     end
   end
 
