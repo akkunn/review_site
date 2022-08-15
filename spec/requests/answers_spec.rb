@@ -13,7 +13,8 @@ RSpec.describe "Answers", type: :request do
     FactoryBot.attributes_for(:answer, user_id: other_user.id, question_id: question.id)
   }
   let(:update_answer_params) {
-    FactoryBot.attributes_for(:answer, content: "転職についての情報をたくさん入手できます", user_id: user.id, question_id: question.id)
+    FactoryBot.attributes_for(:answer, content: "転職についての情報をたくさん入手できます",
+                                       user_id: user.id, question_id: question.id)
   }
 
   describe "#create" do
@@ -179,5 +180,4 @@ RSpec.describe "Answers", type: :request do
       end
     end
   end
-
 end

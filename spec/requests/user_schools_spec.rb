@@ -6,7 +6,6 @@ RSpec.describe "UserSchools", type: :request do
   let(:school) { FactoryBot.create(:school) }
   let!(:user_school) { UserSchool.create(user_id: user.id, school_id: school.id) }
 
-
   describe "#destroy" do
     context "as an authorized user" do
       it "deletes a user_school" do
