@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :reviews
   resources :questions
   resources :answers, only: [:create, :edit, :update, :destroy]
+  resources :user_schools, only: [:destroy]
 end

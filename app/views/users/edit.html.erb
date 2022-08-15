@@ -33,13 +33,20 @@
               <%= f.fields_for :user_school do |user_school| %>
                 <ul class="profile-item">
                   <li class="profile-item-label"><%= user_school.label :school_id, "スクール名" %></li>
-                  <li class="profile-item-content">
-                    <% if @user.schools.first.nil? %>
+
+                  <% if @user.schools.first.nil? %>
+                    <li class="profile-item-content">
                       <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
-                    <% else %>
+                    </li>
+                  <% else %>
+                    <li class="profile-item-content profile-edit-change-school">
                       <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: @user.schools.first.name) %>
-                    <% end %>
-                  </li>
+                    </li>
+                    <div class="profile-edit-school-delete">
+                      <%= link_to "削除", user_school_path(@user.user_schools.first), method: :delete, data: {confirm: "スクール名を削除しますか？"}, class: "hover-underline" %>
+                    </div>
+                  <% end %>
+
                   <%= user_school.hidden_field :user_id, value: @user.id %>
                 </ul>
               <% end %>
