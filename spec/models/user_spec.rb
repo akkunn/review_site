@@ -9,32 +9,32 @@ RSpec.describe User, type: :model do
     it "is invalid without a name" do
       user = FactoryBot.build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("can't be blank")
+      expect(user.errors[:name]).to include("を入力してください")
     end
 
     it "is invalid without an email" do
       user = FactoryBot.build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     it "is invalid without a password" do
       user = FactoryBot.build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
+      expect(user.errors[:password]).to include("を入力してください")
     end
 
     it "is invalid with a duplicate email address" do
       FactoryBot.create(:user, email: "rails@example.com")
       user = FactoryBot.build(:user, email: "rails@example.com")
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
 
     it "is invalid with a password 5 characters or less" do
       user = FactoryBot.build(:user, password: "a" * 5)
       user.valid?
-      expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+      expect(user.errors[:password]).to include("は6文字以上で入力してください")
     end
   end
 end

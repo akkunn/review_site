@@ -77,7 +77,7 @@ RSpec.describe "Users", type: :request do
         expect(user.reload.name).to eq "rails"
       end
 
-      it "redirects to home page" do
+      it "redirects to profile page" do
         patch user_path(other_user), params: {
           id: other_user.id, user: {
             name: "ruby", email: other_user.email, user_school: {
@@ -85,7 +85,7 @@ RSpec.describe "Users", type: :request do
             },
           },
         }
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to user_path(other_user)
       end
     end
 

@@ -16,19 +16,19 @@ RSpec.describe Answer, type: :model do
       answer_nil_content = FactoryBot.build(:answer,
         content: nil, user_id: user.id, question_id: question.id)
       answer_nil_content.valid?
-      expect(answer_nil_content.errors[:content]).to include("can't be blank")
+      expect(answer_nil_content.errors[:content]).to include("を入力してください")
     end
 
     it "is invalid without a user_id" do
       answer_nil_user_id = FactoryBot.build(:answer, user_id: nil, question_id: question.id)
       answer_nil_user_id.valid?
-      expect(answer_nil_user_id.errors[:user_id]).to include("can't be blank")
+      expect(answer_nil_user_id.errors[:user_id]).to include("を入力してください")
     end
 
     it "is invalid without a question_id" do
       answer_nil_question_id = FactoryBot.build(:answer, user_id: user.id, question_id: nil)
       answer_nil_question_id.valid?
-      expect(answer_nil_question_id.errors[:question_id]).to include("can't be blank")
+      expect(answer_nil_question_id.errors[:question_id]).to include("を入力してください")
     end
   end
 end

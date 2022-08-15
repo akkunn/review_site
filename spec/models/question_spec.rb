@@ -13,32 +13,32 @@ RSpec.describe Question, type: :model do
     it "is invalid without a name" do
       question_nil_name = FactoryBot.build(:question, name: nil)
       question_nil_name.valid?
-      expect(question_nil_name.errors[:name]).to include("can't be blank")
+      expect(question_nil_name.errors[:name]).to include("を入力してください")
     end
 
     it "is invalid without a content" do
       question_nil_content = FactoryBot.build(:question, content: nil)
       question_nil_content.valid?
-      expect(question_nil_content.errors[:content]).to include("can't be blank")
+      expect(question_nil_content.errors[:content]).to include("を入力してください")
     end
 
     it "is invalid without a user_id" do
       question_nil_user_id = FactoryBot.build(:question, user_id: nil)
       question_nil_user_id.valid?
-      expect(question_nil_user_id.errors[:user_id]).to include("can't be blank")
+      expect(question_nil_user_id.errors[:user_id]).to include("を入力してください")
     end
 
     it "is invalid without a school_id" do
       question_nil_school_id = FactoryBot.build(:question, school_id: nil)
       question_nil_school_id.valid?
-      expect(question_nil_school_id.errors[:school_id]).to include("can't be blank")
+      expect(question_nil_school_id.errors[:school_id]).to include("を入力してください")
     end
 
     it "is invalid 60 characters or more name" do
       question_long_name = FactoryBot.build(:question, name: "a" * 61)
       question_long_name.valid?
       expect(question_long_name.errors[:name]).
-        to include("is too long (maximum is 60 characters)")
+        to include("は60文字以内で入力してください")
     end
   end
 end

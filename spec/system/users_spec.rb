@@ -16,7 +16,7 @@ RSpec.describe "Users", type: :system do
     fill_in "パスワード確認", with: user.password
     click_button "新規登録する"
 
-    expect(page).to have_content "Please follow the link to activate your account."
+    expect(page).to have_content "本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。"
   end
 
   scenario "user log in" do
@@ -30,6 +30,6 @@ RSpec.describe "Users", type: :system do
     sign_in_as(user)
     visit root_path
     click_link "ログアウト"
-    expect(page).to have_content "Signed out successfully."
+    expect(page).to have_content "ログアウトしました。"
   end
 end
