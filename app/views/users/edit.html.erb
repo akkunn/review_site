@@ -1,57 +1,62 @@
-<div class="background">
-  <div class="edit-profile">
+<%= render 'shared/flash_message' %>
+<div class="edit-profile">
+  <ul class="link-box">
+    <li class="current-page"><%= link_to "プロフィール編集", "#", class: "blue-link" %></li>
+    <li><%= link_to "アカウント情報編集", edit_user_registration_path, class: "link" %></li>
+  </ul>
+  <div class="background">
     <div class="profile-box">
-      <div class="link-box">
-        <%= link_to "アカウント情報編集", edit_user_registration_path, class: "link" %>
-        |
-        <%= link_to "プロフィール編集", "#", class: "blue-link" %>
-      </div>
       <div class="box">
         <h2 class="profile-edit-title">プロフィール編集</h2>
         <div class="profile-edit-form">
           <%= form_with model: @user, local: true do |f| %>
-              <% if @user.image.attached? %>
-                <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon" %>
-              <% else %>
-                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
-              <% end %>
-            <table class="profile-edit-table">
-              <tr>
-                <th>アイコン</th>
-                <td><%= f.file_field :image %></td>
-              </tr>
-              <tr>
-                <th><%= f.label :name, "ユーザー名" %></th>
-                <td><%= f.text_field :name, placeholder: "名前を入力" %></td>
-              </tr>
-              <% if @user.schools.second.nil? %>
-                <%= f.fields_for :user_school do |user_school| %>
-                  <tr>
-                    <th><%= user_school.label :school_id, "スクール名1" %></th>
-                    <td>
-                      <% if @user.schools.first.nil? %>
-                        <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
-                      <% else %>
-                        <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: @user.schools.first.name) %>
-                      <% end %>
-                    </td>
-                    <%= user_school.hidden_field :user_id, value: @user.id %>
-                  </tr>
-                <% end %>
-              <% end %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image.variant(resize: '100x100!'), class: "user-icon" %>
+            <% else %>
+              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+            <% end %>
 
-              <% unless @user.schools.second.nil? %>
-                <% @user.schools.each do |school| %>
-                  <tr>
-                    <th>スクール名</th>
-                    <td><%= school.name %></td>
-                  </tr>
-                <% end %>
+            <ul class="profile-item set-user-icon">
+              <li class="profile-item-label"><%= f.label :image, "アイコン", class: "" %></li>
+              <li class="profile-item-content"><%= f.file_field :image %></li>
+            </ul>
+
+            <ul class="profile-item">
+              <li class="profile-item-label">
+                <%= f.label :name, "ユーザー名" %><span class="badge">必須</span>
+              </li>
+              <li class="profile-item-content"><%= f.text_field :name, placeholder: "名前を入力" %></li>
+            </ul>
+
+            <% if @user.schools.second.nil? %>
+              <%= f.fields_for :user_school do |user_school| %>
+                <ul class="profile-item">
+                  <li class="profile-item-label"><%= user_school.label :school_id, "スクール名" %></li>
+                  <li class="profile-item-content">
+                    <% if @user.schools.first.nil? %>
+                      <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
+                    <% else %>
+                      <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: @user.schools.first.name) %>
+                    <% end %>
+                  </li>
+                  <%= user_school.hidden_field :user_id, value: @user.id %>
+                </ul>
               <% end %>
+            <% end %>
 
+            <% unless @user.schools.second.nil? %>
+              <% @user.schools.each do |school| %>
+                <ul class="profile-item">
+                  <li class="profile-item-label">スクール名</li>
+                  <li class="profile-item-content"><%= school.name %></li>
+                </ul>
+              <% end %>
+            <% end %>
 
-            </table>
-            <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction' %>
+            <div class="profile-textarea">
+              <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction resize7' %>
+            </div>
             <%= f.submit "更新", class: "submit-button" %>
           <% end %>
           <%= link_to "戻る", user_path(@user), class: "button" %>
