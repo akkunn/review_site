@@ -620,9 +620,9 @@
     }
   }
 
-  // スクール新規登録 スクール情報編集 共通
+  // スクール新規登録 スクール情報編集 home 共通
 
-  .school-new, .school-edit {
+  .school-new, .school-edit, .home {
     .school-search-box {
       width: 80%;
       form {
@@ -922,13 +922,14 @@
   }
 
 
-  // スクール新規登録 スクール情報編集 共通
+  // スクール新規登録 スクール情報編集 home 共通
 
-  .school-new, .school-edit {
+  .school-new, .school-edit, .home {
     .school-search-box {
       width: 80%;
       h2 {
         font-size: 1.35rem;
+        margin-bottom: 1rem;
       }
       form {
         .flex {
@@ -943,6 +944,9 @@
               padding: 1rem 1.5rem;
               input, select {
                 max-width: none;
+              }
+              &:first-child {
+                border-top: none;
               }
             }
             .school-form-flex-item-right {
@@ -999,6 +1003,7 @@
     .school-search-box {
       form {
         .image-box {
+          margin: 2rem auto 1rem auto;
           width: 70%;
           min-width: 11.5rem;
         }
