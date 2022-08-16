@@ -28,12 +28,6 @@ RSpec.describe Question, type: :model do
       expect(question_nil_user_id.errors[:user_id]).to include("を入力してください")
     end
 
-    it "is invalid without a school_id" do
-      question_nil_school_id = FactoryBot.build(:question, school_id: nil)
-      question_nil_school_id.valid?
-      expect(question_nil_school_id.errors[:school_id]).to include("を入力してください")
-    end
-
     it "is invalid 60 characters or more name" do
       question_long_name = FactoryBot.build(:question, name: "a" * 61)
       question_long_name.valid?
