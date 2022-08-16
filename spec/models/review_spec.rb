@@ -28,12 +28,6 @@ RSpec.describe Review, type: :model do
       expect(review.errors[:user_id]).to include("を入力してください")
     end
 
-    it "is invalid without school_id" do
-      review = FactoryBot.build(:review, school_id: nil)
-      review.valid?
-      expect(review.errors[:school_id]).to include("を入力してください")
-    end
-
     it "is invalid 60 characters or more name" do
       review = FactoryBot.build(:review, name: "a" * 61)
       review.valid?
