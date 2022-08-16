@@ -58,6 +58,7 @@ class QuestionsController < ApplicationController
         flash[:success] = "質問を変更しました"
         redirect_to question_path(@question)
       else
+        @question.school = School.find(params[:hidden_school_id])
         flash.now[:failure] = "質問を変更できませんでした"
         render "edit"
       end
