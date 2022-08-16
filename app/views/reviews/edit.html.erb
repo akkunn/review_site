@@ -118,6 +118,7 @@
           </ul>
 
         <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= hidden_field_tag :hidden_school_id, @review.school.id %>
 
         <div class="review-and-question-button">
           <%= f.submit '変更する', class: "submit-button" %>

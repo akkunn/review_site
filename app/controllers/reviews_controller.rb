@@ -58,10 +58,12 @@ class ReviewsController < ApplicationController
           flash[:success] = "口コミを変更しました"
           redirect_to review_path(@review)
         else
+          @review.school = School.find(params[:hidden_school_id])
           flash.now[:failure] = "口コミを変更できませんでした"
           render "edit"
         end
       else
+        @review.school = School.find(params[:hidden_school_id])
         flash.now[:failure] = "口コミを変更できませんでした"
         render "edit"
       end
