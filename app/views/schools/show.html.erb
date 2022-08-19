@@ -44,10 +44,12 @@
       </div>
       <div class="school-evaluation-box">
         <ul>
-          <% unless @school.review_ave_score.nil? %>
-            <li id='school-show-header-star-<%= @school.id %>' class="stars"></li>
-            <li class="ave"><%= @school.review_ave_score %></li>
-          <% end %>
+          <div class="responsive-flex">
+            <% unless @school.review_ave_score.nil? %>
+              <li id='school-show-header-star-<%= @school.id %>' class="stars"></li>
+              <li class="ave"><%= @school.review_ave_score %></li>
+            <% end %>
+          </div>
           <% if @school.review_count.nil? %>
             <li>口コミ: 0件</li>
             <%= link_to "口コミを書く", new_review_path, class: "button blue" %>
