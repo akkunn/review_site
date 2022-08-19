@@ -10,6 +10,7 @@ import "channels"
 import "./search"
 import "./resize"
 import "./alert"
+import "./show_hidden_school_search_box"
 
 Rails.start()
 Turbolinks.start()
