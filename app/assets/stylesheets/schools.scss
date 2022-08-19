@@ -91,7 +91,7 @@
   padding: 3rem 0;
   .search-result-content, .school-index-content {
     max-width: 960px;
-    margin: 0 4rem 0 0;
+    margin: 0 2rem 0 0;
     .flex {
       justify-content: space-between;
       .sort {
@@ -123,6 +123,9 @@
             &:last-child {
               width: 80%;
               color: #1a3153;
+              p {
+                margin-bottom: 0;
+              }
             }
           }
           a {
@@ -138,12 +141,6 @@
             width: 100%;
             li {
               text-align: right;
-              // &:nth-child(2) {
-              //   font-size: 1.4rem;
-              //   font-weight: 700;
-              //   color: #d82752;
-              //   margin: 0.5rem 0;
-              // }
             }
             .ave {
               margin: 0.5rem 0;
@@ -543,7 +540,7 @@
   .school-index {
     .button {
       width: 8rem;
-      margin: 0 1rem 2rem auto;
+      margin: 0 1rem 1.5rem auto;
     }
   }
 
@@ -643,6 +640,7 @@
             }
           }
           .school-form-flex-item-left {
+            margin: 0 0 0 9%;
             text-align: left;
             display: block;
             padding: 1rem 1.5rem;
@@ -651,6 +649,7 @@
             }
           }
           .school-form-flex-item-right {
+            margin: 0 9% 0 0;
             display: block;
             text-align: left;
             padding: 1rem 1.5rem;
@@ -805,6 +804,7 @@
               .responsive-flex {
                 display: flex;
                 align-items: center;
+                margin: 1rem 0 0.5rem 0;
                 .ave {
                   font-size: 1.4rem;
                   margin: 0 0 0 1.5rem;
@@ -941,7 +941,7 @@
             }
             .school-form-flex-item-left {
               margin: 0 1rem;
-              padding: 1rem 1.5rem;
+              padding: 1rem 7%;
               input, select {
                 max-width: none;
               }
@@ -951,7 +951,7 @@
             }
             .school-form-flex-item-right {
               margin: 0 1rem;
-              padding: 1rem 1.5rem;
+              padding: 1rem 7%;
               select {
                 max-width: none;
               }

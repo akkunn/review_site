@@ -1,63 +1,64 @@
 <div class="background-blue">
   <div class="page-link">
     <ul class="flex">
-      <li><%= link_to 'HOME', root_path, class: "" %></li>
+      <li><%= link_to 'HOME', root_path %></li>
       <li>＞</li>
       <li><%= link_to '検索', "#", class: "link-underline" %></li>
     </ul>
   </div>
-
-  <div class="search-result flex">
-    <section class="search-result-search-box">
+  <%= render 'shared/flash_message' %>
+  <div class="school-search-box-apper-hidden weak-hidden button search-result-button">
+    <i class="fa fa-plus school-search-plus" aria-hidden="true"></i>
+    <i class="fa fa-minus weak-hidden school-search-minus" aria-hidden="true"></i>
+    絞り込み検索
+  </div>
+  <div class="search-result flex add-padding">
+    <section id="size959-hidden" class="search-result-search-box weak-visible">
       <div class="school-search-box">
         <h2>絞り込み検索</h2>
         <%= search_form_for @q, url: result_path do |f| %>
-          <ul>
-            <li><%= f.label :name_cont, "スクール名", class: "school-form-label" %></li>
-            <li><%= f.search_field :name_cont, placeholder: 'スクール名を入力', class: "school-form-select" %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :language_id_eq, "学習言語", class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :cost_id_eq, '費用', class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :period_id_eq, '学習期間', class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :sytle_eq, "学習形態", class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :prefecture_id_eq, '都道府県', class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :support_eq, '転職支援', class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %></li>
-          </ul>
-
-          <ul>
-            <li><%= f.label :guarantee_eq, '転職保証', class: "school-form-label" %></li>
-            <li class="school-form-select"><%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %></li>
-          </ul>
-
+          <div class="school-search-flex">
+            <div class="school-search-flex-item">
+              <ul class="school-search-flex-item-left">
+                <li><%= f.label :name_cont, "スクール名", class: "school-form-label" %></li>
+                <li><%= f.search_field :name_cont, placeholder: 'スクール名を入力', class: "school-form-select" %></li>
+              </ul>
+              <ul class="school-search-flex-item-left">
+                <li><%= f.label :language_id_eq, "学習言語", class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %></li>
+              </ul>
+              <ul class="school-search-flex-item-left">
+                <li><%= f.label :cost_id_eq, '費用', class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %></li>
+              </ul>
+              <ul class="school-search-flex-item-left">
+                <li><%= f.label :period_id_eq, '学習期間', class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %></li>
+              </ul>
+            </div>
+            <div class="school-search-flex-item">
+              <ul class="school-search-flex-item-right">
+                <li><%= f.label :sytle_eq, "学習形態", class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %></li>
+              </ul>
+              <ul class="school-search-flex-item-right">
+                <li><%= f.label :prefecture_id_eq, '都道府県', class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %></li>
+              </ul>
+              <ul class="school-search-flex-item-right">
+                <li><%= f.label :support_eq, '転職支援', class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %></li>
+              </ul>
+              <ul class="school-search-flex-item-right">
+                <li><%= f.label :guarantee_eq, '転職保証', class: "school-form-label" %></li>
+                <li class="school-form-select"><%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %></li>
+              </ul>
+            </div>
+          </div>
           <%= f.submit '検索', class: "submit-button" %>
         <% end %>
       </div>
     </section>
-
-
     <section class="search-result-content">
       <div class="flex">
         <div class="display-results"><%= @schools.count %>件中
@@ -85,34 +86,35 @@
           <%= sort_link(@q, :review_count, "口コミ数順") %>
         </div>
       </div>
-
       <div class="schools-box">
         <% @schools.each do |school| %>
           <ul class="flex one-school-box">
             <li class="school-image-box flex">
               <% if school.image.attached? %>
-                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school) %>
+                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school, school_show_params: "result") %>
               <% else %>
-                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school) %>
+                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school, school_show_params: "result") %>
               <% end %>
             </li>
-
             <div class="school-name-explanation-box">
-              <li><%= link_to school.name, school_path(school)  %></li>
+              <li><%= link_to school.name, school_path(school, school_show_params: "result"), class: "hover-underline"  %></li>
               <li><%= simple_format(school.explanation.truncate(40)) %></li>
             </div>
-
             <li class="school-evaluation-box flex">
               <ul>
-                <li id='search-result-star-<%= school.id %>' class="stars"></li>
-                <li><%= school.review_ave_score %></li>
+                <div class="responsive-flex">
+                  <% unless school.review_ave_score.nil? %>
+                    <li id='search-result-star-<%= school.id %>' class="stars"></li>
+                    <li class="ave"><%= school.review_ave_score %></li>
+                  <% end %>
+                </div>
                 <% if school.review_count.nil? %>
                   <li>
-                    <%= link_to "口コミ: 0件", new_review_path %>
+                    <%= link_to "口コミ: 0件", new_review_path, class: "hover-underline" %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school) %>
+                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "result"), class: "hover-underline" %>
                   </li>
                 <% end %>
               </ul>
@@ -121,7 +123,6 @@
           <script>
             window.addEventListener("turbolinks:load", function(){
               $('#search-result-star-<%= school.id %>').empty();
-
               $('#search-result-star-<%= school.id %>').raty({
                 size      : 36,
                 starOff   : '<%= asset_path('star-off.png') %>',
@@ -143,3 +144,17 @@
     </section>
   </div>
 </div>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $(function() {
+      $('.school-search-box-apper-hidden').on('click', function() {
+        $('.search-result-search-box').toggleClass('visible');
+        $('.search-result').toggleClass('height38');
+        $('.search-result').toggleClass('decrease-padding');
+        $('.search-result').toggleClass('add-padding');
+        $('.school-search-minus').toggleClass('visible');
+        $('.school-search-plus').toggleClass('weak-hidden');
+      });
+    });
+  });
+</script>
