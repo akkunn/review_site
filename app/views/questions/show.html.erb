@@ -90,7 +90,7 @@
           </div>
           <div class="question-show-hidden-point hidden-point-question-<%= @question.id %>"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
           <div class="question-show-hidden-menu fade-out hidden-menu-question-<%= @question.id %>">
-            <%= link_to "編集", edit_question_path(@question), class: "hover-underline" %>
+            <%= link_to "編集", edit_question_path(@question, question_edit_params: @params), class: "hover-underline" %>
             <%= link_to "削除", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "hover-underline delete-button" %>
           </div>
         <% end %>
