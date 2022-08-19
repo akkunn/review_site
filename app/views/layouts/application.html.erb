@@ -21,33 +21,54 @@
             <%= f.search_field :name_cont, placeholder: 'スクール名で検索' %>
           <% end %>
         </div>
-        <% if user_signed_in? && current_user.image.attached? %>
-          <div class="header-right">
-            <%= link_to "HOME", root_path %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            <%= link_to "登録", new_school_path %>
-            <%= link_to "スクール一覧", schools_path %>
-            <%= link_to "口コミ投稿", new_review_path %>
-            <%= link_to user_path(current_user) do %>
-              <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="header-right">
-            <%= link_to "スクール一覧", schools_path %>
-            <%= link_to "ログイン", new_user_session_path %>
-            <%= link_to "新規登録", new_user_registration_path %>
-            <% if user_signed_in? %>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              <%= link_to user_path(current_user) do %>
-                <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+        <% if user_signed_in? %>
+          <ul class="header-right">
+            <li><%= link_to "HOME", root_path %></li>
+            <li><%= link_to "検索", result_path %></li>
+            <li class="header-school">
+              <%= link_to "スクール" %>
+              <ul class="header-dropdown">
+                <li class="header-dropdown-list"><%= link_to "スクール一覧", schools_path %></li>
+                <li class="header-dropdown-list"><%= link_to "スクール追加", new_school_path %></li>
+              </ul>
+            </li>
+            <li><%= link_to "口コミ投稿", new_review_path %></li>
+            <li class="header-icon">
+              <% if current_user.image.attached? %>
+                <%= link_to do %>
+                  <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
+                <% end %>
+              <% else %>
+                <%= link_to do %>
+                  <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+                <% end %>
               <% end %>
-            <% else %>
+              <ul class="header-dropdown">
+                <li class="header-dropdown-list"><%= link_to "プロフィール", user_path(current_user) %></li>
+                <li class="header-dropdown-list"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+                <li class="header-dropdown-list"><%= link_to "アカウント　情報編集", edit_user_registration_path %></li>
+                <li class="header-dropdown-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="header-right">
+            <li><%= link_to "HOME", root_path %></li>
+            <li class="header-school">
+              <%= link_to "スクール" %>
+              <ul class="header-dropdown">
+                <li class="header-dropdown-list"><%= link_to "スクール検索", result_path %></li>
+                <li class="header-dropdown-list"><%= link_to "スクール一覧", schools_path %></li>
+              </ul>
+            </li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li class="header-icon header-icon-guest">
               <%= link_to new_user_session_path do %>
                 <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
               <% end %>
-            <% end %>
-          </div>
+            </li>
+          </ul>
         <% end %>
       </header>
 

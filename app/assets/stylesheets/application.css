@@ -199,21 +199,6 @@ header .user-icon {
   align-items: center;
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-}
-
-.header-right a {
-  color: #fff;
-  font-weight: 500;
-  margin-right: 3rem;
-}
-
-.header-right a:hover {
-  color: #66FF66;
-}
-
 header input {
   padding: 0.3rem;
   width: 9.6rem;
@@ -226,6 +211,103 @@ header input {
   margin: 0 2rem;
   padding-bottom: 1rem;
 }
+
+/* ヘッダー右 */
+/* ヘッダー右 全体 */
+.header-right {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-right a {
+  display: block;
+}
+
+.header-right li {
+  line-height: 5rem;
+  margin-right: 2.5vw;
+}
+
+.header-right a, .header-right li {
+  color: #fff;
+  font-weight: 500;
+  height: 100%;
+}
+
+.header-right a:hover {
+  color: #66FF66;
+  text-decoration: underline;
+  text-underline-offset: 1.85rem;
+  text-decoration-thickness: 3px;
+}
+
+.header-right .header-icon {
+  height: auto;
+  border-bottom: 3px solid #1c385e;
+  border-top: 3px solid #1c385e;
+  box-sizing: border-box;
+  padding: 0.75rem 0;
+}
+
+.header-right .header-icon:hover {
+  border-bottom: #66FF66 3px solid;
+}
+
+.header-right .header-icon-guest:hover {
+  border: none;
+}
+
+/* ドロップダウン 共通 */
+.header-right .header-dropdown {
+  position: absolute;
+  top: 5rem;
+  background-color: #1c385e;
+  transform: scaleY(0);
+  transform-origin: center top;
+  transition: all 0.3s;
+}
+
+.header-right .header-dropdown-list {
+  border-top: #dddd 1px solid;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  line-height: normal;
+}
+
+.header-right .header-dropdown-list a {
+  padding: 1rem;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.header-right .header-dropdown-list:hover a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #2f5a97;
+}
+
+/* ドロップダウン スクール */
+.header-right .header-school:hover .header-dropdown {
+  transform: scaleY(1);
+}
+
+/* ドロップダウン アイコン */
+.header-icon .header-dropdown {
+  right: 0;
+}
+
+.header-icon .header-dropdown-list {
+  margin-right: 0;
+  width: 8rem;
+  /* padding-right: 0.5rem; */
+}
+
+.header-right .header-icon:hover .header-dropdown {
+  transform: scaleY(1);
+}
+
 
 /* フッター */
 
