@@ -86,8 +86,6 @@ textarea {
 .link-underline {
   text-decoration: underline;
   color: #551A8B;
-  /* display: inline-block; */
-  /* padding-top: 0.5rem; */
 }
 
 .back-link {
@@ -171,9 +169,7 @@ textarea {
 
 }
 
-
 /* ヘッダー */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -181,7 +177,7 @@ header {
   background-color: #1c385e;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 header .user-icon-default {
@@ -194,6 +190,7 @@ header .user-icon {
   display: block;
 }
 
+/* ヘッダー左 */
 .header-left {
   display: flex;
   align-items: center;
@@ -201,19 +198,18 @@ header .user-icon {
 
 header input {
   padding: 0.3rem;
-  width: 9.6rem;
+  width: 11rem;
   height: 2rem;
 }
 
 .logo {
   width: 7rem;
   display: block;
-  margin: 0 2rem;
+  margin: 0 3rem;
   padding-bottom: 1rem;
 }
 
 /* ヘッダー右 */
-/* ヘッダー右 全体 */
 .header-right {
   margin: 0;
   display: flex;
@@ -226,7 +222,7 @@ header input {
 
 .header-right li {
   line-height: 5rem;
-  margin-right: 2.5vw;
+  margin-right: 3rem;
 }
 
 .header-right a, .header-right li {
@@ -256,6 +252,31 @@ header input {
 
 .header-right .header-icon-guest:hover {
   border: none;
+}
+
+/* pc画面では非表示 */
+.header-tab-sp {
+  display: none;
+}
+
+.header-hidden-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 4;
+  margin: 0;
+  transform: translateX(270px);
+  transition:  all .5s;
+  height: 100vh;
+}
+
+.header-hidden-menu-open {
+  transform: translateX(0);
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 /* ドロップダウン 共通 */
@@ -301,16 +322,13 @@ header input {
 .header-icon .header-dropdown-list {
   margin-right: 0;
   width: 8rem;
-  /* padding-right: 0.5rem; */
 }
 
 .header-right .header-icon:hover .header-dropdown {
   transform: scaleY(1);
 }
 
-
 /* フッター */
-
 footer {
   position: absolute;
   bottom: 0;
@@ -327,8 +345,150 @@ footer p {
   margin: 0;
 }
 
-
 /* レスポンシブデザイン */
+@media screen and (max-width: 960px) {
+  /* ヘッダー */
+  .header-pc {
+    display: none;
+  }
+
+  .header-tab-sp {
+    display: flex;
+    color: #fff;
+    margin-right: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .header-tab-sp i {
+    padding: 0.55rem 0.7rem;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .header-tab-sp i:hover {
+    background-color: rgba(252, 252, 252, 0.5);
+  }
+
+  .header-hidden-menu-background {
+    background-color: rgba(0, 12, 70, 0.5);
+    width: 100%;
+    max-width: 960px;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+  }
+
+  .header-hidden-menu a {
+    color: #1c385e;
+    width: 100%;
+  }
+
+  .header-hidden-menu .header-hidden-menu-close {
+    text-align: right;
+    padding-top: 0;
+    display: block;
+  }
+
+  .header-hidden-menu .fa-times {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color: #1c385e;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    transition: 0.5s;
+  }
+
+  .header-hidden-menu .fa-times:hover {
+    opacity: 0.7;
+    transition: 0.5s;
+  }
+
+  .header-hidden-menu .header-dropdown {
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: center top;
+    transition: all 0.3s;
+    width: 16rem;
+  }
+
+  .header-hidden-menu-list {
+    width: 16rem;
+    border-top: 1px solid #dddd;
+  }
+
+  .header-hidden-menu-list:last-child {
+    border-bottom: 1px solid #dddd;
+  }
+
+  .header-hidden-menu-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem 1rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .header-hidden-menu-list a:hover {
+    background-color: #1c385e;
+    color: #fff;
+  }
+
+  .header-hidden-menu .header-dropdown-list {
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #dddd;
+  }
+
+  .header-hidden-menu .header-school .header-dropdown-list a, .header-hidden-menu .header-user .header-dropdown-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 1rem 3rem;
+    box-sizing: border-box;
+  }
+
+  .header-hidden-menu .header-school .header-dropdown-list a:hover {
+    background-color: #1c385e;
+    color: #fff;
+  }
+
+  .header-hidden-menu .header-user .header-dropdown-list a:hover {
+    background-color: #1c385e;
+    color: #fff;
+  }
+
+  /* ドロップダウン */
+  /* スクール */
+  .header-hidden-menu .header-school:hover .header-dropdown {
+    transform: scaleY(1);
+  }
+
+  .header-hidden-menu .header-school:hover {
+    padding-bottom: 7rem;
+    transform-origin: center top;
+    transition: all 0.3s;
+  }
+
+  .header-hidden-menu .header-school {
+    transition: all 0.3s;
+  }
+
+  /* ユーザー */
+  .header-hidden-menu .header-user:hover .header-dropdown {
+    transform: scaleY(1);
+  }
+
+  .header-hidden-menu .header-user:hover {
+    padding-bottom: 10.7rem;
+    transform-origin: center top;
+    transition: all 0.3s;
+  }
+
+  .header-hidden-menu .header-user {
+    transition: all 0.3s;
+  }
+}
 
 @media screen and (max-width: 520px) {
   #error_explanation {
@@ -344,5 +504,13 @@ footer p {
   .alert-failure, .alert-alert {
     width: 80%;
     margin-left: 1rem;
+  }
+
+  header input {
+    display: none;
+  }
+
+  .logo {
+    margin: 0 0 0 2rem;
   }
 }
