@@ -269,6 +269,7 @@ header input {
   transform: translateX(270px);
   transition:  all .5s;
   height: 100vh;
+  width: 0;
 }
 
 .header-hidden-menu-open {
@@ -377,6 +378,10 @@ footer p {
     height: 100%;
     position: absolute;
     z-index: 3;
+  }
+
+  .header-hidden-menu {
+    width: auto;
   }
 
   .header-hidden-menu a {
