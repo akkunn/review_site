@@ -7,9 +7,10 @@ RSpec.describe "Users", type: :system do
 
   scenario "user sign up" do
     user = FactoryBot.build(:user, name: "example", email: "rails@rails.com")
-
     visit root_path
-    click_link "新規登録"
+    within '.header-pc' do
+      click_link "新規登録"
+    end
     fill_in "ユーザー名", with: user.name
     fill_in "メールアドレス", with: user.email
     fill_in "パスワード", with: user.password
@@ -26,10 +27,11 @@ RSpec.describe "Users", type: :system do
 
   scenario "user log out" do
     user = FactoryBot.create(:user)
-
     sign_in_as(user)
     visit root_path
-    click_link "ログアウト"
+    within '.header-pc' do
+      click_link "ログアウト"
+    end
     expect(page).to have_content "ログアウトしました。"
   end
 end
