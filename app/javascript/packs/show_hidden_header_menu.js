@@ -16,4 +16,13 @@ window.addEventListener("turbolinks:load", function(){
       $('body').removeClass('overflow-y-hidden');
     });
   });
+
+  $(function() {
+    $('.main-content').on('click', function() {
+      $('.header-hidden-menu-background').addClass('weak-hidden');
+      $('.header-hidden-menu-background').removeClass('weak-visible');
+      $('.header-hidden-menu').removeClass('header-hidden-menu-open');
+      $('body').removeClass('overflow-y-hidden');
+    });
+  });
 });
