@@ -20,7 +20,13 @@ RSpec.describe "Answers", type: :system do
   end
 
   scenario "user updates a answer", js: true do
-    sign_in_as user
+    visit root_path
+    find('#menu-button').click
+    click_link "ログイン"
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    click_button "ログイン"
+    expect(page).to have_content "ログインしました。"
     visit question_path(question)
     expect(page).to have_content("面接対策をしてくれます")
     click_link "編集する", href: edit_answer_path(answer)
