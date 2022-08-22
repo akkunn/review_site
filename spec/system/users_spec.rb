@@ -34,4 +34,13 @@ RSpec.describe "Users", type: :system do
     end
     expect(page).to have_content "ログアウトしました。"
   end
+
+  scenario "user guest log in" do
+    visit root_path
+    within '.header-pc' do
+      click_link "ログイン"
+    end
+    click_link "ゲストログイン"
+    expect(page).to have_content "ゲストユーザーとしてログインしました。"
+  end
 end
