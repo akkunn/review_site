@@ -19,7 +19,7 @@
           <div class="remember-me"><%= f.label :remember_me, 'ログインを記憶する' %></div>
         </div>
       <% end %>
-
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
       <div class="actions">
         <%= f.submit "ログイン" %>
       </div>

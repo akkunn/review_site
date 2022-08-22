@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     confirmations: 'users/confirmations'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
   root 'searches#home'
   get '/result', to: 'searches#result'
   get '/solved', to: 'questions#solved'

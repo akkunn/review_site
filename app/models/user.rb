@@ -17,4 +17,12 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_schools, allow_destroy: true
 
   validates :name, presence: true
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now
+      user.name = "ゲスト"
+    end
+  end
 end
