@@ -296,6 +296,18 @@
   margin-left: 0.5rem;
 }
 
+.guest-login {
+  border-top: #dddd 1px solid;
+  width: 60%;
+  margin: 0 auto;
+  .button {
+    background-color: #007bff;
+    width: 100%;
+    margin: 1rem auto 0.5rem auto;
+    border: none;
+  }
+}
+
 // アカウント情報編集
 
 .edit-acount-info, .edit-profile {
@@ -466,6 +478,11 @@
   }
 
   .actions {
+    width: 80%;
+  }
+
+  // ログイン
+  .guest-login {
     width: 80%;
   }
 
