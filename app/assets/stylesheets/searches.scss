@@ -202,6 +202,7 @@
 // result
 .search-result {
   .search-result-content {
+    width: 80%;
     .flex {
       .sort {
         a {
@@ -374,6 +375,7 @@
     position: relative;
     min-height: 38rem;
     .search-result-content {
+      width: 90%;
       .flex {
         .sort {
           font-size: 1rem;
