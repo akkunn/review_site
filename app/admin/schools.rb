@@ -1,5 +1,4 @@
 ActiveAdmin.register School do
-
   permit_params :name, :style, :support, :guarantee, :explanation,
                 :language_id, :prefecture_id, :cost_id, :period_id,
                 :review_ave_score, :review_count, :image, :site_address
@@ -60,14 +59,17 @@ ActiveAdmin.register School do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :style, :support, :guarantee, :explanation, :language_id, :prefecture_id, :cost_id, :period_id, :review_ave_score, :review_count, :site_address
+  # permit_params :name, :style, :support, :guarantee, :explanation,
+  #               :language_id, :prefecture_id, :cost_id, :period_id,
+  #               :review_ave_score, :review_count, :site_address
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :style, :support, :guarantee, :explanation, :language_id, :prefecture_id, :cost_id, :period_id, :review_ave_score, :review_count, :site_address]
+  # permitted = [:name, :style, :support, :guarantee, :explanation,
+  #              :language_id, :prefecture_id, :cost_id, :period_id,
+  #              :review_ave_score, :review_count, :site_address]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
 end
