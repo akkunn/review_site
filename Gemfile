@@ -18,6 +18,7 @@ gem 'mini_magick'
 gem 'aws-sdk-s3'
 gem 'font-awesome-rails'
 gem 'rails-i18n'
+gem 'activeadmin'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
