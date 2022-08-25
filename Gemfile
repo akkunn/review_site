@@ -20,6 +20,7 @@ gem 'font-awesome-rails'
 gem 'rails-i18n'
 gem 'activeadmin'
 gem 'faker'
+gem 'gon'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
