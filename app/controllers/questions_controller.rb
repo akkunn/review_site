@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
       @params = params[:question_show_params]
       @question = Question.find(params[:id])
       @answers = Answer.where(question_id: @question.id)
+      gon.answers = @answers
       @answer = Answer.new
     else
       flash[:failure] = "質問は削除されています"
