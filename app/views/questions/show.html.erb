@@ -95,12 +95,10 @@
           </div>
         <% end %>
       </ul>
-
       <% unless @answers.size == 0 %>
         <span class="rotateY180">&#8629;</span>
         <span class="span-answer">回答</span>
       <% end %>
-
       <% @answers.each do |answer|%>
         <ul class="question-box answer-box">
           <div class="flex">
@@ -116,9 +114,7 @@
             <li class="question-user-name"><%= answer.user.name %></li>
           </div>
           <div id='<%= answer.id %>'>
-
             <li class="question-show-text auto-adjust answer-text"><%= simple_format(answer.content) %></li>
-
             <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
             <% if user_signed_in? && (current_user == answer.user) %>
               <div class="question-show-buttons">
@@ -135,18 +131,7 @@
             <% end %>
           </div>
         </ul>
-        <script>
-          window.addEventListener("turbolinks:load", function(){
-            $(function() {
-              $('.hidden-point-<%= answer.id %>').on('click', function() {
-                $('.hidden-menu-<%= answer.id %>').toggleClass('fade-in');
-                $('.hidden-menu-<%= answer.id %>').toggleClass('fade-out');
-              });
-            });
-          });
-        </script>
       <% end %>
-
       <% if user_signed_in? %>
         <%= label :content, "回答欄", class: "label-answer" %>
         <div class="question-box answer-textarea-box">
@@ -178,13 +163,3 @@
     </div>
   </div>
 </div>
-<%# <script>
-  window.addEventListener("turbolinks:load", function(){
-    $(function() {
-      $('.show-button').on('click', function() {
-        $('.hidden-menu').toggleClass('fade-in');
-        $('.hidden-menu').toggleClass('fade-out');
-      });
-    });
-  });
-</script> %>
