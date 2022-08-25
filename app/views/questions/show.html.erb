@@ -1,4 +1,4 @@
-<div class="question-show background-blue">
+<div class="question-show background-blue" id="question--show">
   <div class="page-link">
     <% if @params == "school_index" %>
       <ul class="flex">
@@ -88,8 +88,8 @@
             <% end %>
             <%= link_to "削除する", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "question-show-delete-button button" %>
           </div>
-          <div class="question-show-hidden-point hidden-point-question-<%= @question.id %>"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
-          <div class="question-show-hidden-menu fade-out hidden-menu-question-<%= @question.id %>">
+          <div class="question-show-hidden-point show-button" v-on:click="show = !show"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+          <div class="question-show-hidden-menu hidden-menu" v-bind:class="{ 'fade-in': !show, 'fade-out': show }">
             <%= link_to "編集", edit_question_path(@question, question_edit_params: @params), class: "hover-underline" %>
             <%= link_to "削除", question_path(@question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "hover-underline delete-button" %>
           </div>
@@ -178,13 +178,13 @@
     </div>
   </div>
 </div>
-<script>
+<%# <script>
   window.addEventListener("turbolinks:load", function(){
     $(function() {
-      $('.hidden-point-question-<%= @question.id %>').on('click', function() {
-        $('.hidden-menu-question-<%= @question.id %>').toggleClass('fade-in');
-        $('.hidden-menu-question-<%= @question.id %>').toggleClass('fade-out');
+      $('.show-button').on('click', function() {
+        $('.hidden-menu').toggleClass('fade-in');
+        $('.hidden-menu').toggleClass('fade-out');
       });
     });
   });
-</script>
+</script> %>

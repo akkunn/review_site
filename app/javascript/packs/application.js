@@ -12,6 +12,7 @@ import "./resize"
 import "./alert"
 import "./show_hidden_school_search_box"
 import "./show_hidden_header_menu"
+import "./questions_show"
 
 Rails.start()
 Turbolinks.start()
