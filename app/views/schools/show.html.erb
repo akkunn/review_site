@@ -2,59 +2,7 @@
 <div class="school-show background-blue">
   <%= render partial: 'school_show_page_link', locals: { params: @params } %>
   <%= render 'shared/flash_message' %>
-  <section class="school-header">
-    <div class="school-header-content flex">
-      <div class="school-image-box">
-        <% if @school.image.attached? %>
-          <%= image_tag @school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>
-        <% else %>
-          <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
-        <% end %>
-      </div>
-      <div class="school-name-explanation-box">
-        <p class="school-header-name"><%= @school.name %></p>
-        <div class="school-header-explanation">
-          <%= simple_format(@school.explanation) %>
-        </div>
-      </div>
-      <div class="school-evaluation-box">
-        <ul>
-          <div class="responsive-flex">
-            <% unless @school.review_ave_score.nil? %>
-              <li id='school-show-header-star-<%= @school.id %>' class="stars"></li>
-              <li class="ave"><%= @school.review_ave_score %></li>
-            <% end %>
-          </div>
-          <% if @school.review_count.nil? %>
-            <li>口コミ: 0件</li>
-            <%= link_to "口コミを書く", new_review_path, class: "button blue" %>
-          <% else %>
-            <li><%= "口コミ: #{ @school.review_count }件" %></li>
-          <% end %>
-          <% unless @school.site_address.blank? %>
-            <li>
-              <%= link_to "公式サイトへ", "#{@school.site_address}", target: :_blank, rel: "noopener noreferrer", class: "button" %>
-            </li>
-          <% end %>
-        </ul>
-        <script>
-          window.addEventListener("turbolinks:load", function(){
-            $('#school-show-header-star-<%= @school.id %>').empty();
-
-            $('#school-show-header-star-<%= @school.id %>').raty({
-              size      : 36,
-              starOff   : '<%= asset_path('star-off.png') %>',
-              starOn    : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half      : true,
-              readOnly: true,
-              score: '<%= @school.review_ave_score %>'
-            });
-          });
-        </script>
-      </div>
-    </div>
-  </section>
+  <%= render partial: 'shared/school_header', locals: { school: @school } %>
   <section class="school-detail">
     <div class="review-and-question-link">
       <%= link_to "口コミ一覧", { anchor: "review" } %>
