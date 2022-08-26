@@ -1,0 +1,45 @@
+<section class="search-result-content">
+  <%= render partial: 'result_nav', locals: { schools: schools, q: q } %>
+  <div class="schools-box">
+    <% schools.each do |school| %>
+      <ul class="flex one-school-box">
+        <li class="school-image-box flex">
+          <% if school.image.attached? %>
+            <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school, school_show_params: "result") %>
+          <% else %>
+            <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school, school_show_params: "result") %>
+          <% end %>
+        </li>
+        <div class="school-name-explanation-box">
+          <li><%= link_to school.name, school_path(school, school_show_params: "result"), class: "hover-underline"  %></li>
+          <li><%= simple_format(school.explanation.truncate(40)) %></li>
+        </div>
+        <li class="school-evaluation-box flex">
+          <ul>
+            <div class="responsive-flex">
+              <% unless school.review_ave_score.nil? %>
+                <li id='search-result-star-<%= school.id %>' class="stars"></li>
+                <li class="ave"><%= school.review_ave_score %></li>
+              <% end %>
+            </div>
+            <% if school.review_count.nil? %>
+              <li>
+                <%= link_to "口コミ: 0件", new_review_path, class: "hover-underline" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "result"), class: "hover-underline" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+      <%= render partial: 'result_star', locals: { school: school } %>
+    <% end %>
+  </div>
+  <% unless (will_paginate schools).nil? %>
+    <div class="paginate">
+      <%= will_paginate schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    </div>
+  <% end %>
+</section>

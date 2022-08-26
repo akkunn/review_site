@@ -1,0 +1,26 @@
+<div class="flex">
+  <div class="display-results"><%= schools.count %>件中
+    <% if (params[:page].nil?) || (params[:page] == "1")  %>
+      <%= 1 %>
+    <% else %>
+      <%= (params[:page].to_i - 1) * 30 + 1 %>
+    <% end %>
+    -
+    <% if (params[:page].nil?) || (params[:page] == "1")  %>
+      <% if schools.count.to_i < 30 %>
+        <%= schools.count %>件表示
+      <% else %>
+        30件表示
+      <% end %>
+    <% elsif schools.count.to_i < (params[:page].to_i * 30) %>
+      <%= schools.count %>件表示
+    <% else %>
+      <%= (params[:page]).to_i * 30 %>件表示
+    <% end %>
+  </div>
+  <div class="sort">
+    <%= sort_link(q, :review_ave_score, "口コミ評価順") %>
+    |
+    <%= sort_link(q, :review_count, "口コミ数順") %>
+  </div>
+</div>

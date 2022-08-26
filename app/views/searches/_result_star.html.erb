@@ -1,0 +1,14 @@
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#search-result-star-<%= school.id %>').empty();
+    $('#search-result-star-<%= school.id %>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= school.review_ave_score %>'
+    });
+  });
+</script>
