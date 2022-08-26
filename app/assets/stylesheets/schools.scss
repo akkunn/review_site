@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // 全共通
-
 .school-icon-default {
   width: 10rem;
 }
@@ -86,7 +85,6 @@
 }
 
 // result スクール一覧 共通
-
 .search-result, .school-index {
   padding: 3rem 0;
   .search-result-content, .school-index-content {
@@ -153,7 +151,6 @@
 }
 
 // result スクール一覧 スクール詳細 共通
-
 .school-image-box {
   width: 32%;
   a {
@@ -167,7 +164,6 @@
     object-fit: cover;
   }
 }
-
 
 // スクール一覧
 .school-index {
@@ -195,7 +191,6 @@
 }
 
 // スクール詳細画面 (質問一覧のヘッダー)
-
 .school-show, .question-index {
   color: #1a3153;
   a {
@@ -444,9 +439,7 @@
   }
 }
 
-
 // スクール情報編集画面
-
 .school-edit {
   .school-search-box {
     form {
@@ -468,11 +461,8 @@
 }
 
 // レスポンシブ対応
-
 @media screen and (max-width: 960px) {
-
   // 全共通
-
   .page-link {
     .five-links {
       font-size: 0.9rem;
@@ -480,7 +470,6 @@
   }
 
   // スクール一覧 result 共通
-
   .search-result, .school-index {
     .search-result-content, .school-index-content {
       .button {
@@ -546,7 +535,6 @@
 
 
   // スクール詳細
-
   .school-show, .question-index {
     .school-header {
       .school-header-content {
@@ -618,7 +606,6 @@
   }
 
   // スクール新規登録 スクール情報編集 home 共通
-
   .school-new, .school-edit, .home {
     .school-search-box {
       width: 80%;
@@ -699,7 +686,6 @@
   }
 
   // スクール情報編集画面
-
   .school-edit {
     .school-search-box {
       form {
@@ -716,13 +702,8 @@
   }
 }
 
-
-
-
 @media screen and (max-width: 520px) {
-
   // 共通
-
   .page-link {
     padding-left: 1rem;
     font-size: 0.8rem;
@@ -739,7 +720,6 @@
   }
 
   // スクール一覧 result 共通
-
   .search-result, .school-index {
     .search-result-content, .school-index-content {
       .flex {
@@ -830,7 +810,6 @@
   }
 
   // スクール詳細
-
   .school-show, .question-index {
     .school-header {
       padding-bottom: 0.5rem;
@@ -926,9 +905,7 @@
     }
   }
 
-
   // スクール新規登録 スクール情報編集 home 共通
-
   .school-new, .school-edit, .home {
     .school-search-box {
       width: 80%;
@@ -1003,7 +980,6 @@
   }
 
   // スクール情報編集画面
-
   .school-edit {
     .school-search-box {
       form {
