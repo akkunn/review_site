@@ -16,13 +16,4 @@
     </div>
   </div>
 </div>
-
-<script>
-  window.addEventListener("turbolinks:load", function(){
-    $(document).ready(function(){
-      $("#select").change(function(){
-        $('#form1').submit();
-      });
-    });
-  });
-</script>
+<%= render 'school_index_select_change' %>
