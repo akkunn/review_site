@@ -1,0 +1,62 @@
+<header>
+  <div class="header-left">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.png', class: "logo" %>
+    <% end %>
+    <%= search_form_for @q, url: result_path do |f| %>
+      <%= f.search_field :name_cont, placeholder: 'スクール名で検索' %>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <ul class="header-right header-pc">
+      <li><%= link_to "HOME", root_path %></li>
+      <li><%= link_to "検索", result_path %></li>
+      <li class="header-school">
+        <%= link_to "スクール" %>
+        <ul class="header-dropdown">
+          <li class="header-dropdown-list"><%= link_to "スクール一覧", schools_path %></li>
+          <li class="header-dropdown-list"><%= link_to "スクール追加", new_school_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "口コミ投稿", new_review_path %></li>
+      <li class="header-icon">
+        <% if current_user.image.attached? %>
+          <%= link_to do %>
+            <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
+          <% end %>
+        <% else %>
+          <%= link_to do %>
+            <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+          <% end %>
+        <% end %>
+        <ul class="header-dropdown">
+          <li class="header-dropdown-list"><%= link_to "プロフィール", user_path(current_user) %></li>
+          <li class="header-dropdown-list"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+          <li class="header-dropdown-list"><%= link_to "アカウント　情報編集", edit_user_registration_path %></li>
+          <li class="header-dropdown-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+    </ul>
+  <% else %>
+    <ul class="header-right header-pc">
+      <li><%= link_to "HOME", root_path %></li>
+      <li class="header-school">
+        <%= link_to "スクール" %>
+        <ul class="header-dropdown">
+          <li class="header-dropdown-list"><%= link_to "スクール検索", result_path %></li>
+          <li class="header-dropdown-list"><%= link_to "スクール一覧", schools_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li class="header-icon header-icon-guest">
+        <%= link_to new_user_session_path do %>
+          <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+  <div class="header-right header-tab-sp">
+    <i id="menu-button" class="fa fa-bars header-hidden-menu-close-open-button" aria-hidden="true"></i>
+  </div>
+</header>

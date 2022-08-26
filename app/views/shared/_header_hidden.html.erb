@@ -1,0 +1,107 @@
+<div class="header-hidden-menu-background weak-hidden"></div>
+<% if user_signed_in? %>
+  <ul class="header-hidden-menu">
+    <li class="header-hidden-menu-close"><i class="fa fa-times header-hidden-menu-close-open-button" aria-hidden="true"></i></li>
+    <li class="header-hidden-menu-list">
+      <%= link_to root_path do %>
+        HOME<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li class="header-hidden-menu-list">
+      <%= link_to result_path do %>
+        検索<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li class="header-school">
+      <div class="header-dropdown-label header-hidden-menu-list">
+        <%= link_to do %>
+          スクール<i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <ul class="header-dropdown">
+        <li class="header-dropdown-list">
+          <%= link_to schools_path do %>
+            スクール一覧<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li class="header-dropdown-list">
+          <%= link_to new_school_path do %>
+            スクール追加<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="header-hidden-menu-list">
+      <%= link_to new_review_path do %>
+        口コミ投稿<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li class="header-user">
+      <div class="header-dropdown-label header-hidden-menu-list">
+        <%= link_to do %>
+          設定<i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <ul class="header-dropdown">
+        <li class="header-dropdown-list">
+          <%= link_to user_path(current_user) do %>
+            プロフィール<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li class="header-dropdown-list">
+          <%= link_to edit_user_path(current_user) do %>
+            プロフィール編集<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li class="header-dropdown-list">
+          <%= link_to edit_user_registration_path do %>
+            アカウント情報編集<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="header-hidden-menu-list">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        ログアウト<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+  </ul>
+<% else %>
+  <ul class="header-hidden-menu">
+    <li class="header-hidden-menu-close"><i class="fa fa-times header-hidden-menu-close-open-button" aria-hidden="true"></i></li>
+    <li class="header-hidden-menu-list">
+      <%= link_to root_path do %>
+        HOME<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li class="header-school">
+      <div class="header-dropdown-label header-hidden-menu-list">
+        <%= link_to do %>
+          スクール<i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <ul class="header-dropdown">
+        <li class="header-dropdown-list">
+          <%= link_to result_path do %>
+            スクール検索<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li class="header-dropdown-list">
+          <%= link_to schools_path do %>
+            スクール一覧<i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="header-hidden-menu-list">
+      <%= link_to new_user_session_path do %>
+        ログイン<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li class="header-hidden-menu-list">
+      <%= link_to new_user_registration_path do %>
+        新規登録<i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
