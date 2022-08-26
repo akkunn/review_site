@@ -41,25 +41,5 @@ RSpec.describe "Searches", type: :request do
       expect(@schools).to include(school)
       expect(@schools).to include(other_school)
     end
-
-    # context 'correct parameter' do
-    #   it "exists correct school" do
-    #     @params = {}
-    #     @params[:q] = { name_cont: school.name }
-    #     @q = School.ransack(@params)
-    #     @schools = @q.result
-    #     expect(@schools).to include(school)
-    #   end
-    # end
-
-    # context 'uncorrect parameter' do
-    #   it "doesn't exist correct school" do
-    #     @params = {}
-    #     @params[:q] = { name_cont: other_school.name }
-    #     @q = School.ransack(@params)
-    #     @schools = @q.result
-    #     expect(@schools.reload).not_to include(school)
-    #   end
-    # end
   end
 end
