@@ -6,61 +6,7 @@
     <%= link_to "スクール追加", new_school_path(school_new_params: "school_index"), class: "button" %>
     <div class="school-index-content">
       <%= render partial: 'school_index_nav', locals: { schools: @schools } %>
-      <div class="schools-box">
-        <% @schools.each do |school| %>
-          <ul class="flex one-school-box">
-            <li class="school-image-box flex">
-              <% if school.image.attached? %>
-                <%= link_to (image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン"), school_path(school, school_show_params: "school_index") %>
-              <% else %>
-                <%= link_to (image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン"), school_path(school, school_show_params: "school_index") %>
-              <% end %>
-            </li>
-
-            <div class="school-name-explanation-box">
-              <li>
-                <%= link_to school.name, school_path(school, school_show_params: "school_index"), class: "hover-underline"  %>
-              </li>
-              <li><%= simple_format(school.explanation.truncate(40)) %></li>
-            </div>
-
-            <li class="school-evaluation-box flex">
-              <ul>
-                <div class="responsive-flex">
-                  <% unless school.review_ave_score.nil? %>
-                    <li id='school-index-star-<%= school.id %>' class="stars"></li>
-                    <li class="ave"><%= school.review_ave_score %></li>
-                  <% end %>
-                </div>
-                <% if school.review_count.nil? %>
-                  <li>
-                    <%= link_to "口コミ: 0件", new_review_path, class: "hover-underline" %>
-                  </li>
-                <% else %>
-                  <li>
-                    <%= link_to "口コミ: #{ school.review_count }件", school_path(school, school_show_params: "school_index"), class: "hover-underline" %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-          <script>
-            window.addEventListener("turbolinks:load", function(){
-              $('#school-index-star-<%= school.id %>').empty();
-
-              $('#school-index-star-<%= school.id %>').raty({
-                size      : 36,
-                starOff   : '<%= asset_path('star-off.png') %>',
-                starOn    : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half      : true,
-                readOnly: true,
-                score: '<%= school.review_ave_score %>'
-              });
-            });
-          </script>
-        <% end %>
-      </div>
+      <%= render partial: 'school_index_schools_box', locals: { schools: @schools } %>
       <% unless (will_paginate @schools).nil? %>
         <div class="paginate">
           <%= will_paginate @schools, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
@@ -69,11 +15,6 @@
       <%= link_to "プログラミングスクールを追加する", new_school_path(school_new_params: "school_index"), class: "button" %>
     </div>
   </div>
-  <span id="top-btn">
-    <a href="#">
-      <%= image_tag asset_path('top_btn.png'), class: 'top-btn' %>
-    </a>
-  </span>
 </div>
 
 <script>
