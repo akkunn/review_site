@@ -1,17 +1,5 @@
 <div class="school-new">
-  <div class="page-link">
-    <% if @params == "school_index" %>
-      <ul class="flex">
-        <li><%= link_to 'スクール一覧', schools_path %></li>
-        <li>＞</li>
-        <li><%= link_to 'スクール追加', "#", class: "link-underline" %></li>
-      </ul>
-    <% else %>
-      <ul>
-        <li><%= link_to 'スクール追加', "#", class: "link-underline" %></li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render partial: 'school_new_page_link', locals: { params: @params } %>
   <%= render 'shared/flash_message' %>
   <div class="school-search-box">
     <h2>プログラミングスクールの追加</h2>
