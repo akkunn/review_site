@@ -3,30 +3,6 @@
   <%= render 'home_top' %>
   <section id="search" class="background-blue">
     <%= render partial: 'home_school_search_box', locals: { q: @q, school_style: @school_style, school_support: @school_support, school_guarantee: @school_guarantee } %>
-    <div class="circle-group flex">
-      <div class="circle">
-        <div class="circle-box">
-          <p><i class="fa fa-university" aria-hidden="true"></i></p>
-          <p>スクール数</p>
-          <p><%= @schools.count %></p>
-        </div>
-      </div>
-
-      <div class="circle">
-        <div class="circle-box">
-          <p><i class="fa fa-comment-o" aria-hidden="true"></i></p>
-          <p>口コミ数</p>
-          <p><%= @reviews.count %></p>
-        </div>
-      </div>
-
-      <div class="circle">
-        <div class="circle-box">
-          <p><i class="fa fa-question" aria-hidden="true"></i></p>
-          <p>質問数</p>
-          <p><%= @questions.count %></p>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'home_circle_group', locals: { schools: @schools, reviews: @reviews, questions: @questions } %>
   </section>
 </div>
