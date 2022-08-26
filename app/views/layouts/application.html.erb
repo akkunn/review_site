@@ -15,11 +15,7 @@
       <%= render 'shared/header', q: @q %>
       <div class="main-content">
         <%= yield %>
-        <span id="top-btn">
-          <a href="#">
-            <%= image_tag asset_path('top_btn.png'), class: 'top-btn' %>
-          </a>
-        </span>
+        <%= render 'shared/top_btn' %>
       </div>
       <%= render 'shared/footer' %>
     </div>
