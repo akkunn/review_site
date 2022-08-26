@@ -7,52 +7,7 @@
     絞り込み検索
   </div>
   <div class="search-result flex add-padding">
-    <section id="size959-hidden" class="search-result-search-box weak-visible">
-      <div class="school-search-box">
-        <h2>絞り込み検索</h2>
-        <%= search_form_for @q, url: result_path do |f| %>
-          <div class="school-search-flex">
-            <div class="school-search-flex-item">
-              <ul class="school-search-flex-item-left">
-                <li><%= f.label :name_cont, "スクール名", class: "school-form-label" %></li>
-                <li><%= f.search_field :name_cont, placeholder: 'スクール名を入力', class: "school-form-select" %></li>
-              </ul>
-              <ul class="school-search-flex-item-left">
-                <li><%= f.label :language_id_eq, "学習言語", class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %></li>
-              </ul>
-              <ul class="school-search-flex-item-left">
-                <li><%= f.label :cost_id_eq, '費用', class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :cost_id_eq, Cost.all, :id, :range, include_blank: '指定なし' %></li>
-              </ul>
-              <ul class="school-search-flex-item-left">
-                <li><%= f.label :period_id_eq, '学習期間', class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :period_id_eq, Period.all, :id, :range, include_blank: '指定なし' %></li>
-              </ul>
-            </div>
-            <div class="school-search-flex-item">
-              <ul class="school-search-flex-item-right">
-                <li><%= f.label :sytle_eq, "学習形態", class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :style_eq, @school_style, :style, :style, include_blank: '指定なし' %></li>
-              </ul>
-              <ul class="school-search-flex-item-right">
-                <li><%= f.label :prefecture_id_eq, '都道府県', class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし' %></li>
-              </ul>
-              <ul class="school-search-flex-item-right">
-                <li><%= f.label :support_eq, '転職支援', class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :support_eq, @school_support, :support, :support, include_blank: '指定なし' %></li>
-              </ul>
-              <ul class="school-search-flex-item-right">
-                <li><%= f.label :guarantee_eq, '転職保証', class: "school-form-label" %></li>
-                <li class="school-form-select"><%= f.collection_select :guarantee_eq, @school_guarantee, :guarantee, :guarantee, include_blank: '指定なし' %></li>
-              </ul>
-            </div>
-          </div>
-          <%= f.submit '検索', class: "submit-button" %>
-        <% end %>
-      </div>
-    </section>
+    <%= render partial: 'result_school_search_box', locals: { q: @q, school_style: @school_style, school_support: @school_support, school_guarantee: @school_guarantee } %>
     <section class="search-result-content">
       <div class="flex">
         <div class="display-results"><%= @schools.count %>件中
