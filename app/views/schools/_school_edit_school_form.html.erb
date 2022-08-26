@@ -1,0 +1,64 @@
+<%= form_with model: school, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="image-box">
+    <% if school.image.attached? %>
+      <%= image_tag school.image.variant(resize: '300x200!'), class: "school-icon", alt: "スクールアイコン" %>
+    <% else %>
+      <%= image_tag src='default-school.jpg', class: "school-icon-default", alt: "スクールアイコン" %>
+    <% end %>
+  </div>
+  <div class="flex">
+    <div class="school-form-flex-item">
+      <ul class="school-form-flex-item-left span-badge">
+        <li><%= f.label :name, "スクール名", class: "school-form-label" %><span class="badge">必須</span></li>
+        <li><%= f.text_field :name, placeholder: "スクール名を入力", class: "school-name-input" %></li>
+      </ul>
+      <ul class="school-form-flex-item-left">
+        <li><%= f.label :language_id, "学習言語", class: "school-form-label" %></li>
+        <li><%= f.collection_select(:language_id, Language.all, :id, :name, {}) %></li>
+      </ul>
+      <ul class="school-form-flex-item-left">
+        <li><%= f.label :cost_id, "費用", class: "school-form-label"  %></li>
+        <li><%= f.collection_select(:cost_id, Cost.all, :id, :range, {}) %></li>
+      </ul>
+      <ul class="school-form-flex-item-left">
+        <li><%= f.label :period_id, "学習期間", class: "school-form-label" %></li>
+        <li><%= f.collection_select(:period_id, Period.all, :id, :range, {}) %></li>
+      </ul>
+    </div>
+    <div class="school-form-flex-item">
+      <ul class="school-form-flex-item-right">
+        <li><%= f.label :sytle, "学習形態", class: "school-form-label" %></li>
+        <li><%= f.select :style, ['通学', 'オンライン', '通学とオンライン'], { include_blank: '---'} %></li>
+      </ul>
+      <ul class="school-form-flex-item-right">
+        <li><%= f.label :prefecture_id, "都道府県", class: "school-form-label" %></li>
+        <li><%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}) %>
+      </ul>
+      <ul class="school-form-flex-item-right">
+        <li><%= f.label :support, "転職支援", class: "school-form-label" %></li>
+        <li><%= f.select :support, ['あり', 'なし'], { include_blank: '---'} %></li>
+      </ul>
+      <ul class="school-form-flex-item-right">
+        <li><%= f.label :guarantee, "転職保証", class: "school-form-label" %></li>
+        <li><%= f.select :guarantee, ['あり', 'なし'], { include_blank: '---'} %>
+      </ul>
+    </div>
+  </div>
+  <ul class="school-form-image flex">
+    <li><%= f.label :image, "スクール画像", class: "school-form-label" %></li>
+    <li><%= f.file_field :image %></li>
+  </ul>
+  <ul class="school-form-url flex">
+    <li><%= f.label :site_address, "公式サイトのURL", class: "school-form-label" %></li>
+    <li><%= f.text_area :site_address, class: "resize2" %></li>
+  </ul>
+  <ul class="school-form-explanation">
+    <li>
+      <%= f.label :explanation, "特徴", class: "school-form-label" %>
+      <span class="badge">必須</span>
+    </li>
+    <li><%= f.text_area :explanation, placeholder: "特徴を入力してください", class: "resize10" %>
+  </ul>
+  <%= f.submit '変更する', class: "submit-button" %>
+<% end %>
