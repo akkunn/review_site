@@ -1,0 +1,10 @@
+<section class="school-detail">
+  <div class="review-and-question-link">
+    <%= link_to "口コミ一覧", { anchor: "review" } %>
+    <%= link_to "質問一覧", questions_path(school_id: school.id, question_index_params: params) %>
+  </div>
+  <h2><%= school.name %>の情報</h2>
+  <%= render partial: 'school_show_school_box', locals: { school: school } %>
+  <%= link_to "#{school.name}の情報を変更する", edit_school_path(school, school_edit_params: params), class: "school-show-edit-link" %>
+  <%= render partial: 'school_show_review', locals: { school: school, reviews: reviews, params: params } %>
+</section>

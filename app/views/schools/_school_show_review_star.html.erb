@@ -1,0 +1,14 @@
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#school-show-review-star-<%= review.id %>').empty();
+    $('#school-show-review-star-<%= review.id %>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= ave_star(review) %>'
+    });
+  });
+</script>

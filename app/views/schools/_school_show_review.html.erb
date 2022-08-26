@@ -1,0 +1,27 @@
+<div class="school-show-review">
+  <h2 id ="review"><%= school.name %>の口コミ</h2>
+  <div class="flex">
+    <% reviews.each do |review| %>
+      <div class="school-show-review-box schools-box">
+        <%= link_to review_path(review, review_show_params: params) do %>
+          <div class="school-show-review-name hover-underline">
+            <i class="fa fa-comments-o" aria-hidden="true"></i>
+            <%= review.name %>
+          </div>
+          <% unless review.average_star.nil? %>
+            <ul>
+              <li id='school-show-review-star-<%= review.id %>'></li>
+              <li class="school-show-review-ave ave"><%= review.average_star %></li>
+            </ul>
+          <% end %>
+          <div class="school-show-review-thought">
+            <%= simple_format(review.thought.truncate(40)) %>
+          </div>
+          <%= render partial: 'school_show_review_star', locals: { review: review } %>
+        <% end %>
+        <p class="school-show-review-time"><%= review.updated_at.to_s(:datetime_jp) %></p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "口コミを投稿する", new_review_path(review_new_params: params || "only_school_show", school_id: school.id), class: "button" %>
+</div>

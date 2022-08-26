@@ -1,0 +1,55 @@
+<div class="school-show-school-box schools-box">
+  <table>
+    <tbody>
+      <tr>
+        <th><i class="fa fa-pencil" aria-hidden="true"></i>学習言語</th>
+        <td><%= school.language.name %></td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-money" aria-hidden="true"></i>費用</th>
+        <td><%= school.cost.range %></td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-calendar" aria-hidden="true"></i>学習期間</th>
+        <td><%= school.period.range %></td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-television" aria-hidden="true"></i>学習形態</th>
+        <td>
+          <% if school.style.blank? %>
+            ---
+          <% else %>
+            <%= school.style %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-map-marker" aria-hidden="true"></i>都道府県</th>
+        <td><%= school.prefecture.name %></td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-user-o" aria-hidden="true"></i>転職支援</th>
+        <td>
+          <% if school.support.blank? %>
+            ---
+          <% else %>
+            <%= school.support %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><i class="fa fa-handshake-o" aria-hidden="true"></i>転職保証</th>
+        <td>
+          <% if school.guarantee.blank? %>
+            ---
+          <% else %>
+            <%= school.guarantee %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <% unless school.site_address.blank? %>
+    <%= link_to "公式サイトへ", "#{school.site_address}", target: :_blank, rel: "noopener noreferrer", class: "button" %>
+  <% end %>
+</div>
