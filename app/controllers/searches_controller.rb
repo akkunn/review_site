@@ -1,6 +1,4 @@
 class SearchesController < ApplicationController
-  # before_action :search_school, only: [:home, :result]
-
   def home
     @schools = School.all
     @reviews = Review.all
@@ -11,7 +9,6 @@ class SearchesController < ApplicationController
   end
 
   def result
-    # binding.pry
     @schools = @q.result.paginate(page: params[:page])
     set_style_column
     set_support_column
@@ -19,10 +16,6 @@ class SearchesController < ApplicationController
   end
 
   private
-
-  # def search_school
-  #   @q = School.ransack(params[:q])
-  # end
 
   # 重複なくカラムのデータを取り出す
   def set_style_column
