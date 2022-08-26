@@ -1,11 +1,5 @@
 <div class="background-blue">
-  <div class="page-link">
-    <ul class="flex">
-      <li><%= link_to 'HOME', root_path %></li>
-      <li>＞</li>
-      <li><%= link_to '検索', "#", class: "link-underline" %></li>
-    </ul>
-  </div>
+  <%= render 'result_page_link' %>
   <%= render 'shared/flash_message' %>
   <div class="school-search-box-apper-hidden weak-hidden button search-result-button">
     <i class="fa fa-plus school-search-plus" aria-hidden="true"></i>
