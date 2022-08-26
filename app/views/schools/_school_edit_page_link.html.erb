@@ -1,0 +1,27 @@
+<div class="page-link">
+  <% if params == "school_index" %>
+    <ul class="flex">
+      <li><%= link_to 'スクール一覧', schools_path %></li>
+      <li>＞</li>
+      <li><%= link_to '口コミ一覧', school_path(school) %></li>
+      <li>＞</li>
+      <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+    </ul>
+  <% elsif params == "result" %>
+    <ul class="flex">
+      <li><%= link_to 'HOME', root_path %></li>
+      <li>＞</li>
+      <li><%= link_to '検索', result_path %></li>
+      <li>＞</li>
+      <li><%= link_to '口コミ一覧', school_path(school) %></li>
+      <li>＞</li>
+      <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+    </ul>
+  <% else %>
+    <ul class="flex">
+      <li><%= link_to '口コミ一覧', school_path(school) %></li>
+      <li>＞</li>
+      <li><%= link_to 'スクール情報変更', "#", class: "link-underline" %></li>
+    </ul>
+  <% end %>
+</div>
