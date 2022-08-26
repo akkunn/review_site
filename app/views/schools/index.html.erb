@@ -1,9 +1,6 @@
+<%= provide(:title, "プログラミングスクール一覧")%>
 <div class="background-blue">
-  <div class="page-link">
-    <ul>
-      <li><%= link_to 'スクール一覧', "#", class: "link-underline" %></li>
-    </ul>
-  </div>
+  <%= render 'school_index_page_link' %>
   <%= render 'shared/flash_message' %>
   <div class="school-index">
     <%= link_to "スクール追加", new_school_path(school_new_params: "school_index"), class: "button" %>
