@@ -1,0 +1,13 @@
+<% if current_user == question.user %>
+  <% if question.solution == 0 || question.solution == 1 %>
+    <div class="question-box solution-box">
+      <p>質問が解決したらボタンを押してください</p>
+      <%= link_to "解決した", solved_path(question_id: question.id), class: "button" %>
+    </div>
+  <% else %>
+    <div class="question-box solution-box">
+      <p>追加の質問がある場合にはボタンを押してください</p>
+      <%= link_to "解決済み", solved_path(question_id: question.id), class: "button unsolution" %>
+    </div>
+  <% end %>
+<% end %>

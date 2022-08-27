@@ -27,20 +27,7 @@
       <% if user_signed_in? %>
         <%= label :content, "回答欄", class: "label-answer" %>
         <%= render partial: 'question_show_answer_textarea_box', locals: { answer: @answer, question: @question } %>
-
-        <% if current_user == @question.user %>
-          <% if @question.solution == 0 || @question.solution == 1 %>
-            <div class="question-box solution-box">
-              <p>質問が解決したらボタンを押してください</p>
-              <%= link_to "解決した", solved_path(question_id: @question.id), class: "button" %>
-            </div>
-          <% else %>
-            <div class="question-box solution-box">
-              <p>追加の質問がある場合にはボタンを押してください</p>
-              <%= link_to "解決済み", solved_path(question_id: @question.id), class: "button unsolution" %>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render partial: 'question_show_solution_box', locals: { question: @question } %>
       <% end %>
       <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
     </div>
