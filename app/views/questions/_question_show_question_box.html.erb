@@ -1,0 +1,30 @@
+<ul class="question-box">
+  <div class="flex">
+    <li>
+      <%= link_to user_path(question.user) do %>
+        <% if question.user.image.attached? %>
+          <%= image_tag question.user.image.variant(resize: '35x35!'), class: "user-icon", alt: "ユーザーアイコン" %>
+        <% else %>
+          <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+        <% end %>
+      <% end %>
+    </li>
+    <li class="question-user-name"><%= link_to question.user.name, user_path(question.user) %></li>
+  </div>
+  <li class="question-name"><%= question.name %></li>
+  <li class="question-show-text auto-adjust"><%= simple_format(question.content) %></li>
+  <li class="question-time"><%= question.updated_at.to_s(:datetime_jp) %></li>
+  <% if user_signed_in? && (current_user == question.user) %>
+    <div class="question-show-buttons">
+      <%= link_to edit_question_path(question, question_edit_params: params), class: "question-show-edit-button button" do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i><span>編集する</span>
+      <% end %>
+      <%= link_to "削除する", question_path(question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "question-show-delete-button button" %>
+    </div>
+    <div class="question-show-hidden-point show-button" v-on:click="show = !show"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+    <div class="question-show-hidden-menu hidden-menu" v-bind:class="{ 'fade-in': !show, 'fade-out': show }">
+      <%= link_to "編集", edit_question_path(question, question_edit_params: params), class: "hover-underline" %>
+      <%= link_to "削除", question_path(question), method: :delete, data: {confirm: "質問を削除しますか？"}, class: "hover-underline delete-button" %>
+    </div>
+  <% end %>
+</ul>
