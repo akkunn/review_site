@@ -5,19 +5,7 @@
   <div class="question-show-field">
     <div class="question-content">
       <h2><%= @question.school.name %>の質問と回答</h2>
-      <% if @question.solution == 0 %>
-        <div class="solution solution-red">
-          未回答
-        </div>
-      <% elsif @question.solution == 1 %>
-        <div class="solution solution-orange">
-          未解決
-        </div>
-      <% else %>
-        <div class="solution solution-green">
-          解決済み
-        </div>
-      <% end %>
+      <%= render partial: 'question_show_solution_mark', locals: { question: @question } %>
       <%= render partial: 'question_show_question_box', locals: { question: @question, params: @params } %>
       <% unless @answers.size == 0 %>
         <span class="rotateY180">&#8629;</span>

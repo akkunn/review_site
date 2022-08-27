@@ -1,0 +1,13 @@
+<% if question.solution == 0 %>
+  <div class="solution solution-red">
+    未回答
+  </div>
+<% elsif question.solution == 1 %>
+  <div class="solution solution-orange">
+    未解決
+  </div>
+<% else %>
+  <div class="solution solution-green">
+    解決済み
+  </div>
+<% end %>
