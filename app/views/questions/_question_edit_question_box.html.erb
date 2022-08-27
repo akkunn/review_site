@@ -1,0 +1,42 @@
+<div class="review-and-question-box">
+  <div class="review-and-question-box-content">
+    <h2>質問編集</h2>
+    <%= form_with model: question, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="review-and-question-content-border">
+        <ul class="flex question-form-user">
+          <% if current_user.image.attached? %>
+            <li><%= image_tag current_user.image.variant(resize: '40x40!'), class: "user-icon", alt: "ユーザーアイコン" %></li>
+          <% else %>
+            <li><%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %></li>
+          <% end %>
+          <li class="question-form-user-name"><%= question.user.name %></li>
+        </ul>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      </div>
+      <div class="review-and-question-content-border">
+        <ul class="flex question-form-school">
+          <li class="review-and-question-label"><%= f.label :school_id, "スクール名" %><span class="badge">必須</span></li>
+          <li><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
+        </ul>
+      </div>
+      <div class="review-and-question-content-border">
+        <ul>
+          <li class="review-and-question-label"><%= f.label :name, "質問タイトル" %><span class="badge">必須</span></li>
+          <li><%= f.text_field :name, placeholder: "質問のタイトルを入力してください" %></li>
+        </ul>
+      </div>
+      <div class="question-form-content">
+        <ul>
+          <li class="review-and-question-label"><%= f.label :content, "質問内容" %><span class="badge">必須</span></li>
+          <li><%= f.text_area :content, placeholder: "質問を入力してください", class: "resize10" %></li>
+        </ul>
+      </div>
+      <%= hidden_field_tag :hidden_school_id, question.school.id %>
+      <div class="review-and-question-button">
+        <%= f.submit '変更する', class: "submit-button" %>
+        <%= link_to "戻る", question_path(question), class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
