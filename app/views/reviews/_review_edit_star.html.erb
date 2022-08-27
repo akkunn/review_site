@@ -1,0 +1,116 @@
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#curriculum_star').empty();
+    $('#curriculum_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[curriculum_star]',
+      half: true
+    });
+  });
+</script>
+<script>
+  if (<%= review.curriculum_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#curriculum_star').empty();
+      $('#curriculum_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: '<%= review.curriculum_star %>',
+        scoreName: 'review[curriculum_star]'
+      })
+    })
+  }
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#support_star').empty();
+    $('#support_star').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[support_star]',
+      half      : true
+    });
+  });
+</script>
+<script>
+  if (<%= review.support_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#support_star').empty();
+      $('#support_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: '<%= review.support_star %>',
+        scoreName: 'review[support_star]'
+      });
+    });
+  }
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#teacher_star').empty();
+    $('#teacher_star').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[teacher_star]',
+      half      : true
+    });
+  });
+</script>
+<script>
+  if (<%= review.teacher_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#teacher_star').empty();
+      $('#teacher_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: '<%= review.teacher_star %>',
+        scoreName: 'review[teacher_star]'
+      });
+    });
+  }
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#compatibility_star').empty();
+    $('#compatibility_star').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[compatibility_star]',
+      half      : true
+    });
+  });
+</script>
+<script>
+  if (<%= review.compatibility_star %> != null) {
+    window.addEventListener("turbolinks:load", function(){
+      $('#compatibility_star').empty();
+      $('#compatibility_star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        score: '<%= review.compatibility_star %>',
+        scoreName: 'review[compatibility_star]'
+      });
+    });
+  }
+</script>
