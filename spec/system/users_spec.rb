@@ -16,7 +16,6 @@ RSpec.describe "Users", type: :system do
     fill_in "パスワード", with: user.password
     fill_in "パスワード確認", with: user.password
     click_button "新規登録する"
-
     expect(page).to have_content "本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。"
   end
 
