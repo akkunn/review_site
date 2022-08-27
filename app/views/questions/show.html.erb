@@ -1,53 +1,7 @@
+<%= provide(:title, "#{@question.school.name}の質問と回答") %>
 <div class="question-show background-blue" id="question--show">
-  <div class="page-link">
-    <% if @params == "school_index" %>
-      <ul class="flex">
-        <li><%= link_to 'スクール一覧', schools_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
-      </ul>
-    <% elsif @params ==  "review_create" %>
-      <ul class="flex">
-        <li><%= link_to '口コミ投稿', new_review_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
-      </ul>
-    <% elsif @params == "result" %>
-      <ul class="flex">
-        <li><%= link_to '検索', result_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
-      </ul>
-    <% elsif @params == "question_create" %>
-      <ul class="flex">
-        <li><%= link_to '質問投稿', new_question_path %></li>
-        <li>＞</li>
-        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
-      </ul>
-    <% else %>
-      <ul class="flex">
-        <li><%= link_to '口コミ一覧', school_path(@question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問一覧', questions_path(school_id: @question.school_id) %></li>
-        <li>＞</li>
-        <li><%= link_to '質問詳細', "#", class: "link-underline" %></li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render partial: 'question_show_page_link', locals: { params: @params, question: @question } %>
+
   <%= render 'shared/flash_message' %>
   <div class="question-show-field">
     <div class="question-content">
