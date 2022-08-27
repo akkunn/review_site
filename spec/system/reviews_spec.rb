@@ -39,7 +39,6 @@ RSpec.describe "Reviews", type: :system do
     click_link review.name
     click_link "編集する"
     expect(review.name).to eq("転職したいならおすすめです")
-
     select other_school.name, from: "review_school_id"
     fill_in "review_name", with: "エンジニアを目指しましょう"
     find('#edit-curriculum-star', visible: false).set(3)
@@ -52,7 +51,6 @@ RSpec.describe "Reviews", type: :system do
     fill_in "review_compatibility", with: "厳しい"
     fill_in "review_thought", with: "やり切りましょう"
     click_button "変更する"
-
     expect(review.reload.name).to eq("エンジニアを目指しましょう")
     expect(page).to have_content("エンジニアを目指しましょう")
     expect(page).to have_content("自走力が身につきます")
