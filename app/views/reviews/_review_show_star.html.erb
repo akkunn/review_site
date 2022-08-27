@@ -1,0 +1,70 @@
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#curriculum-star-rate').empty();
+    $('#curriculum-star-rate').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= review.curriculum_star %>'
+    });
+  });
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#support-star-rate').empty();
+    $('#support-star-rate').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= review.support_star %>'
+    });
+  });
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#teacher-star-rate').empty();
+    $('#teacher-star-rate').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= review.teacher_star %>'
+    });
+  });
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#compatibility-star-rate').empty();
+    $('#compatibility-star-rate').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= review.compatibility_star %>'
+    });
+  });
+</script>
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#ave-star-rate').empty();
+    $('#ave-star-rate').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: '<%= review.average_star %>'
+    });
+  });
+</script>
