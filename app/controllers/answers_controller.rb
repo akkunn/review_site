@@ -3,10 +3,8 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
-    # @content = params[:answer][:content].gsub(/(\r\n|\r|\n)/, "<br />")
     if current_user?(@answer.user)
       if @answer.save
-        # binding.pry
         @question = @answer.question
         @question.solution = 1
         @question.save
