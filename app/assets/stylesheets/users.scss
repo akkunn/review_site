@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // 全共通
-
 .submit-button {
   background-color: #007bff;
   color: #fff;
@@ -32,7 +31,6 @@
 }
 
 // ユーザー関連共通
-
 .box {
   padding: 2rem 1rem 1.5rem 1rem;
   border-radius: 1rem;
@@ -66,7 +64,6 @@
 }
 
 // プロフィール編集(メイン)  プロフィール 共通
-
 .edit-profile, .profile-show {
   .profile-box {
     margin: 0 auto;
@@ -213,9 +210,7 @@
   font-size: 1.1rem;
 }
 
-
 // devise共通(以下devise)
-
 .devise-user-box {
   text-align: center;
   width: 500px;
@@ -274,7 +269,6 @@
 }
 
 // ログイン
-
 .sign-in {
   .actions {
     margin-top: 1.5rem;
@@ -309,7 +303,6 @@
 }
 
 // アカウント情報編集
-
 .edit-acount-info, .edit-profile {
   display: flex;
   .link-box {
@@ -364,18 +357,14 @@
 }
 
 // レスポンシブデザイン
-
 @media screen and (max-width: 960px) {
-
   // アカウント登録
-
   .devise-user-box {
     width: 80%;
     max-width: 500px;
   }
 
   // アカウント情報編集
-
   .edit-acount-info, .edit-profile {
     display: block;
     .link-box {
@@ -470,9 +459,7 @@
 }
 
 @media screen and (max-width: 520px) {
-
   // アカウント登録
-
   .field {
     width: 80%;
   }
@@ -486,8 +473,7 @@
     width: 80%;
   }
 
-    // アカウント情報編集
-
+  // アカウント情報編集
   .edit-acount-info, .edit-profile {
     .link-box {
       padding-top: 0;
