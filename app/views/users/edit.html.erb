@@ -1,3 +1,4 @@
+<%= provide(:title, "プロフィール編集") %>
 <%= render 'shared/flash_message' %>
 <div class="edit-profile">
   <ul class="link-box">
@@ -16,24 +17,20 @@
             <% else %>
               <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
             <% end %>
-
             <ul class="profile-item set-user-icon">
               <li class="profile-item-label"><%= f.label :image, "アイコン", class: "" %></li>
               <li class="profile-item-content"><%= f.file_field :image %></li>
             </ul>
-
             <ul class="profile-item">
               <li class="profile-item-label">
                 <%= f.label :name, "ユーザー名" %><span class="badge">必須</span>
               </li>
               <li class="profile-item-content"><%= f.text_field :name, placeholder: "名前を入力" %></li>
             </ul>
-
             <% if @user.schools.second.nil? %>
               <%= f.fields_for :user_school do |user_school| %>
                 <ul class="profile-item profile-edit-school">
                   <li class="profile-item-label"><%= user_school.label :school_id, "スクール名" %></li>
-
                   <% if @user.schools.first.nil? %>
                     <li class="profile-item-content">
                       <%= user_school.collection_select(:school_id, School.all, :id, :name, include_blank: 'なし') %>
@@ -46,12 +43,10 @@
                       <%= link_to "削除", user_school_path(@user.user_schools.first), method: :delete, data: {confirm: "スクール名を削除しますか？"}, class: "hover-underline" %>
                     </div>
                   <% end %>
-
                   <%= user_school.hidden_field :user_id, value: @user.id %>
                 </ul>
               <% end %>
             <% end %>
-
             <% unless @user.schools.second.nil? %>
               <% @user.schools.each do |school| %>
                 <ul class="profile-item">
@@ -60,7 +55,6 @@
                 </ul>
               <% end %>
             <% end %>
-
             <div class="profile-textarea">
               <%= f.text_area :introduction, placeholder: "自己紹介や相談したいこと", class: 'introduction resize7' %>
             </div>
