@@ -1,0 +1,122 @@
+<div class="review-and-question-box">
+  <div class="review-and-question-box-content">
+    <div class="review-and-question-content-border">
+      <h3>
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <%= review.name %>
+      </h3>
+      <p class="review-show-review-time"><%= review.updated_at.to_s(:datetime_jp) %></p>
+    </div>
+    <%= form_with model: review, local: true do |f| %>
+      <div class="review-and-question-content-border">
+        <ul class="flex">
+          <li class="review-and-question-label">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <%= f.label :school_id, "スクール名" %>
+          </li>
+          <li class="review-school-name"><%= review.school.name %></li>
+        </ul>
+      </div>
+      <% unless review.curriculum.blank? && review.curriculum_star.nil? %>
+        <div class="review-and-question-content-border">
+          <ul>
+            <div class="flex">
+              <li class="review-and-question-label">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <%= f.label :curriculum_star,'カリキュラム内容' %>
+              </li>
+              <% unless review.curriculum_star.nil? %>
+                <li id="curriculum-star-rate"></li>
+              <% end %>
+              <li class="review-show-star ave"><%= review.curriculum_star %></li>
+            </div>
+            <% unless review.curriculum.blank? %>
+              <li class="review-show-text"><%= simple_format(review.curriculum) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless review.support.blank? && review.support_star.nil? %>
+        <div class="review-and-question-content-border">
+          <ul>
+            <div class="flex">
+              <li class="review-and-question-label">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <%= f.label :support_star,'サポート体制' %>
+              </li>
+              <% unless review.support_star.nil? %>
+                <li id="support-star-rate"></li>
+              <% end %>
+              <li class="review-show-star ave"><%= review.support_star %></li>
+            </div>
+            <% unless review.support.blank? %>
+              <li class="review-show-text"><%= simple_format(review.support) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless review.teacher.blank? && review.teacher_star.nil? %>
+        <div class="review-and-question-content-border">
+          <ul>
+            <div class="flex">
+              <li class="review-and-question-label">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <%= f.label :teacher_star,'講師' %>
+              </li>
+              <% unless review.teacher_star.nil? %>
+                <li id="teacher-star-rate"></li>
+                <li class="review-show-star ave"><%= review.teacher_star %></li>
+              <% end %>
+            </div>
+            <% unless review.teacher.blank? %>
+              <li class="review-show-text"><%= simple_format(review.teacher) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless review.compatibility.blank? && review.compatibility_star.nil? %>
+        <div class="review-and-question-content-border">
+          <ul>
+            <div class="flex">
+              <li class="review-and-question-label">
+                <i class="fa fa-tasks" aria-hidden="true"></i>
+                <%= f.label :compatibility_star, '両立しやすさ' %>
+              </li>
+              <% unless review.compatibility_star.nil? %>
+                <li id="compatibility-star-rate"></li>
+                <li class="review-show-star ave"><%= review.compatibility_star %></li>
+              <% end %>
+            </div>
+            <% unless review.compatibility.blank? %>
+              <li class="review-show-text"><%= simple_format(review.compatibility) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless review.average_star.nil? %>
+        <div class="review-and-question-content-border">
+          <ul>
+            <li class="review-show-ave-label"><%= f.label '総合満足度' %></li>
+            <div class="flex review-show-ave-box">
+              <li id="ave-star-rate"></li>
+              <li class="review-show-star ave"><%= review.average_star %></li>
+            </div>
+          </ul>
+        </div>
+      <% end %>
+      <ul class="review-thought">
+        <li class="review-and-question-label">
+          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+          <%= f.label :thought,'感想/アドバイス' %>
+        </li>
+        <li class="review-show-text"><%= simple_format(review.thought) %></li>
+      </ul>
+      <div class="review-and-question-button">
+        <% if user_signed_in? && (current_user == review.user) %>
+          <%= link_to "編集する", edit_review_path(review, review_edit_params: params), class: "button edit-button" %>
+        <% end %>
+        <%= link_to "戻る", school_path(review.school), class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
