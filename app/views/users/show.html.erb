@@ -1,3 +1,4 @@
+<%= provide(:title, "#{@user.name}のプロフィール") %>
 <%= render 'shared/flash_message' %>
 <div class="background profile-show">
   <div class="profile-box">
@@ -11,25 +12,21 @@
             <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
           <% end %>
         </div>
-
         <ul class="profile-item">
           <li class="profile-item-label">ユーザー名</li>
           <li class="profile-item-content"><%= @user.name %></li>
         </ul>
-
         <% unless @user.user_schools.first.nil? %>
           <ul class="profile-item">
             <li class="profile-item-label">スクール名</li>
             <li class="profile-item-content"><%= @user.schools.first.name %></li>
           </ul>
         <% end %>
-
         <% unless @user.introduction.blank? %>
           <div class="introduction">
             <%= simple_format(@user.introduction) %>
           </div>
         <% end %>
-
         <% if user_signed_in? && (current_user == @user) %>
           <%= link_to "変更する", edit_user_path(@user), class: "button" %>
         <% end %>
