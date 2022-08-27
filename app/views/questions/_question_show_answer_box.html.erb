@@ -3,7 +3,7 @@
     <li>
       <%= link_to user_path(answer.user) do %>
         <% if answer.user.image.attached? %>
-          <%= image_tag answer.user.image.variant(resize: '30x30!'), class: "user-icon", alt: "ユーザーアイコン" %>
+          <%= image_tag answer.user.image.variant(resize: '35x35!'), class: "user-icon", alt: "ユーザーアイコン" %>
         <% else %>
           <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
         <% end %>
