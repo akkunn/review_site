@@ -1,47 +1,6 @@
+<%= provide(:title, "#{@review.school.name}の口コミ編集")%>
 <div class="review-edit background-blue">
-  <div class="page-link">
-    <% if @params == "school_index" %>
-      <ul class="flex">
-        <li><%= link_to 'スクール一覧', schools_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@review.school) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ詳細', review_path(@review) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ編集', "#", class: "link-underline" %></li>
-      </ul>
-    <% elsif @params ==  "review_create" %>
-      <ul class="flex">
-        <li><%= link_to '口コミ投稿', new_review_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@review.school) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ詳細', review_path(@review) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ編集', "#", class: "link-underline" %></li>
-      </ul>
-    <% elsif @params == "result" %>
-      <ul class="flex five-links">
-        <li><%= link_to 'HOME', root_path %></li>
-        <li>＞</li>
-        <li><%= link_to '検索', result_path %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ一覧', school_path(@review.school) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ詳細', review_path(@review) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ編集', "#", class: "link-underline" %></li>
-      </ul>
-    <% else %>
-      <ul class="flex">
-        <li><%= link_to '口コミ一覧', school_path(@review.school) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ詳細', review_path(@review) %></li>
-        <li>＞</li>
-        <li><%= link_to '口コミ編集', "#", class: "link-underline" %></li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render partial: 'review_edit_page_link', locals: { params: @params, review: @review } %>
   <%= render 'shared/flash_message' %>
   <div class="review-and-question-box">
     <div class="review-and-question-box-content">
