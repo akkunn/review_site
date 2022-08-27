@@ -1,0 +1,59 @@
+<div class="page-link">
+  <% if params == "school_index" %>
+    <ul class="flex five-links">
+      <li><%= link_to 'スクール一覧', schools_path %></li>
+      <li>＞</li>
+      <li><%= link_to '口コミ一覧', school_path(question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問一覧', questions_path(school_id: question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問詳細', question_path(question) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問編集', "#", class: "link-underline" %></li>
+    </ul>
+  <% elsif params ==  "review_create" %>
+    <ul class="flex five-links">
+      <li><%= link_to '口コミ投稿', new_review_path %></li>
+      <li>＞</li>
+      <li><%= link_to '口コミ一覧', school_path(question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問一覧', questions_path(school_id: question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問詳細', question_path(question) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問編集', "#", class: "link-underline" %></li>
+    </ul>
+  <% elsif params == "result" %>
+    <ul class="flex five-links">
+      <li><%= link_to '検索', result_path %></li>
+      <li>＞</li>
+      <li><%= link_to '口コミ一覧', school_path(question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問一覧', questions_path(school_id: question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問詳細', question_path(question) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問編集', "#", class: "link-underline" %></li>
+    </ul>
+  <% elsif params == "question_create" %>
+    <ul class="flex">
+      <li><%= link_to '質問投稿', new_question_path %></li>
+      <li>＞</li>
+      <li><%= link_to '質問一覧', questions_path(school_id: question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問詳細', question_path(question) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問編集', "#", class: "link-underline" %></li>
+    </ul>
+  <% else %>
+    <ul class="flex">
+      <li><%= link_to '口コミ一覧', school_path(question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問一覧', questions_path(school_id: question.school_id) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問詳細', question_path(question) %></li>
+      <li>＞</li>
+      <li><%= link_to '質問編集', "#", class: "link-underline" %></li>
+    </ul>
+  <% end %>
+</div>
