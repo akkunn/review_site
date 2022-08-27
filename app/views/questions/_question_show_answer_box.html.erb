@@ -9,7 +9,7 @@
         <% end %>
       <% end %>
     </li>
-    <li class="question-user-name"><%= answer.user.name %></li>
+    <li class="question-user-name"><%= link_to answer.user.name, user_path(answer.user) %></li>
   </div>
   <div id='<%= answer.id %>'>
     <li class="question-show-text auto-adjust answer-text"><%= simple_format(answer.content) %></li>
