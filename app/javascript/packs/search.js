@@ -1,5 +1,4 @@
 document.addEventListener('turbolinks:load', () => {
-
   $(function() {
     var topBtn = $('#top-btn a');
     topBtn.hide();
@@ -11,11 +10,10 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
     topBtn.click(function () {
-        $('body, html').animate({
-      scrollTop:0
-    }, 1000);
-    event.preventDefault();
+      $('body, html').animate({
+        scrollTop:0
+      }, 1000);
+      event.preventDefault();
+    });
   });
-});
-
 })
