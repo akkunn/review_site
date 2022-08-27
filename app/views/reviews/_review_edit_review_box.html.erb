@@ -11,7 +11,6 @@
           <li class="review-name-label review-and-question-input-field"><%= f.collection_select(:school_id, School.all, :id, :name, include_blank: '選択してください') %></li>
         </ul>
       </div>
-
       <div class="review-and-question-content-border">
         <ul class="flex review-name-flex">
           <li class="review-and-question-label">
@@ -20,7 +19,6 @@
           <li class="review-and-question-input-field"><%= f.text_field :name, placeholder: "口コミタイトルを入力" %></li>
         </ul>
       </div>
-
       <div class="review-and-question-content-border">
         <ul>
           <%= f.hidden_field :curriculum_star, id: "edit-curriculum-star" %>
@@ -31,7 +29,6 @@
           <li><%= f.text_area :curriculum, class: "resize7" %></li>
         </ul>
       </div>
-
       <div class="review-and-question-content-border">
         <ul>
           <%= f.hidden_field :support_star, id: "edit-support-star" %>
@@ -42,7 +39,6 @@
           <li><%= f.text_area :support, class: "resize7" %></li>
         </ul>
       </div>
-
       <div class="review-and-question-content-border">
         <ul>
           <%= f.hidden_field :teacher_star, id: "edit-teacher-star" %>
@@ -64,17 +60,14 @@
           <li><%= f.text_area :compatibility, class: "resize7" %></li>
         </ul>
       </div>
-
         <ul class="review-thought">
           <li class="review-and-question-label">
             <%= f.label :thought,'感想/アドバイス' %><span class="badge">必須</span>
           </li>
           <li><%= f.text_area :thought, class: "resize7" %></li>
         </ul>
-
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= hidden_field_tag :hidden_school_id, review.school.id %>
-
       <div class="review-and-question-button">
         <%= f.submit '変更する', class: "submit-button" %>
         <%= link_to "戻る", review_path(review), class: "button" %>
