@@ -1,0 +1,44 @@
+<script>
+  window.addEventListener("turbolinks:load", function(){
+    $('#curriculum_star').empty();
+    $('#support_star').empty();
+    $('#teacher_star').empty();
+    $('#compatibility_star').empty();
+
+    $('#curriculum_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[curriculum_star]',
+      half: true
+    });
+
+    $('#support_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[support_star]',
+      half: true
+    });
+
+    $('#teacher_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[teacher_star]',
+      half: true
+    });
+
+    $('#compatibility_star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[compatibility_star]',
+      half: true
+    });
+  });
+</script>
