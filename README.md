@@ -1,11 +1,15 @@
 # プロコミ
 ![prokomi.png](./images/prokomi.png)
+<br />
+<br />
 
 # サービスURL
-<https://myreviewsite.herokuapp.com/>
+<https://myreviewsite.herokuapp.com/><br />
+<br />
 
-kljlk
-
+# サービス概要
+プログラミングスクールに関する口コミや質問を素早く、かつ簡単に見たり投稿できたりするサービスです。<br />
+<br />
 
 Things you may want to cover:
 
