@@ -65,26 +65,26 @@
 |星評価とコメントで口コミを投稿できる。|特定のスクールについての質問をすることができる。|<br />
 <br />
 
+# 使用技術
 
+### バックエンド
+* Ruby 3.0.4
+* Rails 6.1.6
+  * Rubocop(コード整形)
+  * RSpec(テスト)
+  * devise(ログイン機能)
+  * ransack(検索機能)
+  * will_paginate(ページネーション)
+  * carrierwave(ファイルのアップロード)
+  * rails-i18n(日本語化対応、エラーメッセージのカスタマイズ)
+  * activeadmin(管理画面)
 
+### フロントエンド
+* HTML
+* CSS(SCSS)
+* JavaScript(jQuery)
 
-
-
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### インフラ
+* MySQL
+* Heroku
+* AWS(S3)
