@@ -87,4 +87,13 @@
 ### インフラ
 * MySQL
 * Heroku
-* AWS(S3)
+* AWS(S3)<br />
+<br />
+
+# ER図
+![ER_figure.drawio.png](./images/ER_figure.drawio%20.png)<br />
+<https://drive.google.com/file/d/1q5SuwscGKzcbdxXeck9tQP-oyfDDWusa/view?usp=sharing><br />
+<br />
+
+# 画面遷移図
+<https://www.figma.com/file/3m7DsCMJQGdSXdV3I4DwUq/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0%3A1>
