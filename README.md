@@ -35,7 +35,41 @@
 <br />
 また、受講中もこれから受講したいと考えている人から、受講しているプログラミングスクールのメリット・デメリットについて聞かれることもありました。<br />
 <br />
-そこで、受講生のリアルな口コミが知れて、気になるプログラミングスクールについて質問ができるサービスを開発しようと思いました。
+そこで、受講生のリアルな口コミが知れて、気になるプログラミングスクールについて質問ができるサービスを開発しようと思いました。<br />
+<br />
+
+# 主なページと機能
+|ログインページ|トップページ|
+|---|---|
+|![ログイン](https://user-images.githubusercontent.com/88873360/187573593-ba53a87d-7dbe-426e-acbd-27aad0845caf.gif)|![トップページ](https://user-images.githubusercontent.com/88873360/187573382-5f9e8534-c376-4135-88d9-6d08f698d02f.gif)|
+|ゲストログインすることができます。|サービスの紹介。|
+
+|検索機能|絞り込み検索機能|
+|---|---|
+|![検索](https://user-images.githubusercontent.com/88873360/187574782-66d057ff-d7a2-46a1-b31a-0b64f1b86222.gif)|![絞り込み検索](https://user-images.githubusercontent.com/88873360/187577209-3242e225-a7e0-4df0-91aa-0113490a9f06.gif)|
+|条件を選択してプログラミングスクールを検索する。|追加条件を選択してプログラミングスクールを検索する。|
+
+|口コミ一覧ページ|口コミ詳細ページ|
+|---|---|
+|![口コミ一覧](https://user-images.githubusercontent.com/88873360/187579582-6236198e-2a9d-4e2e-8921-4d79ae851927.gif)|![口コミ詳細](https://user-images.githubusercontent.com/88873360/187582036-b97f6b2f-d59c-45e7-9039-1adeb910d0bd.gif)|
+|口コミを一覧で見ることができる。|口コミの詳細を確認できる。|
+
+|質問一覧ページ|質問詳細・回答ページ|
+|---|---|
+|![質問一覧](https://user-images.githubusercontent.com/88873360/187582947-f35a3cda-8ddc-4a53-a9dd-f7dd551874e9.gif)|![質問詳細・回答](https://user-images.githubusercontent.com/88873360/187586875-b0de0b9c-f5cb-46aa-a365-8ffc1c2d4d9b.gif)|
+|質問を一覧で見ることができる。|質問の詳細を確認でき、回答することができる。|
+
+|口コミ投稿ページ|質問投稿ページ|
+|---|---|
+|![口コミ投稿](https://user-images.githubusercontent.com/88873360/187591525-f2438575-c89d-4e38-91f6-ef4bed5b6e9c.gif)|![質問投稿](https://user-images.githubusercontent.com/88873360/187593649-e644687c-dfd3-4edb-bc28-bdf69976a3fc.gif)|
+|星評価とコメントで口コミを投稿できる。|特定のスクールについての質問をすることができる。|<br />
+<br />
+
+
+
+
+
+
 
 * Ruby version
 
