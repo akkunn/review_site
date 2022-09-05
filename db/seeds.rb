@@ -77,4 +77,15 @@ end
     period_id: 4
   )
 end
+
 AdminUser.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD_CONFIRMATION'])
+
+100.times do |i|
+  user_name = Faker::Name.name
+  User.create(
+    email: "user#{ 1 + i }@example.com",
+    name: user_name,
+    password: "password#{ 1 + i }",
+    confirmed_at: Time.now
+  )
+end
