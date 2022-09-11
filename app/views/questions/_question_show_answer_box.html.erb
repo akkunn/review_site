@@ -13,7 +13,7 @@
   </div>
   <div id='<%= answer.id %>'>
     <li class="question-show-text auto-adjust answer-text"><%= simple_format(answer.content) %></li>
-    <li class="question-time"><%= answer.updated_at.to_s(:datetime_jp) %></li>
+    <li class="question-time"><%= answer.created_at.to_s(:datetime_jp) %></li>
     <% if user_signed_in? && (current_user == answer.user) %>
       <div class="question-show-buttons">
         <%= link_to "/answers/#{answer.id}/edit", method: :get, remote: true, class: "question-show-edit-button button" do %>

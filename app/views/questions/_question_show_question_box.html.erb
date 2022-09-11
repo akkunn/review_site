@@ -13,7 +13,7 @@
   </div>
   <li class="question-name"><%= question.name %></li>
   <li class="question-show-text auto-adjust"><%= simple_format(question.content) %></li>
-  <li class="question-time"><%= question.updated_at.to_s(:datetime_jp) %></li>
+  <li class="question-time"><%= question.created_at.to_s(:datetime_jp) %></li>
   <% if user_signed_in? && (current_user == question.user) %>
     <div class="question-show-buttons">
       <%= link_to edit_question_path(question, question_edit_params: params), class: "question-show-edit-button button" do %>
