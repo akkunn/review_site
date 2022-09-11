@@ -19,7 +19,7 @@
           </div>
           <%= render partial: 'school_show_review_star', locals: { review: review } %>
         <% end %>
-        <p class="school-show-review-time"><%= review.updated_at.to_s(:datetime_jp) %></p>
+        <p class="school-show-review-time"><%= review.created_at.to_s(:datetime_jp) %></p>
       </div>
     <% end %>
   </div>

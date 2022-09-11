@@ -5,7 +5,7 @@
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <%= review.name %>
       </h3>
-      <p class="review-show-review-time"><%= review.updated_at.to_s(:datetime_jp) %></p>
+      <p class="review-show-review-time"><%= review.created_at.to_s(:datetime_jp) %></p>
     </div>
     <%= form_with model: review, local: true do |f| %>
       <div class="review-and-question-content-border">
