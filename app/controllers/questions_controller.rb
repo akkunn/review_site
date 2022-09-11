@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   def index
     @params = params[:question_index_params]
     @school = School.find(params[:school_id])
-    @questions = Question.where(school_id: @school.id).order(updated_at: :desc)
+    @questions = Question.where(school_id: @school.id).order(created_at: :desc)
   end
 
   def show
