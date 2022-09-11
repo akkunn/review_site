@@ -19,7 +19,7 @@ class SchoolsController < ApplicationController
   def show
     @params = params[:school_show_params]
     @school = School.find(params[:id])
-    @reviews = Review.where(school_id: @school.id).order(updated_at: :desc)
+    @reviews = Review.where(school_id: @school.id).order(created_at: :desc)
   end
 
   def new
