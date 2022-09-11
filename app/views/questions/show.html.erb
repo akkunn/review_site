@@ -1,21 +1,21 @@
 <%= provide(:title, "#{@question.school.name}の質問と回答") %>
 <div class="question-show background-blue" id="question--show">
-  <%= render partial: 'question_show_page_link', locals: { params: @params, question: @question } %>
+  <%= render partial: 'questions/question_show_page_link', locals: { params: @params, question: @question } %>
   <%= render 'shared/flash_message' %>
   <div class="question-show-field">
     <div class="question-content">
       <h2><%= @question.school.name %>の質問と回答</h2>
-      <%= render partial: 'question_show_solution_mark', locals: { question: @question } %>
-      <%= render partial: 'question_show_question_box', locals: { question: @question, params: @params } %>
+      <%= render partial: 'questions/question_show_solution_mark', locals: { question: @question } %>
+      <%= render partial: 'questions/question_show_question_box', locals: { question: @question, params: @params } %>
       <% unless @answers.size == 0 %>
         <span class="rotateY180">&#8629;</span>
         <span class="span-answer">回答</span>
       <% end %>
-      <%= render partial: 'question_show_answer_box', collection: @answers, as: :answer %>
+      <%= render partial: 'questions/question_show_answer_box', collection: @answers, as: :answer %>
       <% if user_signed_in? %>
         <%= label :content, "回答欄", class: "label-answer" %>
-        <%= render partial: 'question_show_answer_textarea_box', locals: { answer: @answer, question: @question } %>
-        <%= render partial: 'question_show_solution_box', locals: { question: @question } %>
+        <%= render partial: 'questions/question_show_answer_textarea_box', locals: { answer: @answer, question: @question } %>
+        <%= render partial: 'questions/question_show_solution_box', locals: { question: @question } %>
       <% end %>
       <%= link_to "戻る", questions_path(school_id: @question.school_id), class: "button" %>
     </div>
