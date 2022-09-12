@@ -1,0 +1,11 @@
+<% if current_user.liked_by?(review.id) %>
+  <p class="out-favorite-review">
+    <%= link_to "いいねを外す", destroy_favorite_review_path(review), method: :DELETE, remote: true %>
+    <%= review.favorite_reviews.count %>
+  </p>
+<% else %>
+  <p class="push-favorite-review">
+    <%= link_to "いいね", create_favorite_review_path(review), method: :POST, remote: true %>
+    <%= review.favorite_reviews.count %>
+  </p>
+<% end %>
