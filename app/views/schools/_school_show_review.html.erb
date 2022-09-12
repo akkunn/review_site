@@ -20,9 +20,9 @@
           <%= render partial: 'school_show_review_star', locals: { review: review } %>
         <% end %>
         <% if current_user.liked_by?(review.id) %>
-          <p>いいねを外す</p>
+          <p><%= link_to "いいねを外す", destroy_favorite_review_path(review), method: :DELETE %></p>
         <% else %>
-          <p>いいね</p>
+          <p><%= link_to "いいね", create_favorite_review_path(review), method: :POST %></p>
         <% end %>
         <p class="school-show-review-time"><%= review.created_at.to_s(:datetime_jp) %></p>
       </div>
