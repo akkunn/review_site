@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_23_013224) do
+ActiveRecord::Schema.define(version: 2022_09_12_083849) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 2022_08_23_013224) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "favorite_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_favorite_reviews_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_favorite_reviews_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_favorite_reviews_on_user_id"
   end
 
   create_table "questions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -154,6 +164,8 @@ ActiveRecord::Schema.define(version: 2022_08_23_013224) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "favorite_reviews", "reviews"
+  add_foreign_key "favorite_reviews", "users"
   add_foreign_key "questions", "schools"
   add_foreign_key "questions", "users"
 end
