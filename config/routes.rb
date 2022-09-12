@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'searches#home'
   get '/result', to: 'searches#result'
   get '/solved', to: 'questions#solved'
+  post 'favorite_review/:id', to: 'favorite_reviews#create'
   resources :users, only: [:show, :edit, :update]
   resources :schools
   resources :reviews
