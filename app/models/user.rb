@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :favorite_reviews, dependent: :destroy
+  has_many :favorite_items, through: :favorite_reviews, source: :review
   has_one_attached :image
   accepts_nested_attributes_for :user_schools, allow_destroy: true
   validates :name, presence: true
