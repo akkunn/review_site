@@ -19,6 +19,11 @@
           </div>
           <%= render partial: 'school_show_review_star', locals: { review: review } %>
         <% end %>
+        <% if current_user.liked_by?(review.id) %>
+          <p>いいねを外す</p>
+        <% else %>
+          <p>いいね</p>
+        <% end %>
         <p class="school-show-review-time"><%= review.created_at.to_s(:datetime_jp) %></p>
       </div>
     <% end %>
