@@ -1,4 +1,4 @@
-<% if current_user.liked_by?(review.id) %>
+<% if current_user.liked_by?(review.id, current_user.id) %>
   <%= link_to destroy_favorite_review_path(review), method: :DELETE, remote: true do %>
     <i class="fa fa-heart on-favorite-review" aria-hidden="true"></i>
   <% end %>

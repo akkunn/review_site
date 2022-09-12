@@ -24,7 +24,7 @@ class User < ApplicationRecord
     end
   end
 
-  def liked_by?(review_id)
-    FavoriteReview.where(review_id: review_id).exists?
+  def liked_by?(review_id, current_user_id)
+    FavoriteReview.where(review_id: review_id, user_id: current_user_id).exists?
   end
 end
