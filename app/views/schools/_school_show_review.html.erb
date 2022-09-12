@@ -19,7 +19,7 @@
           </div>
           <%= render partial: 'school_show_review_star', locals: { review: review } %>
         <% end %>
-        <div id="favorite_review_<%= review.id %>">
+        <div id="favorite_review_<%= review.id %>" class="favorite-review">
           <%= render 'school_show_favorite_review', review: review %>
         </div>
         <p class="school-show-review-time"><%= review.created_at.to_s(:datetime_jp) %></p>

@@ -333,6 +333,17 @@
           .school-show-review-thought {
             border-top: 1px solid #dddddd;
           }
+          .favorite-review {
+            position: absolute;
+            bottom: 0.1rem;
+            left: 1rem;
+            .on-favorite-review {
+              color: #e54747;
+            }
+            .off-favorite-review {
+              color: #808080;
+            }
+          }
           .school-show-review-time {
             position: absolute;
             right: 1rem;
