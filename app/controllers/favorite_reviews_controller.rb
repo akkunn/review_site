@@ -11,7 +11,12 @@ class FavoriteReviewsController < ApplicationController
   end
 
   def destroy
-    FavoriteReview.find_by(user_id: current_user.id, review_id: params[:id]).destroy
+    if user_signed_in?
+      FavoriteReview.find_by(user_id: current_user.id, review_id: params[:id]).destroy
+    else
+      flash[:failure] = "「いいね」を解除するにはログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 
   private
