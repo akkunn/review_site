@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :favorite_review do
-    user { nil }
-    review { nil }
+    user { 1 }
+    review { 1 }
   end
 end

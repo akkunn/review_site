@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/solved', to: 'questions#solved'
   post 'favorite_review/:id', to: 'favorite_reviews#create', as: 'create_favorite_review'
   delete 'favorite_review/:id', to: 'favorite_reviews#destroy', as: 'destroy_favorite_review'
-  get '/guest_favorite_review', to: 'favorite_reviews#guest_favorite_review'
   resources :users, only: [:show, :edit, :update]
   resources :schools
   resources :reviews
