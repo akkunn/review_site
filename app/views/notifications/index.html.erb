@@ -1,5 +1,8 @@
 <div class="notification-index">
   <h3 class="">通知</h3>
+  <%= link_to destroy_all_notification_path, method: :delete, data: {confirm: "通知を全て削除しますか？"} do %>
+    <h5><i class="fa fa-trash" aria-hidden="true"></i>全削除</h5>
+  <% end %>
   <% if @notifications.exists? %>
     <div class="">
       <% @notifications.each do |notification| %>
@@ -13,7 +16,8 @@
           <% end %>
           <%= link_to notification.visiter.name, user_path(notification.visiter), class: "" %>が
           <%= link_to 'あなたの口コミ', review_path(notification.review), class: "" %>にいいねしました。
-          <%= notification.how_long_ago %>
+          <%= "(#{notification.how_long_ago})" %>
+          <%= link_to "削除", notification_path(notification), method: :delete, data: {confirm: "この通知を削除しますか？"} %>
           <p><%= notification.review.name%></p>
         </div>
       <% end %>

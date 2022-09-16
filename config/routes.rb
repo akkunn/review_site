@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :questions
   resources :answers, only: [:create, :edit, :update, :destroy]
   resources :user_schools, only: [:destroy]
-  resources :notifications, only: :index
+  resources :notifications, only: [:index, :destroy]
+  delete '/notification_all', to: 'notification#destroy_all', as: 'destroy_all_notification'
 end
