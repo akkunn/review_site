@@ -1,4 +1,6 @@
+<%= provide(:title, "通知一覧")%>
 <div class="notification-index">
+  <%= render 'shared/flash_message' %>
   <h3 class="">通知</h3>
   <%= link_to destroy_all_notification_path, method: :delete, data: {confirm: "通知を全て削除しますか？"} do %>
     <h5><i class="fa fa-trash" aria-hidden="true"></i>全削除</h5>
@@ -14,11 +16,18 @@
               <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
             <% end %>
           <% end %>
-          <%= link_to notification.visiter.name, user_path(notification.visiter), class: "" %>が
-          <%= link_to 'あなたの口コミ', review_path(notification.review), class: "" %>にいいねしました。
-          <%= "(#{notification.how_long_ago})" %>
-          <%= link_to "削除", notification_path(notification), method: :delete, data: {confirm: "この通知を削除しますか？"} %>
-          <p><%= notification.review.name%></p>
+          <% if notification.action == "like" %>
+            <%= link_to notification.visiter.name, user_path(notification.visiter), class: "" %>が
+            <%= link_to 'あなたの口コミ', review_path(notification.review), class: "" %>にいいねしました。
+            <%= "(#{notification.how_long_ago})" %>
+            <%= link_to "削除", notification_path(notification), method: :delete, data: {confirm: "この通知を削除しますか？"} %>
+            <p><%= notification.review.name%></p>
+          <% elsif notification.action == "answer" %>
+            <%= link_to notification.visiter.name, user_path(notification.visiter), class: "" %>が
+            <%= link_to 'あなたの質問', question_path(notification.question), class: "" %>に回答しました。
+            <%= "(#{notification.how_long_ago})" %>
+            <%= link_to "削除", notification_path(notification), method: :delete, data: {confirm: "この通知を削除しますか？"} %>
+          <% end %>
         </div>
       <% end %>
     </div>
