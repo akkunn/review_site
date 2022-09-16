@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :favorite_reviews, dependent: :destroy
   has_many :favorite_items, through: :favorite_reviews, source: :review
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_one_attached :image
   accepts_nested_attributes_for :user_schools, allow_destroy: true
   validates :name, presence: true

@@ -3,6 +3,7 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :favorite_reviews, dependent: :destroy
   has_many :favorite_users, through: :favorite_reviews, source: :user
+  has_many :notifications, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :thought, presence: true
