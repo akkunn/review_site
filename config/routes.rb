@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :questions
   resources :answers, only: [:create, :edit, :update, :destroy]
   resources :user_schools, only: [:destroy]
+  resources :notifications, only: :index
 end
