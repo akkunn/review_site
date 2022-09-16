@@ -1,0 +1,24 @@
+<div class="notification-index">
+  <h3 class="">通知</h3>
+  <% if @notifications.exists? %>
+    <div class="">
+      <% @notifications.each do |notification| %>
+        <div class="">
+          <%= link_to user_path(notification.visiter) do %>
+            <% if notification.visiter.image.attached? %>
+              <%= image_tag notification.visiter.image.variant(resize: '35x35!'), class: "user-icon", alt: "ユーザーアイコン" %>
+            <% else %>
+              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+            <% end %>
+          <% end %>
+          <%= link_to notification.visiter.name, user_path(notification.visiter), class: "" %>が
+          <%= link_to 'あなたの口コミ', review_path(notification.review), class: "" %>にいいねしました。
+          <%= notification.how_long_ago %>
+          <p><%= notification.review.name%></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>
