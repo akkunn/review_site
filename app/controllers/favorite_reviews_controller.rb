@@ -4,6 +4,8 @@ class FavoriteReviewsController < ApplicationController
   def create
     if user_signed_in?
       FavoriteReview.create(user_id: current_user.id, review_id: params[:id])
+      review = Review.find(params[:id])
+      review.create_notification_like!(current_user)
     else
       flash[:failure] = "「いいね」はログインしないとできません"
       redirect_to new_user_session_path
