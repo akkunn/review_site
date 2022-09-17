@@ -30,6 +30,7 @@
           <% end %>
         <% end %>
         <ul class="header-dropdown">
+          <li class="header-dropdown-list"><%= link_to "通知", notifications_path %></li>
           <li class="header-dropdown-list"><%= link_to "プロフィール", user_path(current_user) %></li>
           <li class="header-dropdown-list"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
           <li class="header-dropdown-list"><%= link_to "アカウント　情報編集", edit_user_registration_path %></li>
