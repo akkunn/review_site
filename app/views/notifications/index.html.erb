@@ -4,7 +4,7 @@
   <div class="all-notification-box">
     <h2 class="">通知</h2>
     <% if @notifications.exists? %>
-      <%= link_to destroy_all_notification_path, method: :delete, data: {confirm: "通知を全て削除しますか？"}, class: "all-notifications-delete" do %>
+      <%= link_to destroy_all_notification_path(user_id: @notifications.first.visited.id), method: :delete, data: {confirm: "通知を全て削除しますか？"}, class: "all-notifications-delete" do %>
         <i class="fa fa-trash" aria-hidden="true"></i>全削除
       <% end %>
       <div class="">
