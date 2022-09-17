@@ -2,7 +2,8 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :destroy, :destroy_all]
 
   def index
-    @notifications = current_user.passive_notifications.paginate(page: params[:page]).per(30)
+    @notifications = current_user.passive_notifications.
+      paginate(page: params[:page]).per(30).order_new
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
