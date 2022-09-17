@@ -1,3 +1,106 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.notification-index {
+  .all-notification-box {
+    box-sizing: border-box;
+    max-width: 900px;
+    background-color: #fff;
+    margin: 4rem auto;
+    padding: 3rem 2rem;
+    border-radius: 0.25rem;
+    h2 {
+      margin: 0 0 1rem 0;
+      color: #1a3153;
+    }
+    .all-notifications-delete {
+      color: #1a3153;
+      display: inline-block;
+      margin-left: 1rem;
+      &:hover {
+        color: #FF0000;
+      }
+      .fa-trash {
+        margin-right: 0.5rem;
+      }
+    }
+    .one-notification-box {
+      &:first-child {
+        border-top: 1px solid #dddddd;
+        margin-top: 1rem;
+      }
+      border-bottom: 1px solid #dddddd;
+      padding: 1rem;
+      .one-notification-box-flex {
+        display: flex;
+        align-items: center;
+        .user-icon-default {
+          width: 2.9rem;
+        }
+        .notification-title {
+          margin-left: 1rem;
+          .notification-link {
+            color: #007bff;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        .notification-like-delete, .notification-answer-delete {
+          margin-left: auto;
+          color: #1a3153;
+          &:hover {
+            color: #FF0000;
+          }
+        }
+      }
+      .notification-content {
+        margin-bottom: 0;
+        color: #a3a2a2;
+        text-align: center;
+      }
+    }
+    .not-notification {
+      text-align: center;
+    }
+  }
+}
+
+// レスポンシブ対応
+@media screen and (max-width: 960px) {
+  .notification-index {
+    .all-notification-box {
+      width: 90%;
+      .one-notification-box {
+        .one-notification-box-flex {
+          .notification-like-delete, .notification-answer-delete {
+            width: 3rem;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .notification-index {
+    .all-notification-box {
+      .one-notification-box {
+        .one-notification-box-flex {
+          display: block;
+          position: relative;
+          .notification-title {
+            margin-left: 0;
+          }
+          .notification-like-delete, .notification-answer-delete {
+            position: absolute;
+            right: 0;
+            top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
