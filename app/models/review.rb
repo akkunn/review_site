@@ -10,7 +10,10 @@ class Review < ApplicationRecord
   validates :user_id, presence: true
 
   def create_notification_like!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and review_id = ? and action = ?", current_user.id, user_id, id, 'like'])
+    temp = Notification.where([
+      "visiter_id = ? and visited_id = ? and review_id = ? and action = ?",
+      current_user.id, user_id, id, 'like',
+    ])
     if temp.blank?
       notification = current_user.active_notifications.new(
         review_id: id,

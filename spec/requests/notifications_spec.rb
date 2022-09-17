@@ -6,7 +6,10 @@ RSpec.describe "Notifications", type: :request do
   let(:user3) { FactoryBot.create(:user) }
   let(:school) { FactoryBot.create(:school) }
   let(:review) { FactoryBot.create(:review, user_id: user.id, school_id: school.id) }
-  let!(:notification) { FactoryBot.create(:notification, review_id: review.id, visited_id: user.id, visiter_id: user2.id) }
+  let!(:notification) {
+    FactoryBot.create(:notification,
+                      review_id: review.id, visited_id: user.id, visiter_id: user2.id)
+  }
 
   describe "#index" do
     context "as an authenticated user" do
