@@ -169,6 +169,12 @@ textarea {
 
 }
 
+.unchecked-notification-sign {
+  position: absolute;
+  color: #f9cc46;
+  font-size: 1rem;
+}
+
 /* ヘッダー */
 header {
   display: flex;
@@ -246,6 +252,11 @@ header input {
   padding: 0.75rem 0;
 }
 
+.header-right .header-icon .unchecked-notification-sign {
+  top: 0.8rem;
+  right: 3.2rem;
+}
+
 .header-right .header-icon:hover {
   border-bottom: #66FF66 3px solid;
 }
@@ -257,6 +268,12 @@ header input {
 /* pc画面では非表示 */
 .header-tab-sp {
   display: none;
+}
+
+.header-tab-sp .unchecked-notification-sign {
+  top: 1.2rem;
+  right: 1.7rem;
+  font-size: 1rem;
 }
 
 .header-hidden-menu {
@@ -329,6 +346,10 @@ header input {
   transform: scaleY(1);
 }
 
+.header-right .header-icon .header-dropdown .unchecked-notification-sign {
+  top: 0.5rem;
+  right: 1rem;
+}
 /* フッター */
 footer {
   position: absolute;
@@ -360,14 +381,14 @@ footer p {
     font-size: 2rem;
   }
 
-  .header-tab-sp i {
+  .header-tab-sp .fa-bars {
     padding: 0.55rem 0.7rem;
     transition: 0.5s;
     cursor: pointer;
     border-radius: 50%;
   }
 
-  .header-tab-sp i:hover {
+  .header-tab-sp .fa-bars:hover {
     background-color: rgba(252, 252, 252, 0.5);
   }
 
@@ -420,6 +441,7 @@ footer p {
   .header-hidden-menu-list {
     width: 16rem;
     border-top: 1px solid #dddd;
+    position: relative;
   }
 
   .header-hidden-menu-list:last-child {
@@ -456,6 +478,11 @@ footer p {
   .header-hidden-menu .header-school .header-dropdown-list a:hover {
     background-color: #1c385e;
     color: #fff;
+  }
+
+  .header-hidden-menu .unchecked-notification-sign {
+    top: 0.3rem;
+    right: 0.7rem;
   }
 
   .header-hidden-menu .header-user .header-dropdown-list a:hover {

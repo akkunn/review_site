@@ -20,17 +20,27 @@
       </li>
       <li><%= link_to "口コミ投稿", new_review_path %></li>
       <li class="header-icon">
-        <% if current_user.image.attached? %>
-          <%= link_to do %>
-            <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
+        <div>
+          <% if current_user.image.attached? %>
+            <%= link_to do %>
+              <%= image_tag current_user.image.variant(resize: '100x100!'), class: "user-icon" %>
+            <% end %>
+          <% else %>
+            <%= link_to do %>
+              <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to do %>
-            <%= image_tag src='70b3dd52350bf605f1bb4078ef79c9b9.png', class: "user-icon-default", alt: "ユーザーアイコン" %>
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle unchecked-notification-sign" aria-hidden="true"></i>
           <% end %>
-        <% end %>
+        </div>
         <ul class="header-dropdown">
-          <li class="header-dropdown-list"><%= link_to "通知", notifications_path %></li>
+          <li class="header-dropdown-list">
+            <%= link_to "通知", notifications_path %>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle unchecked-notification-sign" aria-hidden="true"></i>
+            <% end %>
+          </li>
           <li class="header-dropdown-list"><%= link_to "プロフィール", user_path(current_user) %></li>
           <li class="header-dropdown-list"><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
           <li class="header-dropdown-list"><%= link_to "アカウント　情報編集", edit_user_registration_path %></li>
@@ -59,5 +69,8 @@
   <% end %>
   <div class="header-right header-tab-sp">
     <i id="menu-button" class="fa fa-bars header-hidden-menu-close-open-button" aria-hidden="true"></i>
+    <% if user_signed_in? && unchecked_notifications.any? %>
+      <i class="fa fa-circle unchecked-notification-sign" aria-hidden="true"></i>
+    <% end %>
   </div>
 </header>
