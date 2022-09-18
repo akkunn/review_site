@@ -7,10 +7,14 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'User', optional: true
 
   def how_long_ago
-    if (Time.now.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i) == 0
+    if (Time.current.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i) == 0
       '今日'
+    elsif (Time.current.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i) >= 100
+      '1ヶ月前'
+    elsif (Time.current.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i) >= 200
+      created_at.to_s(:datetime_jp)
     else
-      "#{(Time.now.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i)}日前"
+      "#{(Time.current.to_s(:date_jp).to_i - created_at.to_s(:date_jp).to_i)}日前"
     end
   end
 end
