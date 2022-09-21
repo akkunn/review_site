@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', () => {
   $(function() {
-    var topBtn = $('#top-btn a');
+    let topBtn = $('#top-btn a');
     topBtn.hide();
     $(window).scroll(function(){
       if ($(this).scrollTop() > 100) {
