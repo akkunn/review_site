@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
         @question = @answer.question
         @question.solution = 1
         @question.save
+        AnswerMailer.answer_mail(@answer, current_user).deliver
         @question.create_notification_answer!(current_user, @answer.id)
         flash[:success] = "回答を投稿しました"
         redirect_to question_path(@answer.question)
